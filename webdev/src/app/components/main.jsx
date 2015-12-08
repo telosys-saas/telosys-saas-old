@@ -19,11 +19,13 @@ import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import FlatButton from 'material-ui/lib/flat-button';
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
+import Card from 'material-ui/lib/card/card';
+
 import Login from './login';
+import AuthStatus from './authstatus';
 
 const containerStyle = {
   textAlign: 'center',
-  paddingTop: 200,
 };
 
 const standardActions = [
@@ -83,22 +85,20 @@ const Main = React.createClass({
     let iconButtonElement = 
       <FlatButton label="Login" />;
     return (
-      <div>
+      <div style={containerStyle}>
         <Toolbar>
           <ToolbarGroup key={1} float="left">
             <ToolbarTitle text="Telosys SaaS" />
           </ToolbarGroup>
           <ToolbarGroup key={2} float="right">
-            <IconMenu iconButtonElement={iconButtonElement}>
-              <MenuItem primaryText="Login" />
-              <MenuItem primaryText="Settings" />
-              <MenuItem primaryText="Sign out" />
-            </IconMenu>
+            <AuthStatus />
           </ToolbarGroup>
         </Toolbar>
-        <Login onAddClick={(username, password) =>
-          login(username, password)
-        }></Login>
+        <Card>
+          <Login onAddClick={(username, password) =>
+            login(username, password)
+          }></Login>
+        </Card>
       </div>
     );
   },
