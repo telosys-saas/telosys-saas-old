@@ -19,6 +19,7 @@ import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import FlatButton from 'material-ui/lib/flat-button';
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
+import Login from './login';
 
 const containerStyle = {
   textAlign: 'center',
@@ -82,24 +83,32 @@ const Main = React.createClass({
     let iconButtonElement = 
       <FlatButton label="Login" />;
     return (
-      <Toolbar>
-        <ToolbarGroup key={1} float="left">
-          <ToolbarTitle text="Telosys SaaS" />
-        </ToolbarGroup>
-        <ToolbarGroup key={2} float="right">
-          <IconMenu iconButtonElement={iconButtonElement}>
-            <MenuItem primaryText="Login" />
-            <MenuItem primaryText="Settings" />
-            <MenuItem primaryText="Sign out" />
-          </IconMenu>
-        </ToolbarGroup>
-      </Toolbar>
+      <div>
+        <Toolbar>
+          <ToolbarGroup key={1} float="left">
+            <ToolbarTitle text="Telosys SaaS" />
+          </ToolbarGroup>
+          <ToolbarGroup key={2} float="right">
+            <IconMenu iconButtonElement={iconButtonElement}>
+              <MenuItem primaryText="Login" />
+              <MenuItem primaryText="Settings" />
+              <MenuItem primaryText="Sign out" />
+            </IconMenu>
+          </ToolbarGroup>
+        </Toolbar>
+        <Login onAddClick={(username, password) =>
+          login(username, password)
+        }></Login>
+      </div>
     );
   },
 });
 
 export default Main;
 
+function login(username, password) {
+  alert('login !!');
+}
 
 /*
 <div style={containerStyle}>
