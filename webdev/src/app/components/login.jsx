@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import TextField from 'material-ui/lib/text-field'
+import RaisedButton from 'material-ui/lib/raised-button'
 import FlatButton from 'material-ui/lib/flat-button'
+import Dialog from 'material-ui/lib/dialog'
 
 export default class Login extends Component {
   constructor(props) {
@@ -30,29 +32,26 @@ export default class Login extends Component {
     } else {
       return (
         <div> 
-          <h1>Not Logged in</h1>
-          <div>
+          <h1>Sign in to Telosys SaaS</h1>
+          <form>
             <TextField hintText="username" ref="username" />
             <p />
             <TextField hintText="password" ref="password" />
             <p />
-            <FlatButton label="Login" primary={true} onTouchTap={(e) => this.handleClick(e)} />
-          </div>
+            <FlatButton label="Signin" primary={true} onTouchTap={(e) => this.loginForm(e)} />
+            <FlatButton label="Sign in with GitHub" primary={false} onTouchTap={(e) => this.loginGithub(e)} />
+          </form>
         </div>
       );
     }
   }
 
-  logout(e) {
-    $.get("/api/auth/logout", function() {
-      this.status();
-    }.bind(this))
-    .fail(function(e) {
-      console.log('error on logout', e);
-    });
+  loginGithub() {
+    document.location = "api/auth/github";
   }
-
-  handleClick(e) {
+  
+  loginForm(e) {
+    console.log('loginForm');
     const username = this.refs.username.getValue().trim()
     const password = this.refs.password.getValue().trim()
     const payload = {
@@ -86,6 +85,15 @@ export default class Login extends Component {
     });
   }
   
+  logout(e) {
+    $.get("/api/auth/logout", function() {
+      this.status();
+    }.bind(this))
+    .fail(function(e) {
+      console.log('error on logout', e);
+    });
+  }
+
   status() {
     $.get("/api/auth/status", function(data) {
       if(!data) {
