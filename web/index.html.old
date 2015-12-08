@@ -1,0 +1,100 @@
+<html>
+<body>
+
+<h1>Authentification</h1>
+<h2>Status : <span id="status"></span></h2>
+<div>
+  <button onclick="logout()">Logout</button>
+</div>
+
+<div>
+  <button onclick="loginGithub()">Sign in with GitHub </button>
+</div>
+<div>
+<label>
+username
+<input type="text" name="j_username" id="username" />
+</label>
+</div>
+<div>
+<label>
+password
+<input type="text" name="j_security" id="password" />
+</label>
+</div>
+<div>
+<button onclick="login()">Login</button>
+</div>
+
+<script src="js/jquery.js"></script>
+<script>
+$('#status').text('unknown');
+
+function status() {
+  var username = $('#username').val();
+  var password = $('#password').val();
+  var data = {};
+  $.ajax({
+    type: "GET",
+	  url: "/auth/status",
+    dataType: 'json'
+  }).done(function(data) {
+    if(!data) {
+      $('#status').text('not logged in');
+    } else {
+      $('#status').text(data.authenticated);
+    }
+  })
+  .fail(function(msg, e) {
+    alert( "status error : " + msg + " , error : " + e );
+  })
+  .always(function() {
+    console.log( "status complete" );
+  });
+}
+
+function login() {
+  var username = $('#username').val();
+  var password = $('#password').val();
+  var data = {};
+  $.ajax({
+    type: "GET",
+	url: "/login/basic",
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader ("Authorization", "Basic " + btoa(username + ":" + password));
+    },
+    dataType: 'json',
+	data: data
+  }).done(function(data) {
+    $('#status').text(data);
+  });
+  
+}
+
+function loginGithub() {
+  $.ajax({
+    type: "GET",
+    url: "/auth/github"
+  }).done(function(data) {
+    console.log("/auth/github");
+    console.log(data);
+  });
+  
+}
+
+function logout() {
+  $.ajax({
+    type: "GET",
+    url: "/auth/logout"
+  }).done(function(data) {
+    console.log("/auth/logout");
+    console.log(data);
+  });
+  
+}
+</script>
+<script>
+status();
+</script>
+</body>
+</html>
