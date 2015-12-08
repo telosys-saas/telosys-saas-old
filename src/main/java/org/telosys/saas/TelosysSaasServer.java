@@ -1,4 +1,4 @@
-package com.rest.test;
+package org.telosys.saas;
 
 import java.util.EnumSet;
 
@@ -14,10 +14,9 @@ import org.eclipse.jetty.server.handler.gzip.GzipHandler;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-
-import com.rest.test.rest.EntryPoint;
-import com.rest.test.security.AuthResource;
-import com.rest.test.security.Pac4jConfigFactory;
+import org.telosys.saas.rest.EntryPoint;
+import org.telosys.saas.security.AuthResource;
+import org.telosys.saas.security.Pac4jConfigFactory;
 
 public class TelosysSaasServer {
 	

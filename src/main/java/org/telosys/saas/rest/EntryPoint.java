@@ -1,4 +1,4 @@
-package com.rest.test.rest;
+package org.telosys.saas.rest;
  
 import java.util.Enumeration;
 
