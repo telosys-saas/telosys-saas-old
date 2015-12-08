@@ -7,7 +7,6 @@ export default class Login extends Component {
     super(props);
     this.state = {
       authenticated: false,
-      username: 'unknown',
     };
   }
 
@@ -16,19 +15,41 @@ export default class Login extends Component {
   }
 
   render() {
+    if (this.state.authenticated) {
       return (
-        <div>
-        <div>Authenticated : {this.state.authenticated}</div>
-        <div>User : {this.state.username}</div>
-        <div>
-          <TextField hintText="username" ref="username" />
-          <p />
-          <TextField hintText="password" ref="password" />
-          <p />
-          <FlatButton label="Login" primary={true} onTouchTap={(e) => this.handleClick(e)} />
+        <div> 
+          <h1>Logged</h1>
+          <div>
+            <div>User : {this.state.username}</div>
+          </div>
+          <div>
+            <FlatButton label="Logout" primary={true} onTouchTap={(e) => this.logout(e)} />
+          </div>
         </div>
+      );
+    } else {
+      return (
+        <div> 
+          <h1>Not Logged in</h1>
+          <div>
+            <TextField hintText="username" ref="username" />
+            <p />
+            <TextField hintText="password" ref="password" />
+            <p />
+            <FlatButton label="Login" primary={true} onTouchTap={(e) => this.handleClick(e)} />
+          </div>
         </div>
-      )
+      );
+    }
+  }
+
+  logout(e) {
+    $.get("/api/auth/logout", function() {
+      this.status();
+    }.bind(this))
+    .fail(function(e) {
+      console.log('error on logout', e);
+    });
   }
 
   handleClick(e) {
@@ -41,16 +62,13 @@ export default class Login extends Component {
     };
     $.post("/api/callback", payload, function(data) {
       if(!data) {
-        // $('#status').text('unknown');
         this.setState({
           authenticated: false,
-          username: 'unknown',
         })
       } else {
         if(!data.authenticated) {
           this.setState({
             authenticated: false,
-            username: 'not logged in',
           })
         } else {
           this.setState({
@@ -64,7 +82,6 @@ export default class Login extends Component {
     .fail(function(e) {
       this.setState({
         authenticated: false,
-        username: data.username,
       })
     });
   }
@@ -73,18 +90,18 @@ export default class Login extends Component {
     $.get("/api/auth/status", function(data) {
       if(!data) {
         this.setState({
-          authenticated: 'false',
+          authenticated: false,
           username: 'unknown',
         })
       } else {
         if(!data.authenticated) {
           this.setState({
-            authenticated: 'false',
+            authenticated: false,
             username: 'not logged in',
           })
         } else {
           this.setState({
-            authenticated: 'true',
+            authenticated: true,
             username: data.userId,
           })
         }
