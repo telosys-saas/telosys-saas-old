@@ -43,6 +43,9 @@ const Main = React.createClass({
   getInitialState() {
     return {
       muiTheme: ThemeManager.getMuiTheme(LightRawTheme),
+      auth: {
+        authenticated: false,
+      },
     };
   },
 
@@ -57,7 +60,7 @@ const Main = React.createClass({
       accent1Color: Colors.deepOrange500,
     });
 
-    this.setState({muiTheme: newMuiTheme});
+    this.setState({muiTheme: newMuiTheme, auth: {authenticated: false}});
   },
 
   _handleRequestClose() {
@@ -84,6 +87,20 @@ const Main = React.createClass({
     ];
     let iconButtonElement = 
       <FlatButton label="Login" />;
+    
+    let body = <div></div>;
+    if(!this.state.auth.authenticated) {
+      body =
+        <Card id="login">
+          <Login auth={this.state.auth} onLoginFormClick={(username, password) =>
+            this.loginForm(username, password)
+          }></Login>
+        </Card>;
+    } else {
+      body =
+        <div>workspace</div>;
+    }
+    
     return (
       <div style={containerStyle}>
         <Toolbar>
@@ -91,24 +108,86 @@ const Main = React.createClass({
             <ToolbarTitle text="Telosys SaaS" />
           </ToolbarGroup>
           <ToolbarGroup key={2} float="right">
-            <AuthStatus />
+            <AuthStatus auth={this.state.auth} />
           </ToolbarGroup>
         </Toolbar>
-        <Card>
-          <Login onAddClick={(username, password) =>
-            login(username, password)
-          }></Login>
-        </Card>
+        <div>{body}</div>
       </div>
     );
   },
+  
+  status() {
+    $.get("/api/auth/status", function(data) {
+      if(!data) {
+        this.state.auth = {
+          authenticated: false,
+          username: 'unknown',
+        }
+      } else {
+        if(!data.authenticated) {
+          this.state.auth = {
+            authenticated: false,
+            username: 'not logged in',
+          }
+        } else {
+          this.state.auth = {
+            authenticated: true,
+            username: data.userId,
+          }
+        }
+      }
+    }.bind(this), 'json')
+    .fail(function(e) {
+      this.state.auth = {
+        authenticated: false,
+        username: data.username,
+      }
+    });
+  },
+  
+  loginForm(username, password) {
+    let form = '<form action="/api/callback" method="POST" style="display:none">';
+    form += '<input type="hidden" name="client_name" value="FormClient" />'
+    form += '<input type="text" name="username" value="'+username+'" />'
+    form += '<input type="password" name="password" value="'+password+'" />'
+    form += '</form>';
+    $(form).appendTo($(document.body)).submit();
+    /*
+    const payload = {
+      client_name: 'FormClient',
+      username: username,
+      password: password,
+    };
+    $.post("/api/callback", payload, function(data) {
+      if(!data) {
+        this.state.auth = {
+          authenticated: false,
+        }
+      } else {
+        if(!data.authenticated) {
+          this.state.auth = {
+            authenticated: false,
+          };
+        } else {
+          this.state.auth = {
+            authenticated: true,
+            username: data.username,
+          };
+        }
+      }
+      this.status();
+    }.bind(this))
+    .fail(function(e) {
+      this.state.auth = {
+        authenticated: false,
+      }
+    });
+    */
+  },
+  
 });
 
 export default Main;
-
-function login(username, password) {
-  alert('login !!');
-}
 
 /*
 <div style={containerStyle}>

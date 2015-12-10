@@ -19,7 +19,7 @@ export default class AuthStatus extends Component {
   render() {
     if (this.state.authenticated) {
       return (
-        <div>Logged : {this.state.username}</div>
+        <div>Logged : {this.props.auth.username}</div>
       );
     } else {
       return (
@@ -40,7 +40,7 @@ export default class AuthStatus extends Component {
   status() {
     $.get("/api/auth/status", function(data) {
       if(!data) {
-        this.setState({
+        this.setProps({
           authenticated: false,
           username: 'unknown',
         })

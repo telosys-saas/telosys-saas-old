@@ -10,3 +10,8 @@ body {
   font-size: 13px;
   line-height: 20px;
 }
+
+#login {
+  margin: 50px auto;
+  width: 300px;
+}

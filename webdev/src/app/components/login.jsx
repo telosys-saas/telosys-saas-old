@@ -49,7 +49,7 @@ export default class Login extends Component {
   loginGithub() {
     document.location = "api/auth/github";
   }
-  
+  /*
   loginForm(e) {
     console.log('loginForm');
     const username = this.refs.username.getValue().trim()
@@ -84,7 +84,7 @@ export default class Login extends Component {
       })
     });
   }
-  
+  */
   logout(e) {
     $.get("/api/auth/logout", function() {
       this.status();
@@ -123,16 +123,15 @@ export default class Login extends Component {
     });
   }
   
-  /*
-  handleClick(e) {
+  
+  loginForm(e) {
     const username = this.refs.username.getValue().trim()
     const password = this.refs.password.getValue().trim()
-    this.props.onAddClick(username, password)
+    this.props.onLoginFormClick(username, password)
   }
-  */
+  
 }
-/*
+
 Login.propTypes = {
-  onAddClick: PropTypes.func.isRequired,
+  onLoginFormClick: PropTypes.func.isRequired,
 }
-*/
