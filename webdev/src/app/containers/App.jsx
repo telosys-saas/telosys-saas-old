@@ -1,30 +1,39 @@
 import React, { Component, PropTypes } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { login, logout } from '../actions'
-import Login from '../components/login'
+import * as CounterActions from '../actions/counter'
+import Counter1 from '../components/Counter1'
+import Counter2 from '../components/Counter2'
+import Counter3 from '../components/Counter3'
+import Add from '../components/add'
 
 class App extends Component {
 	render() {
     // Injected by connect() call:
-    const { dispatch, auth } = this.props
+    const { counter1, counter2, addCounter1, addCounter2 } = this.props
+    console.log('App/counter1: ',counter1);
+    console.log('App/counter2: ',counter2);
     return (
-      <Login
-        onAddClick={(username, password) =>
-          dispatch(login(username, password))
-        }
-      >
-      </Login>
+      <div>
+        <Counter1 counter1={counter1.counter} counter2={counter2.counter} add={addCounter1} />
+        <p />
+        <Counter2 counter1={counter1.counter} counter2={counter2.counter} add={addCounter2} />
+        <p />
+        <Counter3 counter1={counter1.counter} counter2={counter2.counter} />
+      </div>
     );
   }
 }
 
-// Which props do we want to inject, given the global state?
-// Note: use https://github.com/faassen/reselect for better performance.
-function select(state) {
+function mapStateToProps(state) {
   return {
-    auth: state.auth,
-  };
+    counter1: state.counter1,
+    counter2: state.counter2,
+  }
 }
 
-// Wrap the component to inject dispatch and state into it
-export default connect(select)(App)
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(CounterActions, dispatch)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(App)

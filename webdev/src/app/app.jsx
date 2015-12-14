@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom'
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import App from './containers/App'
-import appData from './reducers'
+import configureStore from './store/configureStore'
+
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Main from './components/main'; // Our custom react component
 
@@ -15,16 +15,17 @@ injectTapEventPlugin();
 
 // Render the main app react component into the app div.
 // For more details see: https://facebook.github.io/react/docs/top-level-api.html#react.render
-render(<Main />, document.getElementById('app'));
+//render(<Main />, document.getElementById('app'));
 
-/*
-let store = createStore(appData)
+let initialState = {
+  counter: 10,
+}
 
-let rootElement = document.getElementById('app')
+let store = configureStore()
+
 render(
   <Provider store={store}>
     <App />
   </Provider>,
-  rootElement
+  document.getElementById('app')
 )
-*/
