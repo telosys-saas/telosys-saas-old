@@ -19,6 +19,9 @@ injectTapEventPlugin();
 
 let initialState = {
   counter: 10,
+  auth: {
+    authenticated: false,
+  },
 }
 
 let store = configureStore()

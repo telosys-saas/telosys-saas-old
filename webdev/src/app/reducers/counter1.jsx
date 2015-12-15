@@ -7,7 +7,6 @@ let initialState = {
 }
 
 export default function counter1(state = initialState, action) {
-  console.log(state)
   switch (action.type) {
     case ADD_COUNTER_1:
       return {

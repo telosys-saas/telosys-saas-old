@@ -1,7 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import * as AuthActions from '../actions/auth'
 import TextField from 'material-ui/lib/text-field'
 import RaisedButton from 'material-ui/lib/raised-button'
 import FlatButton from 'material-ui/lib/flat-button'
@@ -10,6 +7,9 @@ import Dialog from 'material-ui/lib/dialog'
 export default class Login extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      authenticated: false,
+    };
   }
 
   componentDidMount() {
@@ -17,34 +17,38 @@ export default class Login extends Component {
   }
 
   render() {
-    const { auth, refresh, loginForm, logout, state } = this.props
-    const { authenticated } = auth;
-    console.log('refresh : ',refresh);
-    if(auth.authenticated) {
+    const { auth, loginForm, logout } = this.props
+	  if (this.state.authenticated) {
       return (
-        <div>Logged in</div>
-      )
+        <div> 
+          <h1>Logged</h1>
+          <div>
+            <div>User : {this.state.username}</div>
+          </div>
+          <div>
+            <FlatButton label="Logout" primary={true} onTouchTap={(e) => this.logout(e)} />
+          </div>
+        </div>
+      );
     } else {
       return (
-        <div>
-          <p>Not logged in</p>
-            <button onClick={() => refresh()}>Login</button>
+        <div> 
+          <h1>Sign in to Telosys SaaS</h1>
+          <form>
+            <TextField hintText="username" ref="username" />
+            <p />
+            <TextField hintText="password" ref="password" />
+            <p />
+            <FlatButton label="Signin" primary={true} onTouchTap={(e) => this.loginForm(e)} />
+            <FlatButton label="Sign in with GitHub" primary={false} onTouchTap={(e) => this.loginGithub(e)} />
+          </form>
         </div>
-      )
-    }
-  }
-  
-  hello(e) {
-    console.log('hello')
-    return dispatch => {
-      dispatch({
-        type: REFRESH,
-      })
+      );
     }
   }
 
   loginGithub() {
-    //document.location = "api/auth/github";
+    document.location = "api/auth/github";
   }
   /*
   loginForm(e) {
@@ -130,19 +134,5 @@ export default class Login extends Component {
 }
 
 Login.propTypes = {
+  onLoginFormClick: PropTypes.func.isRequired,
 }
-
-function mapStateToProps(state) {
-  return {
-    auth: state.auth,
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(AuthActions, dispatch)
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Login)
