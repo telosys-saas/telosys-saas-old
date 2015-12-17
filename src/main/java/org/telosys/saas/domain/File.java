@@ -8,9 +8,11 @@ public class File implements Serializable {
 
 	private String id;
 	
+	private String folderId;
+	
 	private String name;
 	
-	private String content;
+	private String content = "";
 
 	public String getId() {
 		return id;
@@ -18,6 +20,14 @@ public class File implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getFolderId() {
+		return folderId;
+	}
+
+	public void setFolderId(String folderId) {
+		this.folderId = folderId;
 	}
 	
 	public String getName() {

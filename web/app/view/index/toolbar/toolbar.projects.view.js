@@ -6,18 +6,18 @@ var ToolbarProjects = {
       for (var i = 0; i < projects.length; i++) {
         var project = projects[i];
         var selected = '';
-        if(state.projectName === project.name) {
+        if(state.projectId === project.id) {
           selected = ' selected';
         }
-        options += '<option' + selected + '>' + project.name + '</option>'
+        options += '<option' + selected + ' value="' + project.id + '">' + project.name + '</option>'
       }
       $('#projects').html(options);
     });
   },
 
-  changeProject: function(projectName) {
+  changeProject: function(projectId) {
     var state = Store.getState();
-    state.projectName = projectName;
+    state.projectId = projectId;
     IDE.init();
   }
 };

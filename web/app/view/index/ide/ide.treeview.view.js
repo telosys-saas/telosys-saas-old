@@ -2,7 +2,7 @@
 var IDETreeview = {
   init: function() {
     var state = Store.getState();
-    FilesService.getFilesForProject(state.projectName, function(rootFolder) {
+    FilesService.getFilesForProject(state.projectId, function(rootFolder) {
       state.tree = {};
       var root = this.convertFolderToJson(rootFolder, null);
       state.tree.root = root;
@@ -103,33 +103,54 @@ var IDETreeview = {
           this.onDoubleClick(state.tree.selected.e, state.tree.selected.data);
         }
       }.bind(this));
-      // new
     }.bind(this));
   },
 
-  onClick: function(e, node) {
+  onClick: function(e, data) {
     console.log('onClick');
 
   },
 
   onDoubleClick: function(e, data) {
     console.log('onDoubleClick');
-    var state = Store.getState();
-    state.fileId = data.node.id;
-    IDEEditor.loadFile();
+    if(data.node.type == 'file') {
+      var state = Store.getState();
+      state.fileId = data.node.id;
+      IDEEditorCodemirror.loadFile();
+    }
   },
 
-  onCreateFile: function(node, tree) {
+  onCreateFile: function(nodeParent, tree) {
     return (function (obj) {
-      node = tree.create_node(node);
-      tree.edit(node);
+      node = tree.create_node(nodeParent);
+      node.type = 'file';
+      tree.edit(node, null, function(node, status) {
+        var state = Store.getState();
+        var projectId = state.projectId;
+        var file = {
+          name: node.text
+        };
+        FilesService.createFileForProject(projectId, nodeParent.id, file, function(folder) {
+          console.log('file created', file);
+        });
+      });
     });
   },
 
-  onCreateFolder: function(node, tree) {
+  onCreateFolder: function(nodeParent, tree) {
     return (function (obj) {
-      node = tree.create_node(node);
-      tree.edit(node);
+      node = tree.create_node(nodeParent);
+      node.type = 'folder';
+      tree.edit(node, null, function(node, status) {
+        var state = Store.getState();
+        var projectId = state.projectId;
+        var folder = {
+          name: node.text
+        };
+        FilesService.createFolderForProject(projectId, nodeParent.id, folder, function(folder) {
+          console.log('folder created', folder);
+        });
+      });
     });
   },
 

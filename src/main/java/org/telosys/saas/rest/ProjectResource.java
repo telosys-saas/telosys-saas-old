@@ -65,18 +65,19 @@ public class ProjectResource {
     	return storage.getFolderForProjectAndUser(user, project, folderId);
     }
 
-    @Path("/folders")
+    @Path("/folders/{folderId}")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Folder createFolder(@PathParam("projectId") String projectId, @PathParam("folderId") String folderId, Folder folderSubToCreate) {
+    public Folder createFolder(Folder folderSubToCreate, @PathParam("projectId") String projectId, @PathParam("folderId") String folderId) {
     	UserProfile user = getUser(); 
     	Project project = storage.getProjectForUser(user, projectId);
     	storage.createFolderForProjectAndUser(user, project, folderId, folderSubToCreate);
     	return folderSubToCreate;
     }
 
-    @Path("/folders")
+    @Path("/folders/{folderId}")
     @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Folder saveFolder(@PathParam("projectId") String projectId, @PathParam("folderId") String folderId, Folder folderToSave) {
     	UserProfile user = getUser(); 
@@ -85,7 +86,7 @@ public class ProjectResource {
     	return folderToSave;
     }
 
-    @Path("/folders/{folderId}/files/{fileId}")
+    @Path("/files/{fileId}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public File getFile(@PathParam("projectId") String projectId, @PathParam("folderId") String folderId, @PathParam("fileId") String fileId) {
@@ -98,26 +99,24 @@ public class ProjectResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void createFile(@PathParam("projectId") String projectId, @PathParam("folderId") String folderId, @PathParam("fileId") String fileId, File fileToCreate) {
+    public void createFile(File fileToCreate, @PathParam("projectId") String projectId, @PathParam("folderId") String folderId) {
     	UserProfile user = getUser();
     	Project project = storage.getProjectForUser(user, projectId);
-    	File file = storage.getFileForProjectAndUser(user, project, fileId);
-		storage.createFileForProjectAndUser(user, project, folderId, file);
+    	storage.createFileForProjectAndUser(user, project, folderId, fileToCreate);
     }
 
-    @Path("/folders/{folderId}/files/{fileId}")
+    @Path("/files/{fileId}")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public void saveFile(@PathParam("projectId") String projectId, @PathParam("folderId") String folderId, @PathParam("fileId") String fileId, File fileToSave) {
-    	UserProfile user = getUser(); 
+    	UserProfile user = getUser();
     	Project project = storage.getProjectForUser(user, projectId);
     	File file = storage.getFileForProjectAndUser(user, project, fileId);
     	if(file == null) {
     		throw new IllegalStateException("File does not exists : "+fileId+" for the folder : "+folderId);
-    	} else {
-    		storage.saveFileForProjectAndUser(user, project, file);
     	}
+    	storage.saveFileForProjectAndUser(user, project, fileToSave);
     }
 	
 }
