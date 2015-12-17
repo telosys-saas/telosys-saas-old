@@ -1,46 +1,82 @@
-import React, { Component, PropTypes } from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import * as CounterActions from '../actions/counter'
-import * as AuthActions from '../actions/auth'
-import Counter1 from '../components/Counter1'
-import Counter2 from '../components/Counter2'
-import Counter3 from '../components/Counter3'
-import Add from '../components/add'
-import Login from '../components/login'
+import React, { Component } from 'react'
+import {Treebeard} from 'react-treebeard';
+
+const data = {
+    name: 'root',
+    toggled: true,
+    children: [
+        {
+            name: 'parent',
+            children: [
+                { name: 'child1' },
+                { name: 'child2' },
+            ],
+        },
+        {
+            name: 'loading parent',
+            loading: true,
+            children: [],
+        },
+        {
+            name: 'parent',
+            children: [
+                {
+                    name: 'nested parent',
+                    children: [
+                        { name: 'nested child 1' },
+                        { name: 'nested child 2' },
+                    ],
+                },
+            ],
+        },
+    ],
+};
+
+class TreeExample extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {};
+        this.onToggle = this.onToggle.bind(this);
+        this.onButton = this.onButton.bind(this);
+    }
+    onToggle(node, toggled){
+        if(this.state.cursor){this.state.cursor.active = false;}
+        node.active = true;
+        if(node.children){ node.toggled = toggled; }
+        this.setState({ cursor: node });
+    }
+    onButton() {
+      console.log(this.state.cursor);
+      console.log(this.state.cursor.name);
+      this.state.cursor.name = 'toto';
+    }
+    render(){
+        return (
+            <div>
+              <Treebeard
+                data={data}
+                onToggle={this.onToggle}
+              />
+              <button onClick={this.onButton}>Update</button>
+            </div>
+        );
+    }
+}
 
 class App extends Component {
-	render() {
-    // Injected by connect() call:
-    const { counter1, counter2, addCounter1, addCounter2 } = this.props
-    const { auth, loginForm, logout, dispatch } = this.props
+  
+  render() {
     return (
       <div>
-        <Counter1 counter1={counter1} counter2={counter2.counter} add={addCounter1} />
-        <p />
-        <Counter2 counter1={counter1.counter} counter2={counter2.counter} add={addCounter2} />
-        <p />
-        <Counter3 counter1={counter1.counter} counter2={counter2.counter} />
-        <p />
-        <Login dispatch={dispatch} />
+	      Application
+        <TreeExample/>
       </div>
-    );
-  }
-}
-/*
-        <Login auth={auth} loginForm={loginForm} logout={logout} dispatch={dispatch} />
-*/
-
-function mapStateToProps(state) {
-  return {
-    counter1: state.counter1,
-    counter2: state.counter2,
-    auth: state.auth,
+    )
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(CounterActions, dispatch)
-}
 
-export default connect(mapStateToProps,mapDispatchToProps)(App)
+
+
+
+export default App;

@@ -4,14 +4,47 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Material UI Example</title>
-  <meta name="description" content="Google's material design UI components built with React.">
+  <title>Telosys Web</title>
+  <meta name="description" content="Telosys Web">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="lib/jstree/themes/default/style.min.css" />
+  <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="lib/codemirror/lib/codemirror.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+  <style type="text/css" media="screen">
+    #editor {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
   <link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 
 <body>
-  <div id="app"></div>
+
+<div>
+  <div class="toolbar">
+    <div>
+      Project : <select id="projects" onchange="ToolbarProjects.changeProject(this.value)"></select>
+    </div>
+  </div>
+
+</div>
+
+<div id="jstree" class="split split-horizontal content">
+</div>
+<div id="b" class="split split-horizontal">
+  <div id="e" class="split content">
+
+  </div>
+  <div id="f" class="split content">
+    <button>demo button</button>
+    <button onclick="hello()">Hello</button>
+  </div>
+</div>
 
   <!-- This script adds the Roboto font to our project. For more detail go to this site:  http://www.google.com/fonts#UsePlace:use/Collection:Roboto:400,300,500 -->
   <script>
@@ -29,7 +62,112 @@
     })();
   </script>
   <script src="jquery.js"></script>
+  <!-- jstree : https://www.jstree.com/ -->
+  <script src="lib/jstree/jstree.js"></script>
+  <script src="lib/jstree/jstree.js"></script>
+  <script src="app/services/projects.service.js"></script>
+  <script src="app/services/files.service.js"></script>
+  <script src="app/store/store.js"></script>
+  <script src="app/view/index/main.view.js"></script>
+  <script src="app/view/index/toolbar/toolbar.view.js"></script>
+  <script src="app/view/index/toolbar/toolbar.projects.view.js"></script>
+  <script src="app/view/index/ide/ide.view.js"></script>
+  <script src="app/view/index/ide/ide.treeview.view.js"></script>
+  <script src="app/view/index/ide/ide.editor.view.js"></script>
+  <script src="app/view/index/toolbar/toolbar.view.js"></script>
+  <script src="app/view/index/ide/ide.view.js"></script>
   <script src="app.js"></script>
+  <script src="index.js"></script>
+  <script>
+    /*
+    $(function () {
+      $('#jstree').jstree({
+        "core" : {
+          // so that create works
+          "check_callback" : true
+        },
+        "types" : {
+          "default" : {
+            "icon" : "fa fa-folder"
+          },
+          "demo" : {
+            "icon" : "glyphicon glyphicon-ok"
+          }
+        },
+        "plugins" : [ "contextmenu", "types" ]
+      });
+    });
+    $('#jstree').on("changed.jstree", function (e, data) {
+      console.log(data.selected);
+    });
+    $('button').on('click', function () {
+      $('#jstree').jstree(true).select_node('child_node_1');
+      $('#jstree').jstree('select_node', 'child_node_1');
+      $.jstree.reference('#jstree').select_node('child_node_1');
+    });
+    */
+  </script>
+  <script src="lib/split/split.js"></script>
+<script>
+  Split(['#jstree', '#b'], {
+    gutterSize: 8,
+    sizes: [25, 75],
+    cursor: 'col-resize'
+  });
+
+  Split(['#e', '#f'], {
+    direction: 'vertical',
+    sizes: [75, 25],
+    gutterSize: 8,
+    cursor: 'row-resize'
+  });
+</script>
+<script src="lib/codemirror/lib/codemirror.js"></script>
+<script src="lib/codemirror/mode/javascript/javascript.js"></script>
+<script>
+  /*
+  var myCodeMirror = CodeMirror(document.getElementById('e'), {
+    value: "function myScript(){return 100;}\n",
+    mode:  "javascript"
+  });
+  */
+</script>
+<script>
+  /*
+  var host = "http://localhost:8080";
+  $.ajax({
+    url: host + "/api/rest/projects",
+    dataType: 'json'
+  })
+  .done(function( msg ) {
+    console.log( msg );
+  })
+  .success(function(msg) {
+    console.log( msg );
+    var projects = msg;
+    var options = '';
+    for(var i=0; i<projects.length; i++) {
+      var project = projects[i];
+      options += '<option>'+project.name+'</option>'
+    }
+    $('#projects').html(options);
+  })
+  .fail(function( jqXHR, textStatus ) {
+    console.log( textStatus );
+  });
+  */
+  $(function () {
+    Main.init();
+  });
+</script>
+<script>
+  $(function () {
+    $( "#projects" ).change(function() {
+      var projectName = $("#projects").val();
+      console.log("Change project : "+projectName);
+    });
+  });
+</script>
 </body>
 
 </html>

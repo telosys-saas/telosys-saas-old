@@ -14,7 +14,6 @@ import org.eclipse.jetty.server.handler.gzip.GzipHandler;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-import org.telosys.saas.rest.EntryPoint;
 import org.telosys.saas.security.AuthResource;
 import org.telosys.saas.security.Pac4jConfigFactory;
 
@@ -59,8 +58,10 @@ public class TelosysSaasServer {
 		FilterHolder protectedFilter = new FilterHolder(new org.pac4j.j2e.filter.RequiresAuthenticationFilter());
 		contextBack.addFilter(
 				protectedFilter,
-				"/rest/*", 
+				"/", 
 				EnumSet.of(DispatcherType.REQUEST));
+		// DefaultMatchingChecker matchingChecker = new DefaultMatchingChecker();
+		// protectedFilter.set
 		
         // pac4j : callback
         FilterHolder callbackFilter = new FilterHolder(new org.pac4j.j2e.filter.CallbackFilter());
@@ -97,7 +98,7 @@ public class TelosysSaasServer {
 		// jersey : /rest
 		ServletHolder jerseyRestServlet = contextBack.addServlet(org.glassfish.jersey.servlet.ServletContainer.class, "/rest/*");
 		jerseyRestServlet.setInitOrder(1);
-		jerseyRestServlet.setInitParameter("jersey.config.server.provider.classnames", EntryPoint.class.getCanonicalName());
+		jerseyRestServlet.setInitParameter("jersey.config.server.provider.packages", "org.telosys.saas.rest");
 		
 		// jersey : /auth
 		ServletHolder jerseyAuthServlet = contextBack.addServlet(org.glassfish.jersey.servlet.ServletContainer.class, "/auth/*");

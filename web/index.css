@@ -1,0 +1,21 @@
+input, textarea, select, fieldset {
+    margin-bottom: 0;
+}
+
+.toolbar {
+    padding: 5px 10px;
+}
+
+.treeview {
+    width: 100%;
+    height: 100%;
+}
+
+html .CodeMirror {
+    height: 100%;
+}
+
+html .jstree-container-ul, html .jstree-node {
+    width: 100%;
+    height: 100%;
+}

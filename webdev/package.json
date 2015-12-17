@@ -30,6 +30,8 @@
     "react": "^0.14.0",
     "react-dom":"^0.14.0",
     "react-tap-event-plugin": "^0.2.1",
-    "react-redux":"^4.0.0"
+    "react-redux":"^4.0.0",
+    "q": "*",
+    "react-treebeard": "*"
   }
 }
