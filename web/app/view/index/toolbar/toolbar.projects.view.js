@@ -1,7 +1,7 @@
 var ToolbarProjects = {
   init: function() {
-    ProjectsService.loadProjects(function(projects) {
-      var state = Store.getState();
+    var state = Store.getState();
+    ProjectsService.loadProjects(state.auth.userId, function(projects) {
       var options = '';
       for (var i = 0; i < projects.length; i++) {
         var project = projects[i];

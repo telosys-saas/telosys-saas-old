@@ -1,8 +1,35 @@
+
+function encodeFileId(fileId) {
+  return fileId.replace(/\//g,'%2F');
+}
+
+function encodeFolderId(fileId) {
+  return fileId.replace(/\//g,'%2F');
+}
+
 var FilesService = {
 
-  getFilesForProject: function(projectId, callback) {
+
+  getFilesForProject: function(userId, projectId, callback) {
+    var deferred = Q.defer();
+
     $.ajax({
-      url: host + "/api/rest/projects/"+projectId+"/folders",
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectId+"/workspace",
+      dataType: 'json'
+    })
+      .success(function (msg) {
+        deferred.resolve(msg);
+      })
+      .fail(function (jqXHR, textStatus) {
+        deferred.fail(textStatus);
+      });
+
+    return deferred.promise;
+  },
+
+  getFileForProject: function(userId, projectId, fileId, callback) {
+    $.ajax({
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectId+"/files/"+encodeFileId(fileId),
       dataType: 'json'
     })
       .done(function (msg) {
@@ -19,29 +46,10 @@ var FilesService = {
       });
   },
 
-  getFileForProject: function(projectId, fileId, callback) {
-    $.ajax({
-      url: host + "/api/rest/projects/"+projectId+"/files/"+fileId,
-      dataType: 'json'
-    })
-      .done(function (msg) {
-        console.log(msg);
-      })
-      .success(function (msg) {
-        console.log(msg);
-        if (callback) {
-          callback(msg);
-        }
-      })
-      .fail(function (jqXHR, textStatus) {
-        console.log(textStatus);
-      });
-  },
-
-  createFolderForProject: function(projectId, folderId, folder, callback) {
+  createFolderForProject: function(userId, projectId, folderId, folder, callback) {
     $.ajax({
       method: "POST",
-      url: host + "/api/rest/projects/"+projectId+"/folders/"+folderId+"/subfolders",
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectId+"/folders/"+encodeFolderId(folderId)+"/subfolders",
       dataType: 'json',
       contentType: 'application/json',
       data: JSON.stringify(folder)
@@ -60,10 +68,10 @@ var FilesService = {
       });
   },
 
-  createFileForProject: function(projectId, folderId, file, callback) {
+  createFileForProject: function(userId, projectId, folderId, file, callback) {
     $.ajax({
       method: "POST",
-      url: host + "/api/rest/projects/"+projectId+"/folders/"+folderId+"/files",
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectId+"/folders/"+encodeFolderId(folderId)+"/files",
       dataType: 'json',
       contentType: 'application/json',
       data: JSON.stringify(file)
@@ -82,10 +90,10 @@ var FilesService = {
       });
   },
 
-  saveFileForProject: function(projectId, file, callback) {
+  saveFileForProject: function(userId, projectId, file, callback) {
     $.ajax({
       method: "PUT",
-      url: host + "/api/rest/projects/"+projectId+"/files/"+file.id,
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectId+"/files/"+encodeFileId(file.id),
       dataType: 'json',
       contentType: 'application/json',
       data: JSON.stringify(file)
@@ -104,10 +112,10 @@ var FilesService = {
       });
   },
 
-  deleteFileForProject: function(projectId, fileId, callback) {
+  deleteFileForProject: function(userId, projectId, fileId, callback) {
     $.ajax({
       method: "DELETE",
-      url: host + "/api/rest/projects/"+projectId+"/files/"+fileId,
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectId+"/files/"+encodeFileId(fileId),
       dataType: 'json'
     })
       .done(function (msg) {
@@ -124,10 +132,10 @@ var FilesService = {
       });
   },
 
-  deleteFolderForProject: function(projectId, folderId, callback) {
+  deleteFolderForProject: function(userId, projectId, folderId, callback) {
   $.ajax({
     method: "DELETE",
-    url: host + "/api/rest/projects/"+projectId+"/folders/"+folderId,
+    url: host + "/api/v1/users/"+userId+"/projects/"+projectId+"/folders/"+encodeFolderId(folderId),
     dataType: 'json'
   })
     .done(function (msg) {

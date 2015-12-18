@@ -41,13 +41,13 @@ public class MockProjects {
     	folder.setName("Project 1");
     	
     	File file1 = new File();
-    	file1.setId("file1txt");
+    	file1.setId("project1/file1.txt");
     	file1.setName("file1.txt");
     	file1.setContent("var name = \"file1\"");
     	file1.setFolderParentId("project1");
     	folder.getFiles().add(file1);
     	File file2 = new File();
-    	file2.setId("file2txt");
+    	file2.setId("project1/file2.txt");
     	file2.setName("file2.txt");
     	file2.setContent("var name = \"file2\"");
     	file2.setFolderParentId("project1");
@@ -62,34 +62,34 @@ public class MockProjects {
     	folder.setName("Project 2");
     	
     	File file1 = new File();
-    	file1.setId("file1txt");
+    	file1.setId("project2/file1.txt");
     	file1.setName("file1.txt");
     	file1.setContent("var name = \"file1\"");
     	file1.setFolderParentId("project2");
     	folder.getFiles().add(file1);
     	File file2 = new File();
-    	file2.setId("file2txt");
+    	file2.setId("project2/file2.txt");
     	file2.setName("file2.txt");
     	file2.setContent("var name = \"file2\"");
     	file2.setFolderParentId("project2");
     	folder.getFiles().add(file2);
     	
     	Folder folder2 = new Folder();
-    	folder2.setId("folder2");
+    	folder2.setId("project2/folder2");
     	folder2.setName("Folder 2");
     	folder2.setFolderParentId("project2");
     	folder.getFolders().add(folder2);
     	File file11 = new File();
-    	file11.setId("file11txt");
+    	file11.setId("project2/folder2/file11.txt");
     	file11.setName("file11.txt");
     	file11.setContent("var name = \"file11\"");
-    	file11.setFolderParentId("folder2");
+    	file11.setFolderParentId("project2/folder2");
     	folder2.getFiles().add(file11);
     	File file12 = new File();
-    	file12.setId("file12txt");
+    	file12.setId("project2/folder2/file12.txt");
     	file12.setName("file12.txt");
     	file12.setContent("var name = \"file12\"");
-    	file12.setFolderParentId("folder2");
+    	file12.setFolderParentId("project2/folder2");
     	folder2.getFiles().add(file12);
 
 		return folder;

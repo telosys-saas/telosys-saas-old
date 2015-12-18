@@ -6,7 +6,7 @@ var IDEEditorCodemirror = {
   loadFile: function() {
     var state = Store.getState();
     if(state.fileId) {
-      FilesService.getFileForProject(state.projectId, state.fileId, function (file) {
+      FilesService.getFileForProject(state.auth.userId, state.projectId, state.fileId, function (file) {
         $('#editorCodemirror').html('');
         var editor = CodeMirror(document.getElementById('editorCodemirror'), {
           value: file.content,
@@ -23,7 +23,7 @@ var IDEEditorCodemirror = {
         id: state.fileId,
         content: state.editor.getValue()
       };
-      FilesService.saveFileForProject(state.projectId, file, function (file) {
+      FilesService.saveFileForProject(state.auth.userId, state.projectId, file, function (file) {
         console.log('file savd');
       });
     }

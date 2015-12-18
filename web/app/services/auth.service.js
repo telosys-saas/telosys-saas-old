@@ -11,9 +11,6 @@ var AuthService = {
       })
       .success(function (msg) {
         console.log(msg);
-        if (callback) {
-          callback(msg);
-        }
         deferred.resolve(msg);
       })
       .fail(function (jqXHR, textStatus) {

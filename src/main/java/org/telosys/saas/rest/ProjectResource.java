@@ -23,7 +23,7 @@ import org.telosys.saas.domain.File;
 import org.telosys.saas.domain.Folder;
 import org.telosys.saas.domain.Project;
 
-@Path("/projects/{projectId}")
+@Path("/users/{userId}/projects/{projectId}")
 public class ProjectResource {
 
 	private StorageDao storage = new MockStorageDao();
@@ -45,10 +45,10 @@ public class ProjectResource {
 	 * @param projectId Project id
 	 * @return Root folder
 	 */
-    @Path("/folders")
+    @Path("/workspace")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Folder getFolder(@PathParam("projectId") String projectId) {
+    public Folder getWorkspace(@PathParam("userId") String userId, @PathParam("projectId") String projectId) {
     	UserProfile user = getUser(); 
     	Project project = storage.getProjectForUser(user, projectId);
     	return storage.getFilesForProjectAndUser(user, project);
@@ -57,7 +57,7 @@ public class ProjectResource {
     @Path("/folders/{folderId}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Folder getFolder(@PathParam("projectId") String projectId, @PathParam("folderId") String folderId) {
+    public Folder getFolder(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("folderId") String folderId) {
     	UserProfile user = getUser(); 
     	Project project = storage.getProjectForUser(user, projectId);
     	return storage.getFolderForProjectAndUser(user, project, folderId);
@@ -66,7 +66,7 @@ public class ProjectResource {
     @Path("/folders/{folderId}/subfolders")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Folder createFolder(Folder folderSubToCreate, @PathParam("projectId") String projectId, @PathParam("folderId") String folderId) {
+    public Folder createFolder(@PathParam("userId") String userId, Folder folderSubToCreate, @PathParam("projectId") String projectId, @PathParam("folderId") String folderId) {
     	UserProfile user = getUser(); 
     	Project project = storage.getProjectForUser(user, projectId);
     	storage.createFolderForProjectAndUser(user, project, folderId, folderSubToCreate);
@@ -77,7 +77,7 @@ public class ProjectResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Folder saveFolder(@PathParam("projectId") String projectId, @PathParam("folderId") String folderId, Folder folderToSave) {
+    public Folder saveFolder(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("folderId") String folderId, Folder folderToSave) {
     	UserProfile user = getUser(); 
     	Project project = storage.getProjectForUser(user, projectId);
     	storage.saveFolderForProjectAndUser(user, project, folderToSave);
@@ -86,7 +86,7 @@ public class ProjectResource {
 
     @Path("/folders/{folderId}")
     @DELETE
-    public void deleteFolder(@PathParam("projectId") String projectId, @PathParam("folderId") String folderId) {
+    public void deleteFolder(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("folderId") String folderId) {
     	UserProfile user = getUser();
     	Project project = storage.getProjectForUser(user, projectId);
     	Folder folder = storage.getFolderForProjectAndUser(user, project, folderId);
@@ -99,7 +99,7 @@ public class ProjectResource {
     @Path("/files/{fileId}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public File getFile(@PathParam("projectId") String projectId, @PathParam("folderId") String folderId, @PathParam("fileId") String fileId) {
+    public File getFile(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("folderId") String folderId, @PathParam("fileId") String fileId) {
     	UserProfile user = getUser(); 
     	Project project = storage.getProjectForUser(user, projectId);
     	return storage.getFileForProjectAndUser(user, project, fileId);
@@ -109,7 +109,7 @@ public class ProjectResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void createFile(File fileToCreate, @PathParam("projectId") String projectId, @PathParam("folderId") String folderId) {
+    public void createFile(@PathParam("userId") String userId, File fileToCreate, @PathParam("projectId") String projectId, @PathParam("folderId") String folderId) {
     	UserProfile user = getUser();
     	Project project = storage.getProjectForUser(user, projectId);
     	storage.createFileForProjectAndUser(user, project, folderId, fileToCreate);
@@ -119,7 +119,7 @@ public class ProjectResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void saveFile(@PathParam("projectId") String projectId, @PathParam("fileId") String fileId, File fileToSave) {
+    public void saveFile(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("fileId") String fileId, File fileToSave) {
     	UserProfile user = getUser();
     	Project project = storage.getProjectForUser(user, projectId);
     	File file = storage.getFileForProjectAndUser(user, project, fileId);
@@ -131,7 +131,7 @@ public class ProjectResource {
 
     @Path("/files/{fileId}")
     @DELETE
-    public void deleteFile(@PathParam("projectId") String projectId, @PathParam("fileId") String fileId) {
+    public void deleteFile(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("fileId") String fileId) {
     	UserProfile user = getUser();
     	Project project = storage.getProjectForUser(user, projectId);
     	File file = storage.getFileForProjectAndUser(user, project, fileId);

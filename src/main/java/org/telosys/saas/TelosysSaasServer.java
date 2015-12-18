@@ -99,7 +99,7 @@ public class TelosysSaasServer {
 				EnumSet.of(DispatcherType.REQUEST));
 		
 		// jersey : /rest
-		ServletHolder jerseyRestServlet = contextBack.addServlet(org.glassfish.jersey.servlet.ServletContainer.class, "/rest/*");
+		ServletHolder jerseyRestServlet = contextBack.addServlet(org.glassfish.jersey.servlet.ServletContainer.class, "/v1/*");
 		jerseyRestServlet.setInitOrder(1);
 		jerseyRestServlet.setInitParameter("jersey.config.server.provider.packages", "org.telosys.saas.rest");
 		

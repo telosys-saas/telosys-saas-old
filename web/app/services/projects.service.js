@@ -1,8 +1,8 @@
 
 var ProjectsService = {
-  loadProjects: function (callback) {
+  loadProjects: function (userId, callback) {
     $.ajax({
-      url: host + "/api/rest/projects",
+      url: host + "/api/v1/users/"+userId+"/projects",
       dataType: 'json'
     })
     .done(function (msg) {
@@ -18,5 +18,4 @@ var ProjectsService = {
       console.log(textStatus);
     });
   }
-}
-
+};

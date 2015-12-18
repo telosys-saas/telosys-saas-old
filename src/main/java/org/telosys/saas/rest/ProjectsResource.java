@@ -19,7 +19,7 @@ import org.telosys.saas.dao.StorageDao;
 import org.telosys.saas.dao.mock.MockStorageDao;
 import org.telosys.saas.domain.Project;
 
-@Path("/projects")
+@Path("/users/{userId}/projects")
 public class ProjectsResource {
 
 	private StorageDao storage = new MockStorageDao();
@@ -38,7 +38,7 @@ public class ProjectsResource {
 	
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Project> getProjects(@PathParam("projectId") String projectId) {
+    public List<Project> getProjects(@PathParam("userId") String userId, @PathParam("projectId") String projectId) {
     	UserProfile user = getUser(); 
     	return storage.getProjectsForUser(user);
     }
@@ -46,7 +46,7 @@ public class ProjectsResource {
     @Path("{projectId}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Project getProject(@PathParam("projectId") String projectId) {
+    public Project getProject(@PathParam("userId") String userId, @PathParam("projectId") String projectId) {
     	UserProfile user = getUser();
     	Project project = storage.getProjectForUser(user, projectId);
     	return project;
