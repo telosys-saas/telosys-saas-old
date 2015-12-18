@@ -2,19 +2,22 @@
 title: TelosysWeb
 version: v1
 baseUri: http://www.telosys.com
-/github:
+/auth/github:
+  description: Log in with Github
   get:
-    displayName: Log in with Github
+    description: Log in with Github
     responses:
       200:
-/logout:
+/auth/logout:
+  description: Log out
   get:
-    displayName: Log out
+    description: Log out
     responses:
       200:
-/status:
+/auth/status:
+  description: Authentication status
   get:
-    displayName: Authentication status
+    description: Authentication status
     responses:
       200:
         body:
@@ -25,9 +28,9 @@ baseUri: http://www.telosys.com
                 "userId": "user1"
               }
 /projects:
-  displayName: User projects
+  description: Projects
   get:
-    displayName: Get all projects of the authenticated user
+    description: Get all projects of the authenticated user
     responses:
       200:
         body:
@@ -45,9 +48,9 @@ baseUri: http://www.telosys.com
               ]
 
 /projects/{projectId}:
-    displayName: A project
+    description: A project
     get:
-      displayName: Get a project of the authenticated user
+      description: Get a project of the authenticated user
       responses:
         200:
           body:
@@ -59,9 +62,9 @@ baseUri: http://www.telosys.com
                 }
 
 /projects/{projectId}/folders:
-      displayName: Project folders
+      description: Project folders
       get:
-        displayName: Get the root folder with all sub folders and all files of the project of the authenticated user
+        description: Get the root folder with all sub folders and all files of the project of the authenticated user
         responses:
           200:
             body:
@@ -86,9 +89,9 @@ baseUri: http://www.telosys.com
                   }
 
 /projects/{projectId}/folders/{folderId}:
-        displayName: A folder
+        description: A folder
         get:
-          displayName: Get a folder of the project
+          description: Get a folder of the project
           responses:
             200:
               body:
@@ -112,7 +115,7 @@ baseUri: http://www.telosys.com
                       ]
                     }
         put:
-          displayName: Update the folder
+          description: Update the folder
           body:
             application/json:
           responses:
@@ -126,14 +129,14 @@ baseUri: http://www.telosys.com
                       "type": "file"
                     }
         delete:
-          displayName: Delete the folder
+          description: Delete the folder
           responses:
             200:
 
 /projects/{projectId}/folders/{folderId}/subfolders:
-          displayName: Sub folders of the folder
+          description: Sub folders of the folder
           post:
-            displayName: Create a folder in the folder
+            description: Create a folder in the folder
             body:
               application/json:
             responses:
@@ -148,9 +151,9 @@ baseUri: http://www.telosys.com
                       }
 
 /projects/{projectId}/folders/{folderId}/files:
-          displayName: Files of the folder
+          description: Files of the folder
           post:
-            displayName: Create a file in the folder
+            description: Create a file in the folder
             body:
               application/json:
             responses:
@@ -165,9 +168,9 @@ baseUri: http://www.telosys.com
                       }
 
 /projects/{projectId}/files/{fileId}:
-      displayName: A project file
+      description: A project file
       get:
-        displayName: Get a file of the project
+        description: Get a file of the project
         responses:
           200:
             body:
@@ -180,7 +183,7 @@ baseUri: http://www.telosys.com
                     "content": "... File content ..."
                   }
       put:
-        displayName: Save the file
+        description: Save the file
         body:
           application/json:
         responses:
@@ -195,6 +198,6 @@ baseUri: http://www.telosys.com
                     "content": "... File content ..."
                   }
       delete:
-        displayName: Delete the file
+        description: Delete the file
         responses:
           200:
