@@ -22,7 +22,7 @@ public class AuthResource {
 	
     @GET
     @Path("status")
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public String status(@Context HttpServletRequest request, @Context HttpServletResponse response) {
     	J2EContext context = new J2EContext(request, response);
         ProfileManager manager = new ProfileManager(context);
@@ -37,8 +37,18 @@ public class AuthResource {
 
     @GET
     @Path("github")
-    @Produces(MediaType.TEXT_PLAIN)
     public Response github(@Context HttpServletRequest request, @Context HttpServletResponse response) {
+		try {
+	    	URI targetURIForRedirection = new URI("/");
+	        return Response.temporaryRedirect(targetURIForRedirection).build();
+		} catch (URISyntaxException e) {
+			throw new RuntimeException(e);
+		}
+    }
+
+    @GET
+    @Path("logout")
+    public Response logout(@Context HttpServletRequest request, @Context HttpServletResponse response) {
 		try {
 	    	URI targetURIForRedirection = new URI("/");
 	        return Response.temporaryRedirect(targetURIForRedirection).build();

@@ -40,14 +40,11 @@ public class ProjectResource {
         return profile;
 	}
 	
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Folder getFiles(@PathParam("projectId") String projectId) {
-    	UserProfile user = getUser(); 
-    	Project project = storage.getProjectForUser(user, projectId);
-    	return storage.getFilesForProjectAndUser(user, project);
-    }
-
+	/**
+	 * Get root folder with all sub folders and all files of the project of the authenticated user
+	 * @param projectId Project id
+	 * @return Root folder
+	 */
     @Path("/folders")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -66,7 +63,7 @@ public class ProjectResource {
     	return storage.getFolderForProjectAndUser(user, project, folderId);
     }
 
-    @Path("/folders/{folderId}")
+    @Path("/folders/{folderId}/subfolders")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Folder createFolder(Folder folderSubToCreate, @PathParam("projectId") String projectId, @PathParam("folderId") String folderId) {

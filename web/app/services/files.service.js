@@ -2,7 +2,7 @@ var FilesService = {
 
   getFilesForProject: function(projectId, callback) {
     $.ajax({
-      url: host + "/api/rest/projects/"+projectId,
+      url: host + "/api/rest/projects/"+projectId+"/folders",
       dataType: 'json'
     })
       .done(function (msg) {
@@ -41,7 +41,7 @@ var FilesService = {
   createFolderForProject: function(projectId, folderId, folder, callback) {
     $.ajax({
       method: "POST",
-      url: host + "/api/rest/projects/"+projectId+"/folders/"+folderId,
+      url: host + "/api/rest/projects/"+projectId+"/folders/"+folderId+"/subfolders",
       dataType: 'json',
       contentType: 'application/json',
       data: JSON.stringify(folder)

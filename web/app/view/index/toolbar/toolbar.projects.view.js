@@ -11,7 +11,7 @@ var ToolbarProjects = {
         }
         options += '<option' + selected + ' value="' + project.id + '">' + project.name + '</option>'
       }
-      $('#projects').html(options);
+      $('#toolbarProjects').html(options);
     });
   },
 

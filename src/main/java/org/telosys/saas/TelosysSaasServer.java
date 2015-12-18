@@ -55,11 +55,13 @@ public class TelosysSaasServer {
         server.setHandler(collection);
 
 		// pac4j : protected resources
+        /*
 		FilterHolder protectedFilter = new FilterHolder(new org.pac4j.j2e.filter.RequiresAuthenticationFilter());
 		contextBack.addFilter(
 				protectedFilter,
-				"/", 
+				"/*", 
 				EnumSet.of(DispatcherType.REQUEST));
+		*/
 		// DefaultMatchingChecker matchingChecker = new DefaultMatchingChecker();
 		// protectedFilter.set
 		
@@ -73,6 +75,7 @@ public class TelosysSaasServer {
 		
 		// pac4j : logout
 		FilterHolder logoutFilter = new FilterHolder(new org.pac4j.j2e.filter.ApplicationLogoutFilter());
+		logoutFilter.setInitParameter("defaultUrl", "/");
 		contextBack.addFilter(
 				logoutFilter,
 				"/auth/logout", 

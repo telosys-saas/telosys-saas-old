@@ -4,23 +4,46 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Material UI Example</title>
-  <meta name="description" content="Google's material design UI components built with React.">
+  <title>Telosys Web</title>
+  <meta name="description" content="Telosys Web">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="lib/jstree/themes/default/style.min.css" />
+  <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="lib/codemirror/lib/codemirror.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+  <style type="text/css" media="screen">
+    #editor {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
   <link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="stylesheet" type="text/css" href="login.css">
 </head>
 
 <body>
-  <div> 
+  <div class="main">
     <h1>Sign in to Telosys SaaS</h1>
-    <form action="/api/callback" method="POST">
+    <form action="/api/callback" method="POST" class="form">
       <input type="hidden" name="client_name" value="FormClient" />
-      <input type="text" name="username" />
-      <p />
-      <input type="password" name="password" />
-      <p />
-      <button>Sign in</button>
-      <input type="button" onclick="alert('hello');document.location = '/api/auth/github'" value="Sign in with GitHub" />
+      <div>
+        <label>
+          Login:
+          <input type="text" name="username" />
+        </label>
+      </div>
+      <div>
+        <label>
+          Password:
+          <input type="password" name="password" />
+        </label>
+      </div>
+      <div class="buttons">
+        <button>Sign in</button>
+        <button type="button" onclick="document.location = '/api/auth/github'"><span class="fa fa-github fa-2x"></span> Sign in with GitHub</button>
+      </div>
     </form>
   </div>
 </body>

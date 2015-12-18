@@ -1,3 +1,11 @@
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
 input, textarea, select, fieldset {
     margin-bottom: 0;
 }
@@ -37,10 +45,6 @@ html .jstree-container-ul, html .jstree-node {
     height: 30px;
     line-height: 30px;
     padding: 0 15px;
-}
-
-html .editorToolbar .fa-lg {
-    vertical-align: -4%;
 }
 
 html .vakata-context li>a {

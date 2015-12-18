@@ -1,7 +1,9 @@
 var Main = {
   init: function() {
-    Store.init();
-    Toolbar.init();
-    IDE.init();
+    Store.init()
+      .then(function() {
+        Toolbar.init();
+        IDE.init();
+      });
   }
 };

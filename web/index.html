@@ -26,8 +26,11 @@
 <body>
 
   <div id="toolbar" class="split split-vertical toolbar">
-    <div>
-      Project : <select id="projects" onchange="ToolbarProjects.changeProject(this.value)"></select>
+    <div class="left">
+      Project : <select id="toolbarProjects" onchange="ToolbarProjects.changeProject(this.value)"></select>
+    </div>
+    <div class="right">
+      User : <span id="toolbarUser"></span>
     </div>
   </div>
 
@@ -40,8 +43,6 @@
         <div id="editorCodemirror"></div>
       </div>
       <div id="f" class="split content">
-        <button>demo button</button>
-        <button onclick="hello()">Hello</button>
       </div>
     </div>
   </div>
@@ -61,16 +62,19 @@
       s.parentNode.insertBefore(wf, s);
     })();
   </script>
-  <script src="jquery.js"></script>
+  <script src="lib/jquery/jquery.js"></script>
+  <script src="lib/q/q.js"></script>
   <!-- jstree : https://www.jstree.com/ -->
   <script src="lib/jstree/jstree.js"></script>
   <script src="lib/jstree/jstree.js"></script>
+  <script src="app/services/auth.service.js"></script>
   <script src="app/services/projects.service.js"></script>
   <script src="app/services/files.service.js"></script>
   <script src="app/store/store.js"></script>
   <script src="app/view/index/main.view.js"></script>
   <script src="app/view/index/toolbar/toolbar.view.js"></script>
   <script src="app/view/index/toolbar/toolbar.projects.view.js"></script>
+  <script src="app/view/index/toolbar/toolbar.user.view.js"></script>
   <script src="app/view/index/ide/ide.view.js"></script>
   <script src="app/view/index/ide/ide.treeview.view.js"></script>
   <script src="app/view/index/ide/ide.editor.view.js"></script>
@@ -167,9 +171,9 @@
     console.log( textStatus );
   });
   */
-  $(function () {
+  //$(function () {
     Main.init();
-  });
+  //});
 </script>
 <script>
   $(function () {

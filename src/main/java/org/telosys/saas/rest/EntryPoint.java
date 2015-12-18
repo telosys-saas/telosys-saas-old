@@ -19,7 +19,7 @@ import org.pac4j.core.profile.UserProfile;
 public class EntryPoint {
 	
     @GET
-    @Path("test")
+    @Path("status")
     @Produces(MediaType.TEXT_PLAIN)
     public String test(@Context HttpServletRequest request, @Context HttpServletResponse response) {
     	J2EContext context = new J2EContext(request, response);
@@ -38,7 +38,7 @@ public class EntryPoint {
         	sessionStr.append(key+" : "+value);
         }
         
-        return "Test - session : [" + sessionStr.toString() + "] - userProfile : [" + profile + "]";
+        return "{ \"status\" : \"up\", \"session\" : [" + sessionStr.toString() + "], \"userProfile\" : [" + profile + "] }";
     }
 
 }
