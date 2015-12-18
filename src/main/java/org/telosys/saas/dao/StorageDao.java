@@ -37,7 +37,7 @@ public interface StorageDao {
 	/**
 	 * Get folder for the project of the user.
 	 */
-	Folder getFolderForProjectAndUser(UserProfile user, Project project, String fileId);
+	Folder getFolderForProjectAndUser(UserProfile user, Project project, String folderId);
 	
 	/**
 	 * Get file for the project of the user.
@@ -47,12 +47,12 @@ public interface StorageDao {
 	/**
 	 * Create file in the folder for the project of the user.
 	 */
-	void createFileForProjectAndUser(UserProfile user, Project project, String folderId, File file);
+	void createFileForProjectAndUser(UserProfile user, Project project, File file);
 
 	/**
 	 * Create folder in the folder for the project of the user.
 	 */
-	void createFolderForProjectAndUser(UserProfile user, Project project, String folderId, Folder folderSub);
+	void createFolderForProjectAndUser(UserProfile user, Project project, Folder folderSub);
 
 	/**
 	 * Save the file for the project of the user.

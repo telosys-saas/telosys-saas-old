@@ -76,14 +76,14 @@ public class MockStorageDao implements StorageDao {
 	}
 
 	@Override
-	public void createFileForProjectAndUser(UserProfile user, Project project, String folderId, File file) {
-		Folder folder = getFolderForProjectAndUser(user, project, folderId);
+	public void createFileForProjectAndUser(UserProfile user, Project project, File file) {
+		Folder folder = getFolderForProjectAndUser(user, project, file.getFolderParentId());
 		MockProjects.addFile(folder, file);
 	}
 	
 	@Override
-	public void createFolderForProjectAndUser(UserProfile user, Project project, String folderId, Folder folderSub) {
-		Folder folder = getFolderForProjectAndUser(user, project, folderId);
+	public void createFolderForProjectAndUser(UserProfile user, Project project, Folder folderSub) {
+		Folder folder = getFolderForProjectAndUser(user, project, folderSub.getFolderParentId());
 		MockProjects.addFolder(folder, folderSub);
 	}
 	

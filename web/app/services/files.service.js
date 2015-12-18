@@ -46,10 +46,10 @@ var FilesService = {
       });
   },
 
-  createFolderForProject: function(userId, projectId, folderId, folder, callback) {
+  createFolderForProject: function(userId, projectId, folder, callback) {
     $.ajax({
-      method: "POST",
-      url: host + "/api/v1/users/"+userId+"/projects/"+projectId+"/folders/"+encodeFolderId(folderId)+"/subfolders",
+      method: "PUT",
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectId+"/folders/"+encodeFolderId(folder.id),
       dataType: 'json',
       contentType: 'application/json',
       data: JSON.stringify(folder)
@@ -68,10 +68,10 @@ var FilesService = {
       });
   },
 
-  createFileForProject: function(userId, projectId, folderId, file, callback) {
+  createFileForProject: function(userId, projectId, file, callback) {
     $.ajax({
-      method: "POST",
-      url: host + "/api/v1/users/"+userId+"/projects/"+projectId+"/folders/"+encodeFolderId(folderId)+"/files",
+      method: "PUT",
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectId+"/files/"+encodeFolderId(file.id),
       dataType: 'json',
       contentType: 'application/json',
       data: JSON.stringify(file)

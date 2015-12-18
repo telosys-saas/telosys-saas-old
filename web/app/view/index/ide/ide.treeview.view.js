@@ -132,9 +132,11 @@ var IDETreeview = {
         var state = Store.getState();
         var projectId = state.projectId;
         var file = {
-          name: node.text
+          id: nodeParent.id + '/' + node.text,
+          name: node.text,
+          folderParentId: nodeParent.id
         };
-        FilesService.createFileForProject(state.auth.userId, projectId, nodeParent.id, file, function(folder) {
+        FilesService.createFileForProject(state.auth.userId, projectId, file, function(folder) {
           console.log('file created', file);
         });
       });
@@ -149,9 +151,11 @@ var IDETreeview = {
         var state = Store.getState();
         var projectId = state.projectId;
         var folder = {
-          name: node.text
+          id: nodeParent.id + '/' + node.text,
+          name: node.text,
+          folderParentId: nodeParent.id
         };
-        FilesService.createFolderForProject(state.auth.userId, projectId, nodeParent.id, folder, function(folder) {
+        FilesService.createFolderForProject(state.auth.userId, projectId, folder, function(folder) {
           console.log('folder created', folder);
         });
       });
