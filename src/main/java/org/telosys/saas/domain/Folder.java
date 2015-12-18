@@ -10,6 +10,8 @@ public class Folder implements Serializable {
 
 	private String id;
 	
+	private String folderParentId;
+	
 	private String name;
 	
 	private List<File> files = new ArrayList<>();
@@ -22,6 +24,14 @@ public class Folder implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getFolderParentId() {
+		return folderParentId;
+	}
+
+	public void setFolderParentId(String folderParentId) {
+		this.folderParentId = folderParentId;
 	}
 	
 	public String getName() {
@@ -47,5 +57,5 @@ public class Folder implements Serializable {
 	public void setFolders(List<Folder> folders) {
 		this.folders = folders;
 	}
-	
+
 }

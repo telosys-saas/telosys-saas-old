@@ -25,27 +25,26 @@
 
 <body>
 
-<div>
-  <div class="toolbar">
+  <div id="toolbar" class="split split-vertical toolbar">
     <div>
       Project : <select id="projects" onchange="ToolbarProjects.changeProject(this.value)"></select>
     </div>
   </div>
 
-</div>
-
-<div id="jstree" class="split split-horizontal content">
-</div>
-<div id="b" class="split split-horizontal">
-  <div id="editor" class="split content">
-    <div id="editorToolbar"></div>
-    <div id="editorCodemirror"></div>
+  <div id="ide" class="split split-vertical">
+    <div id="jstree" class="split split-horizontal content">
+    </div>
+    <div id="b" class="split split-horizontal">
+      <div id="editor" class="split content">
+        <div id="editorToolbar" class="editorToolbar"></div>
+        <div id="editorCodemirror"></div>
+      </div>
+      <div id="f" class="split content">
+        <button>demo button</button>
+        <button onclick="hello()">Hello</button>
+      </div>
+    </div>
   </div>
-  <div id="f" class="split content">
-    <button>demo button</button>
-    <button onclick="hello()">Hello</button>
-  </div>
-</div>
 
   <!-- This script adds the Roboto font to our project. For more detail go to this site:  http://www.google.com/fonts#UsePlace:use/Collection:Roboto:400,300,500 -->
   <script>
@@ -112,13 +111,22 @@
   </script>
   <script src="lib/split/split.js"></script>
 <script>
+  // split.js : http://nathancahill.github.io/Split.js/
+  Split(['#toolbar', '#ide'], {
+    direction: 'vertical',
+    gutterSize: 0,
+    sizes: [5, 95],
+    minSize: [47, 0],
+    cursor: 'row-resize'
+  });
+
   Split(['#jstree', '#b'], {
     gutterSize: 8,
     sizes: [25, 75],
     cursor: 'col-resize'
   });
 
-  Split(['#e', '#f'], {
+  Split(['#editor', '#f'], {
     direction: 'vertical',
     sizes: [75, 25],
     gutterSize: 8,

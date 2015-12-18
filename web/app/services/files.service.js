@@ -102,6 +102,45 @@ var FilesService = {
       .fail(function (jqXHR, textStatus) {
         console.log(textStatus);
       });
-  }
+  },
 
+  deleteFileForProject: function(projectId, fileId, callback) {
+    $.ajax({
+      method: "DELETE",
+      url: host + "/api/rest/projects/"+projectId+"/files/"+fileId,
+      dataType: 'json'
+    })
+      .done(function (msg) {
+        console.log(msg);
+      })
+      .success(function (msg) {
+        console.log(msg);
+        if (callback) {
+          callback(msg);
+        }
+      })
+      .fail(function (jqXHR, textStatus) {
+        console.log(textStatus);
+      });
+  },
+
+  deleteFolderForProject: function(projectId, folderId, callback) {
+  $.ajax({
+    method: "DELETE",
+    url: host + "/api/rest/projects/"+projectId+"/folders/"+folderId,
+    dataType: 'json'
+  })
+    .done(function (msg) {
+      console.log(msg);
+    })
+    .success(function (msg) {
+      console.log(msg);
+      if (callback) {
+        callback(msg);
+      }
+    })
+    .fail(function (jqXHR, textStatus) {
+      console.log(textStatus);
+    });
+}
 };

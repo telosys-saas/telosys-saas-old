@@ -44,13 +44,13 @@ public class MockProjects {
     	file1.setId("file1txt");
     	file1.setName("file1.txt");
     	file1.setContent("var name = \"file1\"");
-    	file1.setFolderId("project1");
+    	file1.setFolderParentId("project1");
     	folder.getFiles().add(file1);
     	File file2 = new File();
     	file2.setId("file2txt");
     	file2.setName("file2.txt");
     	file2.setContent("var name = \"file2\"");
-    	file2.setFolderId("project1");
+    	file2.setFolderParentId("project1");
     	folder.getFiles().add(file2);
 
 		return folder;
@@ -65,30 +65,31 @@ public class MockProjects {
     	file1.setId("file1txt");
     	file1.setName("file1.txt");
     	file1.setContent("var name = \"file1\"");
-    	file1.setFolderId("project1");
+    	file1.setFolderParentId("project2");
     	folder.getFiles().add(file1);
     	File file2 = new File();
     	file2.setId("file2txt");
     	file2.setName("file2.txt");
     	file2.setContent("var name = \"file2\"");
-    	file2.setFolderId("project1");
+    	file2.setFolderParentId("project2");
     	folder.getFiles().add(file2);
     	
     	Folder folder2 = new Folder();
     	folder2.setId("folder2");
     	folder2.setName("Folder 2");
+    	folder2.setFolderParentId("project2");
     	folder.getFolders().add(folder2);
     	File file11 = new File();
     	file11.setId("file11txt");
     	file11.setName("file11.txt");
     	file11.setContent("var name = \"file11\"");
-    	file11.setFolderId("folder2");
+    	file11.setFolderParentId("folder2");
     	folder2.getFiles().add(file11);
     	File file12 = new File();
     	file12.setId("file12txt");
     	file12.setName("file12.txt");
     	file12.setContent("var name = \"file12\"");
-    	file12.setFolderId("folder2");
+    	file12.setFolderParentId("folder2");
     	folder2.getFiles().add(file12);
 
 		return folder;
@@ -118,7 +119,7 @@ public class MockProjects {
 		int pos = -1;
 		for(Project project : projects) {
 			pos++;
-			if(project.getId().equals(projectToDelete)) {
+			if(project.getId().equals(projectToDelete.getId())) {
 				posToDelete = pos;
 			}
 		}
@@ -138,13 +139,43 @@ public class MockProjects {
 	public static void addFile(Folder folder, File file) {
 		String id = file.getName().replaceAll(" ", "").replaceAll("\\.", "").toLowerCase();
 		file.setId(id);
+		file.setFolderParentId(folder.getId());
 		folder.getFiles().add(file);
 	}
 
 	public static void addFolder(Folder folder, Folder folderSub) {
 		String id = folderSub.getName().replaceAll(" ", "").replaceAll("\\.", "").toLowerCase();
 		folderSub.setId(id);
+		folderSub.setFolderParentId(folder.getId());
 		folder.getFolders().add(folderSub);
+	}
+
+	public static void deleteFolder(Folder folderParent, Folder folderToDelete) {
+		int posToDelete = -1;
+		int pos = -1;
+		for(Folder folderSub : folderParent.getFolders()) {
+			pos++;
+			if(folderSub.getId().equals(folderToDelete.getId())) {
+				posToDelete = pos;
+			}
+		}
+		if(posToDelete != -1) {
+			folderParent.getFolders().remove(posToDelete);
+		}
+	}
+
+	public static void deleteFile(Folder folderParent, File fileToDelete) {
+		int posToDelete = -1;
+		int pos = -1;
+		for(File file : folderParent.getFiles()) {
+			pos++;
+			if(file.getId().equals(fileToDelete.getId())) {
+				posToDelete = pos;
+			}
+		}
+		if(posToDelete != -1) {
+			folderParent.getFiles().remove(posToDelete);
+		}
 	}
 
 }

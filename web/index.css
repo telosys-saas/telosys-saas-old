@@ -2,6 +2,11 @@ input, textarea, select, fieldset {
     margin-bottom: 0;
 }
 
+#toolbar, #ide {
+    width: 100%;
+    height: 100%;
+}
+
 .toolbar {
     padding: 5px 10px;
 }
@@ -18,4 +23,34 @@ html .CodeMirror {
 html .jstree-container-ul, html .jstree-node {
     width: 100%;
     height: 100%;
+}
+
+.editorToolbar {
+    width: 100%;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 2px 4px;
+}
+
+.editorToolbar button {
+    margin-bottom: 0;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 15px;
+}
+
+html .editorToolbar .fa-lg {
+    vertical-align: -4%;
+}
+
+html .vakata-context li>a {
+    line-height: 1.5em;
+}
+
+html .vakata-context li>a>i:empty, html .vakata-context li>a>i, html .vakata-context li>a, html .vakata-context li>a, html .vakata-context li>a .vakata-contextmenu-sep {
+    height: 1.5em;
+}
+
+html .vakata-context li>a>i:empty {
+    width: 1.5em;
 }

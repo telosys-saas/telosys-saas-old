@@ -99,5 +99,19 @@ public class MockStorageDao implements StorageDao {
 		Folder folder = getFolderForProjectAndUser(user, project, folderToSave.getId());
 		//folder.setName(folderToSave.getName());
 	}
+
+	@Override
+	public void deleteFileForProjectAndUser(UserProfile user, Project project, File fileToDelete) {
+		File file = getFileForProjectAndUser(user, project, fileToDelete.getId());
+		Folder folderParent = getFolderForProjectAndUser(user, project, file.getFolderParentId());
+		MockProjects.deleteFile(folderParent, file);
+	}
+
+	@Override
+	public void deleteFolderForProjectAndUser(UserProfile user, Project project, Folder folderToDelete) {
+		Folder folder = getFolderForProjectAndUser(user, project, folderToDelete.getId());
+		Folder folderParent = getFolderForProjectAndUser(user, project, folder.getFolderParentId());
+		MockProjects.deleteFolder(folderParent, folder);
+	}
 	
 }

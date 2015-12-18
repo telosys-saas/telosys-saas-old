@@ -8,7 +8,7 @@ public class File implements Serializable {
 
 	private String id;
 	
-	private String folderId;
+	private String folderParentId;
 	
 	private String name;
 	
@@ -22,12 +22,12 @@ public class File implements Serializable {
 		this.id = id;
 	}
 
-	public String getFolderId() {
-		return folderId;
+	public String getFolderParentId() {
+		return folderParentId;
 	}
 
-	public void setFolderId(String folderId) {
-		this.folderId = folderId;
+	public void setFolderParentId(String folderParentId) {
+		this.folderParentId = folderParentId;
 	}
 	
 	public String getName() {

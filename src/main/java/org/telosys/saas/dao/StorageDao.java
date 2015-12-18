@@ -69,5 +69,21 @@ public interface StorageDao {
 	 * @param folderToSave
 	 */
 	void saveFolderForProjectAndUser(UserProfile user, Project project, Folder folderToSave);
+
+	/**
+	 * Delete file for the project of the user.
+	 * @param user
+	 * @param project
+	 * @param fileToDelete
+	 */
+	void deleteFileForProjectAndUser(UserProfile user, Project project, File fileToDelete);
+
+	/**
+	 * Delete folder for the project of the user.
+	 * @param user
+	 * @param project
+	 * @param folderToDelete
+	 */
+	void deleteFolderForProjectAndUser(UserProfile user, Project project, Folder folderToDelete);
 	
 }

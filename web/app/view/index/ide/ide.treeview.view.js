@@ -70,12 +70,14 @@ var IDETreeview = {
               }
             }
             */
+            /*
             items.Rename = {
               "separator_before": true,
               "separator_after": false,
               "label": "Rename",
               "action": this.onRename(node, tree)
             };
+            */
             items.Remove = {
               "separator_before": false,
               "separator_after": false,
@@ -157,6 +159,17 @@ var IDETreeview = {
   onRemove: function(node, tree) {
     return (function(obj) {
       tree.delete_node(node);
+      var state = Store.getState();
+      if(node.type == 'file') {
+        FilesService.deleteFileForProject(state.projectId, node.id, function() {
+          console.log("File '"+node.id+"' deleted");
+        });
+      }
+      if(node.type == 'folder') {
+        FilesService.deleteFolderForProject(state.projectId, node.id, function() {
+          console.log("Folder '"+node.id+"' deleted");
+        });
+      }
     }.bind(this));
   },
 

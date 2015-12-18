@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -86,6 +87,18 @@ public class ProjectResource {
     	return folderToSave;
     }
 
+    @Path("/folders/{folderId}")
+    @DELETE
+    public void deleteFolder(@PathParam("projectId") String projectId, @PathParam("folderId") String folderId) {
+    	UserProfile user = getUser();
+    	Project project = storage.getProjectForUser(user, projectId);
+    	Folder folder = storage.getFolderForProjectAndUser(user, project, folderId);
+    	if(folder == null) {
+    		throw new IllegalStateException("Folder does not exists : "+folderId);
+    	}
+    	storage.deleteFolderForProjectAndUser(user, project, folder);
+    }
+	
     @Path("/files/{fileId}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -109,14 +122,26 @@ public class ProjectResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void saveFile(@PathParam("projectId") String projectId, @PathParam("folderId") String folderId, @PathParam("fileId") String fileId, File fileToSave) {
+    public void saveFile(@PathParam("projectId") String projectId, @PathParam("fileId") String fileId, File fileToSave) {
     	UserProfile user = getUser();
     	Project project = storage.getProjectForUser(user, projectId);
     	File file = storage.getFileForProjectAndUser(user, project, fileId);
     	if(file == null) {
-    		throw new IllegalStateException("File does not exists : "+fileId+" for the folder : "+folderId);
+    		throw new IllegalStateException("File does not exists : "+fileId);
     	}
     	storage.saveFileForProjectAndUser(user, project, fileToSave);
+    }
+
+    @Path("/files/{fileId}")
+    @DELETE
+    public void deleteFile(@PathParam("projectId") String projectId, @PathParam("fileId") String fileId) {
+    	UserProfile user = getUser();
+    	Project project = storage.getProjectForUser(user, projectId);
+    	File file = storage.getFileForProjectAndUser(user, project, fileId);
+    	if(file == null) {
+    		throw new IllegalStateException("File does not exists : "+fileId);
+    	}
+    	storage.deleteFileForProjectAndUser(user, project, file);
     }
 	
 }
