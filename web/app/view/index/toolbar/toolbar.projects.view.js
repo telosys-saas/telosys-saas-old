@@ -16,8 +16,13 @@ var ToolbarProjects = {
   },
 
   changeProject: function(projectId) {
-    var state = Store.getState();
-    state.projectId = projectId;
-    IDE.init();
+    ToolbarProjectsAction.onChangeProject(projectId,
+      function(hasChangedProject, newProjectId) {
+        if(hasChangedProject) {
+          IDE.init();
+        } else {
+          $('#toolbarProjects').val(newProjectId);
+        }
+      });
   }
 };

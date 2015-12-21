@@ -1,8 +1,4 @@
 
-function getPathWithoutProjectName(pathWithProjectName) {
-  return pathWithProjectName.substring(pathWithProjectName.indexOf('/')+1);
-}
-
 var IDETreeview = {
   init: function() {
     var state = Store.getState();
@@ -23,10 +19,10 @@ var IDETreeview = {
           },
           "types" : {
             "folder" : {
-              "icon" : "fa fa-folder"
+              "icon" : "fa fa-folder-o"
             },
             "file" : {
-              "icon" : "fa fa-file"
+              "icon" : "fa fa-file-text-o"
             }
           },
           "contextmenu": {
@@ -124,7 +120,7 @@ var IDETreeview = {
     if(data.node.type == 'file') {
       var state = Store.getState();
       state.fileId = data.node.id;
-      IDEEditorCodemirror.loadFile();
+      IDEEditor.loadFile();
     }
   },
 

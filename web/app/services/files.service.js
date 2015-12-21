@@ -9,7 +9,6 @@ function encodeFolderId(fileId) {
 
 var FilesService = {
 
-
   getFilesForProject: function(userId, projectId, callback) {
     var deferred = Q.defer();
 
