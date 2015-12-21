@@ -1,4 +1,8 @@
 
+function getPathWithoutProjectName(pathWithProjectName) {
+  return pathWithProjectName.substring(pathWithProjectName.indexOf('/')+1);
+}
+
 var IDETreeview = {
   init: function() {
     var state = Store.getState();
@@ -167,12 +171,14 @@ var IDETreeview = {
       tree.delete_node(node);
       var state = Store.getState();
       if(node.type == 'file') {
-        FilesService.deleteFileForProject(state.auth.userId, state.projectId, node.id, function() {
+        var fileId = node.id;
+        FilesService.deleteFileForProject(state.auth.userId, state.projectId, fileId, function() {
           console.log("File '"+node.id+"' deleted");
         });
       }
       if(node.type == 'folder') {
-        FilesService.deleteFolderForProject(state.auth.userId, state.projectId, node.id, function() {
+        var folderId = node.id;
+        FilesService.deleteFolderForProject(state.auth.userId, state.projectId, folderId, function() {
           console.log("Folder '"+node.id+"' deleted");
         });
       }

@@ -3,10 +3,14 @@ var Main = {
     Store.init()
       .then(function(state) {
         Toolbar.init();
-        IDE.init();
+        if(state.project) {
+          IDE.init();
+        } else {
+          Projects.init();
+        }
       })
       .catch(function(e) {
-        console.log('Error: ',e)
+        console.log('Error: ',e);
       });
   }
 };

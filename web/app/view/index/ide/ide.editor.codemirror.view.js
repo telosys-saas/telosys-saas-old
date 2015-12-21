@@ -10,7 +10,8 @@ var IDEEditorCodemirror = {
         $('#editorCodemirror').html('');
         var editor = CodeMirror(document.getElementById('editorCodemirror'), {
           value: file.content,
-          mode: "javascript"
+          mode: "java",
+          lineNumbers: true
         });
         state.editor = editor;
       });

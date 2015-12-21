@@ -17,7 +17,7 @@ import org.pac4j.core.context.J2EContext;
 import org.pac4j.core.profile.ProfileManager;
 import org.pac4j.core.profile.UserProfile;
 import org.telosys.saas.dao.StorageDao;
-import org.telosys.saas.dao.mock.MockStorageDao;
+import org.telosys.saas.dao.file.FileStorageDao;
 import org.telosys.saas.domain.File;
 import org.telosys.saas.domain.Folder;
 import org.telosys.saas.domain.Project;
@@ -25,7 +25,8 @@ import org.telosys.saas.domain.Project;
 @Path("/users/{userId}/projects/{projectId}")
 public class ProjectResource {
 
-	private StorageDao storage = new MockStorageDao();
+	// private StorageDao storage = new MockStorageDao();
+	private StorageDao storage = new FileStorageDao();
 	@Context
 	private HttpServletRequest request;
 	@Context

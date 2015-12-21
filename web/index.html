@@ -36,17 +36,7 @@
     </div>
   </div>
 
-  <div id="ide" class="split split-vertical">
-    <div id="jstree" class="split split-horizontal content">
-    </div>
-    <div id="b" class="split split-horizontal">
-      <div id="editor" class="split content">
-        <div id="editorToolbar" class="editorToolbar"></div>
-        <div id="editorCodemirror"></div>
-      </div>
-      <div id="f" class="split content">
-      </div>
-    </div>
+  <div id="main" class="split split-vertical">
   </div>
 
   <!-- This script adds the Roboto font to our project. For more detail go to this site:  http://www.google.com/fonts#UsePlace:use/Collection:Roboto:400,300,500 -->
@@ -77,6 +67,7 @@
   <script src="app/view/index/toolbar/toolbar.view.js"></script>
   <script src="app/view/index/toolbar/toolbar.projects.view.js"></script>
   <script src="app/view/index/toolbar/toolbar.user.view.js"></script>
+  <script src="app/view/index/projects/projects.view.js"></script>
   <script src="app/view/index/ide/ide.view.js"></script>
   <script src="app/view/index/ide/ide.treeview.view.js"></script>
   <script src="app/view/index/ide/ide.editor.view.js"></script>
@@ -118,7 +109,7 @@
   <script src="lib/split/split.js"></script>
 <script>
   // split.js : http://nathancahill.github.io/Split.js/
-  Split(['#toolbar', '#ide'], {
+  Split(['#toolbar', '#main'], {
     direction: 'vertical',
     gutterSize: 0,
     sizes: [5, 95],
@@ -126,18 +117,6 @@
     cursor: 'row-resize'
   });
 
-  Split(['#jstree', '#b'], {
-    gutterSize: 8,
-    sizes: [25, 75],
-    cursor: 'col-resize'
-  });
-
-  Split(['#editor', '#f'], {
-    direction: 'vertical',
-    sizes: [75, 25],
-    gutterSize: 8,
-    cursor: 'row-resize'
-  });
 </script>
 <script src="lib/codemirror/lib/codemirror.js"></script>
 <script src="lib/codemirror/mode/javascript/javascript.js"></script>
