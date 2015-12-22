@@ -19,6 +19,8 @@
       height: 100%;
     }
   </style>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="lib/materialize/css/materialize.min.css"  media="screen,projection"/>
   <link rel="stylesheet" type="text/css" href="main.css">
   <link rel="stylesheet" type="text/css" href="login.css">
 </head>
@@ -41,8 +43,11 @@
         </label>
       </div>
       <div class="buttons">
-        <button>Sign in</button>
-        <button type="button" onclick="document.location = '/api/auth/github'"><span class="fa fa-github fa-2x"></span> Sign in with GitHub</button>
+        <button class="btn">Sign in</button>
+        <button class="btn" type="button" onclick="document.location = '/api/auth/github'">
+          <span class="fa fa-github fa-lg"></span>
+          Sign in with GitHub
+        </button>
       </div>
     </form>
   </div>

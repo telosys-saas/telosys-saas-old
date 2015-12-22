@@ -6,12 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Telosys Web</title>
   <meta name="description" content="Telosys Web">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+  <!--
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+  -->
   <link rel="stylesheet" href="lib/jstree/themes/default/style.min.css" />
   <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="lib/codemirror/lib/codemirror.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
   <style type="text/css" media="screen">
     #editor {
       position: relative;
@@ -19,27 +22,59 @@
       height: 100%;
     }
   </style>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="lib/materialize/css/materialize.min.css"  media="screen,projection"/>
   <link rel="stylesheet" type="text/css" href="main.css">
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 
 <body>
 
-  <div id="toolbar" class="split split-vertical toolbar">
-    <div class="left" id="projectnew">
-    </div>
-    <div class="left">
-      Project : <select id="toolbarProjects" onchange="ToolbarProjects.changeProject(this.value)"></select>
-      <button>Settings</button>
-      <button>Bundles</button>
-    </div>
+<!-- Dropdown Structure -->
+<ul id='toolbarProjectsList' class='dropdown-content'></ul>
+<nav><!--  id="toolbar" class="split split-vertical toolbar" -->
+  <div class="light-blue darken-3 nav-wrapper">
+    <a href="#!" class="brand-logo left logo-telosys-min" style="position: relative; margin-left: 20px; margin-top: 5px;"></a>
+    <a href="#!" class="brand-logo left" style="position: relative; margin-right: 20px;">Telosys</a>
+    <ul id="nav-mobile" class="hide-on-med-and-down left">
+      <li id="toolbarProjects">    <!-- Dropdown Trigger -->
+        <a class='dropdown-button' href='#' data-activates='toolbarProjectsList'>Project<i class="material-icons right">arrow_drop_down</i></a>
+      </li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Bundles</a></li>
+    </ul>
+    <!-- Modal Trigger -->
     <div class="right">
       User : <span id="toolbarUser"></span>
     </div>
   </div>
+</nav>
 
-  <div id="main" class="split split-vertical">
+<div id="projectnew"></div>
+
+<!--
+  <nav id="toolbar" class="split split-vertical toolbar">
+    <div class="nav-wrapper">
+      <ul id="nav-mobile" class="hide-on-med-and-down">
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Bundles</a></li>
+      </ul>
+    </div>
+      <div class="left">
+        Project : <select id="toolbarProjects" onchange="ToolbarProjects.changeProject(this.value)"></select>
+      </div>
+      <div class="left" id="projectnew">
+      </div>
+      <div class="right">
+        User : <span id="toolbarUser"></span>
+      </div>
+    </div>
+  </nav>
+-->
+
+  <div id="main">
   </div>
+
 
   <!-- This script adds the Roboto font to our project. For more detail go to this site:  http://www.google.com/fonts#UsePlace:use/Collection:Roboto:400,300,500 -->
   <script>
@@ -57,6 +92,10 @@
     })();
   </script>
   <script src="lib/jquery/jquery.js"></script>
+  <script src="lib/materialize/js/materialize.js"></script>
+  <script src="lib/codemirror/lib/codemirror.js"></script>
+  <script src="lib/codemirror/mode/javascript/javascript.js"></script>
+  <script src="lib/split/split.js"></script>
   <script src="lib/q/q.js"></script>
   <!-- jstree : https://www.jstree.com/ -->
   <script src="lib/jstree/jstree.js"></script>
@@ -86,38 +125,9 @@
   <script src="app/view/index/ide/ide.view.js"></script>
   <script src="app.js"></script>
   <script src="index.js"></script>
-  <script>
-    /*
-    $(function () {
-      $('#jstree').jstree({
-        "core" : {
-          // so that create works
-          "check_callback" : true
-        },
-        "types" : {
-          "default" : {
-            "icon" : "fa fa-folder"
-          },
-          "demo" : {
-            "icon" : "glyphicon glyphicon-ok"
-          }
-        },
-        "plugins" : [ "contextmenu", "types" ]
-      });
-    });
-    $('#jstree').on("changed.jstree", function (e, data) {
-      console.log(data.selected);
-    });
-    $('button').on('click', function () {
-      $('#jstree').jstree(true).select_node('child_node_1');
-      $('#jstree').jstree('select_node', 'child_node_1');
-      $.jstree.reference('#jstree').select_node('child_node_1');
-    });
-    */
-  </script>
-  <script src="lib/split/split.js"></script>
 <script>
   // split.js : http://nathancahill.github.io/Split.js/
+  /*
   Split(['#toolbar', '#main'], {
     direction: 'vertical',
     gutterSize: 0,
@@ -125,45 +135,11 @@
     minSize: [47, 0],
     cursor: 'row-resize'
   });
+  */
 
 </script>
-<script src="lib/codemirror/lib/codemirror.js"></script>
-<script src="lib/codemirror/mode/javascript/javascript.js"></script>
 <script>
-  /*
-  var myCodeMirror = CodeMirror(document.getElementById('e'), {
-    value: "function myScript(){return 100;}\n",
-    mode:  "javascript"
-  });
-  */
-</script>
-<script>
-  /*
-  var host = "http://localhost:8080";
-  $.ajax({
-    url: host + "/api/rest/projects",
-    dataType: 'json'
-  })
-  .done(function( msg ) {
-    console.log( msg );
-  })
-  .success(function(msg) {
-    console.log( msg );
-    var projects = msg;
-    var options = '';
-    for(var i=0; i<projects.length; i++) {
-      var project = projects[i];
-      options += '<option>'+project.name+'</option>'
-    }
-    $('#projects').html(options);
-  })
-  .fail(function( jqXHR, textStatus ) {
-    console.log( textStatus );
-  });
-  */
-  //$(function () {
     Main.init();
-  //});
 </script>
 <script>
   $(function () {

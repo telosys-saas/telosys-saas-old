@@ -11,7 +11,7 @@ var IDEEditorToolbar = {
   },
 
   saveFile: function() {
-    IDEEditorCodemirror.saveFile();
+    IDEEditorCodemirrorAction.saveFile();
   }
 
 };

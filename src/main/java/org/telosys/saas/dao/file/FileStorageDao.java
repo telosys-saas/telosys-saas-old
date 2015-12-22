@@ -69,9 +69,12 @@ public class FileStorageDao implements StorageDao {
 		List<Project> projects = new ArrayList<Project>();
 		
 		FileFilter fileFilter = FileFilterUtils.directoryFileFilter();
-		for(java.io.File file : userDir.listFiles(fileFilter)) {
-			Project project = getProjectForDirectory(user, file);
-			projects.add(project);
+		java.io.File[] directories = userDir.listFiles(fileFilter);
+		if(directories != null) {
+			for(java.io.File file : directories) {
+				Project project = getProjectForDirectory(user, file);
+				projects.add(project);
+			}
 		}
 		
 		return projects;

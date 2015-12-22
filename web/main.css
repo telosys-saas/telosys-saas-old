@@ -7,6 +7,20 @@ body {
     box-sizing: border-box;
 }
 
+#main {
+    width: 100%;
+    height: calc(100% - 64px);
+}
+
+.logo-telosys-min {
+    display: inline-block;
+    background-image: url("images/telosyslogo-min.png");
+    background-repeat: no-repeat;
+    width: 64px;
+    height: 50px;
+    overflow: visible;
+}
+
 .split {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -43,8 +57,12 @@ body {
     float: left;
 }
 
+ul ul, ul ol, ol ol, ol ul {
+    font-size: 100%;
+}
+
 .fa-lg {
-    vertical-align: -4%;
+    vertical-align: -8%;
 }
 
 .fa-2x {
