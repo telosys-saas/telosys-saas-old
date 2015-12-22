@@ -26,6 +26,8 @@
 <body>
 
   <div id="toolbar" class="split split-vertical toolbar">
+    <div class="left" id="projectnew">
+    </div>
     <div class="left">
       Project : <select id="toolbarProjects" onchange="ToolbarProjects.changeProject(this.value)"></select>
       <button>Settings</button>
@@ -65,6 +67,8 @@
   <script src="app/store/store.js"></script>
   <script src="app/view/index/main.view.js"></script>
   <script src="app/view/index/toolbar/toolbar.view.js"></script>
+  <script src="app/view/index/toolbar/toolbar.projectnew.action.js"></script>
+  <script src="app/view/index/toolbar/toolbar.projectnew.view.js"></script>
   <script src="app/view/index/toolbar/toolbar.projects.view.js"></script>
   <script src="app/view/index/toolbar/toolbar.projects.action.js"></script>
   <script src="app/view/index/toolbar/toolbar.user.view.js"></script>

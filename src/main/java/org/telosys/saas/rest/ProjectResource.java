@@ -21,12 +21,14 @@ import org.telosys.saas.dao.file.FileStorageDao;
 import org.telosys.saas.domain.File;
 import org.telosys.saas.domain.Folder;
 import org.telosys.saas.domain.Project;
+import org.telosys.saas.services.ProjectService;
 
 @Path("/users/{userId}/projects/{projectId}")
 public class ProjectResource {
 
 	// private StorageDao storage = new MockStorageDao();
 	private StorageDao storage = new FileStorageDao();
+	private ProjectService projectService = new ProjectService();
 	@Context
 	private HttpServletRequest request;
 	@Context
@@ -39,7 +41,31 @@ public class ProjectResource {
         UserProfile profile = manager.get(true);
         return profile;
 	}
-	
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Project getProject(@PathParam("userId") String userId, @PathParam("projectId") String projectId) {
+    	UserProfile user = getUser();
+    	Project project = storage.getProjectForUser(user, projectId);
+    	return project;
+    }
+
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Project saveProject(@PathParam("userId") String userId, @PathParam("projectId") String projectId, Project project) {
+    	UserProfile user = getUser();
+    	Project projectExisting = storage.getProjectForUser(user, project.getId());
+    	if(projectExisting == null) {
+    		// Create
+    		storage.createProjectForUser(user, project);
+    		// Init
+    		projectService.initProject(user, project);
+    		return project;
+    	}
+    	return project;
+    }
+    
 	/**
 	 * Get root folder with all sub folders and all files of the project of the authenticated user
 	 * @param projectId Project id

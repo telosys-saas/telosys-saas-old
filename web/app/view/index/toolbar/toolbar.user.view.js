@@ -14,11 +14,11 @@ var ToolbarUser = {
   },
 
   logout: function() {
-    ToolbarUserAction.logout();
+    ToolbarUserAction.onLogout();
   },
 
   login: function() {
-    ToolbarUserAction.login();
+    ToolbarUserAction.onLogin();
   }
 
 };

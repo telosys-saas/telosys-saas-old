@@ -18,12 +18,14 @@ import org.pac4j.core.profile.UserProfile;
 import org.telosys.saas.dao.StorageDao;
 import org.telosys.saas.dao.file.FileStorageDao;
 import org.telosys.saas.domain.Project;
+import org.telosys.saas.services.ProjectService;
 
 @Path("/users/{userId}/projects")
 public class ProjectsResource {
 
 	//private StorageDao storage = new MockStorageDao();
 	private StorageDao storage = new FileStorageDao();
+	private ProjectService projectService = new ProjectService();
 	@Context
 	private HttpServletRequest request;
 	@Context
@@ -39,17 +41,9 @@ public class ProjectsResource {
 	
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Project> getProjects(@PathParam("userId") String userId, @PathParam("projectId") String projectId) {
+    public List<Project> getProjects(@PathParam("userId") String userId) {
     	UserProfile user = getUser(); 
     	return storage.getProjectsForUser(user);
     }
 	
-    @Path("{projectId}")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Project getProject(@PathParam("userId") String userId, @PathParam("projectId") String projectId) {
-    	UserProfile user = getUser();
-    	Project project = storage.getProjectForUser(user, projectId);
-    	return project;
-    }
 }

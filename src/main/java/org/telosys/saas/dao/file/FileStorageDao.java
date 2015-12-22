@@ -33,7 +33,7 @@ public class FileStorageDao implements StorageDao {
 		return new java.io.File(path);
 	}
 
-	private String getProjectPath(UserProfile user, Project project) {
+	public String getProjectPath(UserProfile user, Project project) {
 		return FileUtil.join(getRootPath(), user.getId(), project.getId());
 	}
 	
@@ -55,6 +55,9 @@ public class FileStorageDao implements StorageDao {
 		project.setId(projectId);
 		
 		java.io.File projectDir = getProjectDir(user, project);
+		if(!projectDir.exists()) {
+			return null;
+		}
 		
 		return getProjectForDirectory(user, projectDir);
 	}

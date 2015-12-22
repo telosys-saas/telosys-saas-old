@@ -17,5 +17,31 @@ var ProjectsService = {
     .fail(function (jqXHR, textStatus) {
       console.log(textStatus);
     });
+  },
+
+  createProject: function (userId, projectName, callback) {
+    $.ajax({
+      method: "PUT",
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectName,
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        id: projectName,
+        name: projectName
+      })
+    })
+      .success(function (msg) {
+        console.log(msg);
+        if (callback) {
+          callback(msg);
+        }
+      })
+      .fail(function (jqXHR, textStatus) {
+        console.log(textStatus);
+      })
+      .done(function (msg) {
+        console.log(msg);
+      });
   }
+
 };
