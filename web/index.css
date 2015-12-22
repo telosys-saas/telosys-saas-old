@@ -52,6 +52,10 @@ html .jstree-container-ul, html .jstree-node {
     height: calc(100% - 36px);
 }
 
+.editorTabContent {
+    height: 100%;
+}
+
 html .vakata-context li>a {
     line-height: 1.5em;
 }

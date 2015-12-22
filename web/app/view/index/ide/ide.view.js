@@ -12,8 +12,11 @@ var IDE = {
       '</div>' +
       '<div id="b" class="split split-horizontal">' +
         '<div id="editor" class="split content">' +
-          '<div id="editorToolbar" class="editorToolbar"></div>' +
-          '<div id="editorCodemirror" class="editorCodemirror"></div>' +
+          '<div id="editorTabs" class="editorTabs"></div>' +
+          '<div id="editor1" class="editorTabContent">' +
+            '<div id="editorToolbar" class="editorToolbar"></div>' +
+            '<div id="editorCodemirror" class="editorCodemirror"></div>' +
+          '</div>' +
         '</div>' +
         '<div id="f" class="split content">' +
           '<button onclick="ToolbarProjectsAction.launchGeneration()">Generate</button>' +
