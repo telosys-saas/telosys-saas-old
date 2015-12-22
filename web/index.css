@@ -38,6 +38,7 @@ html .jstree-container-ul, html .jstree-node {
     background-color: #f8f8f8;
     border-bottom: 1px solid #f0f0f0;
     padding: 2px 4px;
+    height: 36px;
 }
 
 .editorToolbar button {
@@ -45,6 +46,10 @@ html .jstree-container-ul, html .jstree-node {
     height: 30px;
     line-height: 30px;
     padding: 0 15px;
+}
+
+.editorCodemirror {
+    height: calc(100% - 36px);
 }
 
 html .vakata-context li>a {

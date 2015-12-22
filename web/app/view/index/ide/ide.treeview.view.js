@@ -214,6 +214,12 @@ var IDETreeview = {
       children: []
     };
 
+    if(!parent) {
+      currentNode.state = {
+        'opened' : true
+      };
+    }
+
     if(folder.folders) {
       for (var i = 0; i < folder.folders.length; i++) {
         var folderSub = folder.folders[i];

@@ -4,12 +4,16 @@ var ToolbarProjectsAction = {
     var state = Store.getState();
 
     var hasChangedProject = false;
-    if(state.projectId == null || confirm("Close the project "+state.projectId)) {
-      state.projectId = projectId;
+    console.log('projectId : ',projectId);
+    console.log('state.projectId : ',state.projectId);
+    if(projectId != state.projectId) {
+      //if (state.projectId == null || confirm("Close the project " + state.projectId)) {
+        state.projectId = projectId;
+      //}
       hasChangedProject = true;
+      callback(hasChangedProject, state.projectId);
     }
 
-    callback(hasChangedProject, state.projectId);
   },
 
   launchGeneration: function() {

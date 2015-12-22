@@ -4,12 +4,25 @@ var ProjectsList = {
   init: function() {
     var state = Store.getState();
     ProjectsService.loadProjects(state.auth.userId, function(projects) {
-      var options = '';
+      var html = '';
       for (var i = 0; i < projects.length; i++) {
         var project = projects[i];
-        options += '<div>'+project.id + ' - ' + project.name + '</div>'
+        html +=
+          '<div class="col s12 m3">' +
+            '<div class="card" onclick="ToolbarProjects.changeProject(\''+project.id+'\')" style="cursor: pointer">' +
+              '<div class="card-content">' +
+                '<span class="card-title">' + project.name + '</span>' +
+              '</div>' +
+              '<div class="card-action" style="text-align: right">' +
+                '<a href="#">OPEN THIS PROJECT</a>' +
+              '</div>' +
+            '</div>' +
+          '</div>'
       }
-      $('#projects').html(options);
+      $('#projects').html(html);
+      $('#projects').collapsible({
+        accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+      });
     });
   }
 

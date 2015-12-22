@@ -21,11 +21,13 @@ var ToolbarProjects = {
   changeProject: function(projectId) {
     ToolbarProjectsAction.onChangeProject(projectId,
       function(hasChangedProject, newProjectId) {
-        if(hasChangedProject) {
-          IDE.init();
+        if(newProjectId != null) {
+          $('#toolbarProjectsName').html(' : '+newProjectId);
         } else {
-          $('#toolbarProjects').val(newProjectId);
+          $('#toolbarProjectsName').html('');
         }
+        Main.display();
       });
   }
+
 };
