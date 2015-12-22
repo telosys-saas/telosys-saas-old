@@ -10,6 +10,14 @@ var ToolbarProjectsAction = {
     }
 
     callback(hasChangedProject, state.projectId);
+  },
+
+  launchGeneration: function() {
+    var state = Store.getState();
+
+    ProjectsService.launchGeneration(state.auth.userId, state.projectId, function() {
+      console.log("Generation complete");
+    })
   }
 
 };

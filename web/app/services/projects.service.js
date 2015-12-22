@@ -42,6 +42,28 @@ var ProjectsService = {
       .done(function (msg) {
         console.log(msg);
       });
+  },
+
+  launchGeneration: function (userId, projectName, callback) {
+    var modelName = "employees";
+    var bundleName = "bundle_java";
+    $.ajax({
+      method: "GET",
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectName+"/model/"+modelName+"/bundle/"+bundleName+"/action/generate",
+      dataType: 'json'
+    })
+      .success(function (msg) {
+        console.log(msg);
+        if (callback) {
+          callback(msg);
+        }
+      })
+      .fail(function (jqXHR, textStatus) {
+        console.log(textStatus);
+      })
+      .done(function (msg) {
+        console.log(msg);
+      });
   }
 
 };

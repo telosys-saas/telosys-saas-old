@@ -65,7 +65,17 @@ public class ProjectResource {
     	}
     	return project;
     }
-    
+
+    @Path("/model/{modelName}/bundle/{bundleName}/action/generate")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Project launchGeneration(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("modelName") String modelName, @PathParam("bundleName") String bundleName) {
+    	UserProfile user = getUser();
+    	Project project = storage.getProjectForUser(user, projectId);
+    	projectService.launchGeneration(user, project, modelName, bundleName);
+    	return project;
+    }
+
 	/**
 	 * Get root folder with all sub folders and all files of the project of the authenticated user
 	 * @param projectId Project id

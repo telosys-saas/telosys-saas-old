@@ -16,6 +16,7 @@ var IDE = {
           '<div id="editorCodemirror"></div>' +
         '</div>' +
         '<div id="f" class="split content">' +
+          '<button onclick="ToolbarProjectsAction.launchGeneration()">Settings</button>' +
         '</div>' +
       '</div>');
 
