@@ -3,6 +3,7 @@ var Store = {
     var deferred = Q.defer();
 
     this.state = {
+      projectId: 'eee'
     };
 
     AuthService.status()
@@ -18,7 +19,9 @@ var Store = {
 
     return deferred.promise;
   },
+
   getState: function() {
     return this.state;
   }
+
 };

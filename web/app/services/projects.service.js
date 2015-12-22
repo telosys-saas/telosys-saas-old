@@ -45,7 +45,7 @@ var ProjectsService = {
   },
 
   launchGeneration: function (userId, projectName, callback) {
-    var modelName = "employees";
+    var modelName = "employees.model";
     var bundleName = "bundle_java";
     $.ajax({
       method: "GET",

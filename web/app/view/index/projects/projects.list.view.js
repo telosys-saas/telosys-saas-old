@@ -7,13 +7,9 @@ var ProjectsList = {
       var options = '';
       for (var i = 0; i < projects.length; i++) {
         var project = projects[i];
-        var selected = '';
-        if(state.projectId === project.id) {
-          selected = ' selected';
-        }
-        options += '<option' + selected + ' value="' + project.id + '">' + project.name + '</option>'
+        options += '<div>'+project.id + ' - ' + project.name + '</div>'
       }
-      $('#toolbarProjects').html(options);
+      $('#projects').html(options);
     });
   }
 
