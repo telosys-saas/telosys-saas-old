@@ -64,6 +64,89 @@ var ProjectsService = {
       .done(function (msg) {
         console.log(msg);
       });
+  },
+
+  getBundlesOfProject: function (userId, projectName, callback) {
+    $.ajax({
+      method: "GET",
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectName+"/bundles",
+      dataType: 'json'
+    })
+      .success(function (msg) {
+        console.log(msg);
+        if (callback) {
+          callback(msg);
+        }
+      })
+      .fail(function (jqXHR, textStatus) {
+        console.log(textStatus);
+      })
+      .done(function (msg) {
+        console.log(msg);
+      });
+  },
+
+  addBundle: function (userId, projectName, bundleName, callback) {
+    $.ajax({
+      method: "PUT",
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectName+"/bundles/"+bundleName,
+      dataType: 'json'
+    })
+      .done(function (msg) {
+        console.log(msg);
+      })
+      .success(function (msg) {
+        console.log(msg);
+        //this.deleteDownloadBundleDirectory(userId, projectName, function() {
+          if (callback) {
+            callback(msg);
+          }
+        //});
+      }.bind(this))
+      .fail(function (jqXHR, textStatus) {
+        console.log(textStatus);
+      });
+  },
+
+  deleteDownloadBundleDirectory: function (userId, projectName, callback) {
+    var folderDownloadBundle = "TelosysTools%2Fdownloads";
+    $.ajax({
+      method: "DELETE",
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectName+"/folders/"+folderDownloadBundle,
+      dataType: 'json'
+    })
+      .done(function (msg) {
+        console.log(msg);
+      })
+      .success(function (msg) {
+        console.log(msg);
+        if (callback) {
+          callback(msg);
+        }
+      })
+      .fail(function (jqXHR, textStatus) {
+        console.log(textStatus);
+      });
+  },
+
+  removeBundle: function (userId, projectName, bundleName, callback) {
+    $.ajax({
+      method: "DELETE",
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectName+"/bundles/"+bundleName,
+      dataType: 'json'
+    })
+      .done(function (msg) {
+        console.log(msg);
+      })
+      .success(function (msg) {
+        console.log(msg);
+        if (callback) {
+          callback(msg);
+        }
+      })
+      .fail(function (jqXHR, textStatus) {
+        console.log(textStatus);
+      });
   }
 
 };

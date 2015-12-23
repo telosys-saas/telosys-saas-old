@@ -42,7 +42,7 @@
         <a class='dropdown-button' href='#' data-activates='toolbarProjectsList'>Project<span id="toolbarProjectsName"></span><i class="material-icons right">arrow_drop_down</i></a>
       </li>
       <li><a href="#">Settings</a></li>
-      <li><a href="#">Bundles</a></li>
+      <li><a href="#" onclick="ToolbarBundles.openModal()">Bundles</a></li>
     </ul>
     <!-- Modal Trigger -->
     <div class="right">
@@ -52,6 +52,7 @@
 </nav>
 
 <div id="projectnew"></div>
+<div id="bundles"></div>
 
 <!--
   <nav id="toolbar" class="split split-vertical toolbar">
@@ -102,11 +103,13 @@
   <script src="lib/jstree/jstree.js"></script>
   <script src="lib/jstree/jstree.js"></script>
   <script src="app/services/auth.service.js"></script>
+  <script src="app/services/bundles.service.js"></script>
   <script src="app/services/projects.service.js"></script>
   <script src="app/services/files.service.js"></script>
   <script src="app/store/store.js"></script>
   <script src="app/view/index/main.view.js"></script>
   <script src="app/view/index/toolbar/toolbar.view.js"></script>
+  <script src="app/view/index/toolbar/toolbar.bundles.view.js"></script>
   <script src="app/view/index/toolbar/toolbar.projectnew.action.js"></script>
   <script src="app/view/index/toolbar/toolbar.projectnew.view.js"></script>
   <script src="app/view/index/toolbar/toolbar.projects.view.js"></script>

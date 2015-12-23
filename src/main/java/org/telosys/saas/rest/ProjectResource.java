@@ -1,5 +1,7 @@
 package org.telosys.saas.rest;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,9 +20,11 @@ import org.pac4j.core.profile.ProfileManager;
 import org.pac4j.core.profile.UserProfile;
 import org.telosys.saas.dao.StorageDao;
 import org.telosys.saas.dao.file.FileStorageDao;
+import org.telosys.saas.domain.Bundle;
 import org.telosys.saas.domain.File;
 import org.telosys.saas.domain.Folder;
 import org.telosys.saas.domain.Project;
+import org.telosys.saas.services.BundleService;
 import org.telosys.saas.services.ProjectService;
 
 @Path("/users/{userId}/projects/{projectId}")
@@ -28,6 +32,7 @@ public class ProjectResource {
 
 	// private StorageDao storage = new MockStorageDao();
 	private StorageDao storage = new FileStorageDao();
+	private BundleService bundleService = new BundleService();
 	private ProjectService projectService = new ProjectService();
 	@Context
 	private HttpServletRequest request;
@@ -74,6 +79,33 @@ public class ProjectResource {
     	Project project = storage.getProjectForUser(user, projectId);
     	projectService.launchGeneration(user, project, modelName, bundleName);
     	return project;
+    }
+
+    @Path("/bundles")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Bundle> getBundlesOfProject(@PathParam("userId") String userId, @PathParam("projectId") String projectId) {
+    	UserProfile user = getUser();
+    	Project project = storage.getProjectForUser(user, projectId);
+    	return bundleService.getBundlesOfProject(user, project);
+    }
+
+    @Path("/bundles/{bundleName}")
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    public void addBundleToTheProject(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("bundleName") String bundleName) {
+    	UserProfile user = getUser();
+    	Project project = storage.getProjectForUser(user, projectId);
+    	projectService.addBundleToTheProject(user, project, bundleName);
+    }
+
+    @Path("/bundles/{bundleName}")
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public void removeBundleFromTheProject(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("bundleName") String bundleName) {
+    	UserProfile user = getUser();
+    	Project project = storage.getProjectForUser(user, projectId);
+    	projectService.removeBundleFromTheProject(user, project, bundleName);
     }
 
 	/**

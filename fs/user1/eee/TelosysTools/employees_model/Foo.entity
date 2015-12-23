@@ -1,3 +1,4 @@
 Foo {
-id : integer { @Id };
+    id : integer { @Id };
+    bar: string;
 }
