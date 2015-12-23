@@ -99,6 +99,7 @@ var ToolbarBundles = {
 
   closeModal: function() {
     $('#bundlesModal').closeModal();
+
   },
 
   addBundle: function(bundleName) {

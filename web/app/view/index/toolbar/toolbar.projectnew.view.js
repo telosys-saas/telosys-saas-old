@@ -37,6 +37,7 @@ var ToolbarProjectnew = {
     ProjectsService.createProject(state.auth.userId, projectName, function(isOk) {
       if(isOk) {
         state.projectId = projectName;
+        Main.display();
       }
     });
   }

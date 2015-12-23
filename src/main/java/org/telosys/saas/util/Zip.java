@@ -35,7 +35,7 @@ public class Zip
 	    		System.out.println("Adding: "+filePath);
 	    		File file = new File(filePath);
 	    		if(file.isDirectory()) {
-	    			ZipEntry entry = new ZipEntry(fileRelativePath+"/");
+	    			ZipEntry entry = new ZipEntry(fileRelativePath+File.separator);
 	    			out.putNextEntry(entry);
 	    			for(String sub : file.list()) {
 	    				files.add(FileUtil.join(filePath, sub));
