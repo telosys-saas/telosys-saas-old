@@ -43,7 +43,7 @@ var ToolbarBundles = {
           '<div class="row">' +
             '<div class="col s12">' +
               '<h4>Bundles</h4>' +
-              '<h6>Current bundles of the project</h6>' +
+              '<h5>Current bundles of the project</h5>' +
               '<ul class="collapsible" data-collapsible="accordion">';
 
     for (var i=0; i<state.bundlesOfProject.length; i++) {
@@ -63,7 +63,7 @@ var ToolbarBundles = {
 
     html +=
               '</ul>' +
-              '<h6>Bundles in the public repository</h6>' +
+              '<h5>Bundles in the public repository</h5>' +
               '<ul class="collapsible" data-collapsible="accordion">';
 
     for (var i=0; i<state.bundlesInPublicRepository.length; i++) {
@@ -88,7 +88,7 @@ var ToolbarBundles = {
           '</div>' +
         '</div>' +
         '<div class="modal-footer">' +
-          '<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat "onclick="ToolbarBundles.cancel()">Cancel</a>' +
+          '<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat "onclick="ToolbarBundles.closeModal()">Close</a>' +
         '</div>';
 
     $('#bundlesModal').html(html);
@@ -97,7 +97,7 @@ var ToolbarBundles = {
     });
   },
 
-  cancel: function() {
+  closeModal: function() {
     $('#bundlesModal').closeModal();
   },
 

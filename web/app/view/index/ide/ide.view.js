@@ -4,6 +4,7 @@ var IDE = {
     this.display();
     IDETreeview.init();
     IDEEditor.init();
+    IDEGenerate.init();
   },
 
   display: function() {
@@ -18,8 +19,7 @@ var IDE = {
             '<div id="editorCodemirror" class="editorCodemirror"></div>' +
           '</div>' +
         '</div>' +
-        '<div id="f" class="split content">' +
-          '<button onclick="ToolbarProjectsAction.launchGeneration()">Generate</button>' +
+        '<div id="generate" class="split content">' +
         '</div>' +
       '</div>');
 
@@ -29,9 +29,9 @@ var IDE = {
       cursor: 'col-resize'
     });
 
-    Split(['#editor', '#f'], {
+    Split(['#editor', '#generate'], {
       direction: 'vertical',
-      sizes: [75, 25],
+      sizes: [60, 40],
       gutterSize: 8,
       cursor: 'row-resize'
     });

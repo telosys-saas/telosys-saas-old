@@ -1,6 +1,6 @@
 package ${target.javaPackageFromFolder($SRC)};
 
-public class ${entity.name} implements Serializable {
+public class ${entity.nam} implements Serializable {
 
 #foreach( $field in $entity.attributes )
 $jpa.fieldAnnotations(4, $field)

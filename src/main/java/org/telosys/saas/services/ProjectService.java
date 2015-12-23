@@ -3,11 +3,16 @@ package org.telosys.saas.services;
 import org.pac4j.core.profile.UserProfile;
 import org.telosys.saas.dao.file.FileStorageDao;
 import org.telosys.saas.domain.Folder;
+import org.telosys.saas.domain.GenerationErrorResult;
+import org.telosys.saas.domain.GenerationResult;
 import org.telosys.saas.domain.Project;
 import org.telosys.saas.util.FileUtil;
+import org.telosys.tools.api.GenerationWithErrorReportsTask;
 import org.telosys.tools.api.TelosysProject;
 import org.telosys.tools.commons.TelosysToolsException;
 import org.telosys.tools.generator.GeneratorException;
+import org.telosys.tools.generator.task.ErrorReport;
+import org.telosys.tools.generator.task.GenerationTaskResult;
 import org.telosys.tools.generic.model.Model;
 
 public class ProjectService {
@@ -25,11 +30,25 @@ public class ProjectService {
 		telosysProject.initProject();
 	}
 
-	public void launchGeneration(UserProfile user, Project project, String modelName, String bundleName) {
+	public GenerationResult launchGeneration(UserProfile user, Project project, String modelName, String bundleName) {
 		TelosysProject telosysProject = getTelosysProject(user, project);
 		try {
 			Model model = telosysProject.loadModel(modelName);
-			telosysProject.launchGeneration(model, bundleName);
+			GenerationWithErrorReportsTask generationTask = telosysProject.launchGeneration(model, bundleName);
+			GenerationTaskResult generationTaskResult = generationTask.launch();
+			
+			GenerationResult generationResult = new GenerationResult();
+			generationResult.setNumberOfFilesGenerated(generationTaskResult.getNumberOfFilesGenerated());
+			generationResult.setNumberOfGenerationErrors(generationTaskResult.getNumberOfGenerationErrors());
+			generationResult.setNumberOfResourcesCopied(generationTaskResult.getNumberOfResourcesCopied());
+			for(ErrorReport errorReport : generationTask.getErrorReports()) {
+				GenerationErrorResult error = new GenerationErrorResult();
+				error.setException(errorReport.getException());
+				error.setMessageTitle(errorReport.getMessageTitle());
+				error.setMessageBody(errorReport.getMessageBody());
+				generationResult.getErrors().add(error);
+			}
+			return generationResult;
 		} catch (TelosysToolsException e) {
 			throw new IllegalStateException(e);
 		} catch (GeneratorException e) {

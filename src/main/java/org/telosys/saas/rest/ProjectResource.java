@@ -23,6 +23,7 @@ import org.telosys.saas.dao.file.FileStorageDao;
 import org.telosys.saas.domain.Bundle;
 import org.telosys.saas.domain.File;
 import org.telosys.saas.domain.Folder;
+import org.telosys.saas.domain.GenerationResult;
 import org.telosys.saas.domain.Project;
 import org.telosys.saas.services.BundleService;
 import org.telosys.saas.services.ProjectService;
@@ -74,11 +75,10 @@ public class ProjectResource {
     @Path("/model/{modelName}/bundle/{bundleName}/action/generate")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Project launchGeneration(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("modelName") String modelName, @PathParam("bundleName") String bundleName) {
+    public GenerationResult launchGeneration(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("modelName") String modelName, @PathParam("bundleName") String bundleName) {
     	UserProfile user = getUser();
     	Project project = storage.getProjectForUser(user, projectId);
-    	projectService.launchGeneration(user, project, modelName, bundleName);
-    	return project;
+    	return projectService.launchGeneration(user, project, modelName, bundleName);
     }
 
     @Path("/bundles")
