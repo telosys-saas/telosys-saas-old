@@ -131,11 +131,19 @@ var IDETreeview = {
       tree.edit(node, null, function(node, status) {
         var state = Store.getState();
         var projectId = state.projectId;
-        var file = {
-          id: nodeParent.id + '/' + node.text,
-          name: node.text,
-          folderParentId: nodeParent.id
-        };
+        if (nodeParent.id == '@@_root_@@') {
+          var file = {
+            id: node.text,
+            name: node.text,
+            folderParentId: ''
+          };
+        } else {
+          var file = {
+            id: nodeParent.id + '/' + node.text,
+            name: node.text,
+            folderParentId: nodeParent.id
+          };
+        }
         FilesService.createFileForProject(state.auth.userId, projectId, file, function(folder) {
           console.log('file created', file);
         });
@@ -150,11 +158,19 @@ var IDETreeview = {
       tree.edit(node, null, function(node, status) {
         var state = Store.getState();
         var projectId = state.projectId;
-        var folder = {
-          id: nodeParent.id + '/' + node.text,
-          name: node.text,
-          folderParentId: nodeParent.id
-        };
+        if (nodeParent.id == '@@_root_@@') {
+          var folder = {
+            id: node.text,
+            name: node.text,
+            folderParentId: ''
+          };
+        } else {
+          var folder = {
+            id: nodeParent.id + '/' + node.text,
+            name: node.text,
+            folderParentId: nodeParent.id
+          };
+        }
         FilesService.createFolderForProject(state.auth.userId, projectId, folder, function(folder) {
           console.log('folder created', folder);
         });
@@ -208,7 +224,7 @@ var IDETreeview = {
   convertFolderToJson: function(folder, parent) {
     console.log('folder : ', folder.name);
     var currentNode = {
-      id: folder.id,
+      id: (folder.id) ? folder.id : '@@_root_@@',
       text: folder.name,
       type: 'folder',
       children: []

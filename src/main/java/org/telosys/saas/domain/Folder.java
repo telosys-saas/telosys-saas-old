@@ -8,6 +8,8 @@ public class Folder implements Serializable {
 
 	private static final long serialVersionUID = 4039077010346149928L;
 
+	private boolean isExisting;
+	
 	private String id;
 	
 	private String folderParentId;
@@ -17,6 +19,14 @@ public class Folder implements Serializable {
 	private List<File> files = new ArrayList<>();
 	
 	private List<Folder> folders = new ArrayList<>();
+
+	public boolean isExisting() {
+		return isExisting;
+	}
+
+	public void setExisting(boolean isExisting) {
+		this.isExisting = isExisting;
+	}
 
 	public String getId() {
 		return id;

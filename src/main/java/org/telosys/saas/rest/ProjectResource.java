@@ -98,7 +98,7 @@ public class ProjectResource {
     	UserProfile user = getUser(); 
     	Project project = storage.getProjectForUser(user, projectId);
     	Folder folder = storage.getFolderForProjectAndUser(user, project, folderId);
-    	if(folder == null) {
+    	if(!folder.isExisting()) {
     		// Create
         	storage.createFolderForProjectAndUser(user, project, folderToSave);
     	} else {
@@ -114,7 +114,7 @@ public class ProjectResource {
     	UserProfile user = getUser();
     	Project project = storage.getProjectForUser(user, projectId);
     	Folder folder = storage.getFolderForProjectAndUser(user, project, folderId);
-    	if(folder == null) {
+    	if(!folder.isExisting()) {
     		throw new IllegalStateException("Folder does not exists : "+folderId);
     	}
     	storage.deleteFolderForProjectAndUser(user, project, folder);
@@ -137,7 +137,7 @@ public class ProjectResource {
     	UserProfile user = getUser();
     	Project project = storage.getProjectForUser(user, projectId);
     	File file = storage.getFileForProjectAndUser(user, project, fileId);
-    	if(file == null) {
+    	if(!file.isExisting()) {
     		// Create
         	storage.createFileForProjectAndUser(user, project, fileToSave);
     	} else {

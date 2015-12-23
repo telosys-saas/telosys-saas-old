@@ -6,6 +6,8 @@ public class File implements Serializable {
 
 	private static final long serialVersionUID = 1717762719485741897L;
 
+	private boolean isExisting;
+	
 	private String id;
 	
 	private String folderParentId;
@@ -13,6 +15,14 @@ public class File implements Serializable {
 	private String name;
 	
 	private String content = "";
+
+	public boolean isExisting() {
+		return isExisting;
+	}
+
+	public void setExisting(boolean isExisting) {
+		this.isExisting = isExisting;
+	}
 
 	public String getId() {
 		return id;
