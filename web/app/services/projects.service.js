@@ -147,6 +147,10 @@ var ProjectsService = {
       .fail(function (jqXHR, textStatus) {
         console.log(textStatus);
       });
+  },
+
+  downloadZip: function(userId, projectName) {
+    document.location = host + "/api/v1/users/"+userId+"/projects/"+projectName+"/download/zip";
   }
 
 };

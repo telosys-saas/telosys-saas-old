@@ -5,7 +5,7 @@ var IDEEditorToolbar = {
     if(state.fileId) {
       var toolbar =
         '<button class="waves-effect waves-green btn" onclick="IDEEditorToolbar.saveFile()">' +
-        '<span class="fa fa-floppy-o fa-lg"></span> Save' +
+          '<span class="fa fa-floppy-o fa-lg"></span> Save' +
         '</button>' +
         '&nbsp; File : <span>' + state.fileId + '</span>';
       $('#editorToolbar').html(toolbar);

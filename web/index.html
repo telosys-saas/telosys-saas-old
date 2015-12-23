@@ -43,16 +43,18 @@
       </li>
       <li><a href="#">Settings</a></li>
       <li><a href="#" onclick="ToolbarBundles.openModal()">Bundles</a></li>
+      <li><a href="#" onclick="ToolbarGeneration.openModal()">Generation</a></li>
+      <li><a href="#" onclick="ToolbarDownload.download()">Download</a></li>
     </ul>
     <!-- Modal Trigger -->
-    <div class="right">
-      User : <span id="toolbarUser"></span>
+    <div class="right" id="toolbarUser">
     </div>
   </div>
 </nav>
 
 <div id="projectnew"></div>
 <div id="bundles"></div>
+<div id="generation"></div>
 
 <!--
   <nav id="toolbar" class="split split-vertical toolbar">
@@ -97,6 +99,11 @@
   <script src="lib/materialize/js/materialize.js"></script>
   <script src="lib/codemirror/lib/codemirror.js"></script>
   <script src="lib/codemirror/mode/javascript/javascript.js"></script>
+  <script src="lib/codemirror/mode/clike/clike.js"></script>
+  <script src="lib/codemirror/mode/php/php.js"></script>
+  <script src="lib/codemirror/mode/css/css.js"></script>
+  <script src="lib/codemirror/mode/python/python.js"></script>
+  <script src="lib/codemirror/mode/velocity/velocity.js"></script>
   <script src="lib/split/split.js"></script>
   <script src="lib/q/q.js"></script>
   <!-- jstree : https://www.jstree.com/ -->
@@ -110,6 +117,8 @@
   <script src="app/view/index/main.view.js"></script>
   <script src="app/view/index/toolbar/toolbar.view.js"></script>
   <script src="app/view/index/toolbar/toolbar.bundles.view.js"></script>
+  <script src="app/view/index/toolbar/toolbar.generation.view.js"></script>
+  <script src="app/view/index/toolbar/toolbar.download.view.js"></script>
   <script src="app/view/index/toolbar/toolbar.projectnew.action.js"></script>
   <script src="app/view/index/toolbar/toolbar.projectnew.view.js"></script>
   <script src="app/view/index/toolbar/toolbar.projects.view.js"></script>

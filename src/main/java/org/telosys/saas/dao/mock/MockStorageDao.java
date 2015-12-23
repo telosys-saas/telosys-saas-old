@@ -113,5 +113,11 @@ public class MockStorageDao implements StorageDao {
 		Folder folderParent = getFolderForProjectAndUser(user, project, folder.getFolderParentId());
 		MockProjects.deleteFolder(folderParent, folder);
 	}
+
+	@Override
+	public java.io.File getFileZipToDownload(UserProfile user, Project project) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

@@ -7,6 +7,8 @@ var IDEGenerate = {
   display: function() {
     var html =
       '<div>' +
+        '<button class="btn grey" id="generateCloseButton" onclick="IDEGenerate.close">Close</button>' +
+        '&nbsp; &nbsp;' +
         '<button class="btn blue" id="generateButton" onclick="IDEGenerate.launchGeneration()">Generate</button>' +
       '</div>' +
       '<div id="generateResult">' +
@@ -51,8 +53,8 @@ var IDEGenerate = {
 
         for (var i = 0; i < result.errors.length; i++) {
           var error = result.errors[i];
-          var title = error.messageBody.substring(0, error.messageBody.indexOf('\n'));
-          var content = error.messageBody.substring(error.messageBody.indexOf('\n')+1);
+          var title = error.message.substring(0, error.message.indexOf('\n'));
+          var content = error.message.substring(error.message.indexOf('\n')+1);
           html +=
             '<li>' +
               '<div class="collapsible-header red lighten-4'+((i==0)?' active':'')+'">' +

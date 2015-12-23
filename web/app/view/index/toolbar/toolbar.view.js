@@ -3,6 +3,7 @@ var Toolbar = {
     ToolbarProjects.init();
     ToolbarProjectnew.init();
     ToolbarBundles.init();
+    ToolbarGeneration.init();
     ToolbarUser.init();
   }
 

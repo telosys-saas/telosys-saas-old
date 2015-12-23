@@ -4,6 +4,7 @@ import java.io.FileFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.commons.io.FileDeleteStrategy;
 import org.apache.commons.io.filefilter.FileFilterUtils;
@@ -13,6 +14,7 @@ import org.telosys.saas.domain.File;
 import org.telosys.saas.domain.Folder;
 import org.telosys.saas.domain.Project;
 import org.telosys.saas.util.FileUtil;
+import org.telosys.saas.util.Zip;
 
 public class FileStorageDao implements StorageDao {
 
@@ -287,6 +289,19 @@ public class FileStorageDao implements StorageDao {
 				}
 			}
 		}
+	}
+
+	@Override
+	public java.io.File getFileZipToDownload(UserProfile user, Project project) {
+		String input = getProjectPath(user, project);
+		String output = FileUtil.join(System.getProperty("java.io.tmpdir"),project.getId()+"_"+UUID.randomUUID().toString());
+		// Create ZIP file in temporary directory
+		//Zip zip = new Zip(input, output);
+		//zip.zip();
+		Zip zip = new Zip();
+		zip.zip(input, output);
+		// Return File on this ZIP
+		return new java.io.File(output);
 	}
 
 }

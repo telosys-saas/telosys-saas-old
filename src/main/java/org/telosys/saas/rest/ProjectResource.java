@@ -14,6 +14,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.pac4j.core.context.J2EContext;
 import org.pac4j.core.profile.ProfileManager;
@@ -54,6 +55,16 @@ public class ProjectResource {
     	UserProfile user = getUser();
     	Project project = storage.getProjectForUser(user, projectId);
     	return project;
+    }
+
+    @GET
+    @Path("/download/zip")
+    @Produces("application/zip")
+    public Response downloadZipProject(@PathParam("userId") String userId, @PathParam("projectId") String projectId) {
+    	UserProfile user = getUser();
+    	Project project = storage.getProjectForUser(user, projectId);
+    	java.io.File file = storage.getFileZipToDownload(user, project);
+    	return Response.ok(file).header("Content-Disposition", "attachment; filename=\""+projectId+".zip\"").build();
     }
 
     @PUT

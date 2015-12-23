@@ -85,5 +85,13 @@ public interface StorageDao {
 	 * @param folderToDelete
 	 */
 	void deleteFolderForProjectAndUser(UserProfile user, Project project, Folder folderToDelete);
+
+	/**
+	 * Get ZIP file to download source code project
+	 * @param user
+	 * @param projectId
+	 * @return
+	 */
+	java.io.File getFileZipToDownload(UserProfile user, Project project);
 	
 }

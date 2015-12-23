@@ -1,16 +1,18 @@
 
 var ToolbarUser = {
   init: function() {
-    var user = '';
     var state = Store.getState();
+
+    var html = '';
+    html += '<span class="fa fa-user"></span> '
     if(!state.auth) {
-      user += '<span>Error : no authentication</span>';
+      html += '<span>Error : no authentication</span>';
     } else if (state.auth.authenticated) {
-      user += '<span>' + state.auth.userId + '<button class="btn" onclick="ToolbarUser.logout()">Log out</button></span>';
+      html += '<span>' + state.auth.userId + ' &nbsp; &nbsp; <button class="btn" onclick="ToolbarUser.logout()">Log out</button> </span>';
     } else {
-      user += '<span>Not authenticated<button class="btn" onclick="ToolbarUser.login()">Log in</button></span>';
+      html += '<span>Not authenticated &nbsp; &nbsp; <button class="btn" onclick="ToolbarUser.login()">Log in</button> </span>';
     }
-    $('#toolbarUser').html(user);
+    $('#toolbarUser').html(html);
   },
 
   logout: function() {

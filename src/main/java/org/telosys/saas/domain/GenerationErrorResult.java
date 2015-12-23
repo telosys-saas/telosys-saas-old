@@ -3,8 +3,8 @@ package org.telosys.saas.domain;
 public class GenerationErrorResult {
 	
 	private Throwable exception;
-	private String messageTitle;
-	private String messageBody;
+	private String errorType;
+	private String message;
 	
 	public Throwable getException() {
 		return exception;
@@ -12,17 +12,17 @@ public class GenerationErrorResult {
 	public void setException(Throwable exception) {
 		this.exception = exception;
 	}
-	public String getMessageTitle() {
-		return messageTitle;
+	public String getErrorType() {
+		return errorType;
 	}
-	public void setMessageTitle(String messageTitle) {
-		this.messageTitle = messageTitle;
+	public void setErrorType(String errorType) {
+		this.errorType = errorType;
 	}
-	public String getMessageBody() {
-		return messageBody;
+	public String getMessage() {
+		return message;
 	}
-	public void setMessageBody(String messageBody) {
-		this.messageBody = messageBody;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	
 }

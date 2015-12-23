@@ -102,6 +102,7 @@ public class TelosysSaasServer {
 		ServletHolder jerseyRestServlet = contextBack.addServlet(org.glassfish.jersey.servlet.ServletContainer.class, "/v1/*");
 		jerseyRestServlet.setInitOrder(1);
 		jerseyRestServlet.setInitParameter("jersey.config.server.provider.packages", "org.telosys.saas.rest");
+		jerseyRestServlet.setInitParameter("jersey.config.server.provider.classnames", "org.glassfish.jersey.media.multipart.MultiPartFeature");
 		
 		// jersey : /auth
 		ServletHolder jerseyAuthServlet = contextBack.addServlet(org.glassfish.jersey.servlet.ServletContainer.class, "/auth/*");

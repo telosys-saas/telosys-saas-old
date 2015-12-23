@@ -31,7 +31,8 @@ var IDE = {
 
     Split(['#editor', '#generate'], {
       direction: 'vertical',
-      sizes: [60, 40],
+      sizes: [100, 1],
+      minSizes: [100, 1],
       gutterSize: 8,
       cursor: 'row-resize'
     });

@@ -7,7 +7,6 @@ import org.telosys.saas.domain.GenerationErrorResult;
 import org.telosys.saas.domain.GenerationResult;
 import org.telosys.saas.domain.Project;
 import org.telosys.saas.util.FileUtil;
-import org.telosys.tools.api.GenerationWithErrorReportsTask;
 import org.telosys.tools.api.TelosysProject;
 import org.telosys.tools.commons.TelosysToolsException;
 import org.telosys.tools.generator.GeneratorException;
@@ -34,18 +33,17 @@ public class ProjectService {
 		TelosysProject telosysProject = getTelosysProject(user, project);
 		try {
 			Model model = telosysProject.loadModel(modelName);
-			GenerationWithErrorReportsTask generationTask = telosysProject.launchGeneration(model, bundleName);
-			GenerationTaskResult generationTaskResult = generationTask.launch();
+			GenerationTaskResult generationTaskResult = telosysProject.launchGeneration(model, bundleName);
 			
 			GenerationResult generationResult = new GenerationResult();
 			generationResult.setNumberOfFilesGenerated(generationTaskResult.getNumberOfFilesGenerated());
 			generationResult.setNumberOfGenerationErrors(generationTaskResult.getNumberOfGenerationErrors());
 			generationResult.setNumberOfResourcesCopied(generationTaskResult.getNumberOfResourcesCopied());
-			for(ErrorReport errorReport : generationTask.getErrorReports()) {
+			for(ErrorReport errorReport : generationTaskResult.getErrors()) {
 				GenerationErrorResult error = new GenerationErrorResult();
 				error.setException(errorReport.getException());
-				error.setMessageTitle(errorReport.getMessageTitle());
-				error.setMessageBody(errorReport.getMessageBody());
+				error.setErrorType(errorReport.getErrorType());
+				error.setMessage(errorReport.getMessage());
 				generationResult.getErrors().add(error);
 			}
 			return generationResult;
