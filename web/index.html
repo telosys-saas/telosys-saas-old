@@ -32,24 +32,7 @@
 
 <!-- Dropdown Structure -->
 <ul id='toolbarProjectsList' class='dropdown-content'></ul>
-<nav><!--  id="toolbar" class="split split-vertical toolbar" -->
-  <div class="light-blue darken-3 nav-wrapper">
-    <a href="#!" class="brand-logo left logo-telosys-min" style="position: relative; margin-left: 20px; margin-top: 5px;" onclick="ToolbarProjects.changeProject(null)"></a>
-    <a href="#!" class="brand-logo left" style="position: relative; margin-right: 20px;" onclick="ToolbarProjects.changeProject(null)">Telosys</a>
-    <ul id="nav-mobile" class="hide-on-med-and-down left">
-      <li>
-        <!-- Dropdown Trigger -->
-        <a class='dropdown-button' href='#' data-activates='toolbarProjectsList'>Project<span id="toolbarProjectsName"></span><i class="material-icons right">arrow_drop_down</i></a>
-      </li>
-      <li><a href="#" onclick="ToolbarSettings.openModal()">Settings</a></li>
-      <li><a href="#" onclick="ToolbarBundles.openModal()">Bundles</a></li>
-      <li><a href="#" onclick="ToolbarGeneration.openModal()">Generation</a></li>
-      <li><a href="#" onclick="ToolbarDownload.download()">Download</a></li>
-    </ul>
-    <!-- Modal Trigger -->
-    <div class="right" id="toolbarUser">
-    </div>
-  </div>
+<nav id="appbar" class="light-blue darken-3 nav-wrapper"><!--  id="toolbar" class="split split-vertical toolbar" -->
 </nav>
 
 <div id="projectnew"></div>
