@@ -1,5 +1,6 @@
 package org.telosys.saas;
 
+import java.io.File;
 import java.util.EnumSet;
 
 import javax.servlet.DispatcherType;
@@ -39,7 +40,12 @@ public class TelosysSaasServer {
         // In this example it is the current directory but it can be configured to anything that the jvm has access to.
         resource_handler.setDirectoriesListed(true);
         resource_handler.setWelcomeFiles(new String[]{ "index.html" });
-        resource_handler.setResourceBase("web");
+        File web = new File("src/main/resources/META-INF/web");
+        if(web.exists()) {
+        	resource_handler.setResourceBase("src/main/resources/META-INF/web");
+        } else {
+        	resource_handler.setResourceBase("jar:file:telosys-saas.jar!/META-INF/web");
+        }
  
         // Add the ResourceHandler to the server.
         GzipHandler gzip = new GzipHandler();

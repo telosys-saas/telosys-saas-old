@@ -59,7 +59,7 @@ public class ProjectResource {
     }
 
     @GET
-    @Path("/download/zip")
+    @Path("/zip")
     @Produces("application/zip")
     public Response downloadZipProject(@PathParam("userId") String userId, @PathParam("projectId") String projectId) {
     	UserProfile user = getUser();

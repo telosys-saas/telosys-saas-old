@@ -25,7 +25,7 @@ public class BundleService {
 			List<String> bundleNames = telosysProject.getBundlesList("telosys-tools");
 			
 			for(String bundleName : bundleNames) {
-				bundles.add(getBundle(bundleName));			
+				bundles.add(getBundle(bundleName));
 			}
 			
 		} catch (TelosysToolsException e) {
