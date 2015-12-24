@@ -19,6 +19,58 @@ var ProjectsService = {
     });
   },
 
+  getProjectConfiguration: function (userId, projectName, callback) {
+    $.ajax({
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectName+"/configuration",
+      dataType: 'json'
+    })
+      .done(function (msg) {
+        console.log(msg);
+      })
+      .success(function (projectConfiguration) {
+        console.log(projectConfiguration);
+        if(projectConfiguration && projectConfiguration.variables && projectConfiguration.variables.specificVariables) {
+          projectConfiguration.variables.specificVariables = JSON.parse(projectConfiguration.variables.specificVariables);
+        }
+        if (callback) {
+          callback(projectConfiguration);
+        }
+      })
+      .fail(function (jqXHR, textStatus) {
+        console.log(textStatus);
+      });
+  },
+
+  saveProjectConfiguration: function (userId, projectName, projectConfiguration, callback) {
+    if(projectConfiguration && projectConfiguration.variables && projectConfiguration.variables.specificVariables) {
+      projectConfiguration.variables.specificVariables = JSON.stringify(projectConfiguration.variables.specificVariables);
+    }
+
+    $.ajax({
+      method: "PUT",
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectName+"/configuration",
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify(projectConfiguration)
+    })
+      .done(function (msg) {
+        console.log(msg);
+      })
+      .success(function (msg) {
+        console.log(msg);
+        if (callback) {
+          callback(msg);
+        }
+      })
+      .fail(function (jqXHR, textStatus) {
+        console.log(textStatus);
+      });
+
+    if(projectConfiguration && projectConfiguration.variables && projectConfiguration.variables.specificVariables) {
+      projectConfiguration.variables.specificVariables = JSON.parse(projectConfiguration.variables.specificVariables);
+    }
+  },
+
   createProject: function (userId, projectName, callback) {
     $.ajax({
       method: "PUT",

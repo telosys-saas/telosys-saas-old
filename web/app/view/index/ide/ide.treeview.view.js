@@ -126,8 +126,10 @@ var IDETreeview = {
 
   onCreateFile: function(nodeParent, tree) {
     return (function (obj) {
-      node = tree.create_node(nodeParent);
-      node.type = 'file';
+      var node = {
+        type: 'file'
+      };
+      node = tree.create_node(nodeParent, node);
       tree.edit(node, null, function(node, status) {
         var state = Store.getState();
         var projectId = state.projectId;
@@ -144,6 +146,7 @@ var IDETreeview = {
             folderParentId: nodeParent.id
           };
         }
+        tree.set_id(node,file.id);
         FilesService.createFileForProject(state.auth.userId, projectId, file, function(folder) {
           console.log('file created', file);
         });
@@ -153,8 +156,10 @@ var IDETreeview = {
 
   onCreateFolder: function(nodeParent, tree) {
     return (function (obj) {
-      node = tree.create_node(nodeParent);
-      node.type = 'folder';
+      var node = {
+        type: 'folder'
+      };
+      node = tree.create_node(nodeParent, node);
       tree.edit(node, null, function(node, status) {
         var state = Store.getState();
         var projectId = state.projectId;
@@ -171,6 +176,7 @@ var IDETreeview = {
             folderParentId: nodeParent.id
           };
         }
+        tree.set_id(node,folder.id);
         FilesService.createFolderForProject(state.auth.userId, projectId, folder, function(folder) {
           console.log('folder created', folder);
         });

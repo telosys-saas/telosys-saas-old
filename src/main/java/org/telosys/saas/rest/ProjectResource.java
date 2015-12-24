@@ -26,6 +26,7 @@ import org.telosys.saas.domain.File;
 import org.telosys.saas.domain.Folder;
 import org.telosys.saas.domain.GenerationResult;
 import org.telosys.saas.domain.Project;
+import org.telosys.saas.domain.ProjectConfiguration;
 import org.telosys.saas.services.BundleService;
 import org.telosys.saas.services.ProjectService;
 
@@ -65,6 +66,27 @@ public class ProjectResource {
     	Project project = storage.getProjectForUser(user, projectId);
     	java.io.File file = storage.getFileZipToDownload(user, project);
     	return Response.ok(file).header("Content-Disposition", "attachment; filename=\""+projectId+".zip\"").build();
+    }
+
+    @GET
+    @Path("/configuration")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ProjectConfiguration getProjectConfiguration(@PathParam("userId") String userId, @PathParam("projectId") String projectId) {
+    	UserProfile user = getUser();
+    	Project project = storage.getProjectForUser(user, projectId);
+    	ProjectConfiguration projectConfiguration = projectService.getProjectConfiguration(user, project);
+    	return projectConfiguration;
+    }
+
+    @PUT
+    @Path("/configuration")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public ProjectConfiguration saveProjectConfiguration(@PathParam("userId") String userId, @PathParam("projectId") String projectId, ProjectConfiguration projectConfiguration) {
+    	UserProfile user = getUser();
+    	Project project = storage.getProjectForUser(user, projectId);
+    	projectService.saveProjectConfiguration(user, project, projectConfiguration);
+    	return projectConfiguration;
     }
 
     @PUT

@@ -44,6 +44,8 @@ var IDEEditorCodemirror = {
         return 'php';
       case 'vm':
         return 'text/velocity';
+      case 'entity':
+        return 'text/x-java';
       default:
         return ext;
     }
