@@ -22,17 +22,14 @@ var ToolbarBundles = {
   },
 
   openModal: function() {
-    this.loadData(function() {
-      this.display();
-      $('#bundlesModal').openModal();
-    }.bind(this));
-  },
-
-  display: function() {
     var html =
       '<div id="bundlesModal" class="modal modal-fixed-footer"></div>';
     $('#bundles').html(html);
-    this.displayModal();
+    $('#bundlesModal').openModal();
+
+    this.loadData(function() {
+      this.displayModal();
+    }.bind(this));
   },
 
   displayModal: function() {

@@ -20,6 +20,7 @@ var ToolbarSettings = {
         '<div class="modal-content">' +
           '<h4>Project Settings</h4>' +
           '<ul class="collapsible" data-collapsible="accordion">' +
+        /*
             '<li>' +
               '<div class="collapsible-header">' +
                 '<i class="material-icons">subtitles</i>' +
@@ -29,10 +30,11 @@ var ToolbarSettings = {
                 this.displayConfiguration() +
               '</div>' +
             '</li>' +
+        */
             '<li>' +
               '<div class="collapsible-header">' +
                 '<i class="material-icons">description</i>' +
-                'Telosys - Packages' +
+                'Packages' +
               '</div>' +
               '<div class="collapsible-body">' +
                 this.displayPackages(state.projectConfiguration.variables) +
@@ -41,7 +43,7 @@ var ToolbarSettings = {
             '<li>' +
               '<div class="collapsible-header">' +
                 '<i class="material-icons">description</i>' +
-                'Telosys - Directories' +
+                'Folders' +
               '</div>' +
               '<div class="collapsible-body">' +
                 this.displayDirectories(state.projectConfiguration.variables) +
@@ -93,7 +95,7 @@ var ToolbarSettings = {
     var html =
       '<div class="row">' +
         '<div class="input-field col s12">' +
-          '<h6>Directories</h6>' +
+          '<h6>Folders</h6>' +
         '</div>' +
         '<div class="input-field col s6">' +
           '<input type="text" id="configTelosysCfg_SRC" value="'+variables.SRC+'" />' +
