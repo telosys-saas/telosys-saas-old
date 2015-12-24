@@ -13,6 +13,8 @@ var Toolbar = {
     var state = Store.getState();
 
     var html =
+      '<!-- Dropdown Structure -->' +
+      '<ul id="toolbarProjectsList" class="dropdown-content"></ul>' +
       '<div class="light-blue darken-3 nav-wrapper">' +
         '<a href="#!" class="brand-logo left logo-telosys-min" style="position: relative; margin-left: 20px; margin-top: 5px;" onclick="ToolbarProjects.changeProject(null)"></a>' +
         '<a href="#!" class="brand-logo left" style="position: relative; margin-right: 20px;" onclick="ToolbarProjects.changeProject(null)">Telosys</a>' +
@@ -36,6 +38,7 @@ var Toolbar = {
       '</div>';
 
     $('#appbar').html(html);
+    $('#appbar .dropdown-button').dropdown();
   }
 
 };

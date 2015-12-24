@@ -30,39 +30,18 @@
 
 <body>
 
-<!-- Dropdown Structure -->
-<ul id='toolbarProjectsList' class='dropdown-content'></ul>
-<nav id="appbar" class="light-blue darken-3 nav-wrapper"><!--  id="toolbar" class="split split-vertical toolbar" -->
-</nav>
-
-<div id="projectnew"></div>
-<div id="settings"></div>
-<div id="bundles"></div>
-<div id="generation"></div>
-
-<!--
-  <nav id="toolbar" class="split split-vertical toolbar">
-    <div class="nav-wrapper">
-      <ul id="nav-mobile" class="hide-on-med-and-down">
-        <li><a href="#">Settings</a></li>
-        <li><a href="#">Bundles</a></li>
-      </ul>
-    </div>
-      <div class="left">
-        Project : <select id="toolbarProjects" onchange="ToolbarProjects.changeProject(this.value)"></select>
-      </div>
-      <div class="left" id="projectnew">
-      </div>
-      <div class="right">
-        User : <span id="toolbarUser"></span>
-      </div>
-    </div>
+  <nav id="appbar" class="light-blue darken-3 nav-wrapper">
   </nav>
--->
 
   <div id="main">
   </div>
 
+
+  <!-- Modals -->
+  <div id="projectnew"></div>
+  <div id="settings"></div>
+  <div id="bundles"></div>
+  <div id="generation"></div>
 
   <!-- This script adds the Roboto font to our project. For more detail go to this site:  http://www.google.com/fonts#UsePlace:use/Collection:Roboto:400,300,500 -->
   <script>
@@ -92,7 +71,6 @@
   <script src="lib/q/q.js"></script>
   <!-- jstree : https://www.jstree.com/ -->
   <script src="lib/jstree/jstree.js"></script>
-  <script src="lib/jstree/jstree.js"></script>
   <script src="app/services/auth.service.js"></script>
   <script src="app/services/bundles.service.js"></script>
   <script src="app/services/projects.service.js"></script>
@@ -104,7 +82,6 @@
   <script src="app/view/index/toolbar/toolbar.bundles.view.js"></script>
   <script src="app/view/index/toolbar/toolbar.generation.view.js"></script>
   <script src="app/view/index/toolbar/toolbar.download.view.js"></script>
-  <script src="app/view/index/toolbar/toolbar.projectnew.action.js"></script>
   <script src="app/view/index/toolbar/toolbar.projectnew.view.js"></script>
   <script src="app/view/index/toolbar/toolbar.projects.view.js"></script>
   <script src="app/view/index/toolbar/toolbar.projects.action.js"></script>
@@ -125,30 +102,9 @@
   <script src="app/view/index/ide/ide.view.js"></script>
   <script src="app.js"></script>
   <script src="index.js"></script>
-<script>
-  // split.js : http://nathancahill.github.io/Split.js/
-  /*
-  Split(['#toolbar', '#main'], {
-    direction: 'vertical',
-    gutterSize: 0,
-    sizes: [5, 95],
-    minSize: [47, 0],
-    cursor: 'row-resize'
-  });
-  */
-
-</script>
-<script>
+  <script>
     Main.init();
-</script>
-<script>
-  $(function () {
-    $( "#projects" ).change(function() {
-      var projectName = $("#projects").val();
-      console.log("Change project : "+projectName);
-    });
-  });
-</script>
+  </script>
 </body>
 
 </html>
