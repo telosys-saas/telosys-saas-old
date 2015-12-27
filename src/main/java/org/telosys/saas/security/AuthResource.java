@@ -2,6 +2,7 @@ package org.telosys.saas.security;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,17 +22,29 @@ import org.pac4j.core.profile.UserProfile;
 public class AuthResource {
 	
     @GET
-    @Path("status")
+    @Path("user")
     @Produces(MediaType.APPLICATION_JSON)
     public String status(@Context HttpServletRequest request, @Context HttpServletResponse response) {
     	J2EContext context = new J2EContext(request, response);
         ProfileManager manager = new ProfileManager(context);
         HttpSession session = request.getSession();
         UserProfile profile = manager.get(true);
+        
+        StringBuffer sessionStr = new StringBuffer();
+        Enumeration<String> attributeNames = session.getAttributeNames();
+        while(attributeNames.hasMoreElements()) {
+        	String key = attributeNames.nextElement();
+        	Object value = session.getAttribute(key);
+        	if(sessionStr.length() > 0) {
+        		sessionStr.append(", ");
+        	}
+        	sessionStr.append(key+" : "+value);
+        }
+        
         if(profile == null) {
         	return "{\"authenticated\":false}";
         } else {
-        	return "{\"authenticated\":" + (profile != null) + ", \"userId\": \""+profile.getId()+"\"}";
+        	return "{\"authenticated\":" + (profile != null) + ", \"userId\": \""+profile.getId()+"\" }" ; //, \"session\" : [" + sessionStr.toString() + "], \"userProfile\" : [" + profile + "]}";
         }
     }
 

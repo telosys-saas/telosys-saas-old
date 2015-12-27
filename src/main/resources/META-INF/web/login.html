@@ -26,30 +26,33 @@
 </head>
 
 <body>
-  <div class="main">
-    <h1>Sign in to Telosys SaaS</h1>
-    <form action="/api/callback" method="POST" class="form">
-      <input type="hidden" name="client_name" value="FormClient" />
-      <div>
-        <label>
-          Login:
-          <input type="text" name="username" />
-        </label>
-      </div>
-      <div>
-        <label>
-          Password:
-          <input type="password" name="password" />
-        </label>
-      </div>
-      <div class="buttons">
-        <button class="btn">Sign in</button>
-        <button class="btn" type="button" onclick="document.location = '/api/auth/github'">
-          <span class="fa fa-github fa-lg"></span>
-          Sign in with GitHub
-        </button>
-      </div>
-    </form>
+  <div class="main row">
+    <div class="col s12">
+      <h1>Sign in to Telosys SaaS</h1>
+      <form action="/api/callback" method="POST" class="form">
+        <input type="hidden" name="client_name" value="FormClient" />
+        <div>
+          <label>
+            Login:
+            <input type="text" name="username" />
+          </label>
+        </div>
+        <div>
+          <label>
+            Password:
+            <input type="password" name="password" />
+          </label>
+        </div>
+        <div class="buttons">
+          <button class="btn">Sign in</button>
+          <br/>
+          <button class="btn" type="button" onclick="document.location = '/api/auth/github'">
+            <span class="fa fa-github fa-lg"></span>
+            Sign in with GitHub
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </body>
 

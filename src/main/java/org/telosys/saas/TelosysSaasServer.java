@@ -15,8 +15,13 @@ import org.eclipse.jetty.server.handler.gzip.GzipHandler;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.eclipse.jetty.websocket.server.WebSocketHandler;
+import org.eclipse.jetty.websocket.servlet.WebSocketServletFactory;
 import org.telosys.saas.security.AuthResource;
 import org.telosys.saas.security.Pac4jConfigFactory;
+import org.telosys.saas.websocket.TelosysWebSocketHandler;
+import org.telosys.saas.websocket.scan.ScanEventHandler;
+import org.telosys.saas.websocket.scan.ScanFiles;
 
 public class TelosysSaasServer {
 	
@@ -26,13 +31,25 @@ public class TelosysSaasServer {
     }
 	
 	public void start() throws Exception {
-
+		
+		ScanFiles scanFiles = new ScanFiles("fs", new ScanEventHandler());
+		scanFiles.start();
+		
 		Server server = new Server(8080);
         
 		// context rest
 		ServletContextHandler contextBack = new ServletContextHandler(ServletContextHandler.SESSIONS);
 		contextBack.setContextPath("/api");
 		server.setHandler(contextBack);
+		
+		// websocket
+		
+		WebSocketHandler websocketHandler = new WebSocketHandler() {
+            @Override
+            public void configure(WebSocketServletFactory factory) {
+                factory.register(TelosysWebSocketHandler.class);
+            }
+        };
 		
 		// static web
 		ResourceHandler resource_handler = new ResourceHandler();
@@ -51,7 +68,7 @@ public class TelosysSaasServer {
         GzipHandler gzip = new GzipHandler();
         //server.setHandler(gzip);
         HandlerList handlers = new HandlerList();
-        handlers.setHandlers(new Handler[] { resource_handler, new DefaultHandler() });
+        handlers.setHandlers(new Handler[] { websocketHandler, resource_handler, new DefaultHandler() });
         gzip.setHandler(handlers);
 
         // Contexts

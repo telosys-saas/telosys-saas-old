@@ -22,5 +22,7 @@ var Main = {
     } else {
       Projects.init();
     }
+
+    Websocket.init();
   }
 };
