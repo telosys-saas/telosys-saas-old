@@ -28,14 +28,18 @@ public class UsersManager {
 	private Map<String, User> usersByLogin = new HashMap<>();
 	
 	public User getUserByLogin(String login) {
-		return usersByLogin.get(login);
+		synchronized (this.usersByLogin) {
+			return usersByLogin.get(login);
+		}
 	}
 
 	public synchronized void loadAllUsers() {
 		this.users = usersFileDao.loadAllUsers();
-		this.usersByLogin = new HashMap<>();
-		for(User user : users) {
-			usersByLogin.put(user.getLogin(), user);
+		synchronized (usersByLogin) {
+			this.usersByLogin.clear();
+			for(User user : users) {
+				usersByLogin.put(user.getLogin(), user);
+			}
 		}
 	}
 	

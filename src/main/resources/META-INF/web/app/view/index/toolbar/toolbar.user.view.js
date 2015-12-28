@@ -3,24 +3,42 @@ var ToolbarUser = {
   init: function() {
     var state = Store.getState();
 
-    var html = '';
-    html += '<span class="fa fa-user"></span> '
-    if(!state.auth) {
-      html += '<span>Error : no authentication</span>';
-    } else if (state.auth.authenticated) {
-      html += '<span>' + state.auth.userId + ' &nbsp; &nbsp; <button class="btn" onclick="ToolbarUser.logout()">Log out</button> </span>';
+    var html =
+      '<ul id="nav-mobile" class="hide-on-med-and-down left">' +
+        '<li><a class="dropdown-button" href="#" data-activates="toolbarUserMenu" style="font-size: 20px">' +
+          '<span class="fa fa-user"></span> &nbsp;';
+    if(state.auth.authenticated) {
+      html +=
+        state.auth.userId;
     } else {
-      html += '<span>Not authenticated &nbsp; &nbsp; <button class="btn" onclick="ToolbarUser.login()">Log in</button> </span>';
+      html +=
+        'Not authenticated'
     }
+    html +=
+          '<i class="material-icons right">arrow_drop_down</i></a></li>' +
+      '</ul>';
     $('#toolbarUser').html(html);
+
+    var html = '';
+    if(!state.auth.authenticated) {
+      html += '<li><a href="#!" onclick="ToolbarUser.login()">Log in</a></li>';
+      html += '<li><a href="#!" onclick="Login.createAccount()">Create an account</a></li>';
+    } else {
+      html += '<li><a href="#!" onclick="ToolbarUser.logout()">Log out</a></li>';
+    }
+    $('#toolbarUserMenu').html(html);
+    $('#toolbarUser .dropdown-button').dropdown();
   },
 
   logout: function() {
-    ToolbarUserAction.onLogout();
+    document.location = '/api/auth/logout?url=/';
   },
 
   login: function() {
-    ToolbarUserAction.onLogin();
+    // document.location = '/login.html';
+    var state = Store.getState();
+    state.createAccount = false;
+    Main.display();
   }
 
 };

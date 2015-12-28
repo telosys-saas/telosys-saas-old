@@ -1,6 +1,5 @@
 .center {
-    margin-left: auto;
-    margin-ritgh: auto;
+    text-align: center;
 }
 
 .left {
@@ -73,3 +72,6 @@ html .vakata-context li>a>i:empty {
     width: 1.5em;
 }
 
+.buttons {
+    text-align: right;
+}

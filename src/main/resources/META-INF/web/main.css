@@ -68,3 +68,7 @@ ul ul, ul ol, ol ol, ol ul {
 .fa-2x {
     vertical-align: -15%;
 }
+
+html .material-icons {
+    line-height: inherit;
+}

@@ -4,37 +4,45 @@ var AccountCreate = {
     this.display();
   },
 
+  // exemple : http://jsfiddle.net/user/signup/
   display: function() {
     $('#main').html(
-      '<form name="createAccountForm">' +
-        '<h4>Create account</h4>' +
-        '<div>' +
-          '<label>' +
-            'Login:' +
-            '<input type="text" name="login" />' +
-          '</label>' +
+      '<div style="margin: 30px auto; width: 500px; padding: 0 0px" class="card">' +
+        '<div class="card-content">' +
+          '<form name="createAccountForm">' +
+            '<div class="row">' +
+              '<div class="input-field col s12">' +
+                '<span class="card-title">Create an account</span>' +
+              '</div>' +
+              '<div class="input-field col s12">' +
+                '<i class="material-icons prefix">account_circle</i>' +
+                '<input type="text" name="username" id="createaccountform_username" />' +
+                '<label for="createaccountform_username">Username</label>' +
+              '</div>' +
+              '<div class="input-field col s12">' +
+                '<i class="material-icons prefix">mail</i>' +
+                '<input type="text" name="mail" id="createaccountform_mail" />' +
+                '<label for="createaccountform_mail">E-mail address</label>' +
+              '</div>' +
+              '<div class="input-field col s12">' +
+                '<i class="material-icons prefix">vpn_key</i>' +
+                '<input type="text" name="password1" id="createaccountform_password1" />' +
+                '<label for="createaccountform_password1">Password<label>' +
+              '</div>' +
+              '<div class="input-field col s12">' +
+                '<i class="material-icons prefix"></i>' +
+                '<input type="text" name="password2" id="createaccountform_password2" />' +
+                '<label for="createaccountform_password2">Password confirmation</label>' +
+              '</div>' +
+            '</div>' +
+            '<div class="card-action">' +
+              '<div class="buttons col s12">' +
+                '<a href="#" onclick="AccountCreate.cancelCreateAccount()">Cancel</a>' +
+                ' &nbsp; &nbsp; ' +
+                '<button type="button" class="btn" onsubmit="AccountCreate.createAccount(this)" >Create account</button>' +
+            '</div>' +
+          '</div>' +
         '</div>' +
-        '<div>' +
-          '<label>' +
-            'Mail:' +
-            '<input type="text" name="mail" />' +
-          '</label>' +
-        '</div>' +
-        '<div>' +
-          '<label>' +
-            'Password:' +
-            '<input type="text" name="password1" />' +
-          '</label>' +
-        '</div>' +
-        '<div>' +
-          '<label>' +
-            'Password confirmation:' +
-            '<input type="text" name="password2" />' +
-          '</label>' +
-        '</div>' +
-        '<div class="buttons">' +
-          '<button type="button" class="btn" onclick="AccountCreate.createAccount(this)" >Create account</button>' +
-      '</div>' +
       '</div>'
     );
   },
@@ -64,6 +72,12 @@ var AccountCreate = {
     AuthService.createAccount(user, function() {
       alert('User created');
     }.bind(this));
+  },
+
+  cancelCreateAccount: function() {
+    var state = Store.getState();
+    state.createAccount = false;
+    Main.display();
   }
 
-}
+};
