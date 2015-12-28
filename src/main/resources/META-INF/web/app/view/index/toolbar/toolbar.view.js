@@ -18,10 +18,12 @@ var Toolbar = {
       '<div class="light-blue darken-3 nav-wrapper">' +
         '<a href="#!" class="brand-logo left logo-telosys-min" style="position: relative; margin-left: 20px; margin-top: 5px;" onclick="ToolbarProjects.changeProject(null)"></a>' +
         '<a href="#!" class="brand-logo left" style="position: relative; margin-right: 20px;" onclick="ToolbarProjects.changeProject(null)">Telosys</a>' +
-        '<ul id="nav-mobile" class="hide-on-med-and-down left">' +
-          '<li>' +
-            '<a class="dropdown-button" href="#" data-activates="toolbarProjectsList">Project<span id="toolbarProjectsName"></span><i class="material-icons right">arrow_drop_down</i></a>' +
-          '</li>';
+        '<ul id="nav-mobile" class="hide-on-med-and-down left">';
+
+    if(state.auth.userId != null) {
+      html +=
+        '<li><a class="dropdown-button" href="#" data-activates="toolbarProjectsList">Project<span id="toolbarProjectsName"></span><i class="material-icons right">arrow_drop_down</i></a></li>';
+    }
 
     if(state.projectId) {
       html +=

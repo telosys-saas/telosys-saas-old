@@ -12,17 +12,24 @@ var Main = {
   display: function() {
     var state = Store.getState();
 
-    if(!state.auth.authenticated) {
-      document.location = 'login.html';
-    }
-
     Toolbar.init();
-    if(state.projectId) {
-      IDE.init();
-    } else {
-      Projects.init();
+
+    if(!state.auth.authenticated) {
+      if(state.createAccount) {
+        AccountCreate.init();
+      } else {
+        // document.location = 'login.html';
+        Login.init();
+      }
+    }
+    else { // authenticated
+      if(state.projectId) {
+        IDE.init();
+      } else {
+        Projects.init();
+      }
     }
 
-    Websocket.init();
+    //Websocket.init();
   }
 };

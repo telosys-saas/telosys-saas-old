@@ -19,6 +19,7 @@ import org.eclipse.jetty.websocket.server.WebSocketHandler;
 import org.eclipse.jetty.websocket.servlet.WebSocketServletFactory;
 import org.telosys.saas.security.AuthResource;
 import org.telosys.saas.security.Pac4jConfigFactory;
+import org.telosys.saas.security.user.UsersManager;
 import org.telosys.saas.websocket.TelosysWebSocketHandler;
 import org.telosys.saas.websocket.scan.ScanEventHandler;
 import org.telosys.saas.websocket.scan.ScanFiles;
@@ -34,6 +35,8 @@ public class TelosysSaasServer {
 		
 		ScanFiles scanFiles = new ScanFiles("fs", new ScanEventHandler());
 		scanFiles.start();
+		
+		UsersManager.getInstance();
 		
 		Server server = new Server(8080);
         
