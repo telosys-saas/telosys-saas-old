@@ -3,6 +3,7 @@ var Store = {
     var deferred = Q.defer();
 
     this.state = {
+      editors: {}
     };
 
     AuthService.status()

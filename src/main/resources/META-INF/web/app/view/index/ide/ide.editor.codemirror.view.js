@@ -1,10 +1,30 @@
 
 var IDEEditorCodemirror = {
   init: function() {
-    $('#editorCodemirror').html('');
 
-    IDEEditorCodemirrorAction.loadFile(function (file) {
-      $('#editorCodemirror').html('');
+    var state = Store.getState();
+    if(state.fileId) {
+      if(state.editors[state.fileId] == null) {
+        this.loadFile();
+      } else {
+        this.showFile();
+      }
+    }
+  },
+
+  hideFiles: function() {
+    $('#editorCodemirror').children().css( "display", "none");
+  },
+
+  showFile: function() {
+    var state = Store.getState();
+    this.hideFiles();
+    document.getElementById('editorCodemirror_'+state.fileId).style.display = 'block';
+  },
+
+  loadFile: function() {
+    var state = Store.getState();
+    FilesService.getFileForProject(state.auth.userId, state.projectId, state.fileId, function (file) {
 
       var editorOptions = {
         value: file.content,
@@ -12,13 +32,18 @@ var IDEEditorCodemirror = {
       };
 
       var mode = this.getModeForFileExtension(file.name);
-      if(mode) {
+      if (mode) {
         editorOptions.mode = mode;
       }
 
-      var editor = CodeMirror(document.getElementById('editorCodemirror'), editorOptions);
+      this.hideFiles();
+
+      $('#editorCodemirror').append('<div id="editorCodemirror_'+file.id+'"></div>');
+      var editor = CodeMirror(document.getElementById('editorCodemirror_'+file.id), editorOptions);
       var state = Store.getState();
-      state.editor = editor;
+      state.editors[file.id] = editor;
+
+      IDEWorkingFiles.display();
     }.bind(this));
   },
 

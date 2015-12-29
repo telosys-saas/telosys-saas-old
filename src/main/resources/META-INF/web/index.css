@@ -75,3 +75,13 @@ html .vakata-context li>a>i:empty {
 .buttons {
     text-align: right;
 }
+
+#workingfiles .collection .collection-item {
+    line-height: 0.3em;
+}
+
+#left .collapsible-header {
+    border-top: 1px solid lightgray;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
