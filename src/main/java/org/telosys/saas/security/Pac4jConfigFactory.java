@@ -14,7 +14,7 @@ public class Pac4jConfigFactory implements ConfigFactory {
         gitHubClient.setScope("user:email");
         
         // FormClient formClient = new FormClient("http://localhost:8080/login.html", new SimpleTestUsernamePasswordAuthenticator());
-        FormClient formClient = new FormClient("http://localhost:8080/login.html", new FormAuthenticator());
+        FormClient formClient = new FormClient("http://localhost:8080", new FormAuthenticator());
         
         Clients clients =
                 new Clients("http://localhost:8080/api/callback",
