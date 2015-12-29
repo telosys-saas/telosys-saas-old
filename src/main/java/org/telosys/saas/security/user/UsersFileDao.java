@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.telosys.saas.domain.User;
 import org.telosys.saas.util.Util;
@@ -24,7 +24,7 @@ public class UsersFileDao {
 	}
 	
 	public synchronized Set<User> loadAllUsers() {
-		Set<User> users = new HashSet<>();
+		Set<User> users = new TreeSet<>();
 		
 		File file = getUsersFile();
 		if(!file.exists()) {

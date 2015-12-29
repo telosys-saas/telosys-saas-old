@@ -24,6 +24,8 @@ var ToolbarUser = {
       html += '<li><a href="#!" onclick="ToolbarUser.login()">Log in</a></li>';
       html += '<li><a href="#!" onclick="Login.createAccount()">Create an account</a></li>';
     } else {
+//      html += '<li><a href="#!" onclick="ToolbarUser.settings()">Settings</a></li>';
+      html += '<li><a href="#!" onclick="ToolbarUser.changePassword()">Change password</a></li>';
       html += '<li><a href="#!" onclick="ToolbarUser.logout()">Log out</a></li>';
     }
     $('#toolbarUserMenu').html(html);
@@ -39,6 +41,14 @@ var ToolbarUser = {
     var state = Store.getState();
     state.createAccount = false;
     Main.display();
+  },
+
+  settings: function() {
+    ToolbarUserSettings.openModal();
+  },
+
+  changePassword: function() {
+    ToolbarUserChangePassword.openModal();
   }
 
 };

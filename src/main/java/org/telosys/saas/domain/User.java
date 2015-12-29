@@ -8,6 +8,24 @@ public class User implements Serializable, Comparable<User> {
 	private static final long serialVersionUID = 12375932534108120L;
 
 	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(!(obj instanceof User)) {
+			return false;
+		}
+		User user2 = (User) obj;
+		if (user2.getLogin() == null) {
+			return user2.getLogin() == null;
+		}
+		if(this.getLogin() == null) {
+			return false;
+		}
+		return this.getLogin().equals(user2.getLogin());
+	}
+	
+	@Override
 	public int compareTo(User user2) {
 		if(user2 == null) {
 			return 1;
