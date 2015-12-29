@@ -11,13 +11,16 @@ var IDEWorkingFiles = {
       '<ul class="collection">';
 
     for(var fileId in state.editors) {
+      var filename = fileId.substring(fileId.lastIndexOf('/')+1);
+      var filepath = fileId.substring(0,fileId.lastIndexOf('/'));
       html +=
-        '<li class="collection-item" id="workingfiles_'+this.formatFileId(fileId)+'">' +
+        '<li class="collection-item truncate" id="workingfiles_'+this.formatFileId(fileId)+'">' +
           '<a href="#" onclick="IDEWorkingFiles.closeFile(\'' + fileId + '\')">' +
             '<i class="fa fa-times fa-lg"></i> ' +
           '</a>' +
           '<a href="#" onclick="IDEWorkingFiles.showFile(\'' + fileId + '\')">' +
-            fileId +
+            filename +
+            ' <span style="font-size: smaller; color: gray;">' + filepath + '</span>' +
           '</a>' +
         '</li>';
     }
