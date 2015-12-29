@@ -72,3 +72,22 @@ ul ul, ul ol, ol ol, ol ul {
 html .material-icons {
     line-height: inherit;
 }
+
+.input-field .prefix ~ label {
+    height: 18px;
+}
+
+input[type=text] + label:after,
+input[type=password] + label:after,
+input[type=email] + label:after,
+input[type=url] + label:after,
+input[type=time] + label:after,
+input[type=date] + label:after,
+input[type=datetime-local] + label:after,
+input[type=tel] + label:after,
+input[type=number] + label:after,
+input[type=search] + label:after,
+textarea.materialize-textarea + label:after {
+    position: relative;
+    top: 22px;
+}

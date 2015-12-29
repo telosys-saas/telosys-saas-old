@@ -16,30 +16,30 @@ var AccountCreate = {
               '</div>' +
               '<div class="input-field col s12">' +
                 '<i class="material-icons prefix">account_circle</i>' +
-                '<input type="text" name="login" id="createaccountform_login" onchange="AccountCreate.validateLogin()" />' +
-                '<label for="createaccountform_login">Username</label>' +
+                '<input type="text" name="login" id="createaccountform_login" onchange="AccountCreate.onchangeLogin()" />' +
+                '<label for="createaccountform_login" id="createaccountform_login_label">Username</label>' +
               '</div>' +
               '<div class="input-field col s12">' +
                 '<i class="material-icons prefix">mail</i>' +
-                '<input type="text" name="mail" id="createaccountform_mail" onchange="AccountCreate.validateMail()" />' +
-                '<label for="createaccountform_mail">E-mail address</label>' +
+                '<input type="text" name="mail" id="createaccountform_mail" onchange="AccountCreate.onchangeMail()" />' +
+                '<label for="createaccountform_mail" id="createaccountform_mail_label">E-mail address</label>' +
               '</div>' +
               '<div class="input-field col s12">' +
                 '<i class="material-icons prefix">vpn_key</i>' +
-                '<input type="text" name="password1" id="createaccountform_password1" onchange="AccountCreate.validatePassword1()" />' +
-                '<label for="createaccountform_password1">Password<label>' +
+                '<input type="password" name="password1" id="createaccountform_password1" onchange="AccountCreate.onchangePassword1()" />' +
+                '<label for="createaccountform_password1" id="createaccountform_password1_label">Password<label>' +
               '</div>' +
               '<div class="input-field col s12">' +
                 '<i class="material-icons prefix"></i>' +
-                '<input type="text" name="password2" id="createaccountform_password2" onchange="AccountCreate.validatePassword2()" />' +
-                '<label for="createaccountform_password2">Password confirmation</label>' +
+                '<input type="password" name="password2" id="createaccountform_password2" onchange="AccountCreate.onchangePassword2()" />' +
+                '<label for="createaccountform_password2" id="createaccountform_password2_label">Password confirmation</label>' +
               '</div>' +
             '</div>' +
             '<div class="card-action">' +
               '<div class="buttons col s12">' +
                 '<a href="#" onclick="AccountCreate.cancelCreateAccount()">Cancel</a>' +
                 ' &nbsp; &nbsp; ' +
-                '<button type="button" class="btn disabled" onsubmit="AccountCreate.createAccount(this)" >Create account</button>' +
+                '<button type="button" class="btn disabled" onclick="AccountCreate.createAccount()" id="createaccountform_button_create">Create account</button>' +
             '</div>' +
           '</div>' +
         '</div>' +
@@ -47,70 +47,197 @@ var AccountCreate = {
     );
   },
 
-  validateLogin: function() {
+  onchangeLogin: function() {
+    $('#createaccountform_login').removeClass('valid');
+    $('#createaccountform_login').removeClass('invalid');
+
     var login = document.forms['createAccountForm'].elements['login'].value;
-    if(!login.match(/^[a-zA-Z]+[a-zA-Z0-9_]{2,}$/g)) {
-      console.log('not ok login');
+    var result = this.validateLogin(login);
+    if(!result.ok) {
+      $('#createaccountform_login').addClass('invalid');
+      $('#createaccountform_login_label').attr('data-error', result.message);
+    } else {
+      $('#createaccountform_login').addClass('valid');
+    }
+    this.activateButton();
+  },
+
+  onchangeMail: function() {
+    $('#createaccountform_mail').removeClass('valid');
+    $('#createaccountform_mail').removeClass('invalid');
+
+    var mail = document.forms['createAccountForm'].elements['mail'].value;
+    var result = this.validateMail(mail);
+    if(!result.ok) {
+      $('#createaccountform_mail').addClass('invalid');
+      $('#createaccountform_mail_label').attr('data-error', result.message);
+    } else {
+      $('#createaccountform_mail').addClass('valid');
+    }
+    this.activateButton();
+  },
+
+  onchangePassword1: function() {
+    $('#createaccountform_password1').removeClass('valid');
+    $('#createaccountform_password1').removeClass('invalid');
+
+    var password1 = document.forms['createAccountForm'].elements['password1'].value;
+    var password2 = document.forms['createAccountForm'].elements['password2'].value;
+    var result = this.validatePassword1(password1);
+    if(!result.ok) {
+      $('#createaccountform_password1').addClass('invalid');
+      $('#createaccountform_password1_label').attr('data-error', result.message);
+    } else {
+      $('#createaccountform_password1').addClass('valid');
+    }
+    if(password2 != null && password2 != '') {
+      this.onchangePassword2();
+    }
+    this.activateButton();
+  },
+
+  onchangePassword2: function() {
+    $('#createaccountform_password2').removeClass('valid');
+    $('#createaccountform_password2').removeClass('invalid');
+
+    var password1 = document.forms['createAccountForm'].elements['password1'].value;
+    var password2 = document.forms['createAccountForm'].elements['password2'].value;
+    var result = this.validatePassword2(password1, password2);
+    if(!result.ok) {
+      $('#createaccountform_password2').addClass('invalid');
+      $('#createaccountform_password2_label').attr('data-error', result.message);
+    } else {
+      $('#createaccountform_password2').addClass('valid');
+    }
+    this.activateButton();
+  },
+
+  validateLogin: function(login) {
+    if(!login.match(/^[a-zA-Z]+.*$/g)) {
+      return {
+        ok: false,
+        message: 'Must start by a letter'
+      };
+    } else if(!login.match(/^[a-zA-Z0-9]*$/g)) {
+      return {
+        ok: false,
+        message: 'Must contains only letters and numbers'
+      };
+    } else if(login.length < 3) {
+      return {
+        ok: false,
+        message: 'Too short (3 characters min)'
+      };
+    } else {
+      return {
+        ok: true
+      };
     }
   },
 
-  validateMail: function() {
-    var mail = document.forms['createAccountForm'].elements['mail'].value;
+  validateMail: function(mail) {
     if(!mail.match(/^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/g)) {
-      console.log('not ok mail');
+      return {
+        ok: false,
+        message: 'Not a valid e-mail address'
+      };
+    } else {
+      return {
+        ok: true
+      }
     }
   },
 
-  validatePassword1: function() {
-    var password1 = document.forms['createAccountForm'].elements['password1'].value;
-    var password2 = document.forms['createAccountForm'].elements['password2'].value;
+  validatePassword1: function(password1) {
+    var ok, message;
     if (!password1.match(/.*[0-9]+.*/g)) {
-      console.log('password : missing number');
+      return {
+        ok: false,
+        message: 'Missing a number character'
+      };
     }
-    if (!password1.match(/.*[A-Z]+.*/g)) {
-      console.log('password : missing uppercase character');
+    else if (!password1.match(/.*[A-Z]+.*/g)) {
+      return {
+        ok: false,
+        message: 'Missing an uppercase character'
+      };
     }
-    if (!password1.match(/.*[a-z]+.*/g)) {
-      console.log('password : missing lowercase character');
+    else if (!password1.match(/.*[a-z]+.*/g)) {
+      return {
+        ok: false,
+        message: 'Missing a lowercase character'
+      };
     }
-    if (!password1.length < 6) {
-      console.log('password : too short (6 characters min)');
+    else if (password1.length < 6) {
+      return {
+        ok: false,
+        message: 'Too short (6 characters min)'
+      };
+    }
+    else {
+      return {
+        ok: true
+      }
     }
   },
 
-  validatePassword2: function() {
-    var password1 = document.forms['createAccountForm'].elements['password1'].value;
-    var password2 = document.forms['createAccountForm'].elements['password2'].value;
+  validatePassword2: function(password1, password2) {
     if(password1 !== password2) {
-      console.log('password 1 different than password 2');
+      return {
+        ok: false,
+        message: 'Passwords are not identicals'
+      };
+    } else {
+      return {
+        ok: true
+      };
     }
+    return {
+      ok: ok,
+      message: message
+    };
   },
 
-  createAccount: function(form) {
+  validateForm: function() {
     var login = document.forms['createAccountForm'].elements['login'].value;
     var mail = document.forms['createAccountForm'].elements['mail'].value;
     var password1 = document.forms['createAccountForm'].elements['password1'].value;
     var password2 = document.forms['createAccountForm'].elements['password2'].value;
-    if(login == null || '' == login.trim()) {
-      return;
+    var resultLogin = this.validateLogin(login);
+    var resultMail = this.validateMail(mail);
+    var resultPassword1 = this.validatePassword1(password1);
+    var resultPassword2 = this.validatePassword2(password1, password2);
+    var ok =
+      resultLogin != null && resultLogin.ok
+      && resultMail != null && resultMail.ok
+      && resultPassword1 != null && resultPassword1.ok
+      && resultPassword2 != null && resultPassword2.ok;
+    return ok;
+  },
+
+  activateButton: function() {
+    if(this.validateForm()) {
+      $('#createaccountform_button_create').removeClass('disabled');
+    } else {
+      $('#createaccountform_button_create').addClass('disabled');
     }
-    if(password1 == null || '' == password1.trim()) {
-      return;
+  },
+
+  createAccount: function() {
+    if(this.validateForm()) {
+      var login = document.forms['createAccountForm'].elements['login'].value;
+      var mail = document.forms['createAccountForm'].elements['mail'].value;
+      var password1 = document.forms['createAccountForm'].elements['password1'].value;
+      var password2 = document.forms['createAccountForm'].elements['password2'].value;
+      var user = {
+        login: login,
+        mail: mail,
+        password: password1
+      };
+      AuthService.createAccount(user, function () {
+        alert('User created');
+      }.bind(this));
     }
-    if(password1 != password2) {
-      return;
-    }
-    if(mail == null || '' == mail.trim()) {
-      return;
-    }
-    var user = {
-      login: login,
-      mail: mail,
-      password: password1
-    };
-    AuthService.createAccount(user, function() {
-      alert('User created');
-    }.bind(this));
   },
 
   cancelCreateAccount: function() {
