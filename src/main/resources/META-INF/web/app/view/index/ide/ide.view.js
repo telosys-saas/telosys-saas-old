@@ -17,6 +17,8 @@ var IDE = {
             '<div class="collapsible-header active">' +
               '<i class="material-icons">track_changes</i>' +
               'Working files' +
+              '<a href="#" style="float:right" onclick="IDEWorkingFiles.closeAll(event)"><i class="fa fa-times"></i></a>' +
+              '<a href="#" style="float:right" onclick="IDEWorkingFiles.saveAll(event)"><i class="fa fa-floppy-o"></i></a>' +
             '</div>' +
             '<div class="collapsible-body" id="workingfiles" style="border: none;">' +
             '</div>' +
@@ -33,13 +35,13 @@ var IDE = {
       '</div>' +
       '<div id="b" class="split split-horizontal">' +
         '<div id="editor" class="split content">' +
-          '<div id="editorTabs" class="editorTabs"></div>' +
-          '<div id="editor1" class="editorTabContent">' +
+        //  '<div id="editorTabs" class="editorTabs"></div>' +
+        //  '<div id="editor1" class="editorTabContent">' +
             '<div id="editorToolbar" class="editorToolbar"></div>' +
             '<div id="editorCodemirror" class="editorCodemirror"></div>' +
-          '</div>' +
-        '</div>' +
-        '<div id="generate" class="split content">' +
+        //  '</div>' +
+        //'</div>' +
+        //'<div id="generate" class="split content">' +
         '</div>' +
       '</div>');
 
@@ -53,6 +55,7 @@ var IDE = {
       cursor: 'col-resize'
     });
 
+    /*
     Split(['#editor', '#generate'], {
       direction: 'vertical',
       sizes: [100, 1],
@@ -60,6 +63,7 @@ var IDE = {
       gutterSize: 8,
       cursor: 'row-resize'
     });
+    */
   }
 
 };

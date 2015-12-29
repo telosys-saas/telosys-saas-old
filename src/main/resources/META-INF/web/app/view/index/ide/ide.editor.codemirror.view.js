@@ -19,7 +19,17 @@ var IDEEditorCodemirror = {
   showFile: function() {
     var state = Store.getState();
     this.hideFiles();
-    document.getElementById('editorCodemirror_'+state.fileId).style.display = 'block';
+    document.getElementById('editorCodemirror_'+this.formatFileId(state.fileId)).style.display = 'block';
+  },
+
+  closeFile: function(fileId) {
+    var state = Store.getState();
+    delete state.editors[fileId];
+    if(state.fileId == fileId) {
+      delete state.fileId;
+    }
+    $('#editorCodemirror_'+this.formatFileId(fileId)).remove();
+    IDEEditor.init();
   },
 
   loadFile: function() {
@@ -38,8 +48,8 @@ var IDEEditorCodemirror = {
 
       this.hideFiles();
 
-      $('#editorCodemirror').append('<div id="editorCodemirror_'+file.id+'"></div>');
-      var editor = CodeMirror(document.getElementById('editorCodemirror_'+file.id), editorOptions);
+      $('#editorCodemirror').append('<div id="editorCodemirror_'+this.formatFileId(file.id)+'"></div>');
+      var editor = CodeMirror(document.getElementById('editorCodemirror_'+this.formatFileId(file.id)), editorOptions);
       var state = Store.getState();
       state.editors[file.id] = editor;
 
@@ -74,7 +84,29 @@ var IDEEditorCodemirror = {
       default:
         return ext;
     }
+  },
 
+  saveFile: function(fileId) {
+    var state = Store.getState();
+
+    if(fileId == null) {
+      fileId = state.fileId;
+    }
+
+    if(fileId && state.editors[fileId]) {
+      var file = {
+        id: fileId,
+        content: state.editors[fileId].getValue()
+      };
+      FilesService.saveFileForProject(state.auth.userId, state.projectId, file,
+        function (file) {
+          console.log('file saved');
+        });
+    }
+  },
+
+  formatFileId: function(fileId) {
+    return fileId.replace(/\./g,'_').replace(/\//g,'__');
   }
 
 };
