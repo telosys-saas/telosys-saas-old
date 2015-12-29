@@ -20,6 +20,10 @@ var AuthService = {
     return deferred.promise;
   },
 
+  login: function(login, password, callback) {
+    document.location = host + "/api/callback?username="+login+"&password="+password+"&client_name=FormClient";
+  },
+
   createAccount: function(user, callback) {
     $.ajax({
       method: "POST",

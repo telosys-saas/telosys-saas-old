@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.telosys.saas.domain.User;
+import org.telosys.saas.util.encrypted.PasswordEncoder;
 
 public class UsersManager {
 	
@@ -22,8 +23,9 @@ public class UsersManager {
 		return instance;
 	}
 	
-	private UsersFileDao usersFileDao = new UsersFileDao(); 
-	
+	private UsersFileDao usersFileDao = new UsersFileDao();
+    private PasswordEncoder passwordEncoder = new PasswordEncoder();
+
 	private Set<User> users = new HashSet<User>();
 	private Map<String, User> usersByLogin = new HashMap<>();
 	
@@ -47,6 +49,13 @@ public class UsersManager {
 		if(user.getLogin() == null || "".equals(user.getLogin().trim())) {
 			throw new IllegalStateException("User login is not defined");
 		}
+
+		if(user.getPassword() != null) {
+			String passwordEncrypted = passwordEncoder.encrypt(user.getPassword());
+			user.setPasswordEncrypted(passwordEncrypted);
+			user.setPassword(null);
+		}
+		
 		users.remove(user);
 		users.add(user);
 		usersByLogin.put(user.getLogin(), user);

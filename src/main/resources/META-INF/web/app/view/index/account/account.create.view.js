@@ -235,7 +235,9 @@ var AccountCreate = {
         password: password1
       };
       AuthService.createAccount(user, function () {
-        alert('User created');
+        AuthService.login(user.login, user.password, function() {
+          Main.init();
+        })
       }.bind(this));
     }
   },

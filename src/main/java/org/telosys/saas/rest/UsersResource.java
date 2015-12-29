@@ -24,7 +24,7 @@ import org.telosys.saas.util.Util;
 public class UsersResource {
 
 	private UsersManager usersManager = UsersManager.getInstance();
-	
+
 	@Context
 	private HttpServletRequest request;
 	@Context
