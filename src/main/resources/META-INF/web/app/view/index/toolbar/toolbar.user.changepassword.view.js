@@ -22,12 +22,12 @@ var ToolbarUserChangePassword = {
           '<h4>Change password</h4>' +
           '<div class="row">' +
             '<div class="input-field col s12">' +
-              '<i class="material-icons prefix">vpn_key</i>' +
+              '<i class="mdi mdi-key prefix"></i>' +
               '<input type="password" id="changepasswordform_password1" onchange="ToolbarUserChangePassword.onchangePassword1()" />' +
               '<label for="changepasswordform_password1" id="changepasswordform_password1_label">Password<label>' +
             '</div>' +
             '<div class="input-field col s12">' +
-              '<i class="material-icons prefix"></i>' +
+              '<i class="mdi prefix"></i>' +
               '<input type="password" id="changepasswordform_password2" onchange="ToolbarUserChangePassword.onchangePassword2()" />' +
               '<label for="changepasswordform_password2" id="changepasswordform_password2_label">Password confirmation</label>' +
             '</div>' +

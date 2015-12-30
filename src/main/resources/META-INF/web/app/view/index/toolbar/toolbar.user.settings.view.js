@@ -23,7 +23,7 @@ var ToolbarUserSettings = {
           '<ul class="collapsible" data-collapsible="accordion">' +
             '<li>' +
               '<div class="collapsible-header active">' +
-                '<i class="material-icons">perm_contact_calendar</i>' +
+                '<i class="mdi mdi-action-perm-contact-cal"></i>' +
                 'Settings' +
               '</div>' +
               '<div class="collapsible-body">' +
@@ -33,7 +33,7 @@ var ToolbarUserSettings = {
           '</ul>' +
         '</div>' +
         '<div class="modal-footer">' +
-          '<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat "onclick="ToolbarUserSettings.closeModal()">Close</a>' +
+          '<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" onclick="ToolbarUserSettings.closeModal()">Close</a>' +
         '</div>' +
       '</div>');
   },

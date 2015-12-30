@@ -48,7 +48,7 @@ var ToolbarBundles = {
       html +=
         '<li>' +
           '<div class="collapsible-header">' +
-            '<i class="material-icons">redeem</i>' +
+            '<i class="mdi mdi-package-variant"></i>' +
             bundle.name +
           '</div>' +
           '<div class="collapsible-body"><p>' +
@@ -68,7 +68,7 @@ var ToolbarBundles = {
       html +=
         '<li>' +
           '<div class="collapsible-header">' +
-            '<i class="material-icons">redeem</i>' +
+            '<i class="mdi mdi-package-variant-closed"></i>' +
             bundle.name +
             '</div>' +
           '<div class="collapsible-body"><p>' +

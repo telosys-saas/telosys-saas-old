@@ -58,7 +58,7 @@ var IDEGenerate = {
           html +=
             '<li>' +
               '<div class="collapsible-header red lighten-4'+((i==0)?' active':'')+'">' +
-                '<i class="material-icons">error_outline</i>'+title+
+                '<i class="mdi mdi-alert-error"></i>'+title+
               '</div>' +
               '<div class="collapsible-body"><pre>'+content+'</pre></div>' +
             '</li>';

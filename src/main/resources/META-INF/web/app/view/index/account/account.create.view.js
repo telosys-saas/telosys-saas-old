@@ -16,22 +16,22 @@ var AccountCreate = {
                   '<span class="card-title">Create an account</span>' +
                 '</div>' +
                 '<div class="input-field col s12">' +
-                  '<i class="material-icons prefix">account_circle</i>' +
+                  '<i class="mdi mdi-account-circle prefix"></i>' +
                   '<input type="text" name="login" id="createaccountform_login" onchange="AccountCreate.onchangeLogin()" />' +
                   '<label for="createaccountform_login" id="createaccountform_login_label">Username</label>' +
                 '</div>' +
                 '<div class="input-field col s12">' +
-                  '<i class="material-icons prefix">mail</i>' +
+                  '<i class="mdi mdi-email prefix"></i>' +
                   '<input type="text" name="mail" id="createaccountform_mail" onchange="AccountCreate.onchangeMail()" />' +
                   '<label for="createaccountform_mail" id="createaccountform_mail_label">E-mail address</label>' +
                 '</div>' +
                 '<div class="input-field col s12">' +
-                  '<i class="material-icons prefix">vpn_key</i>' +
+                  '<i class="mdi mdi-key prefix"></i>' +
                   '<input type="password" name="password1" id="createaccountform_password1" onchange="AccountCreate.onchangePassword1()" />' +
                   '<label for="createaccountform_password1" id="createaccountform_password1_label">Password<label>' +
                 '</div>' +
                 '<div class="input-field col s12">' +
-                  '<i class="material-icons prefix"></i>' +
+                  '<i class="mdi prefix"></i>' +
                   '<input type="password" name="password2" id="createaccountform_password2" onchange="AccountCreate.onchangePassword2()" />' +
                   '<label for="createaccountform_password2" id="createaccountform_password2_label">Password confirmation</label>' +
                 '</div>' +
@@ -247,6 +247,7 @@ var AccountCreate = {
   cancelCreateAccount: function() {
     var state = Store.getState();
     state.createAccount = false;
+    delete state.page;
     Main.display();
   }
 

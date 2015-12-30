@@ -23,7 +23,7 @@ var Toolbar = {
 
     if(state.auth.userId != null) {
       html +=
-        '<li><a class="dropdown-button" href="#" data-activates="toolbarProjectsList">Project<span id="toolbarProjectsName"></span><i class="material-icons right">arrow_drop_down</i></a></li>';
+        '<li><a class="dropdown-button" href="#" data-activates="toolbarProjectsList">Project<span id="toolbarProjectsName"></span><i class="mdi mdi-menu-down right"></i></a></li>';
     }
 
     if(state.projectId) {

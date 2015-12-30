@@ -15,7 +15,7 @@ var ToolbarUser = {
         'Not authenticated'
     }
     html +=
-          '<i class="material-icons right">arrow_drop_down</i></a></li>' +
+          '<i class="mdi mdi-menu-down right"></i></a></li>' +
       '</ul>';
     $('#toolbarUser').html(html);
 

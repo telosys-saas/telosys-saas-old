@@ -15,7 +15,7 @@ var IDE = {
         '<ul class="collapsible" data-collapsible="expandable" style="margin: 0; box-shadow: none; border: none;">' +
           '<li>' +
             '<div class="collapsible-header active">' +
-              '<i class="material-icons">track_changes</i>' +
+              '<i class="mdi mdi-camera-timer"></i>' +
               'Working files' +
               '<a href="#" style="float:right" onclick="IDEWorkingFiles.closeAll(event)"><i class="fa fa-times"></i></a>' +
               '<a href="#" style="float:right" onclick="IDEWorkingFiles.saveAll(event)"><i class="fa fa-floppy-o"></i></a>' +
@@ -25,7 +25,7 @@ var IDE = {
           '</li>' +
           '<li>' +
             '<div class="collapsible-header active">' +
-              '<i class="material-icons">library_books</i>' +
+              '<i class="mdi mdi-library-books"></i>' +
               'Project ' + state.projectId +
             '</div>' +
             '<div class="collapsible-body" id="jstree" style="border: none;">' +

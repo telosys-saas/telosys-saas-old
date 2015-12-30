@@ -23,7 +23,7 @@ var ToolbarSettings = {
         /*
             '<li>' +
               '<div class="collapsible-header">' +
-                '<i class="material-icons">subtitles</i>' +
+                '<i class="mdi"></i>' +
                 'Configuration' +
               '</div>' +
               '<div class="collapsible-body">' +
@@ -33,7 +33,7 @@ var ToolbarSettings = {
         */
             '<li>' +
               '<div class="collapsible-header">' +
-                '<i class="material-icons">description</i>' +
+                '<i class="mdi mdi-border-all"></i>' +
                 'Packages' +
               '</div>' +
               '<div class="collapsible-body">' +
@@ -42,7 +42,7 @@ var ToolbarSettings = {
             '</li>' +
             '<li>' +
               '<div class="collapsible-header">' +
-                '<i class="material-icons">description</i>' +
+                '<i class="mdi mdi-folder-multiple"></i>' +
                 'Folders' +
               '</div>' +
               '<div class="collapsible-body">' +

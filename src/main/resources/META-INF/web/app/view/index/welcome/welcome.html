@@ -5,20 +5,118 @@
     </section>
 </div>
 -->
-<div class="parallax-container">
-    <div class="parallax">
-        <img src="images/welcome/section-1.jpg">
-        Hello
-    </div>
-</div>
-<div class="section white">
+<div class="section white welcome-section-1">
     <div class="row container">
-        <h2 class="header">Telosys</h2>
-        <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
+        <h2 class="header">Telosys Web</h2>
+        <h4>
+            Generate your application online !
+        </h4>
+    </div>
+</div>
+<div class="section white welcome-section-login">
+    <div class="row container">
+        <div id="login"></div>
     </div>
 </div>
 <div class="parallax-container">
     <div class="parallax">
         <img src="images/welcome/section-1.jpg">
+    </div>
+</div>
+<div class="section white blue-text" id="workflow">
+    <div class="row container">
+        <h2 class="header">Workflow</h2>
+    </div>
+    <div class="row container">
+        <div class="col s4 center-align" style="padding-right: 20px">
+            <span class="fa-stack fa-4x">
+                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                <i class="fa fa-sitemap fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4>1 : Design</h4>
+            <p class="text-muted black-text ">Use the Telosys DSL (Domain Specification Language) to design your model</p>
+        </div>
+        <div class="col s4" style="padding: 0;padding-left: 20px">
+            <h5>Book.entity</h5>
+            <pre class="language-javascript">Entity Book {
+  title: string,
+  author: Author
+}
+ </pre>
+        </div>
+        <div class="col s4" style="padding: 0;padding-left: 20px">
+            <h5>Author.entity</h5>
+            <pre class="language-javascript">Entity Author {
+  firstname: string,
+  lastname: string,
+  books: Book[]
+}</pre>
+        </div>
+    </div>
+    <div class="row container" style="border-top: 1px solid #eaeaea; margin-top: 25px; padding-top: 25px">
+        <div class="col s4 center-align" style="padding-right: 20px">
+            <span class="fa-stack fa-4x">
+                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                <i class="fa fa-bolt fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4>2 : Generate</h4>
+            <p class="text-muted black-text">Use existing templates or create new one to generate your application</p>
+        </div>
+        <div class="col s4" style="padding: 0;padding-left: 20px">
+            <h5>Select entities :</h5>
+            <p>
+                <input type="checkbox" id="checkbox_author" checked />
+                <label for="checkbox_author">Author</label>
+            </p>
+            <p>
+                <input type="checkbox" id="checkbox_book" checked />
+                <label for="checkbox_book">Book</label>
+            </p>
+        </div>
+        <div class="col s4" style="padding: 0;padding-left: 20px">
+            <h5>and templates :</h5>
+            <p>
+                <input type="checkbox" id="checkbox_tpl_bean" checked />
+                <label for="checkbox_tpl_bean">Bean_java.vm</label>
+            </p>
+            <p>
+                <input type="checkbox" id="checkbox_tpl_form" />
+                <label for="checkbox_tpl_form">form_jsp.vm</label>
+            </p>
+        </div>
+        <div class="col s8 center-align">
+            <br/>
+            <h5>and generate !</h5>
+            <br/>
+            <button type="btn" class="btn waves-effect waves-light">Generate</button>
+        </div>
+    </div>
+    <div class="row container" style="border-top: 1px solid #eaeaea; margin-top: 25px; padding-top: 25px">
+        <div class="col s4 center-align" style="padding-right: 20px">
+            <span class="fa-stack fa-4x">
+                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                <i class="fa fa-download fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4>3 : Download</h4>
+            <p class="text-muted black-text">Download the generated application in a ZIP file and let's develop on it</p>
+        </div>
+        <div class="col s4" style="padding: 0; padding-left: 20px;">
+            <h5>Book.java</h5>
+            <pre class="language-java">public class Book {
+  private String title;
+  private Author author;
+  (...)
+}
+ </pre>
+        </div>
+        <div class="col s4" style="padding: 0; padding-left: 20px;">
+            <h5>Author.java</h5>
+            <pre class="language-java">public class Author {
+  private String firstname;
+  private String lastname;
+  private List<Book> books;
+  (...)
+}</pre>
+        </div>
     </div>
 </div>

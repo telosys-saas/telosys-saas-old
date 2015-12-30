@@ -21,6 +21,16 @@ var ToolbarProjectsAction = {
       }
 
       callback(hasChangedProject, state.projectId);
+
+    } else {
+
+      if(state.projectId) {
+        state.page = 'ide';
+      } else {
+        state.page = 'projects';
+      }
+
+      callback(false, state.projectId);
     }
 
   }
