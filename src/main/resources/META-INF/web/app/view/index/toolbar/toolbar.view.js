@@ -17,8 +17,8 @@ var Toolbar = {
       '<ul id="toolbarProjectsList" class="dropdown-content"></ul>' +
       '<ul id="toolbarUserMenu" class="dropdown-content"></ul>' +
       '<div class="light-blue darken-3 nav-wrapper">' +
-        '<a href="#!" class="brand-logo left logo-telosys-min" style="position: relative; margin-left: 20px; margin-top: 5px;" onclick="ToolbarProjects.changeProject(null)"></a>' +
-        '<a href="#!" class="brand-logo left" style="position: relative; margin-right: 20px; " onclick="ToolbarProjects.changeProject(null)">Telosys</a>' +
+        '<a href="#!" class="brand-logo left logo-telosys-min" style="position: relative; margin-left: 20px; margin-top: 5px;" onclick="Toolbar.welcome()"></a>' +
+        '<a href="#!" class="brand-logo left" style="position: relative; margin-right: 20px; " onclick="Toolbar.welcome()">Telosys</a>' +
         '<ul id="nav-mobile" class="hide-on-med-and-down left">';
 
     if(state.auth.userId != null) {
@@ -42,6 +42,12 @@ var Toolbar = {
 
     $('#appbar').html(html);
     $('#appbar .dropdown-button').dropdown();
+  },
+
+  welcome: function() {
+    var state = Store.getState();
+    state.page = 'welcome';
+    Main.display();
   }
 
 };

@@ -78,10 +78,36 @@ html .vakata-context li>a>i:empty {
 
 #workingfiles .collection .collection-item {
     line-height: 0.3em;
+    padding: 5px 5px;
+}
+
+#workingfiles .collection .collection-item a {
+    color: black;
+}
+
+#workingfiles .collection .collection-item a i {
+    visibility: hidden;
+    color: #039be5;
+}
+
+#workingfiles .collection .collection-item:hover a i {
+    visibility: visible;
 }
 
 #left .collapsible-header {
     border-top: 1px solid lightgray;
     box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    min-height: 2em;
+    line-height: 2em;
+    padding: 0;
 }
 
+#left .collapsible-header i {
+    font-size: 1.4em;
+    line-height: 1.4em;
+    margin-right: 0.3em;
+}
+
+.editorCodemirror > div {
+    height: 100%;
+}

@@ -18,6 +18,7 @@ var IDEWorkingFiles = {
           '<a href="#" onclick="IDEWorkingFiles.closeFile(\'' + fileId + '\')">' +
             '<i class="fa fa-times fa-lg"></i> ' +
           '</a>' +
+          '&nbsp; ' +
           '<a href="#" onclick="IDEWorkingFiles.showFile(\'' + fileId + '\')">' +
             filename +
             ' <span style="font-size: smaller; color: gray;">' + filepath + '</span>' +
@@ -47,7 +48,9 @@ var IDEWorkingFiles = {
   },
 
   saveAll: function(event) {
-    event.stopPropagation();
+    if(event != null) {
+      event.stopPropagation();
+    }
 
     var state = Store.getState();
     for(var fileId in state.editors) {
@@ -56,7 +59,9 @@ var IDEWorkingFiles = {
   },
 
   closeAll: function(event) {
-    event.stopPropagation();
+    if(event != null) {
+      event.stopPropagation();
+    }
 
     var state = Store.getState();
     for(var fileId in state.editors) {

@@ -39,7 +39,7 @@ var ToolbarUser = {
   login: function() {
     // document.location = '/login.html';
     var state = Store.getState();
-    state.createAccount = false;
+    state.page = 'login';
     Main.display();
   },
 

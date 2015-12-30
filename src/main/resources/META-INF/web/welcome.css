@@ -1,0 +1,15 @@
+.welcome {
+    height: 100%;
+}
+
+.welcome section {
+    padding: 10px;
+    width: 100%;
+}
+
+.welcome .section-1 {
+    display: inline-block;
+    background: url('images/welcome/section-1.jpg');
+    height: 100%;
+    text-align: center;
+}

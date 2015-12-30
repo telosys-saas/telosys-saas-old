@@ -3,13 +3,22 @@ var ToolbarProjects = {
     var state = Store.getState();
     ProjectsService.loadProjects(state.auth.userId, function(projects) {
       var html = '';
+
+      html += '<li><a href="#!" onclick="ToolbarProjects.changeProject()">All projects</a></li>';
+
+      var isFirst = true;
       for (var i = 0; i < projects.length; i++) {
         var project = projects[i];
+
+        if(isFirst) {
+          isFirst = false;
+          html += '<li class="divider"></li>';
+        }
+
         var selected = '';
         if(state.projectId === project.id) {
           selected = ' selected';
         }
-        //html += '<option' + selected + ' value="' + project.id + '">' + project.name + '</option>'
         html += '<li><a href="#!" onclick="ToolbarProjects.changeProject(\''+project.id+'\')">'+project.name+'</a></li>';
       }
       html += '<li class="divider"></li>';

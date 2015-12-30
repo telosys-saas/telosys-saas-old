@@ -33,8 +33,8 @@ var IDE = {
           '</li>' +
         '</ul>' +
       '</div>' +
-      '<div id="b" class="split split-horizontal">' +
-        '<div id="editor" class="split content">' +
+      '<div id="b" class="split split-horizontal content">' +
+        '<div id="editor" class="split">' +
         //  '<div id="editorTabs" class="editorTabs"></div>' +
         //  '<div id="editor1" class="editorTabContent">' +
             '<div id="editorToolbar" class="editorToolbar"></div>' +

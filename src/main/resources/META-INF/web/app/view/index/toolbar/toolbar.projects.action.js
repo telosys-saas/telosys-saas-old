@@ -11,6 +11,15 @@ var ToolbarProjectsAction = {
         state.projectId = projectId;
       //}
       hasChangedProject = true;
+
+      IDEWorkingFiles.closeAll();
+
+      if(state.projectId) {
+        state.page = 'ide';
+      } else {
+        state.page = 'projects';
+      }
+
       callback(hasChangedProject, state.projectId);
     }
 
