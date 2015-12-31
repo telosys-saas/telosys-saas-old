@@ -10,14 +10,25 @@ var IDEWorkingFiles = {
     var html =
       '<ul class="collection">';
 
-    for(var fileId in state.editors) {
+    for(var fileId in state.openFiles) {
+      var openFile = state.openFiles[fileId];
       var filename = fileId.substring(fileId.lastIndexOf('/')+1);
       var filepath = fileId.substring(0,fileId.lastIndexOf('/'));
       html +=
-        '<li class="collection-item truncate" id="workingfiles_'+this.formatFileId(fileId)+'">' +
+        '<li class="collection-item truncate" id="workingfiles_'+this.formatFileId(fileId)+'">';
+
+      if(openFile.isModified) {
+        html +=
+          '<i class="fa fa-circle"></i> ';
+      }
+      else {
+        html +=
           '<a href="#" onclick="IDEWorkingFiles.closeFile(\'' + fileId + '\')">' +
-            '<i class="fa fa-times fa-lg"></i> ' +
-          '</a>' +
+          '<i class="fa fa-times fa-lg"></i> ' +
+          '</a>';
+      }
+
+      html +=
           '&nbsp; ' +
           '<a href="#" onclick="IDEWorkingFiles.showFile(\'' + fileId + '\')">' +
             filename +
@@ -53,7 +64,7 @@ var IDEWorkingFiles = {
     }
 
     var state = Store.getState();
-    for(var fileId in state.editors) {
+    for(var fileId in state.openFiles) {
       IDEEditorCodemirror.saveFile(fileId);
     }
   },
@@ -64,7 +75,7 @@ var IDEWorkingFiles = {
     }
 
     var state = Store.getState();
-    for(var fileId in state.editors) {
+    for(var fileId in state.openFiles) {
       this.closeFile(fileId);
     }
 

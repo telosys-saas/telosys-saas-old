@@ -4,7 +4,7 @@ var IDEEditorCodemirror = {
 
     var state = Store.getState();
     if(state.fileId) {
-      if(state.editors[state.fileId] == null) {
+      if(state.openFiles[state.fileId] == null) {
         this.loadFile();
       } else {
         this.showFile();
@@ -24,7 +24,7 @@ var IDEEditorCodemirror = {
 
   closeFile: function(fileId) {
     var state = Store.getState();
-    delete state.editors[fileId];
+    delete state.openFiles[fileId];
     if(state.fileId == fileId) {
       delete state.fileId;
     }
@@ -51,9 +51,20 @@ var IDEEditorCodemirror = {
       $('#editorCodemirror').append('<div id="editorCodemirror_'+this.formatFileId(file.id)+'"></div>');
       var editor = CodeMirror(document.getElementById('editorCodemirror_'+this.formatFileId(file.id)), editorOptions);
       var state = Store.getState();
-      state.editors[file.id] = editor;
+      state.openFiles[file.id] = {
+        editor: editor,
+        isModified: false
+      };
+
+      editor.on("change", this.callbackOnFileChange(file.id));
 
       IDEWorkingFiles.display();
+    }.bind(this));
+  },
+
+  callbackOnFileChange: function(fileId) {
+    return (function(editor, change) {
+      this.setFileIsModified(fileId, true);
     }.bind(this));
   },
 
@@ -93,15 +104,25 @@ var IDEEditorCodemirror = {
       fileId = state.fileId;
     }
 
-    if(fileId && state.editors[fileId]) {
+    if(fileId && state.openFiles[fileId]) {
       var file = {
         id: fileId,
-        content: state.editors[fileId].getValue()
+        content: state.openFiles[fileId].editor.getValue()
       };
       FilesService.saveFileForProject(state.auth.userId, state.projectId, file,
-        function (file) {
-          console.log('file saved');
-        });
+        function () {
+          console.log('file saved : ',fileId);
+          this.setFileIsModified(fileId, false);
+        }.bind(this));
+    }
+  },
+
+  setFileIsModified: function(fileId, isModified) {
+    var state = Store.getState();
+    var openFile = state.openFiles[fileId];
+    if(openFile.isModified != isModified) {
+      openFile.isModified = isModified;
+      IDEWorkingFiles.display();
     }
   },
 
