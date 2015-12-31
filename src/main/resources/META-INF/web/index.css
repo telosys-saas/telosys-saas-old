@@ -112,3 +112,6 @@ html .vakata-context li>a>i:empty {
     height: 100%;
 }
 
+#workingfiles .working-file-selected {
+    background-color: #D7EFFF;
+}

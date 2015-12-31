@@ -19,7 +19,14 @@ var IDEWorkingFiles = {
       var filename = fileId.substring(fileId.lastIndexOf('/')+1);
       var filepath = fileId.substring(0,fileId.lastIndexOf('/'));
       html +=
-        '<li class="collection-item truncate" id="workingfiles_'+this.formatFileId(fileId)+'">';
+        '<li class="collection-item truncate';
+
+      if(state.fileId == fileId) {
+        html += ' working-file-selected';
+      }
+
+      html +=
+        '" id="workingfiles_'+this.formatFileId(fileId)+'">';
 
       if(openFile.isModified) {
         html +=
@@ -54,8 +61,12 @@ var IDEWorkingFiles = {
 
   showFile: function(fileId) {
     var state = Store.getState();
+    var oldStateFileId = state.fileId;
     state.fileId = fileId;
     IDEEditor.init();
+    if(oldStateFileId != fileId) {
+      this.display();
+    }
   },
 
   formatFileId: function(fileId) {

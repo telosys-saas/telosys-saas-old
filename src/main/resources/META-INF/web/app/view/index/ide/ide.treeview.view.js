@@ -115,10 +115,14 @@ var IDETreeview = {
     if(data.node.type == 'file') {
       var fileId = data.node.id;
       var state = Store.getState();
+      var oldFocusFileId = state.fileId;
       state.fileId = fileId;
       if(!state.openFiles[fileId]) {
         state.openFiles[fileId] = {};
-        IDEEditor.loadFile();
+      }
+      IDEEditor.init();
+      if(oldFocusFileId != fileId) {
+        IDEWorkingFiles.display();
       }
     }
   },
