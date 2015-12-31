@@ -4,7 +4,7 @@ var IDEEditorCodemirror = {
 
     var state = Store.getState();
     if(state.fileId) {
-      if(state.openFiles[state.fileId] == null) {
+      if(state.openFiles[state.fileId].editor == null) {
         this.loadFile();
       } else {
         this.showFile();
@@ -51,10 +51,7 @@ var IDEEditorCodemirror = {
       $('#editorCodemirror').append('<div id="editorCodemirror_'+this.formatFileId(file.id)+'"></div>');
       var editor = CodeMirror(document.getElementById('editorCodemirror_'+this.formatFileId(file.id)), editorOptions);
       var state = Store.getState();
-      state.openFiles[file.id] = {
-        editor: editor,
-        isModified: false
-      };
+      state.openFiles[file.id].editor = editor;
 
       editor.on("change", this.callbackOnFileChange(file.id));
 
@@ -122,7 +119,11 @@ var IDEEditorCodemirror = {
     var openFile = state.openFiles[fileId];
     if(openFile.isModified != isModified) {
       openFile.isModified = isModified;
+      if(isModified) {
+        openFile.isWorkingFile = true;
+      }
       IDEWorkingFiles.display();
+      IDEEditorToolbar.display();
     }
   },
 

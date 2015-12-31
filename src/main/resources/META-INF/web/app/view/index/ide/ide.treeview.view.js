@@ -113,9 +113,13 @@ var IDETreeview = {
   onClick: function(e, data) {
     console.log('onClick');
     if(data.node.type == 'file') {
+      var fileId = data.node.id;
       var state = Store.getState();
-      state.fileId = data.node.id;
-      IDEEditor.loadFile();
+      state.fileId = fileId;
+      if(!state.openFiles[fileId]) {
+        state.openFiles[fileId] = {};
+        IDEEditor.loadFile();
+      }
     }
   },
 
