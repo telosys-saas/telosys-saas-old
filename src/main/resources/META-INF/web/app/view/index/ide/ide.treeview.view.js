@@ -112,15 +112,22 @@ var IDETreeview = {
 
   onClick: function(e, data) {
     console.log('onClick');
-
+    if(data.node.type == 'file') {
+      var state = Store.getState();
+      state.fileId = data.node.id;
+      IDEEditor.loadFile();
+    }
   },
 
   onDoubleClick: function(e, data) {
     console.log('onDoubleClick');
     if(data.node.type == 'file') {
       var state = Store.getState();
-      state.fileId = data.node.id;
-      IDEEditor.loadFile();
+      var fileId = data.node.id;
+      var openFile = state.openFiles[fileId];
+      if(openFile) {
+        IDEEditorCodemirror.setFileIsWorkingFile(fileId, true);
+      }
     }
   },
 

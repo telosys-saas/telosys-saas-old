@@ -12,6 +12,10 @@ var IDEWorkingFiles = {
 
     for(var fileId in state.openFiles) {
       var openFile = state.openFiles[fileId];
+      if(!openFile.isWorkingFile) {
+        continue;
+      }
+
       var filename = fileId.substring(fileId.lastIndexOf('/')+1);
       var filepath = fileId.substring(0,fileId.lastIndexOf('/'));
       html +=

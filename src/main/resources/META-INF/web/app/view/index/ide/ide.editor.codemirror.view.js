@@ -126,6 +126,15 @@ var IDEEditorCodemirror = {
     }
   },
 
+  setFileIsWorkingFile: function(fileId, isWorkingFile) {
+    var state = Store.getState();
+    var openFile = state.openFiles[fileId];
+    if(openFile.isWorkingFile != isWorkingFile) {
+      openFile.isWorkingFile = isWorkingFile;
+      IDEWorkingFiles.display();
+    }
+  },
+
   formatFileId: function(fileId) {
     return fileId.replace(/\./g,'_').replace(/\//g,'__');
   }
