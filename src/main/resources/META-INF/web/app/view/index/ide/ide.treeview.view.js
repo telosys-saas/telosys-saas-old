@@ -9,7 +9,7 @@ var IDETreeview = {
         var root = this.convertFolderToJson(rootFolder, null);
         state.tree.root = root;
         $('#jstree').html('<div id="jstreecontent" class="treeview"></div>');
-        $('#jstreecontent').jstree({
+        state.jstree = $('#jstreecontent').jstree({
           'core': {
             'data': [
               root
@@ -94,7 +94,7 @@ var IDETreeview = {
         // For DoubleClick detection : http://stackoverflow.com/questions/3674625/how-can-i-attach-custom-behaviour-to-a-double-click-in-jstree
         state.tree.selected = null;
         // single click
-        $('#jstreecontent').on("changed.jstree", function(e, data) {
+        $('#jstreecontent').on("activate_node.jstree", function(e, data) {
           state.tree.selected = {
             e: e,
             data: data
@@ -240,6 +240,12 @@ var IDETreeview = {
       }
       delete state.tree.copy;
     }.bind(this));
+  },
+
+  focus: function(fileId) {
+    var jstree = $.jstree.reference('#jstreecontent');
+    jstree.deselect_all();
+    jstree.select_node([fileId]);
   },
 
   convertFolderToJson: function(folder, parent) {
