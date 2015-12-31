@@ -15,23 +15,35 @@ import org.telosys.tools.commons.TelosysToolsException;
 
 public class BundleService {
 	
-	// private StorageDao storage = new MockStorageDao();
 	private StorageDao storage = new FileStorageDao();
+	private GithubManager githubManager = GithubManager.getInstance();
 
-	public List<Bundle> getBundlesInPublicRepository() {
+	public List<Bundle> getBundlesForGithubUser(String githubUser) {
+		if(githubUser == null) {
+			githubUser = "telosys-tools";
+		}
+		
+		List<String> bundleNames = githubManager.getBundlesForGithubUser(githubUser);
+		if(bundleNames == null) {
+			bundleNames = getBundlesInRepository(githubUser);
+			githubManager.addBundlesForGithubUser(githubUser, bundleNames);
+		}
+		
 		List<Bundle> bundles = new ArrayList<Bundle>();
+		for(String bundleName : bundleNames) {
+			bundles.add(getBundle(bundleName));
+		}
+		return bundles;
+	}
+	
+	protected List<String> getBundlesInRepository(String githubUser) {
 		try {
 			TelosysProject telosysProject = new TelosysProject("");
 			List<String> bundleNames = telosysProject.getBundlesList("telosys-tools");
-			
-			for(String bundleName : bundleNames) {
-				bundles.add(getBundle(bundleName));
-			}
-			
+			return bundleNames;
 		} catch (TelosysToolsException e) {
-			new IllegalStateException(e);
+			throw new IllegalStateException(e);
 		}
-		return bundles;
 	}
 	
 	public List<Bundle> getBundlesOfProject(UserProfile user, Project project) {

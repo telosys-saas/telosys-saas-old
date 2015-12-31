@@ -48,12 +48,12 @@ var ToolbarBundles = {
       html +=
         '<li>' +
           '<div class="collapsible-header">' +
-            '<i class="mdi mdi-package-variant"></i>' +
+            '<i class="mdi mdi-package"></i>' +
             bundle.name +
+            '<button class="btn red right" onclick="event.stopPropagation();ToolbarBundles.removeBundle(\''+bundle.name+'\')" style="margin-top:4px">Remove</button>' +
           '</div>' +
           '<div class="collapsible-body"><p>' +
             bundle.name +
-            '<button class="btn red right" onclick="ToolbarBundles.removeBundle(\''+bundle.name+'\')" style="margin-top:-8px">Remove</button>' +
           '</p></div>' +
         '</li>';
     }
@@ -65,15 +65,24 @@ var ToolbarBundles = {
 
     for (var i=0; i<state.bundlesInPublicRepository.length; i++) {
       var bundle = state.bundlesInPublicRepository[i];
+      var isBundleDownloaded = false;
+      for (var j=0; j<state.bundlesOfProject.length; j++) {
+        if(state.bundlesOfProject[j].name == bundle.name) {
+          isBundleDownloaded = true;
+        }
+      }
+      if(isBundleDownloaded) {
+        continue;
+      }
       html +=
         '<li>' +
           '<div class="collapsible-header">' +
-            '<i class="mdi mdi-package-variant-closed"></i>' +
+            '<i class="mdi mdi-package"></i>' +
             bundle.name +
+            '<button class="btn green right" onclick="event.stopPropagation();ToolbarBundles.addBundle(\''+bundle.name+'\')" style="margin-top:4px">Add</button>' +
             '</div>' +
           '<div class="collapsible-body"><p>' +
             bundle.description +
-            '<button class="btn green right" onclick="ToolbarBundles.addBundle(\''+bundle.name+'\')" style="margin-top:-8px">Add</button>' +
           '</p>' +
           '</div>' +
         '</li>';
