@@ -96,28 +96,6 @@ var ProjectsService = {
       });
   },
 
-  launchGeneration: function (userId, projectName, callback) {
-    var modelName = "employees.model";
-    var bundleName = "bundle_java";
-    $.ajax({
-      method: "GET",
-      url: host + "/api/v1/users/"+userId+"/projects/"+projectName+"/model/"+modelName+"/bundle/"+bundleName+"/action/generate",
-      dataType: 'json'
-    })
-      .success(function (msg) {
-        console.log(msg);
-        if (callback) {
-          callback(msg);
-        }
-      })
-      .fail(function (jqXHR, textStatus) {
-        console.log(textStatus);
-      })
-      .done(function (msg) {
-        console.log(msg);
-      });
-  },
-
   getBundlesOfProject: function (userId, projectName, callback) {
     $.ajax({
       method: "GET",
@@ -198,6 +176,90 @@ var ProjectsService = {
       })
       .fail(function (jqXHR, textStatus) {
         console.log(textStatus);
+      });
+  },
+
+  /*
+  getModelNames: function(userId, projectName, callback) {
+    $.ajax({
+      method: "GET",
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectName+"/models",
+      dataType: 'json'
+    })
+      .success(function (modelNames) {
+        console.log(modelNames);
+        if (callback) {
+          callback(modelNames.names);
+        }
+      })
+      .fail(function (jqXHR, textStatus) {
+        console.log(textStatus);
+      })
+      .done(function (msg) {
+        console.log(msg);
+      });
+  },
+  */
+
+  getModels: function(userId, projectName, callback) {
+    $.ajax({
+      method: "GET",
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectName+"/models",
+      dataType: 'json'
+    })
+      .success(function (msg) {
+        console.log(msg);
+        if (callback) {
+          callback(msg);
+        }
+      })
+      .fail(function (jqXHR, textStatus) {
+        console.log(textStatus);
+      })
+      .done(function (msg) {
+        console.log(msg);
+      });
+  },
+
+  getModel: function(userId, projectName, modelName, callback) {
+    $.ajax({
+      method: "GET",
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectName+"/models/"+modelName,
+      dataType: 'json'
+    })
+      .success(function (model) {
+        console.log(model);
+        if (callback) {
+          callback(model);
+        }
+      })
+      .fail(function (jqXHR, textStatus) {
+        console.log(textStatus);
+      })
+      .done(function (msg) {
+        console.log(msg);
+      });
+  },
+
+  launchGeneration: function (userId, projectName, generation, callback) {
+    $.ajax({
+      method: "PUT",
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectName+"/action/generate",
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify(generation)
+    })
+      .success(function (msg) {
+        console.log(msg);
+        if (callback) {
+          callback(msg);
+        }
+      })
+      .fail(function (jqXHR, textStatus) {
+        console.log(textStatus);
+      })
+      .done(function (msg) {
+        console.log(msg);
       });
   },
 

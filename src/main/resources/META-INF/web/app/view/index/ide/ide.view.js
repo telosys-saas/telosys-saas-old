@@ -52,7 +52,7 @@ var IDE = {
 
     Split(['#left', '#b'], {
       gutterSize: 8,
-      sizes: [25, 75],
+      sizes: [30, 70],
       cursor: 'col-resize'
     });
 

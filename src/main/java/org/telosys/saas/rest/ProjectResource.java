@@ -24,7 +24,9 @@ import org.telosys.saas.dao.file.FileStorageDao;
 import org.telosys.saas.domain.Bundle;
 import org.telosys.saas.domain.File;
 import org.telosys.saas.domain.Folder;
+import org.telosys.saas.domain.Generation;
 import org.telosys.saas.domain.GenerationResult;
+import org.telosys.saas.domain.Model;
 import org.telosys.saas.domain.Project;
 import org.telosys.saas.domain.ProjectConfiguration;
 import org.telosys.saas.services.BundleService;
@@ -103,15 +105,6 @@ public class ProjectResource {
     		return project;
     	}
     	return project;
-    }
-
-    @Path("/model/{modelName}/bundle/{bundleName}/action/generate")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public GenerationResult launchGeneration(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("modelName") String modelName, @PathParam("bundleName") String bundleName) {
-    	UserProfile user = getUser();
-    	Project project = storage.getProjectForUser(user, projectId);
-    	return projectService.launchGeneration(user, project, modelName, bundleName);
     }
 
     @Path("/bundles")
@@ -222,5 +215,46 @@ public class ProjectResource {
     	}
     	storage.deleteFileForProjectAndUser(user, project, file);
     }
-	
+
+    /*
+    @Path("/models")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public ModelNames getModels(@PathParam("userId") String userId, @PathParam("projectId") String projectId) {
+    	UserProfile user = getUser(); 
+    	Project project = storage.getProjectForUser(user, projectId);
+    	List<String> names = projectService.getModelNames(user, project);
+    	ModelNames modelNames = new ModelNames();
+    	modelNames.setNames(names);
+    	return modelNames;
+    }*/
+
+    @Path("/models")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Model> getModels(@PathParam("userId") String userId, @PathParam("projectId") String projectId) {
+    	UserProfile user = getUser(); 
+    	Project project = storage.getProjectForUser(user, projectId);
+    	return projectService.getModels(user, project);
+    }
+
+    @Path("/models/{modelName}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Model getModels(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("modelName") String modelName) {
+    	UserProfile user = getUser(); 
+    	Project project = storage.getProjectForUser(user, projectId);
+    	return projectService.getModel(user, project, modelName);
+    }
+
+    @Path("/action/generate")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public GenerationResult launchGeneration(@PathParam("userId") String userId, @PathParam("projectId") String projectId, Generation generation) {
+    	UserProfile user = getUser();
+    	Project project = storage.getProjectForUser(user, projectId);
+    	return projectService.launchGeneration(user, project, generation);
+    }
+
 }

@@ -1,13 +1,19 @@
 package org.telosys.saas.services;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.pac4j.core.profile.UserProfile;
 import org.telosys.saas.dao.file.FileStorageDao;
+import org.telosys.saas.domain.Entity;
+import org.telosys.saas.domain.File;
 import org.telosys.saas.domain.Folder;
+import org.telosys.saas.domain.Generation;
 import org.telosys.saas.domain.GenerationErrorResult;
 import org.telosys.saas.domain.GenerationResult;
+import org.telosys.saas.domain.Model;
 import org.telosys.saas.domain.Project;
 import org.telosys.saas.domain.ProjectConfiguration;
 import org.telosys.saas.domain.ProjectConfigurationVariables;
@@ -19,7 +25,6 @@ import org.telosys.tools.commons.variables.Variable;
 import org.telosys.tools.generator.GeneratorException;
 import org.telosys.tools.generator.task.ErrorReport;
 import org.telosys.tools.generator.task.GenerationTaskResult;
-import org.telosys.tools.generic.model.Model;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -39,29 +44,56 @@ public class ProjectService {
 		telosysProject.initProject();
 	}
 
-	public GenerationResult launchGeneration(UserProfile user, Project project, String modelName, String bundleName) {
+	public List<Model> getModels(UserProfile user, Project project) {
+		List<Model> models = new ArrayList<Model>();
+		for(String modelName : getModelNames(user, project)) {
+			Model model = getModel(user, project, modelName);
+			models.add(model);
+		}
+		return models;
+	}
+
+	public List<String> getModelNames(UserProfile user, Project project) {
+		Folder folder = storageDao.getFolderForProjectAndUser(user, project, "TelosysTools");
+		List<String> modelNames = new ArrayList<>();
+		for(File file : folder.getFiles()) {
+			if(file.getName().indexOf(".model") != -1) {
+				modelNames.add(file.getName().substring(0, file.getName().indexOf(".model")));
+			}
+		}
+		return modelNames;
+	}
+
+	public Model getModel(UserProfile user, Project project, String modelName) {
 		TelosysProject telosysProject = getTelosysProject(user, project);
 		try {
-			Model model = telosysProject.loadModel(modelName);
-			GenerationTaskResult generationTaskResult = telosysProject.launchGeneration(model, bundleName);
-			
-			GenerationResult generationResult = new GenerationResult();
-			generationResult.setNumberOfFilesGenerated(generationTaskResult.getNumberOfFilesGenerated());
-			generationResult.setNumberOfGenerationErrors(generationTaskResult.getNumberOfGenerationErrors());
-			generationResult.setNumberOfResourcesCopied(generationTaskResult.getNumberOfResourcesCopied());
-			for(ErrorReport errorReport : generationTaskResult.getErrors()) {
-				GenerationErrorResult error = new GenerationErrorResult();
-				error.setException(errorReport.getException());
-				error.setErrorType(errorReport.getErrorType());
-				error.setMessage(errorReport.getMessage());
-				generationResult.getErrors().add(error);
-			}
-			return generationResult;
+			return map(telosysProject.loadModel(modelName+".model"), modelName);
 		} catch (TelosysToolsException e) {
 			throw new IllegalStateException(e);
-		} catch (GeneratorException e) {
-			throw new IllegalStateException(e);
 		}
+	}
+
+	private Model map(org.telosys.tools.generic.model.Model genericModel, String modelName) {
+		Model model = new Model();
+		model.setModelName(modelName);
+		model.setName(genericModel.getName());
+		model.setType(genericModel.getType());
+		model.setVersion(genericModel.getVersion());
+		model.setDescription(genericModel.getDescription());
+		model.setDatabaseId(genericModel.getDatabaseId());
+		model.setDatabaseProductName(genericModel.getDatabaseProductName());
+		List<Entity> entities = new ArrayList<Entity>();
+		for(org.telosys.tools.generic.model.Entity genericEntity : genericModel.getEntities()) {
+			entities.add(map(genericEntity));
+		}
+		model.setEntities(entities);
+		return model;
+	}
+
+	private Entity map(org.telosys.tools.generic.model.Entity genericEntity) {
+		Entity entity = new Entity();
+		entity.setFullName(genericEntity.getFullName());
+		return entity;
 	}
 
 	public void addBundleToTheProject(UserProfile user, Project project, String bundleName) {
@@ -146,5 +178,59 @@ public class ProjectService {
 			throw new IllegalStateException(e);
 		}
 	}
+
+	public GenerationResult launchGeneration(UserProfile user, Project project, Generation generation) {
+		return launchGenerationByEntityAndBundle(user, project, generation.getModel(), generation.getEntities(), generation.getBundle());
+	}
+
+	public GenerationResult launchGenerationByEntityAndBundle(UserProfile user, Project project, String modelName, List<String> entityNames, String bundleName) {
+		TelosysProject telosysProject = getTelosysProject(user, project);
+		try {
+			org.telosys.tools.generic.model.Model genericModel = telosysProject.loadModel(modelName+".model");
+			GenerationTaskResult generationTaskResult = telosysProject.launchGeneration(genericModel, entityNames, bundleName);
+			
+			GenerationResult generationResult = new GenerationResult();
+			generationResult.setNumberOfFilesGenerated(generationTaskResult.getNumberOfFilesGenerated());
+			generationResult.setNumberOfGenerationErrors(generationTaskResult.getNumberOfGenerationErrors());
+			generationResult.setNumberOfResourcesCopied(generationTaskResult.getNumberOfResourcesCopied());
+			for(ErrorReport errorReport : generationTaskResult.getErrors()) {
+				GenerationErrorResult error = new GenerationErrorResult();
+				error.setException(errorReport.getException());
+				error.setErrorType(errorReport.getErrorType());
+				error.setMessage(errorReport.getMessage());
+				generationResult.getErrors().add(error);
+			}
+			return generationResult;
+		} catch (TelosysToolsException e) {
+			throw new IllegalStateException(e);
+		} catch (GeneratorException e) {
+			throw new IllegalStateException(e);
+		}
+	}
 	
+	public GenerationResult launchGenerationByModelAndBundle(UserProfile user, Project project, String modelName, String bundleName) {
+		TelosysProject telosysProject = getTelosysProject(user, project);
+		try {
+			org.telosys.tools.generic.model.Model genericModel = telosysProject.loadModel(modelName+".model");
+			GenerationTaskResult generationTaskResult = telosysProject.launchGeneration(genericModel, bundleName);
+			
+			GenerationResult generationResult = new GenerationResult();
+			generationResult.setNumberOfFilesGenerated(generationTaskResult.getNumberOfFilesGenerated());
+			generationResult.setNumberOfGenerationErrors(generationTaskResult.getNumberOfGenerationErrors());
+			generationResult.setNumberOfResourcesCopied(generationTaskResult.getNumberOfResourcesCopied());
+			for(ErrorReport errorReport : generationTaskResult.getErrors()) {
+				GenerationErrorResult error = new GenerationErrorResult();
+				error.setException(errorReport.getException());
+				error.setErrorType(errorReport.getErrorType());
+				error.setMessage(errorReport.getMessage());
+				generationResult.getErrors().add(error);
+			}
+			return generationResult;
+		} catch (TelosysToolsException e) {
+			throw new IllegalStateException(e);
+		} catch (GeneratorException e) {
+			throw new IllegalStateException(e);
+		}
+	}
+
 }
