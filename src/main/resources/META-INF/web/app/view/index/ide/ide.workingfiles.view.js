@@ -66,8 +66,8 @@ var IDEWorkingFiles = {
     IDEEditor.init();
     if(oldStateFileId != fileId) {
       this.display();
-      IDETreeview.focus(fileId);
     }
+    IDETreeview.focus(fileId);
   },
 
   formatFileId: function(fileId) {

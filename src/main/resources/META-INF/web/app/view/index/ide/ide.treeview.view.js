@@ -248,6 +248,15 @@ var IDETreeview = {
     jstree.select_node([fileId]);
   },
 
+  collapseAll: function(event) {
+    if(event) {
+      event.stopPropagation();
+    }
+
+    var jstree = $.jstree.reference('#jstreecontent');
+    jstree.close_all();
+  },
+
   convertFolderToJson: function(folder, parent) {
     console.log('folder : ', folder.name);
     var currentNode = {
