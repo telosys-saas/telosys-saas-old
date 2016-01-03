@@ -71,7 +71,7 @@ public class TelosysSaasServer {
         GzipHandler gzip = new GzipHandler();
         //server.setHandler(gzip);
         HandlerList handlers = new HandlerList();
-        handlers.setHandlers(new Handler[] { wscontext, resource_handler, new DefaultHandler() });
+        handlers.setHandlers(new Handler[] { /*wscontext, */resource_handler, new DefaultHandler() });
         gzip.setHandler(handlers);
 
         // Contexts
