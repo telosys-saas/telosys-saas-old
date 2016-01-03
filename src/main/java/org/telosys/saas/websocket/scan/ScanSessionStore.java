@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.jetty.websocket.api.Session;
+import javax.websocket.Session;
 
 public class ScanSessionStore {
 	

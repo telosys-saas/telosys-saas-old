@@ -53,6 +53,6 @@ var Main = {
       IDE.init();
     }
 
-    //Websocket.init();
+    Websocket.init();
   }
 };

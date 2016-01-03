@@ -6,6 +6,9 @@ var IDEEditorCodemirror = {
     if(state.fileId) {
       if(state.openFiles[state.fileId].editor == null) {
         this.loadFile();
+      } else if(state.openFiles[state.fileId].isRefreshed) {
+        this.showFile();
+        this.refreshFile(state.fileId);
       } else {
         this.showFile();
       }
@@ -20,6 +23,7 @@ var IDEEditorCodemirror = {
     var state = Store.getState();
     this.hideFiles();
     document.getElementById('editorCodemirror_'+this.formatFileId(state.fileId)).style.display = 'block';
+    state.openFiles[state.fileId].editor.refresh();
   },
 
   closeFile: function(fileId) {
@@ -59,9 +63,31 @@ var IDEEditorCodemirror = {
     }.bind(this));
   },
 
+  refreshFile: function(fileId, forceRefresh) {
+    var state = Store.getState();
+    if(state.openFiles[fileId] && (!state.openFiles[fileId].isModified || forceRefresh)) {
+      state.openFiles[fileId].isRefreshed = true;
+      if(state.fileId == fileId) {
+        FilesService.getFileForProject(state.auth.userId, state.projectId, fileId, function (file) {
+
+          var editor = state.openFiles[file.id].editor;
+
+          editor.setValue(file.content);
+
+          IDEWorkingFiles.display();
+        }.bind(this));
+      }
+    }
+  },
+
   callbackOnFileChange: function(fileId) {
     return (function(editor, change) {
-      this.setFileIsModified(fileId, true);
+      var state = Store.getState();
+      if(state.openFiles[fileId].isRefreshed) {
+          state.openFiles[fileId].isRefreshed = false;
+      } else {
+        this.setFileIsModified(fileId, true);
+      }
     }.bind(this));
   },
 

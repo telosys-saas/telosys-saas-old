@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.EnumSet;
 
 import javax.servlet.DispatcherType;
+import javax.websocket.server.ServerContainer;
 
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
@@ -15,8 +16,7 @@ import org.eclipse.jetty.server.handler.gzip.GzipHandler;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-import org.eclipse.jetty.websocket.server.WebSocketHandler;
-import org.eclipse.jetty.websocket.servlet.WebSocketServletFactory;
+import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
 import org.telosys.saas.security.AuthResource;
 import org.telosys.saas.security.Pac4jConfigFactory;
 import org.telosys.saas.security.user.UsersManager;
@@ -46,13 +46,13 @@ public class TelosysSaasServer {
 		server.setHandler(contextBack);
 		
 		// websocket
-		
-		WebSocketHandler websocketHandler = new WebSocketHandler() {
-            @Override
-            public void configure(WebSocketServletFactory factory) {
-                factory.register(TelosysWebSocketHandler.class);
-            }
-        };
+		ServletContextHandler wscontext = new ServletContextHandler(ServletContextHandler.SESSIONS);
+        wscontext.setContextPath("/ws");
+        server.setHandler(wscontext);
+		// Initialize javax.websocket layer
+        ServerContainer wscontainer = WebSocketServerContainerInitializer.configureContext(wscontext);
+        // Add WebSocket endpoint to javax.websocket layer
+        wscontainer.addEndpoint(TelosysWebSocketHandler.class);
 		
 		// static web
 		ResourceHandler resource_handler = new ResourceHandler();
@@ -71,7 +71,7 @@ public class TelosysSaasServer {
         GzipHandler gzip = new GzipHandler();
         //server.setHandler(gzip);
         HandlerList handlers = new HandlerList();
-        handlers.setHandlers(new Handler[] { websocketHandler, resource_handler, new DefaultHandler() });
+        handlers.setHandlers(new Handler[] { wscontext, resource_handler, new DefaultHandler() });
         gzip.setHandler(handlers);
 
         // Contexts

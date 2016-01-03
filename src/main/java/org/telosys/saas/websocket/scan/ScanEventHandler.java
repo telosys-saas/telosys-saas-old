@@ -5,7 +5,8 @@ import java.nio.file.Path;
 import java.nio.file.WatchEvent;
 import java.util.Set;
 
-import org.eclipse.jetty.websocket.api.Session;
+import javax.websocket.RemoteEndpoint;
+import javax.websocket.Session;
 
 public class ScanEventHandler {
 	
@@ -32,10 +33,10 @@ public class ScanEventHandler {
 			for(Session session : sessions) {
 				if(session.isOpen()) {
 					try {
-						session.getRemote().sendString(path.toString());
+						final RemoteEndpoint.Basic remote = session.getBasicRemote();
+			            remote.sendText(path.toString().substring(folder.toString().length()+1));
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						throw new IllegalStateException(e);
 					}
 				}
 			}

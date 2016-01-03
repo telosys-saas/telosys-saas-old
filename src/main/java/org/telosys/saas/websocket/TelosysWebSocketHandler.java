@@ -2,16 +2,19 @@ package org.telosys.saas.websocket;
 
 import java.io.IOException;
 
-import org.eclipse.jetty.websocket.api.Session;
-import org.eclipse.jetty.websocket.api.UpgradeRequest;
+import javax.websocket.EndpointConfig;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.RemoteEndpoint;
+import javax.websocket.Session;
+import javax.websocket.server.PathParam;
+import javax.websocket.server.ServerEndpoint;
+
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketClose;
-import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketError;
-import org.eclipse.jetty.websocket.api.annotations.OnWebSocketMessage;
-import org.eclipse.jetty.websocket.api.annotations.WebSocket;
 import org.telosys.saas.websocket.scan.ScanSessionStore;
 
-@WebSocket
+@ServerEndpoint("/users/{userId}/projects/{projectId}")
 public class TelosysWebSocketHandler
 {
 	
@@ -28,22 +31,22 @@ public class TelosysWebSocketHandler
         // System.out.println("Error: " + t.getMessage());
     }
 
-    @OnWebSocketConnect
-    public void onConnect(Session session) {
-        System.out.println("Connect: " + session.getRemoteAddress().getAddress() + ", session:"+session);
-        UpgradeRequest upgradeRequest = session.getUpgradeRequest();
+    @OnOpen
+    public void onOpen(Session session, EndpointConfig config, @PathParam("userId") String userId, @PathParam("projectId") String projectName) {
+        System.out.println("Connect: " + session.getUserPrincipal() + ", session:"+session + ", config: "+config.getUserProperties());
         //String socketId = upgradeRequest.getHeader("Sec-WebSocket-Key");
         scanSessionStore.addSession(session);
-        scanSessionStore.addFolderForSession(session, "fs/user1/eee");
+        scanSessionStore.addFolderForSession(session, "fs/"+userId+"/"+projectName);
         try {
-            session.getRemote().sendString("Session : " + session);
+        	final RemoteEndpoint.Basic remote = session.getBasicRemote();
+            remote.sendText("Session : " + session);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @OnWebSocketMessage
-    public void onMessage(String message) {
+    @OnMessage
+    public void onMessage(Session session, @PathParam("userId") String userId, @PathParam("projectId") String projectName, String message) {
         // System.out.println("Message: " + message);
     }
     
