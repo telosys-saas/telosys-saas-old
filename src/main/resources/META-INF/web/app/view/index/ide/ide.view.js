@@ -28,6 +28,7 @@ var IDE = {
               '<i class="mdi mdi-library-books"></i>' +
               'Project' +
               '<a href="#" style="float:right" onclick="IDETreeview.collapseAll(event)"><i class="fa fa-minus"></i></a>' +
+              '<a href="#" style="float:right" onclick="event.stopPropagation();IDETreeview.refreshAll()"><i class="fa fa-refresh"></i></a>' +
             '</div>' +
             '<div class="collapsible-body" id="jstree" style="border: none;">' +
             '</div>' +

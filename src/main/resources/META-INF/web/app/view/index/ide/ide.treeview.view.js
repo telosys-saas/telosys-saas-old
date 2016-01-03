@@ -110,6 +110,21 @@ var IDETreeview = {
       }.bind(this));
   },
 
+  refreshAll: function() {
+    var state = Store.getState();
+    FilesService
+      .getFilesForProject(state.auth.userId, state.projectId)
+      .then(function(rootFolder) {
+        state.tree = {};
+        var root = this.convertFolderToJson(rootFolder, null);
+        state.tree.root = root;
+
+        var jstree = $.jstree.reference('#jstreecontent');
+        jstree.settings.core.data = root;
+        jstree.refresh();
+      }.bind(this));
+  },
+
   onClick: function(e, data) {
     console.log('onClick');
     if(data.node.type == 'file') {
