@@ -3,4 +3,5 @@ Employee {
 	firstName : string ;
 	birthDate : date ;
 	country : Country { @Embedded };
+  names: integer;
 }

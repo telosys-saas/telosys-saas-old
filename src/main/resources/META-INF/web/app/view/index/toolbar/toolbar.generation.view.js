@@ -122,6 +122,8 @@ var ToolbarGeneration = {
 
         ProjectsService.launchGeneration(state.auth.userId, state.projectId, generation, function(result) {
           console.log(result);
+          IDETreeview.refreshAll();
+          IDEWorkingFiles.refreshAll();
         });
       }
     }

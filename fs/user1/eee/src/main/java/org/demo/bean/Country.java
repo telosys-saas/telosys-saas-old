@@ -1,4 +1,4 @@
-package org.demo.bean; // toto
+package org.demo.bean;
 
 public class Country implements Serializable {
 

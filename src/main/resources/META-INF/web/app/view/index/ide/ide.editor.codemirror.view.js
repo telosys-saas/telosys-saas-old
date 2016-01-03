@@ -72,9 +72,12 @@ var IDEEditorCodemirror = {
 
           var editor = state.openFiles[file.id].editor;
 
+          state.openFiles[file.id].isModified = false;
+
           editor.setValue(file.content);
 
           IDEWorkingFiles.display();
+          IDEEditorToolbar.display();
         }.bind(this));
       }
     }

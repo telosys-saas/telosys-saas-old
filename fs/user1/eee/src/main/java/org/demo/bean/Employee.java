@@ -4,6 +4,7 @@ public class Employee implements Serializable {
 
 	private Date birthDate;
 	private String firstName;
+	private Integer names;
 	private Integer id;
 
 	public Date getBirthDate() {
@@ -20,6 +21,14 @@ public class Employee implements Serializable {
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+
+	public Integer getNames() {
+		return names;
+	}
+
+	public void setNames(Integer names) {
+		this.names = names;
 	}
 
 	public Integer getId() {

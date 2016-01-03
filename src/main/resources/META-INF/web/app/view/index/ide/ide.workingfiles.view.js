@@ -53,6 +53,13 @@ var IDEWorkingFiles = {
     $('#workingfiles').html(html);
   },
 
+  refreshAll: function() {
+    var state = Store.getState();
+    for(var fileId in state.openFiles) {
+      IDEEditorCodemirror.refreshFile(fileId);
+    }
+  },
+
   closeFile: function(fileId) {
     var state = Store.getState();
     $('#workingfiles_'+this.formatFileId(fileId)).remove();

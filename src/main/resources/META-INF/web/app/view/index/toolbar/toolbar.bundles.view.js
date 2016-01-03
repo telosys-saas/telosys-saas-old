@@ -50,7 +50,7 @@ var ToolbarBundles = {
           '<div class="collapsible-header">' +
             '<i class="mdi mdi-package"></i>' +
             bundle.name +
-            '<button class="btn red right" onclick="event.stopPropagation();ToolbarBundles.removeBundle(\''+bundle.name+'\')" style="margin-top:4px">Remove</button>' +
+            '<button class="btn red right" onclick="event.stopPropagation();ToolbarBundles.removeBundle(\''+bundle.name+'\')" style="margin-top:2px">Remove</button>' +
           '</div>' +
           '<div class="collapsible-body"><p>' +
             bundle.name +
@@ -79,7 +79,7 @@ var ToolbarBundles = {
           '<div class="collapsible-header">' +
             '<i class="mdi mdi-package"></i>' +
             bundle.name +
-            '<button class="btn green right" onclick="event.stopPropagation();ToolbarBundles.addBundle(\''+bundle.name+'\')" style="margin-top:4px">Add</button>' +
+            '<button class="btn green right" onclick="event.stopPropagation();ToolbarBundles.addBundle(\''+bundle.name+'\')" style="margin-top:2px">Add</button>' +
             '</div>' +
           '<div class="collapsible-body"><p>' +
             bundle.description +
@@ -114,6 +114,7 @@ var ToolbarBundles = {
       console.log('Bundle added : ',bundleName);
       this.loadData(function() {
         this.displayModal();
+        IDETreeview.refreshAll();
       }.bind(this));
     }.bind(this));
   },
@@ -124,6 +125,7 @@ var ToolbarBundles = {
       console.log('Bundle removed : ',bundleName);
       this.loadData(function() {
         this.displayModal();
+        IDETreeview.refreshAll();
       }.bind(this));
     }.bind(this));
   }
