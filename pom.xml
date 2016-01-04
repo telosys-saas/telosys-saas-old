@@ -123,11 +123,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.telosys.tools</groupId>
-			<artifactId>telosys-tools-repository</artifactId>
-			<version>${telosys.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.telosys.tools</groupId>
 			<artifactId>telosys-tools-api</artifactId>
 			<version>${telosys.version}</version>
 		</dependency>

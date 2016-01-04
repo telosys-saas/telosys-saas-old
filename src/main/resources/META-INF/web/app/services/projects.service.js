@@ -241,6 +241,26 @@ var ProjectsService = {
       });
   },
 
+  createModel: function(userId, projectName, modelName, callback) {
+    $.ajax({
+      method: "PUT",
+      url: host + "/api/v1/users/"+userId+"/projects/"+projectName+"/models/"+modelName,
+      dataType: 'json'
+    })
+      .success(function (model) {
+        console.log(model);
+        if (callback) {
+          callback(model);
+        }
+      })
+      .fail(function (jqXHR, textStatus) {
+        console.log(textStatus);
+      })
+      .done(function (msg) {
+        console.log(msg);
+      });
+  },
+
   launchGeneration: function (userId, projectName, generation, callback) {
     $.ajax({
       method: "PUT",

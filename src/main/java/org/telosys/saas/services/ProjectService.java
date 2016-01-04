@@ -48,7 +48,9 @@ public class ProjectService {
 		List<Model> models = new ArrayList<Model>();
 		for(String modelName : getModelNames(user, project)) {
 			Model model = getModel(user, project, modelName);
-			models.add(model);
+			if(model != null) {
+				models.add(model);
+			}
 		}
 		return models;
 	}
@@ -67,6 +69,24 @@ public class ProjectService {
 	public Model getModel(UserProfile user, Project project, String modelName) {
 		TelosysProject telosysProject = getTelosysProject(user, project);
 		try {
+			org.telosys.tools.generic.model.Model genericModel = telosysProject.loadModel(modelName+".model");
+			if(genericModel == null) {
+				return null;
+			} else {
+				return map(telosysProject.loadModel(modelName+".model"), modelName);
+			}
+		} catch (TelosysToolsException e) {
+			throw new IllegalStateException(e);
+		}
+	}
+
+	public Model createModel(UserProfile user, Project project, String modelName) {
+		TelosysProject telosysProject = getTelosysProject(user, project);
+		try {
+			java.io.File file = telosysProject.getDslModelFile(modelName);
+			if(!file.exists()) {
+				file = telosysProject.createNewDslModel(modelName);
+			}
 			return map(telosysProject.loadModel(modelName+".model"), modelName);
 		} catch (TelosysToolsException e) {
 			throw new IllegalStateException(e);

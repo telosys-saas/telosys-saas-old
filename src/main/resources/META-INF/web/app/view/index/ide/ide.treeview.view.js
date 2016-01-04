@@ -1,4 +1,3 @@
-
 var IDETreeview = {
   init: function() {
     var state = Store.getState();
@@ -22,7 +21,7 @@ var IDETreeview = {
               "icon" : "fa fa-folder-o"
             },
             "telosys" : {
-              "icon" : "fa fa-cubes"
+              "icon" : "icon-telosys-simple"
             },
             "model" : {
               "icon" : "fa fa-cube"
@@ -57,13 +56,13 @@ var IDETreeview = {
                   action: this.onCreateFolder(node, tree)
                 };
               }
-              if(node.type == 'folder-telosys') {
+              if(node.type == 'telosys') {
                 items.CreateFolder = {
                   label: "Create model",
                   action: this.onCreateModel(node, tree)
                 };
               }
-              if(node.type == 'folder-model') {
+              if(node.type == 'model') {
                 items.CreateFolder = {
                   label: "Create entity",
                   action: this.onCreateModelEntity(node, tree)
@@ -145,8 +144,12 @@ var IDETreeview = {
 
   onClick: function(e, data) {
     console.log('onClick');
-    if(data.node.type == 'file') {
-      var fileId = data.node.id;
+    if(data.node.type == 'file' || data.node.type == 'model') {
+      if(data.node.type == 'model') {
+        var fileId = data.node.id.substring(0, data.node.id.indexOf('_model')) + '.model';
+      } else {
+        var fileId = data.node.id;
+      }
       var state = Store.getState();
       var oldFocusFileId = state.fileId;
       state.fileId = fileId;
@@ -180,7 +183,6 @@ var IDETreeview = {
       node = tree.create_node(nodeParent, node);
       tree.edit(node, null, function(node, status) {
         var state = Store.getState();
-        var projectId = state.projectId;
         if (nodeParent.id == '@@_root_@@') {
           var file = {
             id: node.text,
@@ -195,7 +197,7 @@ var IDETreeview = {
           };
         }
         tree.set_id(node,file.id);
-        FilesService.createFileForProject(state.auth.userId, projectId, file, function(folder) {
+        FilesService.createFileForProject(state.auth.userId, state.projectId, file, function(folder) {
           console.log('file created', file);
         });
       });
@@ -210,7 +212,6 @@ var IDETreeview = {
       node = tree.create_node(nodeParent, node);
       tree.edit(node, null, function(node, status) {
         var state = Store.getState();
-        var projectId = state.projectId;
         if (nodeParent.id == '@@_root_@@') {
           var folder = {
             id: node.text,
@@ -225,7 +226,7 @@ var IDETreeview = {
           };
         }
         tree.set_id(node,folder.id);
-        FilesService.createFolderForProject(state.auth.userId, projectId, folder, function(folder) {
+        FilesService.createFolderForProject(state.auth.userId, state.projectId, folder, function(folder) {
           console.log('folder created', folder);
         });
       });
@@ -240,15 +241,10 @@ var IDETreeview = {
       node = tree.create_node(nodeParent, node);
       tree.edit(node, null, function(node, status) {
         var state = Store.getState();
-        var projectId = state.projectId;
-        var model = {
-          id: nodeParent.id + '/' + node.text,
-          name: node.text,
-          folderParentId: nodeParent.id
-        };
-        tree.set_id(node,model.id);
-        FilesService.createModelForProject(state.auth.userId, projectId, model, function(model) {
+        tree.set_id(node,node.text);
+        ProjectsService.createModel(state.auth.userId, state.projectId, node.text, function(model) {
           console.log('model created', model);
+          IDETreeview.refreshAll();
         });
       });
     });
@@ -263,14 +259,22 @@ var IDETreeview = {
       tree.edit(node, null, function(node, status) {
         var state = Store.getState();
         var projectId = state.projectId;
+
+        node.text = capitalize(node.text);
+
+        var entityId = nodeParent.id + '/' + node.text
+        if(entityId.indexOf('.entity') == -1) {
+          entityId += '.entity';
+        }
+
         var entity = {
-          id: nodeParent.id + '/' + node.text,
+          id: entityId,
           name: node.text,
           folderParentId: nodeParent.id
         };
         tree.set_id(node,entity.id);
-        FilesService.createEntityForModel(state.auth.userId, projectId, model, entity, function(entity) {
-          console.log('entity created', entity);
+        FilesService.createFileForProject(state.auth.userId, projectId, entity, function(model) {
+          console.log('entity file created', entity);
         });
       });
     });
@@ -348,9 +352,14 @@ var IDETreeview = {
       return null;
     }
 
+    var name = folder.name;
+    if(type == 'model' && folder.name.indexOf("_model") != -1) {
+      name = folder.name.substring(0, folder.name.indexOf("_model")) + '.model';
+    }
+
     var currentNode = {
       id: (folder.id) ? folder.id : '@@_root_@@',
-      text: folder.name,
+      text: name,
       type: type,
       children: []
     };
@@ -390,9 +399,11 @@ var IDETreeview = {
       return null;
     }
 
+    var name = file.name;
+
     var currentNode = {
       id: file.id,
-      text: file.name,
+      text: name,
       type: 'file', //type
     };
 
@@ -413,6 +424,9 @@ var IDETreeview = {
   },
 
   getFileType: function(fileId, parent) {
+    if(fileId.indexOf('telosys-tools.cfg') == 0) {
+      return null;
+    }
     if(fileId.indexOf('TelosysTools') == 0) {
       if(fileId.indexOf('.entity') != -1) {
         return 'entity';
@@ -423,3 +437,14 @@ var IDETreeview = {
   }
 
 };
+
+function capitalize(string) {
+  if(string == null || string.length == 0) {
+    return string;
+  }
+  var txt = string.charAt(0).toUpperCase();
+  if(string.length > 1) {
+    txt += string.slice(1);
+  }
+  return txt;
+}

@@ -247,6 +247,15 @@ public class ProjectResource {
     	return projectService.getModel(user, project, modelName);
     }
 
+    @Path("/models/{modelName}")
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    public Model saveModel(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("modelName") String modelName) {
+    	UserProfile user = getUser();
+    	Project project = storage.getProjectForUser(user, projectId);
+		return projectService.createModel(user, project, modelName);
+    }
+
     @Path("/action/generate")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
