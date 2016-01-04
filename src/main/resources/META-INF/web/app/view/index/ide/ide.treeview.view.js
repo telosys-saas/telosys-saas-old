@@ -21,6 +21,12 @@ var IDETreeview = {
             "folder" : {
               "icon" : "fa fa-folder-o"
             },
+            "telosys" : {
+              "icon" : "fa fa-cubes"
+            },
+            "model" : {
+              "icon" : "fa fa-cube"
+            },
             "file" : {
               "icon" : "fa fa-file-text-o"
             }
@@ -49,6 +55,18 @@ var IDETreeview = {
                 items.CreateFolder = {
                   label: "Create folder",
                   action: this.onCreateFolder(node, tree)
+                };
+              }
+              if(node.type == 'folder-telosys') {
+                items.CreateFolder = {
+                  label: "Create model",
+                  action: this.onCreateModel(node, tree)
+                };
+              }
+              if(node.type == 'folder-model') {
+                items.CreateFolder = {
+                  label: "Create entity",
+                  action: this.onCreateModelEntity(node, tree)
                 };
               }
               /*
@@ -214,6 +232,50 @@ var IDETreeview = {
     });
   },
 
+  onCreateModel: function(nodeParent, tree) {
+    return (function (obj) {
+      var node = {
+        type: 'model'
+      };
+      node = tree.create_node(nodeParent, node);
+      tree.edit(node, null, function(node, status) {
+        var state = Store.getState();
+        var projectId = state.projectId;
+        var model = {
+          id: nodeParent.id + '/' + node.text,
+          name: node.text,
+          folderParentId: nodeParent.id
+        };
+        tree.set_id(node,model.id);
+        FilesService.createModelForProject(state.auth.userId, projectId, model, function(model) {
+          console.log('model created', model);
+        });
+      });
+    });
+  },
+
+  onCreateModelEntity: function(nodeParent, tree) {
+    return (function (obj) {
+      var node = {
+        type: 'entity'
+      };
+      node = tree.create_node(nodeParent, node);
+      tree.edit(node, null, function(node, status) {
+        var state = Store.getState();
+        var projectId = state.projectId;
+        var entity = {
+          id: nodeParent.id + '/' + node.text,
+          name: node.text,
+          folderParentId: nodeParent.id
+        };
+        tree.set_id(node,entity.id);
+        FilesService.createEntityForModel(state.auth.userId, projectId, model, entity, function(entity) {
+          console.log('entity created', entity);
+        });
+      });
+    });
+  },
+
   onRemove: function(node, tree) {
     return (function(obj) {
       tree.delete_node(node);
@@ -222,12 +284,18 @@ var IDETreeview = {
         var fileId = node.id;
         FilesService.deleteFileForProject(state.auth.userId, state.projectId, fileId, function() {
           console.log("File '"+node.id+"' deleted");
+          IDEAction.closeFile(node.id);
         });
       }
       if(node.type == 'folder') {
         var folderId = node.id;
         FilesService.deleteFolderForProject(state.auth.userId, state.projectId, folderId, function() {
           console.log("Folder '"+node.id+"' deleted");
+          for(var openFileId in state.openFiles) {
+            if(openFileId.indexOf(node.id) != -1) {
+              IDEAction.closeFile(openFileId);
+            }
+          }
         });
       }
     }.bind(this));
@@ -274,10 +342,16 @@ var IDETreeview = {
 
   convertFolderToJson: function(folder, parent) {
     console.log('folder : ', folder.name);
+
+    var type = this.getFolderType(folder.id, parent);
+    if(!type) {
+      return null;
+    }
+
     var currentNode = {
       id: (folder.id) ? folder.id : '@@_root_@@',
       text: folder.name,
-      type: 'folder',
+      type: type,
       children: []
     };
 
@@ -287,19 +361,23 @@ var IDETreeview = {
       };
     }
 
-    if(folder.folders) {
+    if (folder.folders) {
       for (var i = 0; i < folder.folders.length; i++) {
         var folderSub = folder.folders[i];
         var folderSubNode = this.convertFolderToJson(folderSub, currentNode);
-        currentNode.children.push(folderSubNode);
+        if(folderSubNode) {
+          currentNode.children.push(folderSubNode);
+        }
       }
     }
 
-    if(folder.files) {
+    if (folder.files) {
       for (var i = 0; i < folder.files.length; i++) {
         var file = folder.files[i];
         var fileNode = this.convertFileToJson(file, currentNode);
-        currentNode.children.push(fileNode);
+        if(fileNode) {
+          currentNode.children.push(fileNode);
+        }
       }
     }
 
@@ -307,13 +385,41 @@ var IDETreeview = {
   },
 
   convertFileToJson: function(file, parent) {
+    var type = this.getFileType(file.id, parent);
+    if(!type) {
+      return null;
+    }
+
     var currentNode = {
       id: file.id,
       text: file.name,
-      type: 'file'
+      type: 'file', //type
     };
 
     return currentNode;
+  },
+
+  getFolderType: function(folderId, parent) {
+    if(folderId == 'TelosysTools') {
+      return 'telosys';
+    }
+    if(folderId.indexOf('TelosysTools') == 0) {
+      if(folderId.indexOf('_model') != -1) {
+        return 'model';
+      }
+      return null;
+    }
+    return 'folder';
+  },
+
+  getFileType: function(fileId, parent) {
+    if(fileId.indexOf('TelosysTools') == 0) {
+      if(fileId.indexOf('.entity') != -1) {
+        return 'entity';
+      }
+      return null;
+    }
+    return 'file';
   }
 
 };

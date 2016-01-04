@@ -3,6 +3,7 @@ package org.demo.bean;
 public class Country implements Serializable {
 
 	private String name;
+	private String hello;
 	private String code;
 	private Integer id;
 
@@ -12,6 +13,14 @@ public class Country implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getHello() {
+		return hello;
+	}
+
+	public void setHello(String hello) {
+		this.hello = hello;
 	}
 
 	public String getCode() {
