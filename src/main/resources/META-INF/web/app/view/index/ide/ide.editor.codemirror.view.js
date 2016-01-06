@@ -118,6 +118,8 @@ var IDEEditorCodemirror = {
         return 'text/velocity';
       case 'entity':
         return 'text/x-java';
+      case 'html':
+        return 'text/html';
       default:
         return ext;
     }
