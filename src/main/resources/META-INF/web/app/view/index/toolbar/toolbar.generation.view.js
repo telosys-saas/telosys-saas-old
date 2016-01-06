@@ -71,7 +71,7 @@ var ToolbarGeneration = {
         '</div>' +
       '</div>' +
       '<div class="modal-footer">' +
-        '<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" onclick="ToolbarGeneration.launchGeneration()">Generate</a>' +
+        '<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" onclick="ToolbarGeneration.submitGeneration()">Generate</a>' +
         '<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" onclick="ToolbarGeneration.closeModal()">Cancel</a>' +
       '</div>';
 
@@ -82,7 +82,7 @@ var ToolbarGeneration = {
     $('#generationModal').closeModal();
   },
 
-  launchGeneration: function() {
+  submitGeneration: function() {
     var entitiesByModels = {};
     var entitiesFields = document.getElementsByName('generation_entities')
     for(var i=0; i<entitiesFields.length; i++) {
@@ -97,7 +97,7 @@ var ToolbarGeneration = {
         entitiesByModels[model].push(entity);
       }
     }
-    console.log('entities', entities);
+    console.log('entitiesByModels', entitiesByModels);
     var bundles = [];
     var bundlesFields = document.getElementsByName('generation_bundles')
     for(var i=0; i<bundlesFields.length; i++) {
@@ -109,6 +109,24 @@ var ToolbarGeneration = {
     console.log('bundles', bundles);
 
     var state = Store.getState();
+    state.generation = {
+      entitiesByModels: entitiesByModels,
+      bundles: bundles
+    };
+
+    this.launchGeneration();
+  },
+
+  launchGeneration: function() {
+    var state = Store.getState();
+    if(!state.generation) {
+      return;
+    }
+    var entitiesByModels = state.generation.entitiesByModels;
+    var bundles = state.generation.bundles;
+
+    state.generationResults = [];
+    var generations = [];
     for(var model in entitiesByModels) {
       var entities = entitiesByModels[model];
       for (var i = 0; i < bundles.length; i++) {
@@ -119,13 +137,26 @@ var ToolbarGeneration = {
           bundle: bundle
         };
         console.log('generation: ', generation);
+        generations.push(generation);
+      }
+    }
 
-        ProjectsService.launchGeneration(state.auth.userId, state.projectId, generation, function(result) {
-          console.log(result);
+    var counter = generations.length;
+    for(var i=0; i<generations.length; i++) {
+      var generation = generations[i];
+      ProjectsService.launchGeneration(state.auth.userId, state.projectId, generation, function(result) {
+        console.log(result);
+        state.generationResults.push(result);
+        IDEConsoleGeneration.display();
+
+        // refresh at the end
+        counter --;
+        if(counter <= 0) {
+          this.closeModal();
           IDETreeview.refreshAll();
           IDEWorkingFiles.refreshAll();
-        });
-      }
+        }
+      }.bind(this));
     }
     //IDE.defineSplitEditorGenerate(40);
   }

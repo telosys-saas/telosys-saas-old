@@ -414,6 +414,9 @@ var IDETreeview = {
     if(folderId == 'TelosysTools') {
       return 'telosys';
     }
+    if(folderId.indexOf('TelosysTools/templates') == 0) {
+      return 'folder';
+    }
     if(folderId.indexOf('TelosysTools') == 0) {
       if(folderId.indexOf('_model') != -1) {
         return 'model';
@@ -426,6 +429,9 @@ var IDETreeview = {
   getFileType: function(fileId, parent) {
     if(fileId.indexOf('telosys-tools.cfg') == 0) {
       return null;
+    }
+    if(fileId.indexOf('TelosysTools/templates') == 0) {
+      return 'file';
     }
     if(fileId.indexOf('TelosysTools') == 0) {
       if(fileId.indexOf('.entity') != -1) {

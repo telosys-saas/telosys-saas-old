@@ -119,3 +119,16 @@ html .vakata-context li>a>i:empty {
 #workingfiles .working-file-selected {
     background-color: #D7EFFF;
 }
+
+#consoleGeneration, #consoleGeneration table td {
+    padding: 0;
+    margin: 0;
+}
+
+.generation-error-title {
+    font-size: 18px;
+}
+
+.generation-success-title {
+    font-size: 18px;
+}

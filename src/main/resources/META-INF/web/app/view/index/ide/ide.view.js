@@ -6,6 +6,7 @@ var IDE = {
     IDETreeview.init();
     IDEEditor.init();
     IDEGenerate.init();
+    IDEConsole.init();
   },
 
   display: function() {
@@ -35,15 +36,16 @@ var IDE = {
           '</li>' +
         '</ul>' +
       '</div>' +
-      '<div id="b" class="split split-horizontal content">' +
-        '<div id="editor" class="split">' +
-        //  '<div id="editorTabs" class="editorTabs"></div>' +
-        //  '<div id="editor1" class="editorTabContent">' +
+      '<div id="b" class="split split-horizontal">' +
+        '<div id="editor" class="split content">' +
+          //'<div id="editorTabs" class="editorTabs"></div>' +
+          //'<div id="editor1" class="editorTabContent">' +
             '<div id="editorToolbar" class="editorToolbar"></div>' +
             '<div id="editorCodemirror" class="editorCodemirror"></div>' +
-        //  '</div>' +
-        //'</div>' +
-        //'<div id="generate" class="split content">' +
+          //'</div>' +
+        '</div>' +
+        '<div id="console" class="split content">' +
+          '<div id="consoleGeneration"></div>' +
         '</div>' +
       '</div>');
 
@@ -57,15 +59,12 @@ var IDE = {
       cursor: 'col-resize'
     });
 
-    /*
-    Split(['#editor', '#generate'], {
+    Split(['#editor', '#console'], {
       direction: 'vertical',
-      sizes: [100, 1],
-      minSizes: [100, 1],
       gutterSize: 8,
+      sizes: [80, 20],
       cursor: 'row-resize'
     });
-    */
   }
 
 };
