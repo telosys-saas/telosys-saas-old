@@ -141,22 +141,34 @@ var ToolbarGeneration = {
       }
     }
 
-    var counter = generations.length;
-    for(var i=0; i<generations.length; i++) {
+    // do only one generation at times
+    var i = 0;
+    if(i<generations.length) {
       var generation = generations[i];
-      ProjectsService.launchGeneration(state.auth.userId, state.projectId, generation, function(result) {
+
+      var launchGenerationCallbackEnd = (function() {
+        // close modal and refresh at the end
+        this.closeModal();
+        IDETreeview.refreshAll();
+        IDEWorkingFiles.refreshAll();
+      }.bind(this));
+
+      var launchGenerationCallback = (function launchGenerationCallback(result) {
         console.log(result);
         state.generationResults.push(result);
         IDEConsoleGeneration.display();
 
-        // refresh at the end
-        counter --;
-        if(counter <= 0) {
-          this.closeModal();
-          IDETreeview.refreshAll();
-          IDEWorkingFiles.refreshAll();
+        // next generation
+        i++;
+        if (i < generations.length) {
+          var generation = generations[i];
+          ProjectsService.launchGeneration(state.auth.userId, state.projectId, generation, launchGenerationCallback);
+        } else {
+          launchGenerationCallbackEnd();
         }
       }.bind(this));
+
+      ProjectsService.launchGeneration(state.auth.userId, state.projectId, generation, launchGenerationCallback);
     }
     //IDE.defineSplitEditorGenerate(40);
   }

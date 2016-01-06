@@ -262,6 +262,7 @@ var ProjectsService = {
   },
 
   launchGeneration: function (userId, projectName, generation, callback) {
+    var deferred = Q.defer();
     $.ajax({
       method: "PUT",
       url: host + "/api/v1/users/"+userId+"/projects/"+projectName+"/action/generate",
@@ -274,13 +275,16 @@ var ProjectsService = {
         if (callback) {
           callback(msg);
         }
+        deferred.resolve(msg);
       })
       .fail(function (jqXHR, textStatus) {
         console.log(textStatus);
+        deferred.reject(textStatus);
       })
       .done(function (msg) {
         console.log(msg);
       });
+    return deferred.promise;
   },
 
   downloadZip: function(userId, projectName) {
