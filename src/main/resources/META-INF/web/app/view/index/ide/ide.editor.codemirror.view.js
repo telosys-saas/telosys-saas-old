@@ -116,10 +116,10 @@ var IDEEditorCodemirror = {
         return 'php';
       case 'vm':
         return 'text/velocity';
-      case 'entity':
-        return 'text/x-java';
       case 'html':
         return 'text/html';
+      case 'entity':
+        return 'entity';
       default:
         return ext;
     }

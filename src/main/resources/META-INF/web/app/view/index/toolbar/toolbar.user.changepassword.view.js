@@ -88,28 +88,11 @@ var ToolbarUserChangePassword = {
   
   validatePassword1: function(password1) {
     var ok, message;
-    if (!password1.match(/.*[0-9]+.*/g)) {
+
+    if (password1.length < 5) {
       return {
         ok: false,
-        message: 'Missing a number character'
-      };
-    }
-    else if (!password1.match(/.*[A-Z]+.*/g)) {
-      return {
-        ok: false,
-        message: 'Missing an uppercase character'
-      };
-    }
-    else if (!password1.match(/.*[a-z]+.*/g)) {
-      return {
-        ok: false,
-        message: 'Missing a lowercase character'
-      };
-    }
-    else if (password1.length < 6) {
-      return {
-        ok: false,
-        message: 'Too short (6 characters min)'
+        message: 'Too short (5 characters min)'
       };
     }
     else {

@@ -24,6 +24,9 @@ var IDETreeview = {
               "icon" : "icon-telosys-simple"
             },
             "model" : {
+              "icon" : "fa fa-cubes"
+            },
+            "entity" : {
               "icon" : "fa fa-cube"
             },
             "file" : {
@@ -144,7 +147,7 @@ var IDETreeview = {
 
   onClick: function(e, data) {
     console.log('onClick');
-    if(data.node.type == 'file' || data.node.type == 'model') {
+    if(data.node.type == 'file' || data.node.type == 'model' || data.node.type == 'entity') {
       if(data.node.type == 'model') {
         var fileId = data.node.id.substring(0, data.node.id.indexOf('_model')) + '.model';
       } else {
@@ -165,7 +168,7 @@ var IDETreeview = {
 
   onDoubleClick: function(e, data) {
     console.log('onDoubleClick');
-    if(data.node.type == 'file') {
+    if(data.node.type == 'file' || data.node.type == 'entity') {
       var state = Store.getState();
       var fileId = data.node.id;
       var openFile = state.openFiles[fileId];
@@ -275,6 +278,7 @@ var IDETreeview = {
         tree.set_id(node,entity.id);
         FilesService.createFileForProject(state.auth.userId, projectId, entity, function(model) {
           console.log('entity file created', entity);
+          IDETreeview.refreshAll();
         });
       });
     });
@@ -404,7 +408,7 @@ var IDETreeview = {
     var currentNode = {
       id: file.id,
       text: name,
-      type: 'file', //type
+      type: type
     };
 
     return currentNode;
