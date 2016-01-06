@@ -13,18 +13,18 @@ public class FileUtil {
 		StringBuffer path = new StringBuffer();
 		
 		for(String dir : dirs) {
-			String formattedDir = dir;
+			String formattedDir = dir.replaceAll("\\\\g", "/");
 			if(path.length() > 0) {
-				if(formattedDir.length() > 0 && formattedDir.charAt(0) == File.separatorChar) {
+				if(formattedDir.length() > 0 && formattedDir.charAt(0) == '/') {
 					formattedDir = formattedDir.substring(1);
 				}
 			}
-			if(formattedDir.length() > 0 && formattedDir.charAt(formattedDir.length() - 1) == File.separatorChar) {
+			if(formattedDir.length() > 0 && formattedDir.charAt(formattedDir.length() - 1) == '/') {
 				formattedDir = formattedDir.substring(0, formattedDir.length() - 1);
 			}
 			if(formattedDir.length() > 0) {
 				if(path.length() > 0) {
-					path.append(File.separator);
+					path.append("/");
 				}
 				path.append(formattedDir);
 			}
@@ -40,10 +40,10 @@ public class FileUtil {
 		
 		path = path.trim();
 		
-		if(path.indexOf(File.separator) == -1) {
+		if(path.indexOf("/") == -1) {
 			return "";
 		} else {
-			return path.substring(0, path.lastIndexOf(File.separator));
+			return path.substring(0, path.lastIndexOf("/"));
 		}
 	}
 	
@@ -51,7 +51,8 @@ public class FileUtil {
 		FileReader fileReader = null;
 		BufferedReader reader = null;
 	    try {
-	    	fileReader = new FileReader(file);
+	    	String fileFormatted = FileUtil.convertPathToIOPath(file);
+	    	fileReader = new FileReader(fileFormatted);
 	    	reader = new BufferedReader(fileReader);
 		    String         line = null;
 		    StringBuilder  stringBuilder = new StringBuilder();
@@ -75,7 +76,8 @@ public class FileUtil {
 	}
 	
 	public static void writeFile( String filePath, String content ) throws IOException {
-		java.io.File file = new java.io.File(filePath);
+    	String filePathFormatted = FileUtil.convertPathToIOPath(filePath);
+		java.io.File file = new java.io.File(filePathFormatted);
 		
 		// if file doesnt exists, then create it
 		if (!file.exists()) {
@@ -88,5 +90,15 @@ public class FileUtil {
 		bw.close();
 	}
 		
+	public static String convertPathToIOPath(String path) {
+		String separator;
+		if(java.io.File.separator.equals("\\")) {
+			separator = "\\\\";
+		} else {
+			separator = java.io.File.separator;
+		}
+		String ioPath = path.replaceAll("/", separator);
+		return ioPath;
+	}
 	
 }

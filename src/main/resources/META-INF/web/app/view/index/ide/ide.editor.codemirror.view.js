@@ -168,7 +168,7 @@ var IDEEditorCodemirror = {
   },
 
   formatFileId: function(fileId) {
-    return fileId.replace(/\./g,'_').replace(/\//g,'__');
+    return fileId.replace(/\./g,'_').replace(/\//g,'__').replace(/\\/g,'__');
   }
 
 };

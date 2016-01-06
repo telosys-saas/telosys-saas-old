@@ -16,8 +16,8 @@ var IDEWorkingFiles = {
         continue;
       }
 
-      var filename = fileId.substring(fileId.lastIndexOf('/')+1);
-      var filepath = fileId.substring(0,fileId.lastIndexOf('/'));
+      var filename = fileId.substring(fileId.lastIndexOf(fileseparator)+1);
+      var filepath = fileId.substring(0,fileId.lastIndexOf(fileseparator));
       html +=
         '<li class="collection-item truncate';
 
@@ -78,7 +78,7 @@ var IDEWorkingFiles = {
   },
 
   formatFileId: function(fileId) {
-    return fileId.replace(/\./g,'_').replace(/\//g,'__');
+    return fileId.replace(/\./g,'_').replace(/\//g,'__').replace(/\\/g,'__');
   },
 
   saveAll: function(event) {

@@ -1,0 +1,3 @@
+Titi {
+  name: string { @Id };
+}

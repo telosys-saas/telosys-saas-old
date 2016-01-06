@@ -1,4 +1,4 @@
-var fileseparator = '\\';
+var fileseparator = '/';
 
 var IDETreeview = {
   init: function() {

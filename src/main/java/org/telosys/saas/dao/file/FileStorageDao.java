@@ -23,7 +23,7 @@ public class FileStorageDao implements StorageDao {
 	}
 
 	private java.io.File getRootDir() {
-		return new java.io.File(getRootPath());
+		return getIOFile(getRootPath());
 	}
 
 	private String getUserPath(UserProfile user) {
@@ -32,7 +32,7 @@ public class FileStorageDao implements StorageDao {
 
 	private java.io.File getUserDir(UserProfile user) {
 		String path = getUserPath(user);
-		return new java.io.File(path);
+		return getIOFile(path);
 	}
 
 	public String getProjectPath(UserProfile user, Project project) {
@@ -41,7 +41,7 @@ public class FileStorageDao implements StorageDao {
 
 	private java.io.File getProjectDir(UserProfile user, Project project) {
 		String path = getProjectPath(user, project);
-		return new java.io.File(path);
+		return getIOFile(path);
 	}
 
 	private Project getProjectForDirectory(UserProfile user, java.io.File fileIO) {
@@ -171,7 +171,7 @@ public class FileStorageDao implements StorageDao {
 		String projectPath = getProjectPath(user, project);
 		String filePath = FileUtil.join(projectPath, folderId);
 		String relativePath = FileUtil.dirname(folderId);
-		java.io.File fileIO = new java.io.File(filePath);
+		java.io.File fileIO = getIOFile(filePath);
 		Folder folder = getFolderForDir(fileIO, relativePath);
 		return folder;
 	}
@@ -181,7 +181,7 @@ public class FileStorageDao implements StorageDao {
 		String projectPath = getProjectPath(user, project);
 		String filePath = FileUtil.join(projectPath, fileId);
 		String relativePath = FileUtil.dirname(fileId);
-		java.io.File fileIO = new java.io.File(filePath);
+		java.io.File fileIO = getIOFile(filePath);
 		File file = getFile(fileIO, relativePath);
 		
 		if(fileIO.exists()) {
@@ -204,7 +204,7 @@ public class FileStorageDao implements StorageDao {
 	public void createFolderForProjectAndUser(UserProfile user, Project project, Folder folderSub) {
 		String projectPath = getProjectPath(user, project);
 		String filePath = FileUtil.join(projectPath, folderSub.getId());
-		java.io.File fileIO = new java.io.File(filePath);
+		java.io.File fileIO = getIOFile(filePath);
 		fileIO.mkdirs();
 	}
 
@@ -228,7 +228,7 @@ public class FileStorageDao implements StorageDao {
 	public void deleteFileForProjectAndUser(UserProfile user, Project project, File fileToDelete) {
 		String projectPath = getProjectPath(user, project);
 		String filePath = FileUtil.join(projectPath, fileToDelete.getId());
-		java.io.File fileIO = new java.io.File(filePath);
+		java.io.File fileIO = getIOFile(filePath);
 		try {
 			delete(fileIO);
 		} catch(IOException e) {
@@ -240,7 +240,7 @@ public class FileStorageDao implements StorageDao {
 	public void deleteFolderForProjectAndUser(UserProfile user, Project project, Folder folderToDelete) {
 		String projectPath = getProjectPath(user, project);
 		String filePath = FileUtil.join(projectPath, folderToDelete.getId());
-		java.io.File fileIO = new java.io.File(filePath);
+		java.io.File fileIO = getIOFile(filePath);
 		try {
 			delete(fileIO);
 		} catch(IOException e) {
@@ -301,7 +301,16 @@ public class FileStorageDao implements StorageDao {
 		Zip zip = new Zip();
 		zip.zip(input, output);
 		// Return File on this ZIP
-		return new java.io.File(output);
+		return getIOFile(output);
+	}
+	
+	protected java.io.File getIOFile(String path) {
+		try {
+			String pathFormatted = FileUtil.convertPathToIOPath(path);
+			return new java.io.File(pathFormatted);
+		} catch(Exception e) {
+			throw new IllegalStateException(e);
+		}
 	}
 
 }

@@ -1,0 +1,28 @@
+{
+	"welcome" : "Welcome",
+	
+	"english" : "English",
+    "french" : "Fran\u00e7ais",
+	
+	"create" : "Create",
+	"edit" : "Edit",
+	"delete" : "Delete",
+	"delete ok" : "Delete ok",
+	"save" : "Save",
+	"save ok" : "Save ok",
+	"cancel" : "Cancel",
+
+	"Titi" : "Titi",
+	"titi.name" : "name",
+	"titi.id.not.defined" : "Titi identifier is not defined",
+
+	"Toto" : "Toto",
+	"toto.name" : "name",
+	"toto.id.not.defined" : "Toto identifier is not defined",
+	
+	"server.not.responding": "The server is not responding",
+	"url.invalid": "Invalid URL : {value}",
+	"url.bad": "Bad URL : {value}",
+
+	"app.version" : "Version"
+}

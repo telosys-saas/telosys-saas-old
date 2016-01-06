@@ -36,8 +36,12 @@ var ToolbarProjectnew = {
     var state = Store.getState();
     ProjectsService.createProject(state.auth.userId, projectName, function(isOk) {
       if(isOk) {
-        state.projectId = projectName;
-        Main.display();
+        Store.init()
+          .then(function(state) {
+	        state.projectId = projectName;
+	        state.page = 'ide';
+	        Main.display();
+          });
       }
     });
   }
