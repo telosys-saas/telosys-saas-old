@@ -1,3 +1,5 @@
+var fileseparator = '\\';
+
 var IDETreeview = {
   init: function() {
     var state = Store.getState();
@@ -194,7 +196,7 @@ var IDETreeview = {
           };
         } else {
           var file = {
-            id: nodeParent.id + '/' + node.text,
+            id: nodeParent.id + fileseparator + node.text,
             name: node.text,
             folderParentId: nodeParent.id
           };
@@ -223,7 +225,7 @@ var IDETreeview = {
           };
         } else {
           var folder = {
-            id: nodeParent.id + '/' + node.text,
+            id: nodeParent.id + fileseparator + node.text,
             name: node.text,
             folderParentId: nodeParent.id
           };
@@ -265,7 +267,7 @@ var IDETreeview = {
 
         node.text = capitalize(node.text);
 
-        var entityId = nodeParent.id + '/' + node.text
+        var entityId = nodeParent.id + fileseparator + node.text
         if(entityId.indexOf('.entity') == -1) {
           entityId += '.entity';
         }
@@ -418,7 +420,7 @@ var IDETreeview = {
     if(folderId == 'TelosysTools') {
       return 'telosys';
     }
-    if(folderId.indexOf('TelosysTools/templates') == 0) {
+    if(folderId.indexOf('TelosysTools'+fileseparator+'templates') == 0) {
       return 'folder';
     }
     if(folderId.indexOf('TelosysTools') == 0) {
@@ -434,7 +436,7 @@ var IDETreeview = {
     if(fileId.indexOf('telosys-tools.cfg') == 0) {
       return null;
     }
-    if(fileId.indexOf('TelosysTools/templates') == 0) {
+    if(fileId.indexOf('TelosysTools'+fileseparator+'templates') == 0) {
       return 'file';
     }
     if(fileId.indexOf('TelosysTools') == 0) {

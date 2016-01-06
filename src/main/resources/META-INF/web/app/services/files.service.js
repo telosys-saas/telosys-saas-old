@@ -1,10 +1,10 @@
 
 function encodeFileId(fileId) {
-  return fileId.replace(/\//g,'%2F');
+  return fileId.replace(/\//g,'%2F').replace(/\\/g,'%5C');
 }
 
 function encodeFolderId(fileId) {
-  return fileId.replace(/\//g,'%2F');
+  return fileId.replace(/\//g,'%2F').replace(/\\/g,'%5C');
 }
 
 var FilesService = {
