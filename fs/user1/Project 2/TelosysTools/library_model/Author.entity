@@ -1,5 +1,0 @@
-Author {
-  firstname: string;
-  lastname: string;
-  birthdate: date;
-}
