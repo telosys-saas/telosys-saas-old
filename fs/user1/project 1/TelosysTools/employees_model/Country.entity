@@ -1,8 +1,8 @@
 Country {
-	id : integer {@Id};
-	code : string {@NotNull };
-	name : string;
+  id : integer {@Id};
+  code : string {@NotNull };
+  name : string;
   hello: string;
-	foo : Foo ;
-	foos : Foo [] ;
+  foo : Foo ;
+  foos : Foo [] ;
 }

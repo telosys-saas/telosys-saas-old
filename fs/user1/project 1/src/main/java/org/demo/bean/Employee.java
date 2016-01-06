@@ -3,6 +3,7 @@ package org.demo.bean;
 public class Employee implements Serializable {
 
 	private Date birthDate;
+	private String lastName;
 	private String firstName;
 	private Integer names;
 	private Integer id;
@@ -13,6 +14,14 @@ public class Employee implements Serializable {
 
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getFirstName() {
