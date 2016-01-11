@@ -40,6 +40,7 @@ var IDEBundles = {
     var state = Store.getState();
 
     var html =
+        '<div id="bundlesWait"></div>' +
         '<div>' +
           '<div class="row">' +
             '<div class="col s12">' +
@@ -52,7 +53,7 @@ var IDEBundles = {
       html +=
         '<li>' +
           '<div class="collapsible-header">' +
-            '<i class="mdi mdi-package"></i>' +
+            '<i class="fa fa-archive"></i>' +
             bundle.name +
             '<button class="btn waves-effect waves-light red right" onclick="event.stopPropagation();IDEBundles.removeBundle(\''+bundle.name+'\')" style="margin-top:2px">Remove</button>' +
           '</div>' +
@@ -81,7 +82,7 @@ var IDEBundles = {
       html +=
         '<li>' +
           '<div class="collapsible-header">' +
-            '<i class="mdi mdi-package"></i>' +
+            '<i class="fa fa-archive"></i>' +
             bundle.name +
             '<button class="waves-effect waves-green btn right" onclick="event.stopPropagation();IDEBundles.addBundle(\''+bundle.name+'\')" style="margin-top:2px">Add</button>' +
             '</div>' +
@@ -110,6 +111,7 @@ var IDEBundles = {
   },
 
   addBundle: function(bundleName) {
+    this.displayWait(bundleName);
     var state = Store.getState();
     ProjectsService.addBundle(state.auth.userId, state.projectId, bundleName, function() {
       console.log('Bundle added : ',bundleName);
@@ -129,6 +131,18 @@ var IDEBundles = {
         IDEBundles.open();
       }.bind(this));
     }.bind(this));
+  },
+
+  displayWait: function(bundleName) {
+    var html =
+      '<div>' +
+        '<h5>Download of ' + bundleName + ' in progress ...</h5>' +
+        '<div class="progress">' +
+          '<div class="indeterminate"></div>' +
+        '</div>' +
+      '</div>';
+
+    $('#bundlesContent').html(html);
   }
 
 };

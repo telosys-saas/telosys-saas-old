@@ -2,31 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="568d9897-a9fe-472d-8494-004e54005c93" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.bundles.view.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.generation.view.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.settings.view.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/jquery-extend.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/persistence-springdatajpa-TT210-R2/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/persistence-springdatajpa-TT210-R2/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/persistence-springdatajpa-TT210-R2/jpa/jpa_bean_pk.vm" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/persistence-springdatajpa-TT210-R2/jpa/jpa_bean_with_links.vm" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/persistence-springdatajpa-TT210-R2/maven/pom_dependencies_common_txt.vm" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/persistence-springdatajpa-TT210-R2/maven/pom_dependencies_persistence_txt.vm" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/persistence-springdatajpa-TT210-R2/maven/pom_persistence_xml.vm" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/persistence-springdatajpa-TT210-R2/repository/repository_interface.vm" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/persistence-springdatajpa-TT210-R2/templates.cfg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/test.model" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/jjj_model/Jjjkkk.entity" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/jjj_model/Jjjkkk.entity" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../java/org/telosys/saas/services/TelosysFolderService.java" afterPath="$PROJECT_DIR$/../../../java/org/telosys/saas/services/TelosysFolderService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.console.generation.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.console.generation.view.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.editor.codemirror.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.editor.codemirror.view.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.view.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/telosys-tools.cfg" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/telosys-tools.cfg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/toolbar/toolbar.view.js" afterPath="$PROJECT_DIR$/app/view/index/toolbar/toolbar.view.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../velocity.log" afterPath="$PROJECT_DIR$/../../../../../velocity.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.bundles.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.bundles.view.js" />
     </list>
     <ignored path="web.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,21 +23,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ide.bundles.view.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.bundles.view.js">
+      <file leaf-file-name="ide.treeview.view.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.8195266">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="36" column="37" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ide.treeview.action.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.treeview.action.js">
+      <file leaf-file-name="ide.bundles.view.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.bundles.view.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.556213">
+              <caret line="133" column="4" selection-start-line="133" selection-start-column="4" selection-end-line="133" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -214,7 +190,6 @@
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.editor.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/toolbar/toolbar.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.settings.view.js" />
-        <option value="$PROJECT_DIR$/app/view/index/ide/ide.bundles.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.editor.codemirror.view.js" />
@@ -222,6 +197,7 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.generation.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.console.generation.view.js" />
+        <option value="$PROJECT_DIR$/app/view/index/ide/ide.bundles.view.js" />
       </list>
     </option>
   </component>
@@ -877,14 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="209" column="29" selection-start-line="209" selection-start-column="29" selection-end-line="209" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.treeview.action.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -973,10 +941,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="37" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.bundles.view.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.8195266">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.556213">
+          <caret line="133" column="4" selection-start-line="133" selection-start-column="4" selection-end-line="133" selection-end-column="4" />
           <folding />
         </state>
       </provider>
