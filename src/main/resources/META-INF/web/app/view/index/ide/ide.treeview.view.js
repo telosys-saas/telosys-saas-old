@@ -290,14 +290,14 @@ var IDETreeview = {
     return (function(obj) {
       tree.delete_node(node);
       var state = Store.getState();
-      if(node.type == 'file') {
+      if(node.type == 'file' || node.type == 'entity') {
         var fileId = node.id;
         FilesService.deleteFileForProject(state.auth.userId, state.projectId, fileId, function() {
           console.log("File '"+node.id+"' deleted");
           IDEAction.closeFile(node.id);
         });
       }
-      if(node.type == 'folder') {
+      if(node.type == 'folder' || node.type == 'model') {
         var folderId = node.id;
         FilesService.deleteFolderForProject(state.auth.userId, state.projectId, folderId, function() {
           console.log("Folder '"+node.id+"' deleted");
