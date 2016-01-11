@@ -2,13 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="568d9897-a9fe-472d-8494-004e54005c93" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../java/org/telosys/saas/domain/File.java" afterPath="$PROJECT_DIR$/../../../java/org/telosys/saas/domain/File.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../java/org/telosys/saas/domain/Folder.java" afterPath="$PROJECT_DIR$/../../../java/org/telosys/saas/domain/Folder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../java/org/telosys/saas/rest/ProjectResource.java" afterPath="$PROJECT_DIR$/../../../java/org/telosys/saas/rest/ProjectResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../java/org/telosys/saas/services/ProjectService.java" afterPath="$PROJECT_DIR$/../../../java/org/telosys/saas/services/ProjectService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.bundles.view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.generation.view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.settings.view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/jquery-extend.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/persistence-springdatajpa-TT210-R2/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/persistence-springdatajpa-TT210-R2/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/persistence-springdatajpa-TT210-R2/jpa/jpa_bean_pk.vm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/persistence-springdatajpa-TT210-R2/jpa/jpa_bean_with_links.vm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/persistence-springdatajpa-TT210-R2/maven/pom_dependencies_common_txt.vm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/persistence-springdatajpa-TT210-R2/maven/pom_dependencies_persistence_txt.vm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/persistence-springdatajpa-TT210-R2/maven/pom_persistence_xml.vm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/persistence-springdatajpa-TT210-R2/repository/repository_interface.vm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/persistence-springdatajpa-TT210-R2/templates.cfg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/test.model" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/jjj_model/Jjjkkk.entity" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/jjj_model/Jjjkkk.entity" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../java/org/telosys/saas/services/TelosysFolderService.java" afterPath="$PROJECT_DIR$/../../../java/org/telosys/saas/services/TelosysFolderService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.console.generation.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.console.generation.view.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.editor.codemirror.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.editor.codemirror.view.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/services/telosys.service.js" afterPath="$PROJECT_DIR$/app/services/telosys.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.view.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/telosys-tools.cfg" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/telosys-tools.cfg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/toolbar/toolbar.view.js" afterPath="$PROJECT_DIR$/app/view/index/toolbar/toolbar.view.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../velocity.log" afterPath="$PROJECT_DIR$/../../../../../velocity.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="web.iws" />
@@ -30,11 +47,107 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ide.treeview.view.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js">
+      <file leaf-file-name="ide.bundles.view.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.bundles.view.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47195622">
-              <caret line="185" column="63" selection-start-line="185" selection-start-column="63" selection-end-line="185" selection-end-column="63" />
+            <state vertical-scroll-proportion="-0.8195266">
+              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ide.treeview.action.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.treeview.action.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ide.settings.view.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.settings.view.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="25" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ide.generation.view.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.generation.view.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="79" column="20" selection-start-line="79" selection-start-column="20" selection-end-line="79" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ide.console.generation.view.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.console.generation.view.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+              <folding>
+                <marker date="1452520498000" expanded="true" signature="170:181" placeholder="..." />
+                <marker date="1452520498000" expanded="true" signature="1193:1204" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ide.editor.codemirror.view.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.editor.codemirror.view.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="30" column="51" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ide.view.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.view.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+              <folding>
+                <marker date="1452516395000" expanded="true" signature="395:437" placeholder="..." />
+                <marker date="1452516395000" expanded="true" signature="639:650" placeholder="..." />
+                <marker date="1452516395000" expanded="true" signature="763:774" placeholder="..." />
+                <marker date="1452516395000" expanded="true" signature="946:959" placeholder="..." />
+                <marker date="1452516395000" expanded="true" signature="1199:1210" placeholder="..." />
+                <marker date="1452516395000" expanded="true" signature="1322:1333" placeholder="..." />
+                <marker date="1452516395000" expanded="true" signature="1516:1529" placeholder="..." />
+                <marker date="1452516395000" expanded="true" signature="1751:1790" placeholder="..." />
+                <marker date="1452516395000" expanded="true" signature="1765:1778" placeholder="..." />
+                <marker date="1452516395000" expanded="true" signature="2144:2183" placeholder="..." />
+                <marker date="1452516395000" expanded="true" signature="2231:2270" placeholder="..." />
+                <marker date="1452516395000" expanded="true" signature="2321:2360" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.view.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/index/main.view.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jquery-extend.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/jquery-extend.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -43,38 +156,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="97" column="35" selection-start-line="97" selection-start-column="35" selection-end-line="97" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="projects.service.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/services/projects.service.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="5" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="files.service.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/services/files.service.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="74" column="38" selection-start-line="74" selection-start-column="38" selection-end-line="74" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="telosys.service.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/services/telosys.service.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+            <state vertical-scroll-proportion="-13.125">
+              <caret line="88" column="45" selection-start-line="88" selection-start-column="45" selection-end-line="88" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -88,11 +171,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/view/index/user/user.view.js" />
-        <option value="$PROJECT_DIR$/login.html" />
-        <option value="$PROJECT_DIR$/app/view/index/toolbar/toolbar.projectnew.view.js" />
-        <option value="$PROJECT_DIR$/app/view/index/toolbar/toolbar.user.action.js" />
-        <option value="$PROJECT_DIR$/app/services/auth.service.js" />
         <option value="$PROJECT_DIR$/app/services/files.service.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.editor.codemirror.action.js" />
         <option value="$PROJECT_DIR$/app/view/index/toolbar/toolbar.projects.view.js" />
@@ -117,28 +195,33 @@
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.action.js" />
         <option value="$PROJECT_DIR$/main.css" />
         <option value="$PROJECT_DIR$/fonts.css" />
-        <option value="$PROJECT_DIR$/app/view/index/ide/ide.generation.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.editor.toolbar.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.editor.generation.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/toolbar/toolbar.console.view.js" />
-        <option value="$PROJECT_DIR$/app/view/index/toolbar/toolbar.view.js" />
         <option value="$PROJECT_DIR$/lib/split/split.js" />
         <option value="$PROJECT_DIR$/hsplitter.html" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.console.view.js" />
-        <option value="$PROJECT_DIR$/app/view/index/ide/ide.console.generation.view.js" />
         <option value="$PROJECT_DIR$/index.css" />
-        <option value="$PROJECT_DIR$/app/view/index/ide/ide.view.js" />
         <option value="$PROJECT_DIR$/app/services/projects.service.js" />
         <option value="$PROJECT_DIR$/app/view/index/toolbar/toolbar.generation.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/toolbar/toolbar.user.changepassword.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/account/account.create.view.js" />
-        <option value="$PROJECT_DIR$/app/view/index/ide/ide.editor.codemirror.view.js" />
         <option value="$PROJECT_DIR$/lib/codemirror/mode/coffeescript/coffeescript.js" />
         <option value="$PROJECT_DIR$/js/codemirror/mode/entity/index.html" />
         <option value="$PROJECT_DIR$/js/codemirror/mode/entity/entity.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/app/services/telosys.service.js" />
+        <option value="$PROJECT_DIR$/app/view/index/ide/ide.editor.settings.view.js" />
+        <option value="$PROJECT_DIR$/app/view/index/ide/ide.editor.view.js" />
+        <option value="$PROJECT_DIR$/app/view/index/toolbar/toolbar.view.js" />
+        <option value="$PROJECT_DIR$/app/view/index/ide/ide.settings.view.js" />
+        <option value="$PROJECT_DIR$/app/view/index/ide/ide.bundles.view.js" />
+        <option value="$PROJECT_DIR$/app/view/index/ide/ide.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js" />
+        <option value="$PROJECT_DIR$/app/view/index/ide/ide.editor.codemirror.view.js" />
+        <option value="$PROJECT_DIR$/js/jquery-extend.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/app/view/index/ide/ide.generation.view.js" />
+        <option value="$PROJECT_DIR$/app/view/index/ide/ide.console.generation.view.js" />
       </list>
     </option>
   </component>
@@ -206,6 +289,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="codemirror" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -229,6 +352,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="index" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="index" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="toolbar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -293,11 +442,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/view/index/ide" />
       <recent name="$PROJECT_DIR$/app/services" />
       <recent name="$PROJECT_DIR$/js/codemirror/mode/entity" />
       <recent name="$PROJECT_DIR$/js/codemirror/mode" />
       <recent name="$PROJECT_DIR$/lib/layout" />
-      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/view/index" />
@@ -431,48 +580,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/materialize/js/materialize.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="866.4815">
-          <caret line="3514" column="41" selection-start-line="3514" selection-start-column="41" selection-end-line="3514" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/toolbar/toolbar.settings.view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="32.791668">
-          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/prism/prism.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.7777777">
-          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/prism/prism.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5555556">
-          <caret line="1" column="1546" selection-start-line="1" selection-start-column="1538" selection-end-line="1" selection-end-column="1546" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/login/login.view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/view/index/login/login_old.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -519,13 +626,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="46" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.treeview.action.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -583,24 +683,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.editor.view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.generate.view.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.3337629">
           <caret line="69" column="38" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.editor.toolbar.view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -611,24 +697,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/toolbar/toolbar.view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/main.view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -650,14 +722,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="74" selection-start-line="43" selection-start-column="74" selection-end-line="43" selection-end-column="74" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -683,21 +747,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.console.generation.view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="60" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/toolbar/toolbar.bundles.view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="127" column="23" selection-start-line="127" selection-start-column="23" selection-end-line="127" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/view/index/toolbar/toolbar.user.changepassword.view.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -712,13 +761,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.editor.codemirror.view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56908345">
-          <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/codemirror/mode/coffeescript/coffeescript.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -730,6 +772,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="306" column="0" selection-start-line="299" selection-start-column="4" selection-end-line="306" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -751,6 +796,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.23904383">
           <caret line="36" column="30" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -758,14 +804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="5" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="97" column="35" selection-start-line="97" selection-start-column="35" selection-end-line="97" selection-end-column="35" />
           <folding />
         </state>
       </provider>
@@ -786,10 +824,159 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/jstree/jstree.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="46.555557">
+          <caret line="1" column="13874" selection-start-line="1" selection-start-column="13874" selection-end-line="1" selection-end-column="13874" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/toolbar/toolbar.bundles.view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="110" column="2" selection-start-line="110" selection-start-column="2" selection-end-line="110" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.editor.view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/jquery/jquery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5300" column="2" selection-start-line="5300" selection-start-column="2" selection-end-line="5300" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/toolbar/toolbar.view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+          <folding>
+            <marker date="1452514226000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452514226000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.editor.toolbar.view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="17" />
+          <folding>
+            <marker date="1452047375000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47195622">
-          <caret line="185" column="63" selection-start-line="185" selection-start-column="63" selection-end-line="185" selection-end-column="63" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="209" column="29" selection-start-line="209" selection-start-column="29" selection-end-line="209" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.treeview.action.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.settings.view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.editor.codemirror.view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="51" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+          <folding>
+            <marker date="1452516395000" expanded="true" signature="395:437" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="639:650" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="763:774" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="946:959" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="1199:1210" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="1322:1333" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="1516:1529" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="1751:1790" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="1765:1778" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="2144:2183" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="2231:2270" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="2321:2360" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/main.view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.125">
+          <caret line="88" column="45" selection-start-line="88" selection-start-column="45" selection-end-line="88" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/jquery-extend.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.console.generation.view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+          <folding>
+            <marker date="1452520498000" expanded="true" signature="170:181" placeholder="..." />
+            <marker date="1452520498000" expanded="true" signature="1193:1204" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.generation.view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="79" column="20" selection-start-line="79" selection-start-column="20" selection-end-line="79" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.bundles.view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.8195266">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
         </state>
       </provider>

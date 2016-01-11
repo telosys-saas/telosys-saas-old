@@ -28,8 +28,8 @@ var Toolbar = {
 
     if(state.projectId) {
       html +=
-        '<li><a href="#" onclick="ToolbarSettings.openModal()">Settings</a></li>' +
-        '<li><a href="#" onclick="ToolbarBundles.openModal()">Bundles</a></li>' +
+        '<li><a href="#" onclick="IDESettings.open()">Settings</a></li>' +
+        '<li><a href="#" onclick="IDEBundles.open()">Templates</a></li>' +
         '<li><a href="#" onclick="ToolbarGeneration.openModal()">Generation</a></li>' +
         '<li><a href="#" onclick="ToolbarDownload.download()">Download</a></li>';
     }

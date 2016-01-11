@@ -13,6 +13,11 @@ var IDEEditorCodemirror = {
         this.showFile();
       }
     }
+
+    $('#bundles').css( "display", "none");
+    $('#generation').css('display', 'none');
+    $('#settings').css( "display", "none");
+    $('#editor').css( "display", "block");
   },
 
   hideFiles: function() {

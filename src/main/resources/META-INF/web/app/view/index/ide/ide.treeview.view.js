@@ -33,6 +33,12 @@ var IDETreeview = {
             "telosys" : {
               "icon" : "icon-telosys-simple"
             },
+            "bundles" : {
+              "icon" : "fa fa-archive"
+            },
+            "bundle" : {
+              "icon" : "fa fa-archive"
+            },
             "model" : {
               "icon" : "fa fa-cubes"
             },
@@ -59,7 +65,7 @@ var IDETreeview = {
                */
               console.log(node);
               var items = {};
-              if(node.type == 'folder') {
+              if(node.type == 'folder' || node.type == 'bundle') {
                 items.CreateFile = {
                   label: "Create file",
                   action: this.onCreateFile(node, tree)
@@ -110,12 +116,14 @@ var IDETreeview = {
                 "action": this.onRename(node, tree)
               };
               */
-              items.Remove = {
-                "separator_before": false,
-                "separator_after": false,
-                "label": "Remove",
-                "action": this.onRemove(node, tree)
-              };
+              if(node.type != 'telosys' && node.type != 'bundles' && node.type != 'bundle') {
+                items.Remove = {
+                  "separator_before": false,
+                  "separator_after": false,
+                  "label": "Remove",
+                  "action": this.onRemove(node, tree)
+                };
+              }
               return items;
             }.bind(this)
           },
@@ -166,12 +174,12 @@ var IDETreeview = {
 
   onClick: function(e, data) {
     console.log('onClick');
-    if(data.node.type == 'file' || data.node.type == 'model' || data.node.type == 'entity') {
-      if(data.node.type == 'model') {
-        var fileId = data.node.id.substring(0, data.node.id.indexOf('_model')) + '.model';
-      } else {
+    if(data.node.type == 'file' || data.node.type == 'entity') {
+      //if(data.node.type == 'model') {
+      //  var fileId = data.node.id.substring(0, data.node.id.indexOf('_model')) + '.model';
+      //} else {
         var fileId = data.node.id;
-      }
+      //}
       var state = Store.getState();
       var oldFocusFileId = state.fileId;
       state.fileId = fileId;
@@ -183,8 +191,24 @@ var IDETreeview = {
         IDEWorkingFiles.display();
       }
     }
-    if(data.node.type == 'folder' || data.node.type == 'telosys' || data.node.type == 'model') {
+    if(data.node.type == 'folder') {
       data.instance.toggle_node(data.node);
+    }
+    if(data.node.type == 'telosys' || data.node.type == 'bundles' || data.node.type == 'bundle' || data.node.type == 'model') {
+      if(!data.instance.is_open(data.node)) {
+        data.instance.open_node(data.node);
+      }
+      if(data.node.type == 'telosys') {
+        IDESettings.open();
+      }
+      if(data.node.type == 'bundles') {
+        IDEBundles.open();
+      }
+      if(data.node.type == 'model') {
+        var state = Store.getState();
+        state.modelName = data.node.text;
+        IDEGeneration.open();
+      }
     }
   },
 

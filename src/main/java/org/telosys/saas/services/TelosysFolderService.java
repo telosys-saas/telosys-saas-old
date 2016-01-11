@@ -31,8 +31,12 @@ public class TelosysFolderService {
 			}
 		}
 		if(templatesFolder != null) {
-			templatesFolder.setType("folder");
+			templatesFolder.setType("bundles");
 			telosysFolder.getFolders().add(templatesFolder);
+			
+			for(Folder folder : templatesFolder.getFolders()) {
+				folder.setType("bundle");
+			}
 		}
 		
 		// Add Models

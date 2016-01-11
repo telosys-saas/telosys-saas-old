@@ -10,7 +10,10 @@ var IDEConsoleGeneration = {
     var html =
       '<div style="width: 100%">' +
         '<span class="generation-error-title">Generation errors</span>' +
-        '<button class="right btn waves-effect waves-green" onclick="ToolbarGeneration.launchGeneration()">Generate again</button>' +
+        '<button class="right btn waves-effect waves-green" onclick="IDEGeneration.launchGeneration()">' +
+          '<span class="fa fa-play-circle fa-lg"></span>' +
+          ' Generate again' +
+        '</button>' +
       '</div>' +
       '<table>';
 
@@ -39,7 +42,10 @@ var IDEConsoleGeneration = {
         html =
           '<div style="width: 100%">' +
             '<span class="generation-success-title">Generation successfull</span>' +
-            '<button class="right btn waves-effect waves-green" onclick="ToolbarGeneration.launchGeneration()">Generate again</button>' +
+            '<button class="right btn waves-effect waves-green" onclick="IDEGeneration.launchGeneration()">' +
+              '<span class="fa fa-play-circle fa-lg"></span>' +
+              ' Generate again' +
+            '</button>' +
           '</div>';
       } else {
         html = '';

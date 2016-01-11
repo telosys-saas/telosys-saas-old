@@ -37,12 +37,17 @@ var IDE = {
         '</ul>' +
       '</div>' +
       '<div id="b" class="split split-horizontal">' +
-        '<div id="editor" class="split content">' +
+        '<div id="ide" class="split content">' +
+          '<div id="editor" style="display:none; width: 100%; height: 100%">' +
           //'<div id="editorTabs" class="editorTabs"></div>' +
           //'<div id="editor1" class="editorTabContent">' +
             '<div id="editorToolbar" class="editorToolbar"></div>' +
             '<div id="editorCodemirror" class="editorCodemirror"></div>' +
           //'</div>' +
+          '</div>' +
+          '<div id="settings" style="display:none; width: 100%; height: 100%"></div>' +
+          '<div id="bundles" style="display:none; width: 100%; height: 100%"></div>' +
+          '<div id="generation" style="display:none; width: 100%; height: 100%"></div>' +
         '</div>' +
         '<div id="console" class="split content">' +
           '<div id="consoleGeneration"></div>' +
@@ -59,7 +64,7 @@ var IDE = {
       cursor: 'col-resize'
     });
 
-    Split(['#editor', '#console'], {
+    Split(['#ide', '#console'], {
       direction: 'vertical',
       gutterSize: 8,
       sizes: [80, 20],
