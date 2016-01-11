@@ -1,6 +1,0 @@
-// Entity Jjjkkk
-
-Jjjkkk {
-  myfield : string ; // field example 
-  hello: integer;
-}

@@ -2,7 +2,55 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="568d9897-a9fe-472d-8494-004e54005c93" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.bundles.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.bundles.view.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/jjj_model/Jjjkkk.entity" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/jjj_model/Kkkk.entity" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/tttt_model/Ee.entity" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/doc/html/Jjjkkk.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/doc/html/Kkkk.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/python/Jjjkkk.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/python/Kkkk.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/bean/Jjjkkk.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/bean/Kkkk.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/cache/JjjkkkCache.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/cache/KkkkCache.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/bean/JjjkkkTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/bean/KkkkTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/cache/JjjkkkCacheTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/cache/KkkkCacheTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/tmp/Jjjkkk_context.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/tmp/Kkkk_context.txt" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/doc/html/Author.html" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/doc/html/Author.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/bean/Author.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/bean/Author.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/python/Author.py" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/python/Author.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/cache/AuthorCache.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/cache/AuthorCache.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/cache/AuthorCacheTest.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/cache/AuthorCacheTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/bean/AuthorTest.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/bean/AuthorTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/tmp/Author_context.txt" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/tmp/Author_context.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/doc/html/Book.html" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/doc/html/Book.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/bean/Book.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/bean/Book.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/python/Book.py" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/python/Book.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/cache/BookCache.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/cache/BookCache.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/cache/BookCacheTest.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/cache/BookCacheTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/bean/BookTest.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/bean/BookTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/tmp/Book_context.txt" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/tmp/Book_context.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/doc/html/Hhhh.html" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/doc/html/Hhhh.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/bean/Hhhh.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/bean/Hhhh.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/python/Hhhh.py" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/python/Hhhh.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/cache/HhhhCache.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/cache/HhhhCache.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/cache/HhhhCacheTest.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/cache/HhhhCacheTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/bean/HhhhTest.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/bean/HhhhTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/tmp/Hhhh_context.txt" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/tmp/Hhhh_context.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/doc/html/Toto.html" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/doc/html/Toto.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/bean/Toto.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/bean/Toto.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/python/Toto.py" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/python/Toto.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/cache/TotoCache.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/cache/TotoCache.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/cache/TotoCacheTest.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/cache/TotoCacheTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/bean/TotoTest.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/bean/TotoTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/tmp/Toto_context.txt" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/tmp/Toto_context.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/doc/html/index.html" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/doc/html/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/services/projects.service.js" afterPath="$PROJECT_DIR$/app/services/projects.service.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="web.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,31 +71,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ide.treeview.view.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ide.treeview.view.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="37" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.30779755">
+              <caret line="33" column="38" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ide.bundles.view.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="toolbar.view.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/index/toolbar/toolbar.view.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="38" column="48" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+              <folding>
+                <marker date="1452514226000" expanded="true" signature="604:659" placeholder="..." />
+                <marker date="1452514226000" expanded="true" signature="722:762" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ide.bundles.view.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.bundles.view.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.556213">
-              <caret line="133" column="4" selection-start-line="133" selection-start-column="4" selection-end-line="133" selection-end-column="4" />
+            <state vertical-scroll-proportion="-5.7454543">
+              <caret line="129" column="33" selection-start-line="129" selection-start-column="33" selection-end-line="129" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ide.settings.view.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.settings.view.js">
+      <file leaf-file-name="projects.service.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/services/projects.service.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <caret line="263" column="13" selection-start-line="263" selection-start-column="2" selection-end-line="263" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -63,6 +124,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="telosys.service.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/services/telosys.service.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ide.console.generation.view.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.console.generation.view.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -71,39 +142,6 @@
               <folding>
                 <marker date="1452520498000" expanded="true" signature="170:181" placeholder="..." />
                 <marker date="1452520498000" expanded="true" signature="1193:1204" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ide.editor.codemirror.view.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.editor.codemirror.view.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="51" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ide.view.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.view.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
-              <folding>
-                <marker date="1452516395000" expanded="true" signature="395:437" placeholder="..." />
-                <marker date="1452516395000" expanded="true" signature="639:650" placeholder="..." />
-                <marker date="1452516395000" expanded="true" signature="763:774" placeholder="..." />
-                <marker date="1452516395000" expanded="true" signature="946:959" placeholder="..." />
-                <marker date="1452516395000" expanded="true" signature="1199:1210" placeholder="..." />
-                <marker date="1452516395000" expanded="true" signature="1322:1333" placeholder="..." />
-                <marker date="1452516395000" expanded="true" signature="1516:1529" placeholder="..." />
-                <marker date="1452516395000" expanded="true" signature="1751:1790" placeholder="..." />
-                <marker date="1452516395000" expanded="true" signature="1765:1778" placeholder="..." />
-                <marker date="1452516395000" expanded="true" signature="2144:2183" placeholder="..." />
-                <marker date="1452516395000" expanded="true" signature="2231:2270" placeholder="..." />
-                <marker date="1452516395000" expanded="true" signature="2321:2360" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -178,7 +216,6 @@
         <option value="$PROJECT_DIR$/hsplitter.html" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.console.view.js" />
         <option value="$PROJECT_DIR$/index.css" />
-        <option value="$PROJECT_DIR$/app/services/projects.service.js" />
         <option value="$PROJECT_DIR$/app/view/index/toolbar/toolbar.generation.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/toolbar/toolbar.user.changepassword.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/account/account.create.view.js" />
@@ -191,13 +228,14 @@
         <option value="$PROJECT_DIR$/app/view/index/toolbar/toolbar.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.settings.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.view.js" />
-        <option value="$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.editor.codemirror.view.js" />
         <option value="$PROJECT_DIR$/js/jquery-extend.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.generation.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.console.generation.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.bundles.view.js" />
+        <option value="$PROJECT_DIR$/app/services/projects.service.js" />
+        <option value="$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js" />
       </list>
     </option>
   </component>
@@ -265,7 +303,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -279,19 +317,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="codemirror" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entity" />
+              <option name="myItemId" value="materialdesignicons" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -328,32 +358,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="index" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="index" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="toolbar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -380,24 +384,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ide" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -432,8 +418,11 @@
       <recent name="$PROJECT_DIR$/app/services" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.index.html">
+  <component name="RunManager" selected="JavaScript Debug.preview.html">
     <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/web/index.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="preview.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/web/lib/materialdesignicons/preview.html">
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -474,12 +463,14 @@
       <envs />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.preview.html" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.preview.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
       </list>
     </recent_temporary>
   </component>
@@ -498,13 +489,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1436" height="877" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32806325" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22685513" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22685513" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -776,22 +767,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/services/projects.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/services/telosys.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/services/files.service.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -829,17 +804,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="5300" column="2" selection-start-line="5300" selection-start-column="2" selection-end-line="5300" selection-end-column="2" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/toolbar/toolbar.view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
-          <folding>
-            <marker date="1452514226000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452514226000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -882,18 +846,18 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
           <folding>
-            <marker date="1452516395000" expanded="true" signature="395:437" placeholder="..." />
-            <marker date="1452516395000" expanded="true" signature="639:650" placeholder="..." />
-            <marker date="1452516395000" expanded="true" signature="763:774" placeholder="..." />
-            <marker date="1452516395000" expanded="true" signature="946:959" placeholder="..." />
-            <marker date="1452516395000" expanded="true" signature="1199:1210" placeholder="..." />
-            <marker date="1452516395000" expanded="true" signature="1322:1333" placeholder="..." />
-            <marker date="1452516395000" expanded="true" signature="1516:1529" placeholder="..." />
-            <marker date="1452516395000" expanded="true" signature="1751:1790" placeholder="..." />
-            <marker date="1452516395000" expanded="true" signature="1765:1778" placeholder="..." />
-            <marker date="1452516395000" expanded="true" signature="2144:2183" placeholder="..." />
-            <marker date="1452516395000" expanded="true" signature="2231:2270" placeholder="..." />
-            <marker date="1452516395000" expanded="true" signature="2321:2360" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452516395000" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -941,18 +905,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js">
+    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.bundles.view.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="37" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="37" />
+        <state vertical-scroll-proportion="-5.7454543">
+          <caret line="129" column="33" selection-start-line="129" selection-start-column="33" selection-end-line="129" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.bundles.view.js">
+    <entry file="file://$PROJECT_DIR$/app/services/telosys.service.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.556213">
-          <caret line="133" column="4" selection-start-line="133" selection-start-column="4" selection-end-line="133" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/services/projects.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="263" column="13" selection-start-line="263" selection-start-column="2" selection-end-line="263" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/toolbar/toolbar.view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="48" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+          <folding>
+            <marker date="1452514226000" expanded="true" signature="604:659" placeholder="..." />
+            <marker date="1452514226000" expanded="true" signature="722:762" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30779755">
+          <caret line="33" column="38" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
           <folding />
         </state>
       </provider>

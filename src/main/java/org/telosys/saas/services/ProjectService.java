@@ -99,6 +99,18 @@ public class ProjectService {
 		}
 	}
 
+	public void deleteModel(UserProfile user, Project project, String modelName) {
+		TelosysProject telosysProject = getTelosysProject(user, project);
+		try {
+			java.io.File file = telosysProject.getDslModelFile(modelName);
+			if(file.exists()) {
+				telosysProject.deleteDslModel(modelName);
+			}
+		} catch (TelosysToolsException e) {
+			throw new IllegalStateException(e);
+		}
+	}
+
 	private Model map(org.telosys.tools.generic.model.Model genericModel, String modelName) {
 		Model model = new Model();
 		model.setModelName(modelName);

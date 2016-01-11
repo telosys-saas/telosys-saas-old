@@ -2,10 +2,10 @@
 <html>
 <!--
  * Index for all HTML pages
- * Created on 11 janv. 2016 ( Time 15:26:17 )
- * Target Name     : "Java Bean doc index(HTML)"
- * Target Template : "doc_index_html.vm"
- * Target Entity   : ""  ( entityName is void because this template is "multi-targets" )
+ * Created on $today.date ( Time $today.time )
+ * Target Name     : "$target.targetName"
+ * Target Template : "$target.template"
+ * Target Entity   : "$target.entityName"  ( entityName is void because this template is "multi-targets" )
 -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -35,10 +35,9 @@ td.label{
 <body>
 <h1>Entities documentation </h1>
 <ul>
-<li><a href="./Book.html">Book</a> Book ( package org.demo.bean) : Table =  </li>
-<li><a href="./Author.html">Author</a> Author ( package org.demo.bean) : Table =  </li>
-<li><a href="./Toto.html">Toto</a> Toto ( package org.demo.bean) : Table =  </li>
-<li><a href="./Hhhh.html">Hhhh</a> Hhhh ( package org.demo.bean) : Table =  </li>
+#foreach ( $entity in $selectedEntities )
+<li><a href="./${entity.name}.html">${entity.name}</a> $entity.name ( package $entity.package) : Table = $entity.databaseTable </li>
+#end 
 </ul>
 </body>
 </html>

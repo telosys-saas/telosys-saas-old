@@ -21,13 +21,16 @@ var IDETreeview = {
         state.jstree = $('#jstreecontent').jstree({
           'core': {
             'data': [
-              state.tree.root, state.tree.telosys
+              state.tree.telosys, state.tree.root
             ],
             // so that create works
             "check_callback" : true
           },
           "types" : {
             "folder" : {
+              "icon" : "fa fa-folder-o"
+            },
+            "project" : {
               "icon" : "fa fa-folder-o"
             },
             "telosys" : {
@@ -166,7 +169,7 @@ var IDETreeview = {
 
         var jstree = $.jstree.reference('#jstreecontent');
         jstree.settings.core.data = [
-          state.tree.root, state.tree.telosys
+          state.tree.telosys, state.tree.root
         ];
         jstree.refresh();
       }.bind(this));
@@ -343,12 +346,23 @@ var IDETreeview = {
           IDEAction.closeFile(node.id);
         });
       }
-      if(node.type == 'folder' || node.type == 'model') {
+      if(node.type == 'folder') {
         var folderId = node.id;
         FilesService.deleteFolderForProject(state.auth.userId, state.projectId, folderId, function() {
           console.log("Folder '"+node.id+"' deleted");
           for(var openFileId in state.openFiles) {
             if(openFileId.indexOf(node.id) != -1) {
+              IDEAction.closeFile(openFileId);
+            }
+          }
+        });
+      }
+      if(node.type == 'model') {
+        var modelName = node.text;
+        ProjectsService.deleteModel(state.auth.userId, state.projectId, modelName, function() {
+          console.log("Model '"+modelName+"' deleted");
+          for(var openFileId in state.openFiles) {
+            if(openFileId.indexOf(modelName) != -1) {
               IDEAction.closeFile(openFileId);
             }
           }
@@ -400,9 +414,9 @@ var IDETreeview = {
     console.log('folder : ', folder.name);
 
     var currentNode = {
-      id: (folder.id) ? folder.id : '@@_root_@@',
+      id: (!folder.id) ? '@@_root_@@' : folder.id,
       text: folder.name,
-      type: folder.type,
+      type: (!folder.id) ? 'project' : folder.type,
       children: []
     };
 

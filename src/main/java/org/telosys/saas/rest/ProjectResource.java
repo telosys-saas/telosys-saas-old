@@ -263,7 +263,7 @@ public class ProjectResource {
     @Path("/models/{modelName}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Model getModels(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("modelName") String modelName) {
+    public Model getModel(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("modelName") String modelName) {
     	UserProfile user = getUser(); 
     	Project project = storage.getProjectForUser(user, projectId);
     	return projectService.getModel(user, project, modelName);
@@ -276,6 +276,15 @@ public class ProjectResource {
     	UserProfile user = getUser();
     	Project project = storage.getProjectForUser(user, projectId);
 		return projectService.createModel(user, project, modelName);
+    }
+
+    @Path("/models/{modelName}")
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public void deleteModel(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("modelName") String modelName) {
+    	UserProfile user = getUser(); 
+    	Project project = storage.getProjectForUser(user, projectId);
+    	projectService.deleteModel(user, project, modelName);
     }
 
     @Path("/models/{modelName}/entities/{entityName}")
