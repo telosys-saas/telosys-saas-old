@@ -1,6 +1,7 @@
 package org.telosys.saas.services;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,10 +15,12 @@ import org.telosys.saas.domain.Generation;
 import org.telosys.saas.domain.GenerationErrorResult;
 import org.telosys.saas.domain.GenerationResult;
 import org.telosys.saas.domain.Model;
+import org.telosys.saas.domain.ParsingError;
 import org.telosys.saas.domain.Project;
 import org.telosys.saas.domain.ProjectConfiguration;
 import org.telosys.saas.domain.ProjectConfigurationVariables;
 import org.telosys.saas.util.FileUtil;
+import org.telosys.tools.api.GenericModelLoader;
 import org.telosys.tools.api.TelosysProject;
 import org.telosys.tools.commons.TelosysToolsException;
 import org.telosys.tools.commons.cfg.TelosysToolsCfg;
@@ -33,7 +36,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class ProjectService {
 	
 	private FileStorageDao storageDao = new FileStorageDao();
-
+	
 	public TelosysProject getTelosysProject(UserProfile user, Project project) {
 		String projectFolderAbsolutePath = storageDao.getProjectPath(user, project);
 		TelosysProject telosysProject = new TelosysProject(projectFolderAbsolutePath);
@@ -75,12 +78,31 @@ public class ProjectService {
 	public Model getModel(UserProfile user, Project project, String modelName) {
 		TelosysProject telosysProject = getTelosysProject(user, project);
 		try {
-			org.telosys.tools.generic.model.Model genericModel = telosysProject.loadModel(modelName+".model");
+			GenericModelLoader genericModelLoader = telosysProject.getGenericModelLoader() ;
+			org.telosys.tools.generic.model.Model genericModel = genericModelLoader.loadModel(modelName+".model");
+			Model model;
 			if(genericModel == null) {
-				return null;
+				model = new Model();
+				model.setName(modelName);
 			} else {
-				return map(telosysProject.loadModel(modelName+".model"), modelName);
+				model = map(telosysProject.loadModel(modelName+".model"), modelName);
 			}
+			if(genericModelLoader.getParsingErrors() != null && !genericModelLoader.getParsingErrors().isEmpty()) {
+				Enumeration<String> keyEnumeration = genericModelLoader.getParsingErrors().keys();
+				while(keyEnumeration.hasMoreElements()) {
+					String file = keyEnumeration.nextElement();
+					String message = genericModelLoader.getParsingErrors().get(file);
+					String entityName = file;
+					if(file.indexOf(".entity") != -1) {
+					  entityName = file.substring(0, file.indexOf(".entity"));
+					}
+					ParsingError parsingError = new ParsingError();
+					parsingError.setEntityName(entityName);
+					parsingError.setMessage(message);
+					model.getParsingErrors().add(parsingError);
+				}
+			}
+			return model;
 		} catch (TelosysToolsException e) {
 			throw new IllegalStateException(e);
 		}

@@ -146,6 +146,11 @@ var IDEEditorCodemirror = {
         function () {
           console.log('file saved : ',fileId);
           this.setFileIsModified(fileId, false);
+
+          if(fileId.indexOf('.entity') != -1) {
+            IDEConsoleModel.refresh();
+          }
+
         }.bind(this));
     }
   },

@@ -50,7 +50,16 @@ var IDE = {
           '<div id="generation" style="display:none; width: 100%; height: 100%"></div>' +
         '</div>' +
         '<div id="console" class="split content">' +
-          '<div id="consoleGeneration"></div>' +
+          '<div class="row">' +
+            '<div class="col s12">' +
+              '<ul class="tabs blue-text">' +
+                '<li class="tab col s6"><a href="#consoleModel">Models</a></li>' +
+                '<li class="tab col s6"><a href="#consoleGeneration">Generations</a></li>' +
+              '</ul>' +
+            '</div>' +
+            '<div id="consoleModel" class="col s12"></div>' +
+            '<div id="consoleGeneration" class="col s12"></div>' +
+          '</div>' +
         '</div>' +
       '</div>');
 
@@ -67,9 +76,14 @@ var IDE = {
     Split(['#ide', '#console'], {
       direction: 'vertical',
       gutterSize: 8,
-      sizes: [80, 20],
+      sizes: [75, 25],
       cursor: 'row-resize'
     });
+
+
+    $('#console ul.tabs').tabs();
+    $('#console ul.tabs').tabs('select_tab', 'consoleModel');
+
   }
 
 };

@@ -27,6 +27,7 @@ var IDEGeneration = {
       ProjectsService.getModel(state.auth.userId, state.projectId, state.modelName, function (model) {
         state.model = model;
         console.log(model);
+
         if (callback) {
           callback();
         }
@@ -40,49 +41,81 @@ var IDEGeneration = {
     var html =
       '<div id="settingsToolbar" class="editorToolbar">' +
         '<button id="buttonLaunchGeneration" class="waves-effect waves-green btn" onclick="IDEGeneration.submitGeneration()">' +
-        '<span class="fa fa-play-circle fa-lg"></span> Generate' +
+          '<span class="fa fa-play-circle fa-lg"></span> Generate' +
         '</button>' +
         ' &nbsp; ' +
-        'Generation of ' + state.modelName +
+        state.modelName +
       '</div>' +
       '<div class="row">' +
-        '<div class="col s12"><h4>Generation of ' + state.modelName + '</h4></div>' +
-        '<div class="col s6">' +
-          '<h5>Entities</h5>' +
-          '<div class="input-field">';
+        '<div class="col s12"><h4>' + state.modelName + '</h4></div>';
 
     var model = state.model;
-    for(var j=0; j<model.entities.length; j++) {
-      var entity = model.entities[j];
+    if(model.parsingErrors == null || model.parsingErrors.length == 0) {
       html +=
-        '<div>' +
-          '<input type="checkbox" checked name="generation_entities" value="' + model.modelName + '/' + entity.fullName + '" id="' + model.modelName + '__' + entity.fullName + '" />' +
-          '<label for="' + model.modelName + '__' + entity.fullName + '">' + entity.fullName + '</label>' +
-        '</div>';
-    }
+        '<div class="col s6">' +
+          '<h5>Entities</h5>' +
+            '<div class="input-field">';
 
-    html +=
-          '</div>' +
+      for (var j = 0; j < model.entities.length; j++) {
+        var entity = model.entities[j];
+        html +=
+          '<div>' +
+            '<input type="checkbox" checked name="generation_entities" value="' + model.modelName + '/' + entity.fullName + '" id="' + model.modelName + '__' + entity.fullName + '" />' +
+            '<label for="' + model.modelName + '__' + entity.fullName + '">' + entity.fullName + '</label>' +
+          '</div>';
+      }
+
+      html +=
+         '</div>' +
         '</div>' +
         '<div class="input-field col s6">' +
           '<h5>Templates bundles</h5>';
 
-    for(var i=0; i<state.bundlesOfProject.length; i++) {
-      var bundle = state.bundlesOfProject[i];
-      html +=
-        '<div>' +
-          '<input type="checkbox" name="generation_bundles" value="' + bundle.name + '" id="' + bundle.name + '" onclick="IDEGeneration.activateButton()" />' +
-          '<label for="' + bundle.name + '">' + bundle.name + '</label>' +
-        '</div>';
-    }
+      for (var i = 0; i < state.bundlesOfProject.length; i++) {
+        var bundle = state.bundlesOfProject[i];
+        html +=
+          '<div>' +
+            '<input type="checkbox" name="generation_bundles" value="' + bundle.name + '" id="' + bundle.name + '" onclick="IDEGeneration.activateButton()" />' +
+            '<label for="' + bundle.name + '">' + bundle.name + '</label>' +
+          '</div>';
+      }
 
-    html +=
+      html +=
+        '</div>';
+    } else {
+      html +=
+        '<div class="col s12">' +
+        '<h5>Entity errors</h5>' +
+        '<table class="simple">' +
+          '<tr>' +
+            '<th>Model</th>' +
+            '<th>Entity</th>' +
+            '<th>Error</th>' +
+          '</tr>';
+
+      var hasError = false;
+      if(state.models) {
+        for (var i=0; i<state.models.length; i++) {
+          var model = state.models[i];
+          for (var j=0; j<model.parsingErrors.length; j++) {
+            var parsingError = model.parsingErrors[j];
+            hasError = true;
+            html +=
+              '<tr>' +
+                '<td>' + model.name + '</td>' +
+                '<td>' + parsingError.entityName + '</td>' +
+                '<td>' + parsingError.message + '</td>' +
+              '</tr>';
+          }
+        }
+      }
+
+      html +=
+            '</table>' +
           '</div>' +
-        '</div>' +
-    //  '</div>' +
-    //  '<div class="center-align">' +
-    //    '<a href="#!" class="modal-action modal-close waves-effect waves-green btn" onclick="ToolbarGeneration.submitGeneration()">Generate</a>' +
-      '</div>';
+        '</div>';
+
+    }
 
     $('#generationContent').html(html);
     this.activateButton();
@@ -203,6 +236,7 @@ var IDEGeneration = {
   launchGenerationCallbackEnd: function() {
     IDETreeview.refreshAll();
     IDEWorkingFiles.refreshAll();
+    IDEConsoleGeneration.display();
 
     var state = Store.getState();
     var hasError = false;

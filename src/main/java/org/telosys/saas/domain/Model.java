@@ -1,6 +1,8 @@
 package org.telosys.saas.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,9 +10,9 @@ import org.telosys.tools.generic.model.ModelType;
 
 public class Model implements Serializable {
 
-	private List<Entity> entities;
-	private Map<String, Entity> entityByTableNames;
-	private Map<String, Entity> entityByClassNames;
+	private List<Entity> entities = new ArrayList<>();
+	private Map<String, Entity> entityByTableNames = new HashMap<>();
+	private Map<String, Entity> entityByClassNames = new HashMap<>();
 	private String databaseProductName;
 	private String description;
 	private String version;
@@ -18,7 +20,7 @@ public class Model implements Serializable {
 	private String name;
 	private ModelType type;
 	private String modelName;
-
+	private List<ParsingError> parsingErrors = new ArrayList<>();
 	
 	public String getName() {
 		return name;
@@ -113,6 +115,14 @@ public class Model implements Serializable {
 
 	public void setModelName(String modelName) {
 		this.modelName = modelName;
+	}
+
+	public List<ParsingError> getParsingErrors() {
+		return parsingErrors;
+	}
+
+	public void setParsingErrors(List<ParsingError> parsingErrors) {
+		this.parsingErrors = parsingErrors;
 	}
 
 }

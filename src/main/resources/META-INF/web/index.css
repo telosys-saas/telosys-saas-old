@@ -132,3 +132,33 @@ html .vakata-context li>a>i:empty {
 .generation-success-title {
     font-size: 18px;
 }
+
+#console .tabs {
+    height: 30px;
+}
+
+#console .tabs .tab {
+    line-height: 30px;
+}
+
+#console .tabs .indicator {
+    background-color: #039be5;
+}
+
+#console .tabs .tab a {
+    color: #039be5;
+}
+
+#console table tr td, #console table tr th {
+    border: 1px solid lightgray;
+    padding: 5px;
+}
+
+table.simple tr td, table.simple tr th {
+    border: 1px solid lightgray;
+    padding: 5px;
+}
+
+.inline-block {
+    display: inline-block;
+}
