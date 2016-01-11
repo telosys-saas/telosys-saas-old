@@ -183,6 +183,9 @@ var IDETreeview = {
         IDEWorkingFiles.display();
       }
     }
+    if(data.node.type == 'folder' || data.node.type == 'telosys' || data.node.type == 'model') {
+      data.instance.toggle_node(data.node);
+    }
   },
 
   onDoubleClick: function(e, data) {
@@ -278,6 +281,8 @@ var IDETreeview = {
         type: 'entity'
       };
       node = tree.create_node(nodeParent, node);
+      var modelName = nodeParent.text;
+
       tree.edit(node, null, function(node, status) {
         var state = Store.getState();
         var projectId = state.projectId;
@@ -295,8 +300,8 @@ var IDETreeview = {
           folderParentId: nodeParent.id
         };
         tree.set_id(node,entity.id);
-        FilesService.createFileForProject(state.auth.userId, projectId, entity, function(model) {
-          console.log('entity file created', entity);
+        TelosysService.createEntityForModel(state.auth.userId, projectId, modelName, entity.name, function() {
+          console.log('entity file created', entity.name);
           IDETreeview.refreshAll();
         });
       });
@@ -370,20 +375,10 @@ var IDETreeview = {
   convertFolderToJson: function(folder, parent) {
     console.log('folder : ', folder.name);
 
-    var type = this.getFolderType(folder.id, parent);
-    if(!type) {
-      return null;
-    }
-
-    var name = folder.name;
-    if(type == 'model' && folder.name.indexOf("_model") != -1) {
-      name = folder.name.substring(0, folder.name.indexOf("_model")) + '.model';
-    }
-
     var currentNode = {
       id: (folder.id) ? folder.id : '@@_root_@@',
-      text: name,
-      type: type,
+      text: folder.name,
+      type: folder.type,
       children: []
     };
 
@@ -417,52 +412,14 @@ var IDETreeview = {
   },
 
   convertFileToJson: function(file, parent) {
-    var type = this.getFileType(file.id, parent);
-    if(!type) {
-      return null;
-    }
-
-    var name = file.name;
 
     var currentNode = {
       id: file.id,
-      text: name,
-      type: type
+      text: file.name,
+      type: file.type
     };
 
     return currentNode;
-  },
-
-  getFolderType: function(folderId, parent) {
-    if(folderId == 'TelosysTools') {
-      return 'telosys';
-    }
-    if(folderId.indexOf('TelosysTools'+fileseparator+'templates') == 0) {
-      return 'folder';
-    }
-    if(folderId.indexOf('TelosysTools') == 0) {
-      if(folderId.indexOf('_model') != -1) {
-        return 'model';
-      }
-      return null;
-    }
-    return 'folder';
-  },
-
-  getFileType: function(fileId, parent) {
-    if(fileId.indexOf('telosys-tools.cfg') == 0) {
-      return null;
-    }
-    if(fileId.indexOf('TelosysTools'+fileseparator+'templates') == 0) {
-      return 'file';
-    }
-    if(fileId.indexOf('TelosysTools') == 0) {
-      if(fileId.indexOf('.entity') != -1) {
-        return 'entity';
-      }
-      return null;
-    }
-    return 'file';
   }
 
 };

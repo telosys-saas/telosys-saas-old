@@ -22,6 +22,7 @@ import org.telosys.tools.api.TelosysProject;
 import org.telosys.tools.commons.TelosysToolsException;
 import org.telosys.tools.commons.cfg.TelosysToolsCfg;
 import org.telosys.tools.commons.variables.Variable;
+import org.telosys.tools.dsl.DslModelUtil;
 import org.telosys.tools.generator.GeneratorException;
 import org.telosys.tools.generator.task.ErrorReport;
 import org.telosys.tools.generator.task.GenerationTaskResult;
@@ -65,6 +66,10 @@ public class ProjectService {
 			}
 		}
 		return modelNames;
+	}
+
+	public String getModelPath(UserProfile user, Project project, String modelName) {
+		return FileUtil.join(storageDao.getProjectPath(user, project), "TelosysTools", modelName);
 	}
 
 	public Model getModel(UserProfile user, Project project, String modelName) {
@@ -251,6 +256,16 @@ public class ProjectService {
 		} catch (TelosysToolsException e) {
 			throw new IllegalStateException(e);
 		} catch (GeneratorException e) {
+			throw new IllegalStateException(e);
+		}
+	}
+
+	public void createEntityForModel(UserProfile user, Project project, String modelName, String entityName) {
+		TelosysProject telosysProject = getTelosysProject(user, project);
+		try {
+			java.io.File modelIOFile = telosysProject.getDslModelFile(modelName);
+			DslModelUtil.createNewEntity(modelIOFile, entityName);
+		} catch (TelosysToolsException e) {
 			throw new IllegalStateException(e);
 		}
 	}

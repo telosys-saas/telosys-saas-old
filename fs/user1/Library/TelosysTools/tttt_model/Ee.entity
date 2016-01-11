@@ -1,5 +1,5 @@
-// Entity Hello
+// Entity Ee
 
-Hello {
+Ee {
   myfield : string ; // field example 
 }

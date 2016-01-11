@@ -16,6 +16,8 @@ public class Folder implements Serializable {
 	
 	private String name;
 	
+	private String type = "folder";
+	
 	private List<File> files = new ArrayList<>();
 	
 	private List<Folder> folders = new ArrayList<>();
@@ -68,4 +70,12 @@ public class Folder implements Serializable {
 		this.folders = folders;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 }

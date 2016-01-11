@@ -32,6 +32,7 @@ import org.telosys.saas.domain.Project;
 import org.telosys.saas.domain.ProjectConfiguration;
 import org.telosys.saas.services.BundleService;
 import org.telosys.saas.services.ProjectService;
+import org.telosys.saas.services.TelosysFolderService;
 
 @Path("/users/{userId}/projects/{projectId}")
 public class ProjectResource {
@@ -40,6 +41,7 @@ public class ProjectResource {
 	private StorageDao storage = new FileStorageDao();
 	private BundleService bundleService = new BundleService();
 	private ProjectService projectService = new ProjectService();
+	private TelosysFolderService telosysFolderService = new TelosysFolderService();
 	@Context
 	private HttpServletRequest request;
 	@Context
@@ -163,8 +165,7 @@ public class ProjectResource {
     public Folder getTelosysFolder(@PathParam("userId") String userId, @PathParam("projectId") String projectId) {
     	UserProfile user = getUser(); 
     	Project project = storage.getProjectForUser(user, projectId);
-    	List<String> filters = new ArrayList<>();
-    	return storage.getFolderForProjectAndUser(user, project, "TelosysTools", filters);
+    	return telosysFolderService.getTelosysFolder(user, project);
     }
 
     @Path("/folders/{folderId}")
@@ -275,6 +276,15 @@ public class ProjectResource {
     	UserProfile user = getUser();
     	Project project = storage.getProjectForUser(user, projectId);
 		return projectService.createModel(user, project, modelName);
+    }
+
+    @Path("/models/{modelName}/entities/{entityName}")
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    public void createEntity(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("modelName") String modelName, @PathParam("entityName") String entityName) {
+    	UserProfile user = getUser();
+    	Project project = storage.getProjectForUser(user, projectId);
+		projectService.createEntityForModel(user, project, modelName, entityName);
     }
 
     @Path("/action/generate")

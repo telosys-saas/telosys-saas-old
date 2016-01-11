@@ -15,6 +15,8 @@ public class File implements Serializable {
 	private String name;
 	
 	private String content = "";
+	
+	private String type = "file";
 
 	public boolean isExisting() {
 		return isExisting;
@@ -54,6 +56,14 @@ public class File implements Serializable {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 }
