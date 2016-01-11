@@ -3,17 +3,25 @@ var fileseparator = '/';
 var IDETreeview = {
   init: function() {
     var state = Store.getState();
+    state.tree = {};
     FilesService
       .getFilesForProject(state.auth.userId, state.projectId)
       .then(function(rootFolder) {
-        state.tree = {};
         var root = this.convertFolderToJson(rootFolder, null);
         state.tree.root = root;
+
+        return TelosysService
+          .getTelosysFolderForProject(state.auth.userId, state.projectId)
+      }.bind(this))
+      .then(function(telosysFolder) {
+        var telosys = this.convertFolderToJson(telosysFolder, null);
+        state.tree.telosys = telosys;
+
         $('#jstree').html('<div id="jstreecontent" class="treeview"></div>');
         state.jstree = $('#jstreecontent').jstree({
           'core': {
             'data': [
-              root
+              state.tree.root, state.tree.telosys
             ],
             // so that create works
             "check_callback" : true
@@ -141,8 +149,17 @@ var IDETreeview = {
         var root = this.convertFolderToJson(rootFolder, null);
         state.tree.root = root;
 
+        return TelosysService
+          .getTelosysFolderForProject(state.auth.userId, state.projectId)
+      }.bind(this))
+      .then(function(telosysFolder) {
+        var telosys = this.convertFolderToJson(telosysFolder, null);
+        state.tree.telosys = telosys;
+
         var jstree = $.jstree.reference('#jstreecontent');
-        jstree.settings.core.data = root;
+        jstree.settings.core.data = [
+          state.tree.root, state.tree.telosys
+        ];
         jstree.refresh();
       }.bind(this));
   },

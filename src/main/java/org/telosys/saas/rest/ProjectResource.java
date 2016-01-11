@@ -1,5 +1,6 @@
 package org.telosys.saas.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -145,7 +146,25 @@ public class ProjectResource {
     public Folder getWorkspace(@PathParam("userId") String userId, @PathParam("projectId") String projectId) {
     	UserProfile user = getUser(); 
     	Project project = storage.getProjectForUser(user, projectId);
-    	return storage.getFilesForProjectAndUser(user, project);
+    	List<String> filters = new ArrayList<>();
+    	filters.add("TelosysTools");
+    	filters.add("telosys-tools.cfg");
+    	return storage.getFilesForProjectAndUser(user, project, filters);
+    }
+    
+	/**
+	 * Get Telosys folder with all sub folders and all files of the project of the authenticated user
+	 * @param projectId Project id
+	 * @return Root folder
+	 */
+    @Path("/telosys")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Folder getTelosysFolder(@PathParam("userId") String userId, @PathParam("projectId") String projectId) {
+    	UserProfile user = getUser(); 
+    	Project project = storage.getProjectForUser(user, projectId);
+    	List<String> filters = new ArrayList<>();
+    	return storage.getFolderForProjectAndUser(user, project, "TelosysTools", filters);
     }
 
     @Path("/folders/{folderId}")
@@ -155,7 +174,8 @@ public class ProjectResource {
     public Folder saveFolder(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("folderId") String folderId, Folder folderToSave) {
     	UserProfile user = getUser(); 
     	Project project = storage.getProjectForUser(user, projectId);
-    	Folder folder = storage.getFolderForProjectAndUser(user, project, folderId);
+    	List<String> filters = new ArrayList<>();
+    	Folder folder = storage.getFolderForProjectAndUser(user, project, folderId, filters);
     	if(!folder.isExisting()) {
     		// Create
         	storage.createFolderForProjectAndUser(user, project, folderToSave);
@@ -171,7 +191,8 @@ public class ProjectResource {
     public void deleteFolder(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("folderId") String folderId) {
     	UserProfile user = getUser();
     	Project project = storage.getProjectForUser(user, projectId);
-    	Folder folder = storage.getFolderForProjectAndUser(user, project, folderId);
+    	List<String> filters = new ArrayList<>();
+    	Folder folder = storage.getFolderForProjectAndUser(user, project, folderId, filters);
     	if(!folder.isExisting()) {
     		throw new IllegalStateException("Folder does not exists : "+folderId);
     	}

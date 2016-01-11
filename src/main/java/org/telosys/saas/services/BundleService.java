@@ -48,7 +48,8 @@ public class BundleService {
 	
 	public List<Bundle> getBundlesOfProject(UserProfile user, Project project) {
 		String folderTemplatesPath = FileUtil.join("TelosysTools","templates");
-    	Folder folderTemplates = storage.getFolderForProjectAndUser(user, project, folderTemplatesPath);
+    	List<String> filters = new ArrayList<>();
+    	Folder folderTemplates = storage.getFolderForProjectAndUser(user, project, folderTemplatesPath, filters);
     	List<Bundle> bundles = new ArrayList<Bundle>();
     	for(Folder folder : folderTemplates.getFolders()) {
     		bundles.add(getBundle(folder.getName()));

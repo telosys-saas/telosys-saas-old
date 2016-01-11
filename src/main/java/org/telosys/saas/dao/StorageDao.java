@@ -30,14 +30,14 @@ public interface StorageDao {
 	void deleteProjectForUser(UserProfile user, Project project);
 	
 	/**
-	 * Get files for the project of the user.
+	 * Get files for the project of the user with filtering.
 	 */
-	Folder getFilesForProjectAndUser(UserProfile user, Project project);
+	Folder getFilesForProjectAndUser(UserProfile user, Project project, List<String> filters);
 
 	/**
 	 * Get folder for the project of the user.
 	 */
-	Folder getFolderForProjectAndUser(UserProfile user, Project project, String folderId);
+	Folder getFolderForProjectAndUser(UserProfile user, Project project, String folderId, List<String> filters);
 	
 	/**
 	 * Get file for the project of the user.

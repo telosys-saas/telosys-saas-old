@@ -100,27 +100,27 @@ public class FileStorageDao implements StorageDao {
 	}
 
 	@Override
-	public Folder getFilesForProjectAndUser(UserProfile user, Project project) {
+	public Folder getFilesForProjectAndUser(UserProfile user, Project project, List<String> filters) {
 		java.io.File projectDir = getProjectDir(user, project);
 		if (!projectDir.exists()) {
 			throw new IllegalStateException("Project directory does not exist : " + projectDir.getPath());
 		}
-		return getRootFolderForProjectDir(projectDir);
+		return getRootFolderForProjectDir(projectDir, filters);
 	}
 
-	private Folder getRootFolderForProjectDir(java.io.File projectDir) {
+	private Folder getRootFolderForProjectDir(java.io.File projectDir, List<String> filters) {
 		Folder folder = new Folder();
 		folder.setId("");
 		folder.setName(projectDir.getName());
 		folder.setFolderParentId("");
 
-		folder.getFolders().addAll(getFoldersFromDirectory(projectDir, ""));
-		folder.getFiles().addAll(getFilesFromDirectory(projectDir, ""));
+		folder.getFolders().addAll(getFoldersFromDirectory(projectDir, "", filters));
+		folder.getFiles().addAll(getFilesFromDirectory(projectDir, "", filters));
 
 		return folder;
 	}
 
-	private Folder getFolderForDir(java.io.File folderDir, String relativePath) {
+	private Folder getFolderForDir(java.io.File folderDir, String relativePath, List<String> filters) {
 		String folderRelativePath = FileUtil.join(relativePath, folderDir.getName());
 		Folder folder = new Folder();
 		folder.setId(folderRelativePath);
@@ -129,29 +129,33 @@ public class FileStorageDao implements StorageDao {
 		folder.setExisting(folderDir.exists());
 		
 		if(folderDir.exists()) {
-			folder.getFolders().addAll(getFoldersFromDirectory(folderDir, folderRelativePath));
-			folder.getFiles().addAll(getFilesFromDirectory(folderDir, folderRelativePath));
+			folder.getFolders().addAll(getFoldersFromDirectory(folderDir, folderRelativePath, filters));
+			folder.getFiles().addAll(getFilesFromDirectory(folderDir, folderRelativePath, filters));
 		}
 
 		return folder;
 	}
 
-	private List<Folder> getFoldersFromDirectory(java.io.File directory, String relativePath) {
+	private List<Folder> getFoldersFromDirectory(java.io.File directory, String relativePath, List<String> filters) {
 		List<Folder> folders = new ArrayList<>();
 		FileFilter directoryFilter = FileFilterUtils.directoryFileFilter();
 		for (java.io.File file : directory.listFiles(directoryFilter)) {
-			Folder folderSub = getFolderForDir(file, relativePath);
-			folders.add(folderSub);
+			Folder folderSub = getFolderForDir(file, relativePath, filters);
+			if(!filters.contains(folderSub.getId())) {
+				folders.add(folderSub);
+			}
 		}
 		return folders;
 	}
 
-	private List<File> getFilesFromDirectory(java.io.File directory, String relativePath) {
+	private List<File> getFilesFromDirectory(java.io.File directory, String relativePath, List<String> filters) {
 		List<File> files = new ArrayList<>();
 		FileFilter fileFilter = FileFilterUtils.fileFileFilter();
 		for (java.io.File file : directory.listFiles(fileFilter)) {
 			File fileSub = getFile(file, relativePath);
-			files.add(fileSub);
+			if(!filters.contains(fileSub.getId())) {
+				files.add(fileSub);
+			}
 		}
 		return files;
 	}
@@ -167,12 +171,12 @@ public class FileStorageDao implements StorageDao {
 	}
 
 	@Override
-	public Folder getFolderForProjectAndUser(UserProfile user, Project project, String folderId) {
+	public Folder getFolderForProjectAndUser(UserProfile user, Project project, String folderId, List<String> filters) {
 		String projectPath = getProjectPath(user, project);
 		String filePath = FileUtil.join(projectPath, folderId);
 		String relativePath = FileUtil.dirname(folderId);
 		java.io.File fileIO = getIOFile(filePath);
-		Folder folder = getFolderForDir(fileIO, relativePath);
+		Folder folder = getFolderForDir(fileIO, relativePath, filters);
 		return folder;
 	}
 

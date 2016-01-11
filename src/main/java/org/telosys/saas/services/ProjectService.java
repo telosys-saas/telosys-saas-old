@@ -56,7 +56,8 @@ public class ProjectService {
 	}
 
 	public List<String> getModelNames(UserProfile user, Project project) {
-		Folder folder = storageDao.getFolderForProjectAndUser(user, project, "TelosysTools");
+    	List<String> filters = new ArrayList<>();
+		Folder folder = storageDao.getFolderForProjectAndUser(user, project, "TelosysTools", filters);
 		List<String> modelNames = new ArrayList<>();
 		for(File file : folder.getFiles()) {
 			if(file.getName().indexOf(".model") != -1) {
@@ -127,7 +128,8 @@ public class ProjectService {
 
 	public void removeBundleFromTheProject(UserProfile user, Project project, String bundleName) {
 		String folderTemplatesPath = FileUtil.join("TelosysTools","templates",bundleName);
-    	Folder folderBundle = storageDao.getFolderForProjectAndUser(user, project, folderTemplatesPath);
+    	List<String> filters = new ArrayList<>();
+    	Folder folderBundle = storageDao.getFolderForProjectAndUser(user, project, folderTemplatesPath, filters);
     	storageDao.deleteFolderForProjectAndUser(user, project, folderBundle);
 	}
 
