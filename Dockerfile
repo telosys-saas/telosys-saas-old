@@ -18,7 +18,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 EXPOSE 8080
 
-VOLUME ["/opt/fs"]
+VOLUME ["/fs"]
 
 ADD target/telosys-saas.jar /opt/telosys-saas.jar
 
