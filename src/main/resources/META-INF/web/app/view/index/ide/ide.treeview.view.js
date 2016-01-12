@@ -401,6 +401,13 @@ var IDETreeview = {
     jstree.select_node([fileId]);
   },
 
+  focusAndOpenNode: function(fileId) {
+    var jstree = $.jstree.reference('#jstreecontent');
+    jstree.deselect_all();
+    jstree.select_node([fileId]);
+    jstree.open_node(fileId);
+  },
+
   collapseAll: function(event) {
     if(event) {
       event.stopPropagation();

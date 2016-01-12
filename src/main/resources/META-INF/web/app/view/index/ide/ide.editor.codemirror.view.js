@@ -47,7 +47,15 @@ var IDEEditorCodemirror = {
 
       var editorOptions = {
         value: file.content,
-        lineNumbers: true
+        lineNumbers: true,
+        extraKeys: {
+          'Ctrl-S': function(cm) {
+            IDEAction.saveFile(state.fileId);
+          },
+          'Cmd-S': function(cm) {
+            IDEAction.saveFile(state.fileId);
+          }
+        }
       };
 
       var mode = this.getModeForFileExtension(file.name);
@@ -137,22 +145,7 @@ var IDEEditorCodemirror = {
       fileId = state.fileId;
     }
 
-    if(fileId && state.openFiles[fileId]) {
-      var file = {
-        id: fileId,
-        content: state.openFiles[fileId].editor.getValue()
-      };
-      FilesService.saveFileForProject(state.auth.userId, state.projectId, file,
-        function () {
-          console.log('file saved : ',fileId);
-          this.setFileIsModified(fileId, false);
-
-          if(fileId.indexOf('.entity') != -1) {
-            IDEConsoleModel.refresh();
-          }
-
-        }.bind(this));
-    }
+    IDEAction.saveFile(fileId);
   },
 
   setFileIsModified: function(fileId, isModified) {

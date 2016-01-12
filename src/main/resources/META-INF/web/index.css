@@ -135,6 +135,7 @@ html .vakata-context li>a>i:empty {
 
 #console .tabs {
     height: 30px;
+    margin-bottom: 1px;
 }
 
 #console .tabs .tab {

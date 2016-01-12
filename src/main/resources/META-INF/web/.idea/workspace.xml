@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="568d9897-a9fe-472d-8494-004e54005c93" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.console.model.view.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/project 1/TelosysTools/employees_model/Country.entity" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/project 1/TelosysTools/employees_model/Employee.entity" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/project 1/TelosysTools/employees_model/Foo.entity" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/project 1/TelosysTools/model/employees.model" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/project 1/TelosysTools/model/employees/Employee.entity" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/project 1/TelosysTools/model/employees/Foo.entity" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/project 1/TelosysTools/model/factures.model" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../../../fs/user1/project 1/TelosysTools/model/factures/Facture.entity" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/library_model/Author.entity" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/library_model/Author.entity" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/doc/html/Author.html" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/doc/html/Author.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/bean/Author.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/bean/Author.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/python/Author.py" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/python/Author.py" />
@@ -24,8 +32,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/cache/HhhhCacheTest.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/cache/HhhhCacheTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/bean/HhhhTest.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/bean/HhhhTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/tmp/Hhhh_context.txt" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/tmp/Hhhh_context.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../java/org/telosys/saas/domain/Model.java" afterPath="$PROJECT_DIR$/../../../java/org/telosys/saas/domain/Model.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../java/org/telosys/saas/services/ProjectService.java" afterPath="$PROJECT_DIR$/../../../java/org/telosys/saas/services/ProjectService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/doc/html/Toto.html" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/doc/html/Toto.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/bean/Toto.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/main/java/org/demo/bean/Toto.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/python/Toto.py" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/python/Toto.py" />
@@ -33,14 +39,22 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/cache/TotoCacheTest.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/cache/TotoCacheTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/bean/TotoTest.java" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/src/test/java/org/demo/test/bean/TotoTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/tmp/Toto_context.txt" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/tmp/Toto_context.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/basic-templates-TT210/context_debug.vm" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/basic-templates-TT210/context_debug.vm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/project 1/TelosysTools/employees.model" afterPath="$PROJECT_DIR$/../../../../../fs/user1/project 1/TelosysTools/employees.model" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.action.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.action.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.console.generation.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.console.generation.view.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.console.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.console.view.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.console.model.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.console.model.view.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.editor.codemirror.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.editor.codemirror.view.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.generation.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.generation.view.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.view.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.css" afterPath="$PROJECT_DIR$/index.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/doc/html/index.html" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/doc/html/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.css" afterPath="$PROJECT_DIR$/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/services/projects.service.js" afterPath="$PROJECT_DIR$/app/services/projects.service.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/basic-templates-TT210/templates.cfg" afterPath="$PROJECT_DIR$/../../../../../fs/user1/Library/TelosysTools/templates/basic-templates-TT210/templates.cfg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/toolbar/toolbar.generation.view.js" afterPath="$PROJECT_DIR$/app/view/index/toolbar/toolbar.generation.view.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="web.iws" />
@@ -66,17 +80,17 @@
         <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="194" column="7" selection-start-line="194" selection-start-column="7" selection-end-line="194" selection-end-column="7" />
+              <caret line="45" column="35" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="projects.service.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/services/projects.service.js">
+      <file leaf-file-name="ide.action.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.action.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="219" column="25" selection-start-line="219" selection-start-column="25" selection-end-line="219" selection-end-column="25" />
+              <caret line="41" column="29" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -92,43 +106,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ide.generation.view.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ide.generation.view.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.generation.view.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5025773">
-              <caret line="113" column="24" selection-start-line="113" selection-start-column="24" selection-end-line="113" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ide.view.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.view.js">
-          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="54" column="40" selection-start-line="54" selection-start-column="40" selection-end-line="54" selection-end-column="40" />
+              <caret line="267" column="94" selection-start-line="267" selection-start-column="94" selection-end-line="267" selection-end-column="94" />
               <folding>
-                <marker date="1452535083000" expanded="true" signature="395:437" placeholder="..." />
-                <marker date="1452535083000" expanded="true" signature="639:650" placeholder="..." />
-                <marker date="1452535083000" expanded="true" signature="763:774" placeholder="..." />
-                <marker date="1452535083000" expanded="true" signature="946:959" placeholder="..." />
-                <marker date="1452535083000" expanded="true" signature="1199:1210" placeholder="..." />
-                <marker date="1452535083000" expanded="true" signature="1322:1333" placeholder="..." />
-                <marker date="1452535083000" expanded="true" signature="1516:1529" placeholder="..." />
-                <marker date="1452535083000" expanded="true" signature="1751:1790" placeholder="..." />
-                <marker date="1452535083000" expanded="true" signature="2144:2183" placeholder="..." />
-                <marker date="1452535083000" expanded="true" signature="2231:2270" placeholder="..." />
-                <marker date="1452535083000" expanded="true" signature="2321:2360" placeholder="..." />
+                <marker date="1452578584000" expanded="true" signature="3463:3508" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.css">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3814433">
+              <caret line="137" column="20" selection-start-line="137" selection-start-column="20" selection-end-line="137" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="toolbar.generation.view.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/index/toolbar/toolbar.generation.view.js">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="144" column="30" selection-start-line="144" selection-start-column="30" selection-end-line="144" selection-end-column="30" />
+              <caret line="37" column="12" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -138,12 +142,14 @@
         <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.console.generation.view.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="43" column="24" selection-start-line="20" selection-start-column="10" selection-end-line="43" selection-end-column="24" />
+              <caret line="43" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
               <folding>
-                <marker date="1452535910000" expanded="true" signature="236:247" placeholder="..." />
-                <marker date="1452535910000" expanded="true" signature="1523:1534" placeholder="..." />
-                <marker date="1452535910000" expanded="true" signature="2084:2095" placeholder="..." />
-                <marker date="1452535910000" expanded="true" signature="2156:2161" placeholder="..." />
+                <marker date="1452578330000" expanded="true" signature="259:270" placeholder="..." />
+                <marker date="1452578330000" expanded="true" signature="1445:1454" placeholder="..." />
+                <marker date="1452578330000" expanded="true" signature="1445:1490" placeholder="..." />
+                <marker date="1452578330000" expanded="true" signature="2293:2304" placeholder="..." />
+                <marker date="1452578330000" expanded="true" signature="2854:2865" placeholder="..." />
+                <marker date="1452578330000" expanded="true" signature="2926:2931" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -152,11 +158,21 @@
       <file leaf-file-name="ide.console.model.view.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.console.model.view.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.181818">
-              <caret line="41" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state vertical-scroll-proportion="-1.3818182">
+              <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
               <folding>
-                <marker date="1452535334000" expanded="true" signature="192:203" placeholder="..." />
+                <marker date="1452578376000" expanded="true" signature="859:904" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.3333333">
+              <caret line="57" column="29" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -165,17 +181,7 @@
         <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.editor.codemirror.view.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="151" column="11" selection-start-line="151" selection-start-column="11" selection-end-line="151" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ide.console.view.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.console.view.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+              <caret line="55" column="45" selection-start-line="55" selection-start-column="45" selection-end-line="55" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -209,15 +215,12 @@
         <option value="$PROJECT_DIR$/app/view/index/toolbar/toolbar.bundles.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.workingfiles.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/welcome/welcome.html" />
-        <option value="$PROJECT_DIR$/app/view/index/ide/ide.action.js" />
-        <option value="$PROJECT_DIR$/main.css" />
         <option value="$PROJECT_DIR$/fonts.css" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.editor.toolbar.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.editor.generation.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/toolbar/toolbar.console.view.js" />
         <option value="$PROJECT_DIR$/lib/split/split.js" />
         <option value="$PROJECT_DIR$/hsplitter.html" />
-        <option value="$PROJECT_DIR$/app/view/index/toolbar/toolbar.generation.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/toolbar/toolbar.user.changepassword.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/account/account.create.view.js" />
         <option value="$PROJECT_DIR$/lib/codemirror/mode/coffeescript/coffeescript.js" />
@@ -226,20 +229,23 @@
         <option value="$PROJECT_DIR$/app/services/telosys.service.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.editor.settings.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.editor.view.js" />
-        <option value="$PROJECT_DIR$/app/view/index/toolbar/toolbar.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.settings.view.js" />
         <option value="$PROJECT_DIR$/js/jquery-extend.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.bundles.view.js" />
+        <option value="$PROJECT_DIR$/app/view/index/ide/ide.console.view.js" />
+        <option value="$PROJECT_DIR$/app/view/index/toolbar/toolbar.view.js" />
+        <option value="$PROJECT_DIR$/main.css" />
+        <option value="$PROJECT_DIR$/app/view/index/ide/ide.view.js" />
         <option value="$PROJECT_DIR$/app/services/projects.service.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js" />
+        <option value="$PROJECT_DIR$/app/view/index/toolbar/toolbar.generation.view.js" />
+        <option value="$PROJECT_DIR$/app/view/index/ide/ide.action.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.editor.codemirror.view.js" />
-        <option value="$PROJECT_DIR$/app/view/index/ide/ide.console.view.js" />
-        <option value="$PROJECT_DIR$/app/view/index/ide/ide.view.js" />
-        <option value="$PROJECT_DIR$/app/view/index/ide/ide.console.model.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.console.generation.view.js" />
-        <option value="$PROJECT_DIR$/index.css" />
+        <option value="$PROJECT_DIR$/app/view/index/ide/ide.console.model.view.js" />
         <option value="$PROJECT_DIR$/app/view/index/ide/ide.generation.view.js" />
+        <option value="$PROJECT_DIR$/index.css" />
       </list>
     </option>
   </component>
@@ -362,6 +368,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="index" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="index" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="toolbar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -631,13 +663,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.action.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fonts.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -659,13 +684,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/view/index/toolbar/toolbar.download.view.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -677,14 +695,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="28" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/toolbar/toolbar.generation.view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="143" column="38" selection-start-line="143" selection-start-column="38" selection-end-line="143" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -821,45 +831,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/toolbar/toolbar.view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="48" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
-          <folding>
-            <marker date="1452514226000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452514226000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.25">
-          <caret line="110" column="75" selection-start-line="110" selection-start-column="75" selection-end-line="110" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.editor.view.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="194" column="7" selection-start-line="194" selection-start-column="7" selection-end-line="194" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/services/projects.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="219" column="25" selection-start-line="219" selection-start-column="25" selection-end-line="219" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -872,10 +847,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.editor.codemirror.view.js">
+    <entry file="file://$PROJECT_DIR$/app/view/index/toolbar/toolbar.view.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="151" column="11" selection-start-line="151" selection-start-column="11" selection-end-line="151" selection-end-column="11" />
+          <caret line="38" column="48" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+          <folding>
+            <marker date="1452536304000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1452536304000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="107" column="19" selection-start-line="107" selection-start-column="19" selection-end-line="107" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/services/projects.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="297" column="30" selection-start-line="297" selection-start-column="30" selection-end-line="297" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="118" selection-start-line="56" selection-start-column="90" selection-end-line="56" selection-end-column="118" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.3333333">
+          <caret line="57" column="29" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.treeview.view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="35" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/toolbar/toolbar.generation.view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="12" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -888,22 +914,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.view.js">
+    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.action.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="40" selection-start-line="54" selection-start-column="40" selection-end-line="54" selection-end-column="40" />
+          <caret line="41" column="29" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.editor.codemirror.view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="55" column="45" selection-start-line="55" selection-start-column="45" selection-end-line="55" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.console.model.view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3818182">
+          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
           <folding>
-            <marker date="1452535083000" expanded="true" signature="395:437" placeholder="..." />
-            <marker date="1452535083000" expanded="true" signature="639:650" placeholder="..." />
-            <marker date="1452535083000" expanded="true" signature="763:774" placeholder="..." />
-            <marker date="1452535083000" expanded="true" signature="946:959" placeholder="..." />
-            <marker date="1452535083000" expanded="true" signature="1199:1210" placeholder="..." />
-            <marker date="1452535083000" expanded="true" signature="1322:1333" placeholder="..." />
-            <marker date="1452535083000" expanded="true" signature="1516:1529" placeholder="..." />
-            <marker date="1452535083000" expanded="true" signature="1751:1790" placeholder="..." />
-            <marker date="1452535083000" expanded="true" signature="2144:2183" placeholder="..." />
-            <marker date="1452535083000" expanded="true" signature="2231:2270" placeholder="..." />
-            <marker date="1452535083000" expanded="true" signature="2321:2360" placeholder="..." />
+            <marker date="1452578376000" expanded="true" signature="859:904" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -911,38 +943,32 @@
     <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.console.generation.view.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="24" selection-start-line="20" selection-start-column="10" selection-end-line="43" selection-end-column="24" />
+          <caret line="43" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
-            <marker date="1452535910000" expanded="true" signature="236:247" placeholder="..." />
-            <marker date="1452535910000" expanded="true" signature="1523:1534" placeholder="..." />
-            <marker date="1452535910000" expanded="true" signature="2084:2095" placeholder="..." />
-            <marker date="1452535910000" expanded="true" signature="2156:2161" placeholder="..." />
+            <marker date="1452578330000" expanded="true" signature="259:270" placeholder="..." />
+            <marker date="1452578330000" expanded="true" signature="1445:1454" placeholder="..." />
+            <marker date="1452578330000" expanded="true" signature="1445:1490" placeholder="..." />
+            <marker date="1452578330000" expanded="true" signature="2293:2304" placeholder="..." />
+            <marker date="1452578330000" expanded="true" signature="2854:2865" placeholder="..." />
+            <marker date="1452578330000" expanded="true" signature="2926:2931" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.console.model.view.js">
+    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.generation.view.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.181818">
-          <caret line="41" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="267" column="94" selection-start-line="267" selection-start-column="94" selection-end-line="267" selection-end-column="94" />
           <folding>
-            <marker date="1452535334000" expanded="true" signature="192:203" placeholder="..." />
+            <marker date="1452578584000" expanded="true" signature="3463:3508" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="144" column="30" selection-start-line="144" selection-start-column="30" selection-end-line="144" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index/ide/ide.generation.view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5025773">
-          <caret line="113" column="24" selection-start-line="113" selection-start-column="24" selection-end-line="113" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.3814433">
+          <caret line="137" column="20" selection-start-line="137" selection-start-column="20" selection-end-line="137" selection-end-column="20" />
           <folding />
         </state>
       </provider>

@@ -2,9 +2,9 @@
 GENERATOR VARIABLES :
 =====================
 
-* GENERATOR 
+* GENERATOR
 ${DOLLAR}generator.name    = $generator.name
-${DOLLAR}generator.version = $generator.version 
+${DOLLAR}generator.version = $generator.version
 
 * CURRENT DATE AND TIME 
 ${DOLLAR}today.date = $today.date

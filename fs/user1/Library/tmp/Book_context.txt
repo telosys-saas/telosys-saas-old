@@ -2,15 +2,15 @@
 GENERATOR VARIABLES :
 =====================
 
-* GENERATOR 
+* GENERATOR
 $generator.name    = Telosys Tools Generator
-$generator.version = 3.0.0 
+$generator.version = 3.0.0
 
 * CURRENT DATE AND TIME 
-$today.date = 11 janv. 2016
-$today.time = 19:15:40
-$today.date("dd/MM/yyyy") = 11/01/2016
-$today.time("HH:mm")      = 19:15
+$today.date = 12 janv. 2016
+$today.time = 07:07:30
+$today.date("dd/MM/yyyy") = 12/01/2016
+$today.time("HH:mm")      = 07:07
 
 
 GENERATOR CONSTANTS FOR SPECIAL CHARACTERS :

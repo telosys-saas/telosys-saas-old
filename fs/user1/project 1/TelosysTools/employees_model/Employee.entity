@@ -1,8 +1,0 @@
-Employee {
-  id : integer {@Id}; // the id
-  firstName : string;
-  lastName : string;
-  birthDate : date;
-  country : Country { @Embedded };
-  names: integer;
-}

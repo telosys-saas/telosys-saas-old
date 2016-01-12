@@ -1,4 +1,0 @@
-Foo {
-    id : integer { @Id };
-    bar: string;
-}

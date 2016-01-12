@@ -1,5 +1,5 @@
 # Python class for table  
-# Created on 11 janv. 2016 ( Time 19:15:40 )
+# Created on 12 janv. 2016 ( Time 07:07:30 )
 
 
 #

@@ -53,8 +53,8 @@ var IDE = {
           '<div class="row">' +
             '<div class="col s12">' +
               '<ul class="tabs blue-text">' +
-                '<li class="tab col s6"><a href="#consoleModel">Models</a></li>' +
-                '<li class="tab col s6"><a href="#consoleGeneration">Generations</a></li>' +
+                '<li class="tab col s6"><a href="#consoleModel">Models<span id="consoleModelTitleStatus"></span></a></li>' +
+                '<li class="tab col s6"><a href="#consoleGeneration">Generations<span id="consoleGenerationTitleStatus"></span></a></li>' +
               '</ul>' +
             '</div>' +
             '<div id="consoleModel" class="col s12"></div>' +

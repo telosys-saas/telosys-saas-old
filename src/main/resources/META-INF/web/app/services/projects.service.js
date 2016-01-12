@@ -293,7 +293,7 @@ var ProjectsService = {
       .success(function (msg) {
         console.log(msg);
         if (callback) {
-          callback(msg);
+          callback(generation, msg);
         }
         deferred.resolve(msg);
       })

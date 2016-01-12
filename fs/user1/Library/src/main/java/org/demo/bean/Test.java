@@ -15,17 +15,17 @@ import java.io.Serializable;
  * @author Telosys Tools Generator
  *
  */
-public class Book implements Serializable
+public class Test implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
 
-    private String     title        ;
+    private String     myfield      ;
 
     /**
      * Default constructor
      */
-    public Book()
+    public Test()
     {
         super();
     }
@@ -39,22 +39,22 @@ public class Book implements Serializable
     //----------------------------------------------------------------------
     //--- DATABASE MAPPING :  (  ) 
     /**
-     * Set the "title" field value
+     * Set the "myfield" field value
      * This field is mapped on the database column "" ( type "", NotNull : false ) 
-     * @param title
+     * @param myfield
      */
-    public void setTitle( String title )
+    public void setMyfield( String myfield )
     {
-        this.title = title;
+        this.myfield = myfield;
     }
     /**
-     * Get the "title" field value
+     * Get the "myfield" field value
      * This field is mapped on the database column "" ( type "", NotNull : false ) 
      * @return the field value
      */
-    public String getTitle()
+    public String getMyfield()
     {
-        return this.title;
+        return this.myfield;
     }
 
 
@@ -63,7 +63,7 @@ public class Book implements Serializable
     //----------------------------------------------------------------------
     public String toString() { 
         StringBuffer sb = new StringBuffer(); 
-        sb.append(title);
+        sb.append(myfield);
         return sb.toString(); 
     } 
 

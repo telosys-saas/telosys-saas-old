@@ -78,8 +78,8 @@ ENTITY VARIABLES :
 ==================
 
 * BEAN CLASS
-$entity.name            = Hhhh
-$fn.uncapitalize($entity.name) = hhhh
+$entity.name            = Test
+$fn.uncapitalize($entity.name) = test
 $entity.package         = org.demo.bean
 $entity.databaseTable   = 
 $entity.databaseCatalog = 

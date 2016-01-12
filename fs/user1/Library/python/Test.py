@@ -3,16 +3,16 @@
 
 
 #
-# This class defines the Hhhh object 
+# This class defines the Test object 
 #
  
-class Hhhh:
+class Test:
 	
 	# Default constructor.
 	def __init__(self):
 		pass
      
 	def __init__(self ,myfield ):
-		# super(HhhhData,self).__init__();
+		# super(TestData,self).__init__();
 		self.myfield = myfield;
 		

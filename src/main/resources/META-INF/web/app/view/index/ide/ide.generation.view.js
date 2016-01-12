@@ -83,42 +83,62 @@ var IDEGeneration = {
       html +=
         '</div>';
     } else {
-      html +=
-        '<div class="col s12">' +
-        '<h5>Entity errors</h5>' +
-        '<table class="simple">' +
-          '<tr>' +
-            '<th>Model</th>' +
-            '<th>Entity</th>' +
-            '<th>Error</th>' +
-          '</tr>';
+      var htmlTable =
+          '<table class="simple">' +
+            '<tr>' +
+              '<th></th>' +
+              '<th>Model</th>' +
+              '<th>Entity</th>' +
+              '<th>Error</th>' +
+            '</tr>';
 
       var hasError = false;
+      var nbErrors = 0;
+
       if(state.models) {
         for (var i=0; i<state.models.length; i++) {
           var model = state.models[i];
           for (var j=0; j<model.parsingErrors.length; j++) {
             var parsingError = model.parsingErrors[j];
             hasError = true;
-            html +=
-              '<tr>' +
-                '<td>' + model.name + '</td>' +
-                '<td>' + parsingError.entityName + '</td>' +
+            nbErrors++;
+            var fileId = this.getFileId(model, parsingError.entityName);
+            htmlTable +=
+              '<tr onclick="IDEAction.openFile(\''+fileId+'\')">' +
+                '<td class="center-align" style="padding:0; font-size: 22px; line-height: 22px"><span class="mdi mdi-alert-circle fa-2x"></span></td>' +
+                '<td>' + model.name + '</a></td>' +
+                '<td><a href="#">' + parsingError.entityName + '</a></td>' +
                 '<td>' + parsingError.message + '</td>' +
               '</tr>';
           }
         }
       }
 
-      html +=
-            '</table>' +
-          '</div>' +
-        '</div>';
+      htmlTable +=
+            '</table>';
 
+      if(nbErrors == 0) {
+        var titleStatus = ' : <span class="green-text">OK</span>';
+      } else if(nbErrors == 1) {
+        var titleStatus = ' : <span class="red-text">1 Error</span>';
+      } else {
+        var titleStatus = ' : <span class="red-text">'+nbErrors+' Errors</span>';
+      }
+
+      html +=
+        '<div class="col s12">' +
+          '<h5>Entity'+titleStatus+'</h5>' +
+          htmlTable +
+        '</div>' +
+      '</div>';
     }
 
     $('#generationContent').html(html);
     this.activateButton();
+  },
+
+  getFileId: function(model, entityName) {
+    return 'TelosysTools/' + model.name + '_model/' + entityName + '.entity';
   },
 
   close: function() {
@@ -213,9 +233,12 @@ var IDEGeneration = {
     if(i<generations.length) {
       var generation = generations[i];
 
-      var launchGenerationCallback = (function launchGenerationCallback(result) {
+      var launchGenerationCallback = (function launchGenerationCallback(generation, result) {
         console.log(result);
-        state.generationResults.push(result);
+        state.generationResults.push({
+          generation: generation,
+          result: result
+        });
         IDEConsoleGeneration.display();
 
         // next generation
@@ -242,7 +265,7 @@ var IDEGeneration = {
     var hasError = false;
     for (var i=0; i<state.generationResults.length; i++) {
       var generationResult = state.generationResults[i];
-      if (generationResult.errors && generationResult.errors.length > 0) {
+      if (generationResult.result && generationResult.result.errors && generationResult.result.errors.length > 0) {
         hasError = true;
       }
     }

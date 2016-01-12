@@ -8,13 +8,12 @@ var IDEConsoleModel = {
     var state = Store.getState();
 
     var hasError = false;
+    var nbErrors = 0;
 
     var html =
-      '<div style="width: 100%">' +
-        '<h5>Models : <span class="red-text">Errors</span></h5>' +
-      '</div>' +
       '<table>' +
         '<tr>' +
+          '<th></th>' +
           '<th>Model</th>' +
           '<th>Entity</th>' +
           '<th>Error</th>' +
@@ -27,10 +26,13 @@ var IDEConsoleModel = {
         for (var j=0; j<model.parsingErrors.length; j++) {
           var parsingError = model.parsingErrors[j];
           hasError = true;
+          nbErrors++;
+          var fileId = this.getFileId(model, parsingError.entityName);
           html +=
-            '<tr>' +
-              '<td>' + model.name + '</td>' +
-              '<td>' + parsingError.entityName + '</td>' +
+            '<tr onclick="IDEAction.openFile(\''+fileId+'\')">' +
+              '<td class="center-align" style="padding:0; font-size: 22px; line-height: 22px"><span class="mdi mdi-alert-circle fa-2x"></span></td>' +
+              '<td>' + model.name + '</a></td>' +
+              '<td><a href="#">' + parsingError.entityName + '</a></td>' +
               '<td>' + parsingError.message + '</td>' +
             '</tr>';
         }
@@ -49,10 +51,32 @@ var IDEConsoleModel = {
         '</div>';
     }
 
-    $('#consoleModel').html(html);
-
     if(hasError) {
       $('#console ul.tabs').tabs('select_tab', 'consoleModel');
+    }
+
+    if(nbErrors == 0) {
+      var titleStatus = ' : <span class="green-text">OK</span>';
+    } else if(nbErrors == 1) {
+      var titleStatus = ' : <span class="red-text">1 Error</span>';
+    } else {
+      var titleStatus = ' : <span class="red-text">'+nbErrors+' Errors</span>';
+    }
+
+    $('#consoleModelTitleStatus').html(titleStatus);
+
+    $('#consoleModel').html(html);
+  },
+
+  getFileId: function(model, entityName) {
+    return 'TelosysTools/' + model.name + '_model/' + entityName + '.entity';
+  },
+
+  openEntity: function(fileId) {
+    var state = Store.getState();
+    var openFile = state.openFiles[fileId];
+    if(openFile) {
+      IDEEditorCodemirror.setFileIsWorkingFile(fileId, true);
     }
   },
 
