@@ -8,8 +8,13 @@ var ToolbarUser = {
         '<li><a class="dropdown-button" href="#" data-activates="toolbarUserMenu" style="font-size: 20px">' +
           '<span class="fa fa-user"></span> &nbsp;';
     if(state.auth.authenticated) {
-      html +=
-        state.auth.userId;
+      if(state.auth.login) {
+        html +=
+          state.auth.login;
+      } else {
+        html +=
+          state.auth.userId;
+      }
     } else {
       html +=
         'Not authenticated'

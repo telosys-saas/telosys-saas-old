@@ -41,10 +41,46 @@ public class AuthResource {
         	sessionStr.append(key+" : "+value);
         }
         
+        String login;
+        if(profile == null) {
+        	login = null;
+        } else if(profile.getAttribute("login") != null && profile.getAttribute("login") instanceof String) {
+        	login = (String) profile.getAttribute("login");
+        } else {
+        	login = profile.getId();
+        }
+         
         if(profile == null) {
         	return "{\"authenticated\":false}";
         } else {
-        	return "{\"authenticated\":" + (profile != null) + ", \"userId\": \""+profile.getId()+"\" }" ; //, \"session\" : [" + sessionStr.toString() + "], \"userProfile\" : [" + profile + "]}";
+        	return "{\"authenticated\":" + (profile != null) + ", \"userId\": \""+profile.getId()+"\", \"login\": \""+login+"\" }" ; //, \"session\" : [" + sessionStr.toString() + "], \"userProfile\" : [" + profile + "]}";
+        }
+    }
+
+    @GET
+    @Path("info")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String info(@Context HttpServletRequest request, @Context HttpServletResponse response) {
+    	J2EContext context = new J2EContext(request, response);
+        ProfileManager manager = new ProfileManager(context);
+        HttpSession session = request.getSession();
+        UserProfile profile = manager.get(true);
+        
+        StringBuffer sessionStr = new StringBuffer();
+        Enumeration<String> attributeNames = session.getAttributeNames();
+        while(attributeNames.hasMoreElements()) {
+        	String key = attributeNames.nextElement();
+        	Object value = session.getAttribute(key);
+        	if(sessionStr.length() > 0) {
+        		sessionStr.append(", ");
+        	}
+        	sessionStr.append(key+" : "+value);
+        }
+        
+        if(profile == null) {
+        	return "{\"authenticated\":false}";
+        } else {
+        	return "{\"authenticated\":" + (profile != null) + ", \"userId\": \""+profile.getId()+"\", \"session\" : [" + sessionStr.toString() + "], \"userProfile\" : [" + profile + "]}";
         }
     }
 
