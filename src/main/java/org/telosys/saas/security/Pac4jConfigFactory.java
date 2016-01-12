@@ -17,7 +17,7 @@ public class Pac4jConfigFactory implements ConfigFactory {
         FormClient formClient = new FormClient("/", new FormAuthenticator());
         
         Clients clients =
-                new Clients("/api/callback",
+                new Clients("http://192.99.10.228:10080/api/callback",
                 	formClient,
                     gitHubClient
                 );
