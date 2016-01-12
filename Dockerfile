@@ -20,6 +20,6 @@ EXPOSE 8080
 
 VOLUME ["/fs"]
 
-ADD target/telosys-saas.jar /opt/telosys-saas.jar
+ADD target/telosys-saas.jar /telosys-saas.jar
 
-CMD java -jar /opt/telosys-saas.jar
+CMD java -jar /telosys-saas.jar
