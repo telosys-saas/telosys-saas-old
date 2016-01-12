@@ -1,6 +1,10 @@
 
 var IDEEditorCodemirror = {
   init: function() {
+    $('#bundles').css( "display", "none");
+    $('#generation').css('display', 'none');
+    $('#settings').css( "display", "none");
+    $('#editor').css( "display", "block");
 
     var state = Store.getState();
     if(state.fileId) {
@@ -14,10 +18,6 @@ var IDEEditorCodemirror = {
       }
     }
 
-    $('#bundles').css( "display", "none");
-    $('#generation').css('display', 'none');
-    $('#settings').css( "display", "none");
-    $('#editor').css( "display", "block");
   },
 
   hideFiles: function() {
