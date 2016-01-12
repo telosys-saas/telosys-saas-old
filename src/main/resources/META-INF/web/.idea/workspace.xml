@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="568d9897-a9fe-472d-8494-004e54005c93" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.console.generation.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.console.generation.view.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.console.model.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.console.model.view.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/ide/ide.generation.view.js" afterPath="$PROJECT_DIR$/app/view/index/ide/ide.generation.view.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/index/toolbar/toolbar.generation.view.js" afterPath="$PROJECT_DIR$/app/view/index/toolbar/toolbar.generation.view.js" />
-    </list>
+    <list default="true" id="568d9897-a9fe-472d-8494-004e54005c93" name="Default" comment="" />
     <ignored path="web.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
