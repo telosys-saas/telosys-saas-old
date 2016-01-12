@@ -1,4 +1,4 @@
-telosys-saas:
+telosyssaas:
   build: .
   ports:
     - "10080:8080"
