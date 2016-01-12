@@ -41,20 +41,25 @@ public class AuthResource {
         	sessionStr.append(key+" : "+value);
         }
         
-        String login;
         if(profile == null) {
-        	login = null;
-        } else if(profile.getAttribute("login") != null && profile.getAttribute("login") instanceof String) {
+        	return "{\"authenticated\":false}";
+        }
+        
+        String login;
+        if(profile.getAttribute("login") != null && profile.getAttribute("login") instanceof String) {
         	login = (String) profile.getAttribute("login");
         } else {
         	login = profile.getId();
         }
-         
-        if(profile == null) {
-        	return "{\"authenticated\":false}";
+        
+        String avatar;
+        if(profile.getAttribute("avatar_url") != null && profile.getAttribute("avatar_url") instanceof String) {
+        	avatar = (String) profile.getAttribute("avatar_url");
         } else {
-        	return "{\"authenticated\":" + (profile != null) + ", \"userId\": \""+profile.getId()+"\", \"login\": \""+login+"\" }" ; //, \"session\" : [" + sessionStr.toString() + "], \"userProfile\" : [" + profile + "]}";
+        	avatar = null;
         }
+                 	
+        return "{\"authenticated\":" + (profile != null) + ", \"userId\": \""+profile.getId()+"\", \"login\": \""+login+"\", \"avatar\": \""+avatar+"\" }" ; //, \"session\" : [" + sessionStr.toString() + "], \"userProfile\" : [" + profile + "]}";
     }
 
     @GET

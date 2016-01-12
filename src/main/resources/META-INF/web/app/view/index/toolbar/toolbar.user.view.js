@@ -5,9 +5,15 @@ var ToolbarUser = {
 
     var html =
       '<ul id="nav-mobile" class="hide-on-med-and-down left">' +
-        '<li><a class="dropdown-button" href="#" data-activates="toolbarUserMenu" style="font-size: 20px">' +
-          '<span class="fa fa-user"></span> &nbsp;';
+        '<li><a class="dropdown-button" href="#" data-activates="toolbarUserMenu" style="font-size: 20px">';
     if(state.auth.authenticated) {
+      if(state.auth.avatar && state.auth.avatar != 'null') {
+        html +=
+          '<img src="'+state.auth.avatar+'" style="float: left; margin-top: 11px; height: 42px; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)" /> &nbsp; ';
+      } else {
+        html +=
+          '<span class="fa fa-user"></span> &nbsp; ';
+      }
       if(state.auth.login) {
         html +=
           state.auth.login;
@@ -17,7 +23,7 @@ var ToolbarUser = {
       }
     } else {
       html +=
-        'Not authenticated'
+        '<span class="fa fa-user"></span> &nbsp;Not authenticated'
     }
     html +=
           '<i class="mdi mdi-menu-down right"></i></a></li>' +
