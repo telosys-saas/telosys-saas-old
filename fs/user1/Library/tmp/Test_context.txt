@@ -8,9 +8,9 @@ $generator.version = 3.0.0
 
 * CURRENT DATE AND TIME 
 $today.date = 12 janv. 2016
-$today.time = 07:07:30
+$today.time = 09:59:46
 $today.date("dd/MM/yyyy") = 12/01/2016
-$today.time("HH:mm")      = 07:07
+$today.time("HH:mm")      = 09:59
 
 
 GENERATOR CONSTANTS FOR SPECIAL CHARACTERS :

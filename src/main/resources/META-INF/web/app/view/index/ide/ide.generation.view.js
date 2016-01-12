@@ -53,7 +53,7 @@ var IDEGeneration = {
     if(model.parsingErrors == null || model.parsingErrors.length == 0) {
       html +=
         '<div class="col s6">' +
-          '<h5>Entities</h5>' +
+          '<h5>Select the entities</h5>' +
             '<div class="input-field">';
 
       for (var j = 0; j < model.entities.length; j++) {
@@ -68,8 +68,9 @@ var IDEGeneration = {
       html +=
          '</div>' +
         '</div>' +
-        '<div class="input-field col s6">' +
-          '<h5>Templates bundles</h5>';
+        '<div class="col s6">' +
+          '<h5>Select the templates bundles</h5>' +
+            '<div class="input-field">';
 
       for (var i = 0; i < state.bundlesOfProject.length; i++) {
         var bundle = state.bundlesOfProject[i];
@@ -81,6 +82,7 @@ var IDEGeneration = {
       }
 
       html +=
+          '</div>' +
         '</div>';
     } else {
       var htmlTable =

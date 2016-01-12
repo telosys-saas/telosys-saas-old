@@ -14,8 +14,8 @@ var IDEConsoleModel = {
       '<table>' +
         '<tr>' +
           '<th></th>' +
-          '<th>Model</th>' +
           '<th>Entity</th>' +
+          '<th>Model</th>' +
           '<th>Error</th>' +
         '</tr>';
 
@@ -31,8 +31,8 @@ var IDEConsoleModel = {
           html +=
             '<tr onclick="IDEAction.openFile(\''+fileId+'\')">' +
               '<td class="center-align" style="padding:0; font-size: 22px; line-height: 22px"><span class="mdi mdi-alert-circle fa-2x"></span></td>' +
-              '<td>' + model.name + '</a></td>' +
               '<td><a href="#">' + parsingError.entityName + '</a></td>' +
+              '<td>' + model.name + '</a></td>' +
               '<td>' + parsingError.message + '</td>' +
             '</tr>';
         }

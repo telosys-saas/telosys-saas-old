@@ -88,9 +88,9 @@ var IDEConsoleGeneration = {
       $('#console ul.tabs').tabs('select_tab', 'consoleGeneration');
     }
 
-    if(!state.generationResults) {
-      $('#consoleGenerationTitleStatus').html('');
-    } else
+    //if(!state.generationResults) {
+    //  $('#consoleGenerationTitleStatus').html('');
+    //  } else
     if(nbErrors == 0) {
       $('#consoleGenerationTitleStatus').html(' : <span class="green-text">OK</span>');
     } else if(nbErrors == 1) {

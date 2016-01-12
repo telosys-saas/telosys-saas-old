@@ -38,7 +38,7 @@ var ToolbarGeneration = {
         '<h5>Generation</h5>' +
         '<div class="row">' +
           '<div class="input-field col s12">' +
-            '<h6>Select model :</h6>' +
+            '<h6>Select the model :</h6>' +
             '<ul class="collection">';
 
     if(state.models) {
