@@ -1,0 +1,6 @@
+telosys-saas:
+  build: .
+  ports:
+    - "10080:8080"
+  volumes:
+    - "/opt/telosys-saas/fs:/fs"
