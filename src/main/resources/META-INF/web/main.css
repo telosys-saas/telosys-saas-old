@@ -12,6 +12,30 @@ body {
     height: calc(100% - 88px);
 }
 
+#main-left {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+}
+
+#main-left .collapsible-body {
+    height: 100%;
+    width: 100%;
+}
+
+#main-left #jstree {
+    overflow-x: auto;
+    height: 100%;
+    width: 100%;
+}
+
+#main fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
 .logo-telosys-min {
     display: inline-block;
     background: url("images/telosys-logo-min.svg");
