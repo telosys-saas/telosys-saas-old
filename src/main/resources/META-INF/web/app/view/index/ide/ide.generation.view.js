@@ -38,61 +38,68 @@ var IDEGeneration = {
   display: function() {
     var state = Store.getState();
 
-    var html =
-      '<div id="settingsToolbar" class="editorToolbar">' +
-        '<button id="buttonLaunchGeneration" class="waves-effect waves-green btn" onclick="IDEGeneration.submitGeneration()">' +
-          '<span class="fa fa-play-circle fa-lg"></span> Generate' +
-        '</button>' +
-        ' &nbsp; ' +
-        state.modelName +
-      '</div>' +
-      '<div class="row">' +
-        '<div class="col s12"><h4>' + state.modelName + '</h4></div>';
+    var html = `
+      <div id="settingsToolbar" class="editorToolbar">
+        <button id="buttonLaunchGeneration" class="waves-effect waves-green btn" onclick="IDEGeneration.submitGeneration()">
+          <span class="fa fa-play-circle fa-lg"></span> Generate
+        </button>
+         &nbsp;
+        ` + state.modelName + `
+      </div>
+      <div class="row">
+        <div class="col s12"><h4>` + state.modelName + `</h4></div>
+    `
 
     var model = state.model;
     if(model.parsingErrors == null || model.parsingErrors.length == 0) {
-      html +=
-        '<div class="col s6">' +
-          '<h5>Select the entities</h5>' +
-            '<div class="input-field">';
+      html += `
+        <div class="col s6">
+          <h5>Select the entities</h5>
+            <div class="input-field">
+      `
 
       for (var j = 0; j < model.entities.length; j++) {
         var entity = model.entities[j];
-        html +=
-          '<div>' +
-            '<input type="checkbox" checked name="generation_entities" value="' + model.modelName + '/' + entity.fullName + '" id="' + model.modelName + '__' + entity.fullName + '" />' +
-            '<label for="' + model.modelName + '__' + entity.fullName + '">' + entity.fullName + '</label>' +
-          '</div>';
+        html += `
+          <div>
+            <input type="checkbox" checked name="generation_entities" value="` + model.modelName + '/' + entity.fullName + '" id="' + model.modelName + '__' + entity.fullName + `" />
+            <label for="` + model.modelName + '__' + entity.fullName + '">' + entity.fullName + `</label>
+          </div>
+        `
       }
 
-      html +=
-         '</div>' +
-        '</div>' +
-        '<div class="col s6">' +
-          '<h5>Select the templates bundles</h5>' +
-            '<div class="input-field">';
+      html += `
+         </div>
+        </div>
+        <div class="col s6">
+          <h5>Select the templates bundles</h5>
+            <div class="input-field">
+      `
 
       for (var i = 0; i < state.bundlesOfProject.length; i++) {
         var bundle = state.bundlesOfProject[i];
-        html +=
-          '<div>' +
-            '<input type="checkbox" name="generation_bundles" value="' + bundle.name + '" id="' + bundle.name + '" onclick="IDEGeneration.activateButton()" />' +
-            '<label for="' + bundle.name + '">' + bundle.name + '</label>' +
-          '</div>';
+        html += `
+          <div>
+            <input type="checkbox" name="generation_bundles" value="` + bundle.name + `" id="` + bundle.name + `" onclick="IDEGeneration.activateButton()" />
+            <label for="` + bundle.name + `">` + bundle.name + `</label>
+          </div>
+        `
       }
 
-      html +=
-          '</div>' +
-        '</div>';
+      html += `
+          </div>
+        </div>
+      `
     } else {
-      var htmlTable =
-          '<table class="simple">' +
-            '<tr>' +
-              '<th></th>' +
-              '<th>Model</th>' +
-              '<th>Entity</th>' +
-              '<th>Error</th>' +
-            '</tr>';
+      var htmlTable = `
+          <table class="simple">
+            <tr>
+              <th></th>
+              <th>Model</th>
+              <th>Entity</th>
+              <th>Error</th>
+            </tr>
+      `
 
       var hasError = false;
       var nbErrors = 0;
@@ -105,19 +112,21 @@ var IDEGeneration = {
             hasError = true;
             nbErrors++;
             var fileId = this.getFileId(model, parsingError.entityName);
-            htmlTable +=
-              '<tr onclick="IDEAction.openFile(\''+fileId+'\')">' +
-                '<td class="center-align" style="padding:0; font-size: 22px; line-height: 22px"><span class="mdi mdi-alert-circle fa-2x"></span></td>' +
-                '<td>' + model.name + '</a></td>' +
-                '<td><a href="#">' + parsingError.entityName + '</a></td>' +
-                '<td>' + parsingError.message + '</td>' +
-              '</tr>';
+            htmlTable += `
+              <tr onclick="IDEAction.openFile('`+fileId+`')">
+                <td class="center-align" style="padding:0; font-size: 22px; line-height: 22px"><span class="mdi mdi-alert-circle fa-2x"></span></td>
+                <td>` + model.name + `</a></td>
+                <td><a href="#">` + parsingError.entityName + `</a></td>
+                <td>` + parsingError.message + `</td>
+              </tr>
+            `
           }
         }
       }
 
-      htmlTable +=
-            '</table>';
+      htmlTable += `
+        </table>
+      `
 
       if(nbErrors == 0) {
         var titleStatus = ' : <span class="green-text">OK</span>';
@@ -127,12 +136,13 @@ var IDEGeneration = {
         var titleStatus = ' : <span class="red-text">'+nbErrors+' Errors</span>';
       }
 
-      html +=
-        '<div class="col s12">' +
-          '<h5>Entity'+titleStatus+'</h5>' +
-          htmlTable +
-        '</div>' +
-      '</div>';
+      html += `
+          <div class="col s12">
+            <h5>Entity ` + titleStatus + `</h5>
+            ` + htmlTable + `
+          </div>
+        </div>
+      `
     }
 
     $('#generationContent').html(html);

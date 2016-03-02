@@ -1,0 +1,5 @@
+// Entity Author
+
+Author {
+  myfield : string ; // field example 
+}

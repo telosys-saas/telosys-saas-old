@@ -1,4 +1,4 @@
 Author {
   name: string {@Id};
-  hello: intege {@NotNull};
+  hello: integer {@NotNull};
 }

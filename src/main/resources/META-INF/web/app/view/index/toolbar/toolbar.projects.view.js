@@ -4,7 +4,9 @@ var ToolbarProjects = {
     ProjectsService.loadProjects(state.auth.userId, function(projects) {
       var html = '';
 
-      html += '<li><a href="#!" onclick="ToolbarProjects.changeProject()">All projects</a></li>';
+      html += `
+        <li><a href="#!" onclick="ToolbarProjects.changeProject()">All projects</a></li>
+      `
 
       var isFirst = true;
       for (var i = 0; i < projects.length; i++) {
@@ -12,17 +14,23 @@ var ToolbarProjects = {
 
         if(isFirst) {
           isFirst = false;
-          html += '<li class="divider"></li>';
+          html += `
+            <li class="divider"></li>
+          `
         }
 
         var selected = '';
         if(state.projectId === project.id) {
           selected = ' selected';
         }
-        html += '<li><a href="#!" onclick="ToolbarProjects.changeProject(\''+project.id+'\')">'+project.name+'</a></li>';
+        html += `
+          <li><a href="#!" onclick="ToolbarProjects.changeProject('`+project.id+`')">`+project.name+`</a></li>
+        `
       }
-      html += '<li class="divider"></li>';
-      html += '<li><a href="#!" onclick="ToolbarProjectnew.openModal()">New project</a></li>';
+      html += `
+        <li class="divider"></li>
+        <li><a href="#!" onclick="ToolbarProjectnew.openModal()">New project</a></li>
+      `
       $('#toolbarProjectsList').html(html);
     });
   },

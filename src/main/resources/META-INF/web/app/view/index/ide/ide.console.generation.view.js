@@ -9,24 +9,25 @@ var IDEConsoleGeneration = {
 
     var nbErrors = 0;
 
-    var html =
-      '<div class="row">' +
-        '<div class="col s12">' +
-          '<div style="width: 100%">' +
-            '<button class="left btn waves-effect waves-green" onclick="IDEGeneration.launchGeneration()">' +
-              '<span class="fa fa-play-circle fa-lg"></span>' +
-              ' Generate again' +
-            '</button>' +
-          '</div>' +
-          '<br/>' +
-          '<table>' +
-            '<tr>' +
-              '<th></th>' +
-              '<th>Template</th>' +
-              '<th>Line</th>' +
-              '<th>Entity</th>' +
-              '<th>Error</th>' +
-            '</tr>';
+    var html = `
+      <div class="row">
+        <div class="col s12">
+          <div style="width: 100%">
+            <button class="left btn waves-effect waves-green" onclick="IDEGeneration.launchGeneration()">
+              <span class="fa fa-play-circle fa-lg"></span>
+               Generate again
+            </button>
+          </div>
+          <br/>
+          <table>
+            <tr>
+              <th></th>
+              <th>Template</th>
+              <th>Line</th>
+              <th>Entity</th>
+              <th>Error</th>
+            </tr>
+    `
 
     var hasError = false;
     if(state.generationResults) {
@@ -38,47 +39,51 @@ var IDEConsoleGeneration = {
             var error = this.getErrorAsObject(generationResult.generation, errorAsStr);
             hasError = true;
             nbErrors++;
-            html +=
-              '<tr>' +
-                '<td class="center-align" style="padding:0; font-size: 22px; line-height: 22px"><span class="mdi mdi-alert-circle fa-2x"></span></td>' +
-                '<td onclick="IDEAction.openFile(\''+error.templateFileId+'\')"><a href="#">' + error.templateName + '</a></td>' +
-                '<td onclick="IDEAction.openFile(\''+error.templateFileId+'\')"><a href="#">Line ' + error.numLine + '</a></td>' +
-                '<td onclick="IDEAction.openFile(\''+error.entityFileId+'\')"><a href="#">' + error.entityName + '</a></td>' +
-                '<td>' + error.message + '</td>' +
-              '</tr>'
+            html += `
+              <tr>
+                <td class="center-align" style="padding:0; font-size: 22px; line-height: 22px"><span class="mdi mdi-alert-circle fa-2x"></span></td>
+                <td onclick="IDEAction.openFile('`+error.templateFileId+`')"><a href="#">` + error.templateName + `</a></td>
+                <td onclick="IDEAction.openFile('`+error.templateFileId+`')"><a href="#">Line ` + error.numLine + `</a></td>
+                <td onclick="IDEAction.openFile('`+error.entityFileId+`')"><a href="#">` + error.entityName + `</a></td>
+                <td>` + error.message + `</td>
+              </tr>
+            `
           }
         }
       }
     }
 
-    html +=
-            '</table>' +
-          '</div>' +
-        '</div>';
+    html += `
+          </table>
+        </div>
+      </div>
+    `
 
     if(!hasError) {
       if(state.generationResults) {
-        html =
-          '<div class="row">' +
-            '<div class="col s12">' +
-              '<div style="width: 100%">' +
-                '<h5 class="inline-block">Generation : <span class="green-text">OK</span></h5>' +
-                '<button class="right btn waves-effect waves-green" onclick="IDEGeneration.launchGeneration()">' +
-                  '<span class="fa fa-play-circle fa-lg"></span>' +
-                  ' Generate again' +
-                '</button>' +
-              '</div>' +
-            '</div>' +
-          '</div>';
+        html = `
+          <div class="row">
+            <div class="col s12">
+              <div style="width: 100%">
+                <h5 class="inline-block">Generation : <span class="green-text">OK</span></h5>
+                <button class="right btn waves-effect waves-green" onclick="IDEGeneration.launchGeneration()">
+                  <span class="fa fa-play-circle fa-lg"></span>
+                   Generate again
+                </button>
+              </div>
+            </div>
+          </div>
+        `
       } else {
-        html =
-          '<div class="row">' +
-            '<div class="col s12">' +
-              '<div style="width: 100%">' +
-                '<h5 class="inline-block">No generation</h5>' +
-              '</div>' +
-            '</div>' +
-          '</div>';
+        html = `
+          <div class="row">
+            <div class="col s12">
+              <div style="width: 100%">
+                <h5 class="inline-block">No generation</h5>
+              </div>
+            </div>
+          </div>
+        `
       }
     }
 
@@ -92,11 +97,17 @@ var IDEConsoleGeneration = {
     //  $('#consoleGenerationTitleStatus').html('');
     //  } else
     if(nbErrors == 0) {
-      $('#consoleGenerationTitleStatus').html(' : <span class="green-text">OK</span>');
+      $('#consoleGenerationTitleStatus').html(`
+        : <span class="green-text">OK</span>
+      `)
     } else if(nbErrors == 1) {
-      $('#consoleGenerationTitleStatus').html(' : <span class="red-text">1 Error</span>');
+      $('#consoleGenerationTitleStatus').html(`
+        : <span class="red-text">1 Error</span>
+      `)
     } else {
-      $('#consoleGenerationTitleStatus').html(' : <span class="red-text">'+nbErrors+' Errors</span>');
+      $('#consoleGenerationTitleStatus').html(`
+        : <span class="red-text">'+nbErrors+' Errors</span>
+      `)
     }
   },
 

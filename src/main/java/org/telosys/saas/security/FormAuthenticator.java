@@ -8,9 +8,9 @@ import org.pac4j.http.credentials.authenticator.UsernamePasswordAuthenticator;
 import org.pac4j.http.profile.HttpProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.telosys.saas.domain.User;
-import org.telosys.saas.security.user.UsersManager;
-import org.telosys.saas.util.encrypted.PasswordEncoder;
+import org.telosys.tools.users.User;
+import org.telosys.tools.users.UsersManager;
+import org.telosys.tools.users.crypto.PasswordEncoder;
 
 public class FormAuthenticator implements UsernamePasswordAuthenticator {
 
@@ -40,7 +40,7 @@ public class FormAuthenticator implements UsernamePasswordAuthenticator {
             throwsException("User does not exists");
         }
         
-        if (!passwordEncoder.verify(password, user.getPasswordEncrypted())) {
+        if (!passwordEncoder.verify(password, user.getEncryptedPassword())) {
             throwsException("Username : '" + username + "' does not match password");
         }
         final HttpProfile profile = new HttpProfile();

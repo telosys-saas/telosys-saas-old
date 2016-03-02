@@ -22,8 +22,9 @@ var IDEBundles = {
   },
 
   open: function() {
-    var html =
-      '<div id="bundlesContent"></div>';
+    var html = `
+      <div id="bundlesContent"></div>
+    `
     $('#bundles').html(html);
 
     $('#editor').css( "display", "none");
@@ -39,34 +40,39 @@ var IDEBundles = {
   display: function() {
     var state = Store.getState();
 
-    var html =
-        '<div id="bundlesWait"></div>' +
-        '<div>' +
-          '<div class="row">' +
-            '<div class="col s12">' +
-              '<h4>Bundles</h4>' +
-              '<h5>Current bundles of the project</h5>' +
-              '<ul class="collapsible" data-collapsible="accordion">';
+    var html = `
+      <div id="bundlesWait"></div>
+      <div>
+        <div class="row">
+          <div class="col s12">
+            <h4>Bundles</h4>
+            <h5>Current bundles of the project</h5>
+            <ul class="collapsible" data-collapsible="accordion">
+    `
 
     for (var i=0; i<state.bundlesOfProject.length; i++) {
       var bundle = state.bundlesOfProject[i];
-      html +=
-        '<li>' +
-          '<div class="collapsible-header">' +
-            '<i class="fa fa-archive"></i>' +
-            bundle.name +
-            '<button class="btn waves-effect waves-light red right" onclick="event.stopPropagation();IDEBundles.removeBundle(\''+bundle.name+'\')" style="margin-top:2px">Remove</button>' +
-          '</div>' +
-          '<div class="collapsible-body"><p>' +
-            bundle.name +
-          '</p></div>' +
-        '</li>';
+      html += `
+        <li>
+          <div class="collapsible-header">
+            <i class="fa fa-archive"></i>
+            ` + bundle.name + `
+            <button class="btn waves-effect waves-light red right"
+                    onclick="event.stopPropagation();IDEBundles.removeBundle('`+bundle.name+`')"
+                    style="margin-top:2px">Remove</button>
+          </div>
+          <div class="collapsible-body"><p>
+            ` + bundle.name + `
+          </p></div>' +
+        </li>
+      `
     }
 
-    html +=
-              '</ul>' +
-              '<h5>Bundles in the public repository</h5>' +
-              '<ul class="collapsible" data-collapsible="accordion">';
+    html += `
+      </ul>
+      <h5>Bundles in the public repository</h5>
+      <ul class="collapsible" data-collapsible="accordion">
+    `
 
     for (var i=0; i<state.bundlesInPublicRepository.length; i++) {
       var bundle = state.bundlesInPublicRepository[i];
@@ -79,25 +85,29 @@ var IDEBundles = {
       if(isBundleDownloaded) {
         continue;
       }
-      html +=
-        '<li>' +
-          '<div class="collapsible-header">' +
-            '<i class="fa fa-archive"></i>' +
-            bundle.name +
-            '<button class="waves-effect waves-green btn right" onclick="event.stopPropagation();IDEBundles.addBundle(\''+bundle.name+'\')" style="margin-top:2px">Add</button>' +
-            '</div>' +
-          '<div class="collapsible-body"><p>' +
-            bundle.description +
-          '</p>' +
-          '</div>' +
-        '</li>';
+      html += `
+        <li>
+          <div class="collapsible-header">
+            <i class="fa fa-archive"></i>
+            ` + bundle.name + `
+            <button class="waves-effect waves-green btn right"
+                    onclick="event.stopPropagation();IDEBundles.addBundle(\''+bundle.name+'\')"
+                    style="margin-top:2px">Add</button>
+            </div>
+          <div class="collapsible-body"><p>
+            ` + bundle.description + `
+          </p>
+          </div>
+        </li>
+      `
     }
 
-    html +=
-              '</ul>' +
-            '</div>' +
-          '</div>' +
-        '</div>';
+    html += `
+            </ul>
+          </div>
+        </div>
+      </div>
+    `
 
     $('#bundlesContent').html(html);
     $('#bundlesContent .collapsible').collapsible({
@@ -134,13 +144,14 @@ var IDEBundles = {
   },
 
   displayWait: function(bundleName) {
-    var html =
-      '<div>' +
-        '<h5>Download of ' + bundleName + ' in progress ...</h5>' +
-        '<div class="progress">' +
-          '<div class="indeterminate"></div>' +
-        '</div>' +
-      '</div>';
+    var html = `
+      <div>
+        <h5>Download of ` + bundleName + ` in progress ...</h5>
+        <div class="progress">
+          <div class="indeterminate"></div>
+        </div>
+      </div>
+    `
 
     $('#bundlesContent').html(html);
   }

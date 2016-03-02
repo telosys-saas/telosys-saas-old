@@ -16,28 +16,35 @@ var ToolbarUserChangePassword = {
 
   display: function() {
     var state = Store.getState();
-    $('#changepassword').html(
-      '<div id="changepasswordModal" class="modal">' +
-        '<div class="modal-content">' +
-          '<h4>Change password</h4>' +
-          '<div class="row">' +
-            '<div class="input-field col s12">' +
-              '<i class="mdi mdi-key prefix"></i>' +
-              '<input type="password" id="changepasswordform_password1" onchange="ToolbarUserChangePassword.onchangePassword1()" />' +
-              '<label for="changepasswordform_password1" id="changepasswordform_password1_label">Password<label>' +
-            '</div>' +
-            '<div class="input-field col s12">' +
-              '<i class="mdi prefix"></i>' +
-              '<input type="password" id="changepasswordform_password2" onchange="ToolbarUserChangePassword.onchangePassword2()" />' +
-              '<label for="changepasswordform_password2" id="changepasswordform_password2_label">Password confirmation</label>' +
-            '</div>' +
-          '</div>' +
-        '</div>' +
-        '<div class="modal-footer">' +
-          '<a href="#!" id="changepasswordform_button_save" class="disabled modal-action modal-close waves-effect waves-green btn-flat" onclick="ToolbarUserChangePassword.save()">Save</a>' +
-          '<a href="#!" id="changepasswordform_button_close" class="modal-action modal-close waves-effect waves-green btn-flat" onclick="ToolbarUserChangePassword.closeModal()">Close</a>' +
-        '</div>' +
-      '</div>');
+    $('#changepassword').html(`
+      <div id="changepasswordModal" class="modal">
+        <div class="modal-content">
+          <h4>Change password</h4>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="mdi mdi-key prefix"></i>
+              <input type="password" id="changepasswordform_oldpassword" onchange="ToolbarUserChangePassword.onchangeOldPassword()" />
+              <label for="changepasswordform_oldpassword" id="changepasswordform_password1_label">Old password<label>
+            </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="mdi mdi-key prefix"></i>
+              <input type="password" id="changepasswordform_password1" onchange="ToolbarUserChangePassword.onchangePassword1()" />
+              <label for="changepasswordform_password1" id="changepasswordform_password1_label">Password<label>
+            </div>
+            <div class="input-field col s12">
+              <i class="mdi prefix"></i>
+              <input type="password" id="changepasswordform_password2" onchange="ToolbarUserChangePassword.onchangePassword2()" />
+              <label for="changepasswordform_password2" id="changepasswordform_password2_label">Password confirmation</label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" id="changepasswordform_button_save" class="disabled modal-action modal-close waves-effect waves-green btn-flat" onclick="ToolbarUserChangePassword.save()">Save</a>
+          <a href="#!" id="changepasswordform_button_close" class="modal-action modal-close waves-effect waves-green btn-flat" onclick="ToolbarUserChangePassword.closeModal()">Close</a>
+        </div>
+      </div>
+    `);
   },
 
   openModal: function() {
@@ -49,6 +56,20 @@ var ToolbarUserChangePassword = {
 
   closeModal: function() {
     $('#changepasswordModal').closeModal();
+  },
+
+  onchangeOldPassword: function() {
+    $('#changepasswordform_oldpassword').removeClass('valid');
+    $('#changepasswordform_oldpassword').removeClass('invalid');
+
+    var oldpassword = $('#changepasswordform_oldpassword').val();
+    var result = this.validateOldPassword(oldpassword);
+    if(!result.ok) {
+      $('#changepasswordform_oldpassword').addClass('invalid');
+      $('#changepasswordform_oldpassword_label').attr('data-error', result.message);
+    } else {
+      $('#changepasswordform_oldpassword').addClass('valid');
+    }
   },
 
   onchangePassword1: function() {
@@ -85,7 +106,23 @@ var ToolbarUserChangePassword = {
     }
     this.activateButton();
   },
-  
+
+  validateOldPassword: function(oldpassword) {
+    var ok, message;
+
+    if (oldpassword.length < 5) {
+      return {
+        ok: false,
+        message: 'Too short (5 characters min)'
+      };
+    }
+    else {
+      return {
+        ok: true
+      }
+    }
+  },
+
   validatePassword1: function(password1) {
     var ok, message;
 
@@ -120,12 +157,15 @@ var ToolbarUserChangePassword = {
   },
 
   validateForm: function() {
+    var oldPassword = $('#changepasswordform_oldpassword').val();
     var password1 = $('#changepasswordform_password1').val();
     var password2 = $('#changepasswordform_password2').val();
+    var resultOldPassword = this.validateOldPassword(oldPassword);
     var resultPassword1 = this.validatePassword1(password1);
     var resultPassword2 = this.validatePassword2(password1, password2);
     var ok =
-      resultPassword1 != null && resultPassword1.ok
+      resultOldPassword != null && resultOldPassword.ok
+      && resultPassword1 != null && resultPassword1.ok
       && resultPassword2 != null && resultPassword2.ok;
     return ok;
   },
@@ -142,9 +182,9 @@ var ToolbarUserChangePassword = {
     var state = Store.getState();
 
     if(this.validateForm()) {
-      var password1 = $('#changepasswordform_password1').val();
-      state.account.password = password1;
-      AuthService.saveAccount(state.account, function () {
+      var oldPassword = $('#changepasswordform_oldpassword').val();
+      var password = $('#changepasswordform_password1').val();
+      AuthService.changePassword(state.account.login, oldPassword, password, function () {
         console.log('save account ok');
       }.bind(this));
     }

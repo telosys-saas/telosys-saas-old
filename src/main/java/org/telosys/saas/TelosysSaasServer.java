@@ -19,10 +19,10 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
 import org.telosys.saas.security.AuthResource;
 import org.telosys.saas.security.Pac4jConfigFactory;
-import org.telosys.saas.security.user.UsersManager;
 import org.telosys.saas.websocket.TelosysWebSocketHandler;
 import org.telosys.saas.websocket.scan.ScanEventHandler;
 import org.telosys.saas.websocket.scan.ScanFiles;
+import org.telosys.tools.users.UsersManager;
 
 public class TelosysSaasServer {
 	

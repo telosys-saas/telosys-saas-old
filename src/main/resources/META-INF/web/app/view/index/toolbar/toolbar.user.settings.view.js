@@ -16,26 +16,27 @@ var ToolbarUserSettings = {
 
   display: function() {
     var state = Store.getState();
-    $('#usersettings').html(
-      '<div id="usersettingsModal" class="modal modal-fixed-footer">' +
-        '<div class="modal-content">' +
-          '<h4>Account Settings</h4>' +
-          '<ul class="collapsible" data-collapsible="accordion">' +
-            '<li>' +
-              '<div class="collapsible-header active">' +
-                '<i class="mdi mdi-action-perm-contact-cal"></i>' +
-                'Settings' +
-              '</div>' +
-              '<div class="collapsible-body">' +
-                this.displaySettings() +
-              '</div>' +
-            '</li>' +
-          '</ul>' +
-        '</div>' +
-        '<div class="modal-footer">' +
-          '<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" onclick="ToolbarUserSettings.closeModal()">Close</a>' +
-        '</div>' +
-      '</div>');
+    $('#usersettings').html(`
+      <div id="usersettingsModal" class="modal modal-fixed-footer">
+        <div class="modal-content">
+          <h4>Account Settings</h4>
+          <ul class="collapsible" data-collapsible="accordion">
+            <li>
+              <div class="collapsible-header active">
+                <i class="mdi mdi-action-perm-contact-cal"></i>
+                Settings
+              </div>
+              <div class="collapsible-body">`
+                + this.displaySettings() +
+             `</div>
+            </li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" onclick="ToolbarUserSettings.closeModal()">Close</a>
+        </div>
+      </div>
+    `);
   },
 
   displaySettings: function() {

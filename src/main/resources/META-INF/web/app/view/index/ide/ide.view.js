@@ -27,9 +27,6 @@ var IDE = {
               divs: {
                 ide: {
                   class: 'content'
-                },
-                ide2: {
-                  class: 'content'
                 }
               }
             },
@@ -106,26 +103,18 @@ var IDE = {
     $('#console ul.tabs').tabs();
     $('#console ul.tabs').tabs('select_tab', 'consoleModel');
 
-  },
 
-  hideConsole: function() {
-    var store = Store.getState();
-    store.mainDiv.divs.right.divs.console.size = '0';
-    var divs = getDivs('console', store.mainDiv.divs.right.divs.console);
-    var res = {
-      orientation: store.mainDiv.divs.right.divs.console.type,
-      divs: divs
-    };
-    defineDraggables('console', res);
   },
 
   addEditor: function() {
-    this.hideConsole();
-    /*
-    var store = Store.getState();
-    store.mainDiv.divs.right.divs.idemain.divs.ide2 = {class: 'content'};
-    initSlide('idemain', store.mainDiv.divs.right.divs.idemain);
-    */
+    var state = Store.getState();
+    addDiv(
+      'idemain',
+      state.mainDiv.divs.right.divs.idemain,
+      'ide2',
+      {class: 'content'}
+    );
+    initSlide('idemain', state.mainDiv.divs.right.divs.idemain);
   }
 
 };

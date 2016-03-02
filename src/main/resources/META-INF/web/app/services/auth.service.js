@@ -45,6 +45,31 @@ var AuthService = {
         console.log(msg);
       });
   },
+  
+  changePassword: function(login, oldPassword, password, callback) {
+  	$.ajax({
+      method: "PUT",
+      url: host + "/api/v1/users/"+login+"/action/changePassword",
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        oldPassword: oldPassword,
+        password: password
+      })
+    })
+      .success(function (msg) {
+        console.log(msg);
+        if (callback) {
+          callback(msg);
+        }
+      })
+      .fail(function (jqXHR, textStatus) {
+        console.log(textStatus);
+      })
+      .done(function (msg) {
+        console.log(msg);
+      });
+  },
 
   saveAccount: function(user, callback) {
     $.ajax({
