@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -49,8 +48,7 @@ public class ProjectResource {
 	
 	private UserProfile getUser() {
 		J2EContext context = new J2EContext(request, response);
-        ProfileManager manager = new ProfileManager(context);
-        HttpSession session = request.getSession();
+        ProfileManager<UserProfile> manager = new ProfileManager<>(context);
         UserProfile profile = manager.get(true);
         return profile;
 	}

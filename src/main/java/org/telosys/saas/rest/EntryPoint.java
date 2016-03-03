@@ -23,7 +23,7 @@ public class EntryPoint {
     @Produces(MediaType.TEXT_PLAIN)
     public String test(@Context HttpServletRequest request, @Context HttpServletResponse response) {
     	J2EContext context = new J2EContext(request, response);
-        ProfileManager manager = new ProfileManager(context);
+        ProfileManager<UserProfile> manager = new ProfileManager<>(context);
         HttpSession session = request.getSession();
         UserProfile profile = manager.get(true);
         
