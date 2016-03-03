@@ -26,7 +26,7 @@ public class AuthResource {
     @Produces(MediaType.APPLICATION_JSON)
     public String status(@Context HttpServletRequest request, @Context HttpServletResponse response) {
     	J2EContext context = new J2EContext(request, response);
-        ProfileManager manager = new ProfileManager(context);
+        ProfileManager<UserProfile> manager = new ProfileManager<>(context);
         HttpSession session = request.getSession();
         UserProfile profile = manager.get(true);
         
@@ -67,7 +67,7 @@ public class AuthResource {
     @Produces(MediaType.APPLICATION_JSON)
     public String info(@Context HttpServletRequest request, @Context HttpServletResponse response) {
     	J2EContext context = new J2EContext(request, response);
-        ProfileManager manager = new ProfileManager(context);
+        ProfileManager<UserProfile> manager = new ProfileManager<>(context);
         HttpSession session = request.getSession();
         UserProfile profile = manager.get(true);
         
