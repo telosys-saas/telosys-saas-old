@@ -4,14 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.pac4j.core.profile.UserProfile;
-import org.telosys.saas.dao.file.FileStorageDao;
+import org.telosys.saas.dao.StorageDao;
+import org.telosys.saas.dao.StorageDaoProvider;
 import org.telosys.saas.domain.File;
 import org.telosys.saas.domain.Folder;
 import org.telosys.saas.domain.Project;
 
 public class TelosysFolderService {
 
-	private FileStorageDao storageDao = new FileStorageDao();
+//	private FileStorageDao storageDao = new FileStorageDao();
+	private StorageDao storageDao = StorageDaoProvider.getStorageDao();
 
 	public Folder getTelosysFolder(UserProfile user, Project project) {
 		Folder telosysFolder = new Folder();

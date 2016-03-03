@@ -17,28 +17,46 @@ import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
+import org.telosys.saas.config.Configuration;
+import org.telosys.saas.config.ConfigurationHolder;
 import org.telosys.saas.security.AuthResource;
 import org.telosys.saas.security.Pac4jConfigFactory;
 import org.telosys.saas.websocket.TelosysWebSocketHandler;
 import org.telosys.saas.websocket.scan.ScanEventHandler;
 import org.telosys.saas.websocket.scan.ScanFiles;
+import org.telosys.tools.commons.FileUtil;
+import org.telosys.tools.commons.StrUtil;
+import org.telosys.tools.users.UsersFileName;
 import org.telosys.tools.users.UsersManager;
 
 public class TelosysSaasServer {
 	
 	public static void main(String[] args) throws Exception {
+    	System.out.println("TelosysTools-SaaS starting...");
     	TelosysSaasServer server = new TelosysSaasServer();
-    	server.start();
+		
+    	Configuration configuration = ConfigurationHolder.getConfiguration();
+    	System.out.println("TelosysTools-SaaS configuration :");
+    	System.out.println(" . data root path = '" + configuration.getDataRootPath() + "'");
+    	System.out.println(" . http port      = '" + configuration.getHttpPort() + "'  ("+ configuration.getHttpPortAsInt() + ")");
+
+    	String usersFileName = FileUtil.buildFilePath(configuration.getDataRootPath(), "users.data");
+    	UsersFileName.setSpecificFileName(usersFileName);
+    	System.out.println(" . users file     = '" + usersFileName + "'");
+    	System.out.println(" . users count    = " + UsersManager.getInstance().getUsersCount() );
+    	
+    	server.start(configuration);
     }
 	
-	public void start() throws Exception {
+	public void start(Configuration configuration) throws Exception {
+
 		
 		ScanFiles scanFiles = new ScanFiles("fs", new ScanEventHandler());
 		scanFiles.start();
 		
 		UsersManager.getInstance();
 		
-		Server server = new Server(8080);
+		Server server = new Server( configuration.getHttpPortAsInt() );
         
 		// context rest
 		ServletContextHandler contextBack = new ServletContextHandler(ServletContextHandler.SESSIONS);

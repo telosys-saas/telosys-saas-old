@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.pac4j.core.profile.UserProfile;
-import org.telosys.saas.dao.file.FileStorageDao;
+import org.telosys.saas.dao.StorageDao;
+import org.telosys.saas.dao.StorageDaoProvider;
 import org.telosys.saas.domain.Entity;
 import org.telosys.saas.domain.File;
 import org.telosys.saas.domain.Folder;
@@ -35,7 +36,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ProjectService {
 	
-	private FileStorageDao storageDao = new FileStorageDao();
+//	private FileStorageDao storageDao = new FileStorageDao();
+	private StorageDao storageDao = StorageDaoProvider.getStorageDao();
 	
 	public TelosysProject getTelosysProject(UserProfile user, Project project) {
 		String projectFolderAbsolutePath = storageDao.getProjectPath(user, project);

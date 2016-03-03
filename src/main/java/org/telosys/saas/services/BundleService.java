@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.pac4j.core.profile.UserProfile;
 import org.telosys.saas.dao.StorageDao;
-import org.telosys.saas.dao.file.FileStorageDao;
+import org.telosys.saas.dao.StorageDaoProvider;
 import org.telosys.saas.domain.Bundle;
 import org.telosys.saas.domain.Folder;
 import org.telosys.saas.domain.Project;
@@ -15,7 +15,9 @@ import org.telosys.tools.commons.TelosysToolsException;
 
 public class BundleService {
 	
-	private StorageDao storage = new FileStorageDao();
+//	private StorageDao storage = new FileStorageDao();
+	private StorageDao storage = StorageDaoProvider.getStorageDao();
+
 	private GithubManager githubManager = GithubManager.getInstance();
 
 	public List<Bundle> getBundlesForGithubUser(String githubUser) {

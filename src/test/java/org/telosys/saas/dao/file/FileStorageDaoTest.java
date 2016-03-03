@@ -2,6 +2,8 @@ package org.telosys.saas.dao.file;
 
 import org.junit.Test;
 import org.pac4j.core.profile.UserProfile;
+import org.telosys.saas.dao.StorageDao;
+import org.telosys.saas.dao.StorageDaoProvider;
 import org.telosys.saas.domain.File;
 import org.telosys.saas.domain.Folder;
 import org.telosys.saas.domain.Project;
@@ -11,7 +13,8 @@ public class FileStorageDaoTest {
 	@Test
 	public void createSaveDelete() {
 		
-		FileStorageDao fs = new FileStorageDao();
+		//FileStorageDao fs = new FileStorageDao();		
+		StorageDao fs = StorageDaoProvider.getStorageDao();
 		
 		// User
 		UserProfile user = new UserProfile();

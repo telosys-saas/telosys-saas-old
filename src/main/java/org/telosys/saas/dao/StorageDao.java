@@ -11,46 +11,81 @@ public interface StorageDao {
 
 	/**
 	 * Get project for user.
+	 * @param user
+	 * @param projectName
+	 * @return
 	 */
 	Project getProjectForUser(UserProfile user, String projectName);
 	
 	/**
+	 * @param user
+	 * @param project
+	 * @return
+	 */
+	String getProjectPath(UserProfile user, Project project);
+
+	/**
 	 * Get projects for user.
+	 * @param user
+	 * @return
 	 */
 	List<Project> getProjectsForUser(UserProfile user);
 	
 	/**
 	 * Create project for user.
+	 * @param user
+	 * @param project
 	 */
 	void createProjectForUser(UserProfile user, Project project);
 
 	/**
 	 * Delete project for user.
+	 * @param user
+	 * @param project
 	 */
 	void deleteProjectForUser(UserProfile user, Project project);
 	
 	/**
 	 * Get files for the project of the user with filtering.
+	 * @param user
+	 * @param project
+	 * @param filters
+	 * @return
 	 */
 	Folder getFilesForProjectAndUser(UserProfile user, Project project, List<String> filters);
 
 	/**
 	 * Get folder for the project of the user.
+	 * @param user
+	 * @param project
+	 * @param folderId
+	 * @param filters
+	 * @return
 	 */
 	Folder getFolderForProjectAndUser(UserProfile user, Project project, String folderId, List<String> filters);
 	
 	/**
 	 * Get file for the project of the user.
+	 * @param user
+	 * @param project
+	 * @param fileId
+	 * @return
 	 */
 	File getFileForProjectAndUser(UserProfile user, Project project, String fileId);
 	
 	/**
 	 * Create file in the folder for the project of the user.
+	 * @param user
+	 * @param project
+	 * @param file
 	 */
 	void createFileForProjectAndUser(UserProfile user, Project project, File file);
 
 	/**
 	 * Create folder in the folder for the project of the user.
+	 * @param user
+	 * @param project
+	 * @param folderSub
 	 */
 	void createFolderForProjectAndUser(UserProfile user, Project project, Folder folderSub);
 
@@ -89,7 +124,7 @@ public interface StorageDao {
 	/**
 	 * Get ZIP file to download source code project
 	 * @param user
-	 * @param projectId
+	 * @param project
 	 * @return
 	 */
 	java.io.File getFileZipToDownload(UserProfile user, Project project);

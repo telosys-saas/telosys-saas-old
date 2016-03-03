@@ -31,8 +31,8 @@ var AccountCreate = {
                   <label for="createaccountform_password1" id="createaccountform_password1_label">Password<label>
                 </div>
                 <div class="input-field col s12">
-                  i class="mdi prefix"></i>
-                  input type="password" name="password2" id="createaccountform_password2" onchange="AccountCreate.onchangePassword2()" />
+                  <i class="mdi prefix"></i>
+                  <input type="password" name="password2" id="createaccountform_password2" onchange="AccountCreate.onchangePassword2()" />
                   <label for="createaccountform_password2" id="createaccountform_password2_label">Password confirmation</label>
                 </div>
               </div>

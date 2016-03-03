@@ -20,7 +20,7 @@ import org.pac4j.core.context.J2EContext;
 import org.pac4j.core.profile.ProfileManager;
 import org.pac4j.core.profile.UserProfile;
 import org.telosys.saas.dao.StorageDao;
-import org.telosys.saas.dao.file.FileStorageDao;
+import org.telosys.saas.dao.StorageDaoProvider;
 import org.telosys.saas.domain.Bundle;
 import org.telosys.saas.domain.File;
 import org.telosys.saas.domain.Folder;
@@ -37,7 +37,9 @@ import org.telosys.saas.services.TelosysFolderService;
 public class ProjectResource {
 
 	// private StorageDao storage = new MockStorageDao();
-	private StorageDao storage = new FileStorageDao();
+//	private StorageDao storage = new FileStorageDao();
+	private StorageDao storage = StorageDaoProvider.getStorageDao();
+	
 	private BundleService bundleService = new BundleService();
 	private ProjectService projectService = new ProjectService();
 	private TelosysFolderService telosysFolderService = new TelosysFolderService();

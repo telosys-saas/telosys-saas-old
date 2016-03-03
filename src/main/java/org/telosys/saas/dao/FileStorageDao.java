@@ -1,4 +1,4 @@
-package org.telosys.saas.dao.file;
+package org.telosys.saas.dao;
 
 import java.io.FileFilter;
 import java.io.IOException;
@@ -9,7 +9,8 @@ import java.util.UUID;
 import org.apache.commons.io.FileDeleteStrategy;
 import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.pac4j.core.profile.UserProfile;
-import org.telosys.saas.dao.StorageDao;
+import org.telosys.saas.config.Configuration;
+import org.telosys.saas.config.ConfigurationHolder;
 import org.telosys.saas.domain.File;
 import org.telosys.saas.domain.Folder;
 import org.telosys.saas.domain.Project;
@@ -18,13 +19,19 @@ import org.telosys.saas.util.Zip;
 
 public class FileStorageDao implements StorageDao {
 
+	private final Configuration configuration ;
+	
+	protected FileStorageDao() {
+		configuration = ConfigurationHolder.getConfiguration();
+	}
+	
 	private String getRootPath() {
-		return "fs";
+		return configuration.getDataRootPath();
 	}
 
-	private java.io.File getRootDir() {
-		return getIOFile(getRootPath());
-	}
+//	private java.io.File getRootDir() {
+//		return getIOFile(getRootPath());
+//	}
 
 	private String getUserPath(UserProfile user) {
 		return FileUtil.join(getRootPath(), user.getId());
@@ -35,6 +42,7 @@ public class FileStorageDao implements StorageDao {
 		return getIOFile(path);
 	}
 
+	@Override
 	public String getProjectPath(UserProfile user, Project project) {
 		return FileUtil.join(getRootPath(), user.getId(), project.getId());
 	}
