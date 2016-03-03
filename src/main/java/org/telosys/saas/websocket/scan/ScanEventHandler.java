@@ -12,7 +12,7 @@ public class ScanEventHandler {
 	
 	private ScanSessionStore scanSessionStore = ScanSessionStore.getInstance();
 	
-	public void event(Path path, WatchEvent event) {
+	public void event(Path path, WatchEvent<?> event) {
 		System.out.println("Event: "+event+", path: "+path);
 		
 		if(path.toFile().isDirectory()) {
@@ -23,7 +23,7 @@ public class ScanEventHandler {
 		}
 	}
 	
-	protected void eventForFolder(Path path, Path folder, WatchEvent event) {
+	protected void eventForFolder(Path path, Path folder, WatchEvent<?> event) {
 		if(folder == null) {
 			return;
 		}
