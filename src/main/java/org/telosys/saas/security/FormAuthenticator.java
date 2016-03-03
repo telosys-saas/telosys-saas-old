@@ -10,14 +10,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telosys.tools.users.User;
 import org.telosys.tools.users.UsersManager;
-import org.telosys.tools.users.crypto.PasswordEncoder;
 
 public class FormAuthenticator implements UsernamePasswordAuthenticator {
 
     protected static final Logger logger = LoggerFactory.getLogger(FormAuthenticator.class);
 
     private UsersManager usersManager = UsersManager.getInstance();
-    private PasswordEncoder passwordEncoder = new PasswordEncoder();
     
     @Override
     public void validate(final UsernamePasswordCredentials credentials) {
@@ -33,16 +31,16 @@ public class FormAuthenticator implements UsernamePasswordAuthenticator {
             throwsException("Password cannot be blank");
         }
 
-        String passwordEncrypted = passwordEncoder.encrypt(password);
-        
+        //--- Check user existence
         User user = usersManager.getUserByLogin(username);
         if (user == null) {
             throwsException("User does not exists");
         }
-        
-        if (!passwordEncoder.verify(password, user.getEncryptedPassword())) {
-            throwsException("Username : '" + username + "' does not match password");
+        //--- Check user's password 
+        if ( usersManager.checkPassword(user, password) ) {
+            throwsException("Username : '" + username + "' invalid password");        	
         }
+        
         final HttpProfile profile = new HttpProfile();
         profile.setId(username);
         profile.addAttribute(CommonProfile.USERNAME, username);

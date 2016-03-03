@@ -2,7 +2,6 @@ package org.telosys.saas.rest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -21,7 +20,6 @@ import org.telosys.saas.domain.UserCreation;
 import org.telosys.saas.util.Util;
 import org.telosys.tools.users.User;
 import org.telosys.tools.users.UsersManager;
-import org.telosys.tools.users.crypto.PasswordEncoder;
 
 @Path("/users")
 public class UsersResource {
@@ -33,12 +31,9 @@ public class UsersResource {
 	@Context
 	private HttpServletResponse response;
 	
-	private PasswordEncoder passwordEncoder = new PasswordEncoder();
-	
 	private UserProfile getUser() {
 		J2EContext context = new J2EContext(request, response);
-        ProfileManager manager = new ProfileManager(context);
-        HttpSession session = request.getSession();
+        ProfileManager<UserProfile> manager = new ProfileManager<>(context);
         UserProfile profile = manager.get(true);
         return profile;
 	}
@@ -102,7 +97,7 @@ public class UsersResource {
 			throw new IllegalStateException("change password : not authorized");
 		}
 		User user = usersManager.getUserByLogin(login);
-		if(!passwordEncoder.verify(userChangePassword.getOldPassword(), user.getEncryptedPassword())) {
+		if ( ! usersManager.checkPassword(user, userChangePassword.getOldPassword() ) ) {
 			throw new IllegalStateException("change password : old password is not valid");
 		}
 		usersManager.saveUser(user, userChangePassword.getPassword());
