@@ -6,47 +6,48 @@ var AccountCreate = {
 
   // exemple : http://jsfiddle.net/user/signup/
   display: function() {
-    $('#main').html(`
-      <div style="margin: 0 auto; width: 500px; padding-top: 30px">
-        <div class="card" style="padding: 0 10px">
-          <div class="card-content">
-            <form name="createAccountForm">
-              <div class="row">
-                <div class="input-field col s12">
-                  <span class="card-title">Create an account</span>
-                </div>
-                <div class="input-field col s12">
-                  <i class="mdi mdi-account-circle prefix"></i>
-                  <input type="text" name="login" id="createaccountform_login" onchange="AccountCreate.onchangeLogin()" />
-                  <label for="createaccountform_login" id="createaccountform_login_label">Username</label>
-                </div>
-                <div class="input-field col s12">
-                  <i class="mdi mdi-email prefix"></i>
-                  <input type="text" name="mail" id="createaccountform_mail" onchange="AccountCreate.onchangeMail()" />
-                  <label for="createaccountform_mail" id="createaccountform_mail_label">E-mail address</label>
-                </div>
-                <div class="input-field col s12">
-                  <i class="mdi mdi-key prefix"></i>
-                  <input type="password" name="password1" id="createaccountform_password1" onchange="AccountCreate.onchangePassword1()" />
-                  <label for="createaccountform_password1" id="createaccountform_password1_label">Password<label>
-                </div>
-                <div class="input-field col s12">
-                  <i class="mdi prefix"></i>
-                  <input type="password" name="password2" id="createaccountform_password2" onchange="AccountCreate.onchangePassword2()" />
-                  <label for="createaccountform_password2" id="createaccountform_password2_label">Password confirmation</label>
-                </div>
-              </div>
-              <div class="card-action">
-                <div class="buttons col s12">
-                  <a href="#" onclick="AccountCreate.cancelCreateAccount()">Cancel</a>
-                   &nbsp; &nbsp;
-                  <button type="button" class="btn disabled" onclick="AccountCreate.createAccount()" id="createaccountform_button_create">Create account</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    `);
+    $('#main').html(
+      '<div style="margin: 0 auto; width: 500px; padding-top: 30px">' +
+        '<div class="card" style="padding: 0 10px">' +
+          '<div class="card-content">' +
+            '<form name="createAccountForm">' +
+              '<div class="row">' +
+                '<div class="input-field col s12">' +
+                  '<span class="card-title">Create an account</span>' +
+                '</div>' +
+                '<div class="input-field col s12">' +
+                  '<i class="mdi mdi-account-circle prefix"></i>' +
+                  '<input type="text" name="login" id="createaccountform_login" onchange="AccountCreate.onchangeLogin()" />' +
+                  '<label for="createaccountform_login" id="createaccountform_login_label">Username</label>' +
+                '</div>' +
+                '<div class="input-field col s12">' +
+                  '<i class="mdi mdi-email prefix"></i>' +
+                  '<input type="text" name="mail" id="createaccountform_mail" onchange="AccountCreate.onchangeMail()" />' +
+                  '<label for="createaccountform_mail" id="createaccountform_mail_label">E-mail address</label>' +
+                '</div>' +
+                '<div class="input-field col s12">' +
+                  '<i class="mdi mdi-key prefix"></i>' +
+                  '<input type="password" name="password1" id="createaccountform_password1" onchange="AccountCreate.onchangePassword1()" />' +
+                  '<label for="createaccountform_password1" id="createaccountform_password1_label">Password<label>' +
+                '</div>' +
+                '<div class="input-field col s12">' +
+                  '<i class="mdi prefix"></i>' +
+                  '<input type="password" name="password2" id="createaccountform_password2" onchange="AccountCreate.onchangePassword2()" />' +
+                  '<label for="createaccountform_password2" id="createaccountform_password2_label">Password confirmation</label>' +
+                '</div>' +
+              '</div>' +
+              '<div class="card-action">' +
+                '<div class="buttons col s12">' +
+                  '<a href="#" onclick="AccountCreate.cancelCreateAccount()">Cancel</a>' +
+                   '&nbsp; &nbsp;' +
+                  '<button type="button" class="btn disabled" onclick="AccountCreate.createAccount()" id="createaccountform_button_create">Create account</button>' +
+                '</div>' +
+              '</div>' +
+            '</form>' +
+          '</div>' +
+        '</div>' +
+      '</div>'
+    );
   },
 
   onchangeLogin: function() {

@@ -16,7 +16,7 @@
 
 .welcome-section-1 .header {
     background: -webkit-linear-gradient(to bottom right, rgb(60, 196, 188), #5bd197);
-    background: linear-gradient(to bottom right, rgb(60, 196, 188), #5bd197);
+    /* background: linear-gradient(to bottom right, rgb(60, 196, 188), #5bd197); */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

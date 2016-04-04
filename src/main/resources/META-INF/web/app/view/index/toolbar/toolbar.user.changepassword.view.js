@@ -16,35 +16,35 @@ var ToolbarUserChangePassword = {
 
   display: function() {
     var state = Store.getState();
-    $('#changepassword').html(`
-      <div id="changepasswordModal" class="modal">
-        <div class="modal-content">
-          <h4>Change password</h4>
-          <div class="row">
-            <div class="input-field col s12">
-              <i class="mdi mdi-key prefix"></i>
-              <input type="password" id="changepasswordform_oldpassword" onchange="ToolbarUserChangePassword.onchangeOldPassword()" />
-              <label for="changepasswordform_oldpassword" id="changepasswordform_password1_label">Old password<label>
-            </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <i class="mdi mdi-key prefix"></i>
-              <input type="password" id="changepasswordform_password1" onchange="ToolbarUserChangePassword.onchangePassword1()" />
-              <label for="changepasswordform_password1" id="changepasswordform_password1_label">Password<label>
-            </div>
-            <div class="input-field col s12">
-              <i class="mdi prefix"></i>
-              <input type="password" id="changepasswordform_password2" onchange="ToolbarUserChangePassword.onchangePassword2()" />
-              <label for="changepasswordform_password2" id="changepasswordform_password2_label">Password confirmation</label>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" id="changepasswordform_button_save" class="disabled modal-action modal-close waves-effect waves-green btn-flat" onclick="ToolbarUserChangePassword.save()">Save</a>
-          <a href="#!" id="changepasswordform_button_close" class="modal-action modal-close waves-effect waves-green btn-flat" onclick="ToolbarUserChangePassword.closeModal()">Close</a>
-        </div>
-      </div>
-    `);
+    $('#changepassword').html(
+      '<div id="changepasswordModal" class="modal">' +
+        '<div class="modal-content">' +
+          '<h4>Change password</h4>' +
+          '<div class="row">' +
+            '<div class="input-field col s12">' +
+              '<i class="mdi mdi-key prefix"></i>' +
+              '<input type="password" id="changepasswordform_oldpassword" onchange="ToolbarUserChangePassword.onchangeOldPassword()" />' +
+              '<label for="changepasswordform_oldpassword" id="changepasswordform_password1_label">Old password<label>' +
+            '</div>' +
+          '<div class="row">' +
+            '<div class="input-field col s12">' +
+              '<i class="mdi mdi-key prefix"></i>' +
+              '<input type="password" id="changepasswordform_password1" onchange="ToolbarUserChangePassword.onchangePassword1()" />' +
+              '<label for="changepasswordform_password1" id="changepasswordform_password1_label">Password<label>' +
+            '</div>' +
+            '<div class="input-field col s12">' +
+              '<i class="mdi prefix"></i>' +
+              '<input type="password" id="changepasswordform_password2" onchange="ToolbarUserChangePassword.onchangePassword2()" />' +
+              '<label for="changepasswordform_password2" id="changepasswordform_password2_label">Password confirmation</label>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="modal-footer">' +
+          '<a href="#!" id="changepasswordform_button_save" class="disabled modal-action modal-close waves-effect waves-green btn-flat" onclick="ToolbarUserChangePassword.save()">Save</a>' +
+          '<a href="#!" id="changepasswordform_button_close" class="modal-action modal-close waves-effect waves-green btn-flat" onclick="ToolbarUserChangePassword.closeModal()">Close</a>' +
+        '</div>' +
+      '</div>'
+    );
   },
 
   openModal: function() {
@@ -150,10 +150,6 @@ var ToolbarUserChangePassword = {
         ok: true
       };
     }
-    return {
-      ok: ok,
-      message: message
-    };
   },
 
   validateForm: function() {

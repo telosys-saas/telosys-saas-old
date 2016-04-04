@@ -10,15 +10,14 @@ var IDEConsoleModel = {
     var hasError = false;
     var nbErrors = 0;
 
-    var html = `
-      <table>
-        <tr>
-          <th></th>
-          <th>Entity</th>
-          <th>Model</th>
-          <th>Error</th>
-        </tr>
-    `
+    var html = 
+      '<table>' +
+        '<tr>' +
+          '<th></th>' +
+          '<th>Entity</th>' +
+          '<th>Model</th>' +
+          '<th>Error</th>' +
+        '</tr>'
 
     var hasError = false;
     if(state.models) {
@@ -29,30 +28,27 @@ var IDEConsoleModel = {
           hasError = true;
           nbErrors++;
           var fileId = this.getFileId(model, parsingError.entityName);
-          html += `
-            <tr onclick="IDEAction.openFile('`+fileId+`')">
-              <td class="center-align" style="padding:0; font-size: 22px; line-height: 22px"><span class="mdi mdi-alert-circle fa-2x"></span></td>
-              <td><a href="#">` + parsingError.entityName + `</a></td>
-              <td>` + model.name + `</a></td>
-              <td>` + parsingError.message + `</td>
-            </tr>
-          `
+          html += 
+            '<tr onclick="IDEAction.openFile(\''+fileId+'\')">' +
+              '<td class="center-align" style="padding:0; font-size: 22px; line-height: 22px"><span class="mdi mdi-alert-circle fa-2x"></span></td>' +
+              '<td><a href="#">' + parsingError.entityName + '</a></td>' +
+              '<td>' + model.name + '</a></td>' +
+              '<td>' + parsingError.message + '</td>' +
+            '</tr>'
         }
       }
     }
 
-    html += `
-      </table>
-    `
+    html += 
+      '</table>'
 
     if(!hasError) {
-      html = `
-        <div class="row">
-          <div class="col s12">
-            <h5>Models : <span class="green-text">OK</span></h5>
-          </div>
-        </div>
-      `
+      html = 
+        '<div class="row">' +
+          '<div class="col s12">' +
+            '<h5>Models : <span class="green-text">OK</span></h5>' +
+          '</div>' +
+        '</div>'
     }
 
     if(hasError) {
@@ -60,17 +56,14 @@ var IDEConsoleModel = {
     }
 
     if(nbErrors == 0) {
-      var titleStatus = `
-        : <span class="green-text">OK</span>
-      `
+      var titleStatus = 
+        ': <span class="green-text">OK</span>'
     } else if(nbErrors == 1) {
-      var titleStatus = `
-        : <span class="red-text">1 Error</span>
-      `
+      var titleStatus = 
+        ': <span class="red-text">1 Error</span>'
     } else {
-      var titleStatus = `
-        : <span class="red-text">'+nbErrors+' Errors</span>
-      `
+      var titleStatus = 
+        ': <span class="red-text">'+nbErrors+' Errors</span>'
     }
 
     $('#consoleModelTitleStatus').html(titleStatus);

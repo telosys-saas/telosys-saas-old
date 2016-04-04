@@ -7,18 +7,17 @@ var ProjectsList = {
       var html = '';
       for (var i = 0; i < projects.length; i++) {
         var project = projects[i];
-        html += `
-          <div class="col s12 m3">
-            <div class="card" onclick="ToolbarProjects.changeProject('`+project.id+`')" style="cursor: pointer">
-              <div class="card-content">
-                <span class="card-title">` + project.name + `</span>
-              </div>
-              <div class="card-action" style="text-align: right">
-                <a href="#">OPEN THIS PROJECT</a>
-              </div>
-            </div>
-          </div>
-        `
+        html += 
+          '<div class="col s12 m3">' +
+            '<div class="card" onclick="ToolbarProjects.changeProject(\''+project.id+'\')" style="cursor: pointer">' +
+              '<div class="card-content">' +
+                '<span class="card-title">' + project.name + '</span>' +
+              '</div>' +
+              '<div class="card-action" style="text-align: right">' +
+                '<a href="#">OPEN THIS PROJECT</a>' +
+              '</div>' +
+            '</div>' +
+          '</div>'
       }
       $('#projects').html(html);
       $('#projects').collapsible({

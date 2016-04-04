@@ -23,9 +23,8 @@ var ToolbarBundles = {
   },
 
   openModal: function() {
-    var html = `
-      <div id="bundlesModal" class="modal modal-fixed-footer"></div>
-    `
+    var html = 
+      '<div id="bundlesModal" class="modal modal-fixed-footer"></div>'
     $('#bundles').html(html);
     $('#bundlesModal').openModal();
 
@@ -37,36 +36,33 @@ var ToolbarBundles = {
   displayModal: function() {
     var state = Store.getState();
 
-    var html = `
-      <div class="modal-content">
-        <div class="row">
-          <div class="col s12">
-            <h4>Bundles</h4>
-            <h5>Current bundles of the project</h5>
-            <ul class="collapsible" data-collapsible="accordion">
-    `
+    var html = 
+      '<div class="modal-content">' +
+        '<div class="row">' +
+          '<div class="col s12">' +
+            '<h4>Bundles</h4>' +
+            '<h5>Current bundles of the project</h5>' +
+            '<ul class="collapsible" data-collapsible="accordion">'
 
     for (var i=0; i<state.bundlesOfProject.length; i++) {
       var bundle = state.bundlesOfProject[i];
-      html += `
-              <li>
-                <div class="collapsible-header">
-                  <i class="mdi mdi-package"></i>
-                  ` + bundle.name + `
-                  <button class="btn red right" onclick="event.stopPropagation();ToolbarBundles.removeBundle('`+bundle.name+`')" style="margin-top:2px">Remove</button>
-                </div>
-                <div class="collapsible-body"><p>
-                  ` + bundle.name + `
-                </p></div>
-              </li>
-      `
+      html += 
+              '<li>' +
+                '<div class="collapsible-header">' +
+                  '<i class="mdi mdi-package"></i>' +
+                  ' + bundle.name + '
+                  '<button class="btn red right" onclick="event.stopPropagation();ToolbarBundles.removeBundle(\''+bundle.name+'\')" style="margin-top:2px">Remove</button>' +
+                '</div>' +
+                '<div class="collapsible-body"><p>' +
+                  ' + bundle.name + '
+                '</p></div>' +
+              '</li>'
     }
 
-    html += `
-            </ul>
-            <h5>Bundles in the public repository</h5>
-            <ul class="collapsible" data-collapsible="accordion">
-    `
+    html += 
+            '</ul>' +
+            '<h5>Bundles in the public repository</h5>' +
+            '<ul class="collapsible" data-collapsible="accordion">'
 
     for (var i=0; i<state.bundlesInPublicRepository.length; i++) {
       var bundle = state.bundlesInPublicRepository[i];
@@ -79,30 +75,28 @@ var ToolbarBundles = {
       if(isBundleDownloaded) {
         continue;
       }
-      html += `
-              <li>
-                <div class="collapsible-header">
-                  <i class="mdi mdi-package"></i>
-                  ` + bundle.name + `
-                  <button class="btn green right" onclick="event.stopPropagation();ToolbarBundles.addBundle('`+bundle.name+`')" style="margin-top:2px">Add</button>
-                  </div>
-                <div class="collapsible-body"><p>
-                  ` + bundle.description + `
-                </p>
-                </div>
-              </li>
-      `
+      html += 
+              '<li>' +
+                '<div class="collapsible-header">' +
+                  '<i class="mdi mdi-package"></i>' +
+                  ' + bundle.name + '
+                  '<button class="btn green right" onclick="event.stopPropagation();ToolbarBundles.addBundle(\''+bundle.name+'\')" style="margin-top:2px">Add</button>' +
+                  '</div>' +
+                '<div class="collapsible-body"><p>' +
+                  ' + bundle.description + '
+                '</p>' +
+                '</div>' +
+              '</li>'
     }
 
-    html += `
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat "onclick="ToolbarBundles.closeModal()">Close</a>
-      </div>
-    `
+    html += 
+            '</ul>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="modal-footer">' +
+        '<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat "onclick="ToolbarBundles.closeModal()">Close</a>' +
+      '</div>'
 
     $('#bundlesModal').html(html);
     $('#bundlesModal .collapsible').collapsible({
