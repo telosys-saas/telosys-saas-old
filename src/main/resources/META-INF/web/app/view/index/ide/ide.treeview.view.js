@@ -21,7 +21,8 @@ var IDETreeview = {
         state.jstree = $('#jstreecontent').jstree({
           'core': {
             'data': [
-              state.tree.telosys, state.tree.root
+              state.tree.telosys, 
+              state.tree.root
             ],
             // so that create works
             "check_callback" : true
@@ -417,15 +418,33 @@ var IDETreeview = {
     jstree.close_all();
   },
 
-  convertFolderToJson: function(folder, parent) {
+  convertFolderToJson: function(folder, parent, type) {
     console.log('folder : ', folder.name);
 
-    var currentNode = {
-      id: (!folder.id) ? '@@_root_@@' : folder.id,
-      text: folder.name,
-      type: (!folder.id) ? 'project' : folder.type,
-      children: []
-    };
+    if(type == 'root') {
+      var currentNode = {
+        id: '@@_root_@@',
+        text: folder.name,
+        type: 'project',
+        children: []
+      };
+    }
+    else if(type == 'telosys') {
+      var currentNode = {
+        id: '@@_root_@@',
+        text: folder.name,
+        type: 'telosys',
+        children: []
+      };
+    }
+    else {
+      var currentNode = {
+        id: folder.id,
+        text: folder.name,
+        type: folder.type,
+        children: []
+      };
+    }
 
     if(!parent) {
       currentNode.state = {

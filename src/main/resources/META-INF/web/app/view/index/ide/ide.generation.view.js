@@ -40,11 +40,7 @@ var IDEGeneration = {
 
     var html = 
       '<div id="settingsToolbar" class="editorToolbar">' +
-        '<button id="buttonLaunchGeneration" class="waves-effect waves-green btn" onclick="IDEGeneration.submitGeneration()">' +
-          '<span class="fa fa-play-circle fa-lg"></span> Generate' +
-        '</button>' +
         '&nbsp;' +
-        state.modelName + 
       '</div>' +
       '<div class="row">' +
         '<div class="col s12"><h4>' + state.modelName + '</h4></div>'
@@ -83,7 +79,8 @@ var IDEGeneration = {
 
       html += 
           '</div>' +
-        '</div>'
+        '</div>' +
+      '</div>'
     } else {
       var htmlTable = 
           '<table class="simple">' +
@@ -130,10 +127,21 @@ var IDEGeneration = {
       html += 
           '<div class="col s12">' +
             '<h5>Entity ' + titleStatus + '</h5>' +
-            ' + htmlTable + '
+            htmlTable +
           '</div>' +
-        '</div>'
+        '</div>' +
+      '</div>'
     }
+
+    html +=           
+        '<div class="row">' +
+          '<div class="col s6" style="text-align: right">' +
+            '<button id="buttonLaunchGeneration" class="waves-effect waves-green btn" onclick="IDEGeneration.submitGeneration()">' +
+              '<span class="fa fa-play-circle fa-lg"></span> Generate' +
+            '</button>' +
+          '</div>' + 
+         '</div>';
+
 
     $('#generationContent').html(html);
     this.activateButton();
@@ -249,13 +257,12 @@ var IDEGeneration = {
           var generation = generations[i];
           ProjectsService.launchGeneration(state.auth.userId, state.projectId, generation, launchGenerationCallback);
         } else {
-          this.launchGenerationCallbackEnd();
+          IDEGeneration.launchGenerationCallbackEnd();
         }
       }.bind(this));
 
       ProjectsService.launchGeneration(state.auth.userId, state.projectId, generation, launchGenerationCallback);
     }
-    //IDE.defineSplitEditorGenerate(40);
   },
 
   launchGenerationCallbackEnd: function() {

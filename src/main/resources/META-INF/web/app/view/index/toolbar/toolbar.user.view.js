@@ -10,7 +10,7 @@ var ToolbarUser = {
     if(state.auth.authenticated) {
       if(state.auth.avatar && state.auth.avatar != 'null') {
         html += 
-          '<img src="'+state.auth.avatar+'" style="float: left; margin-top: 11px; height: 42px; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)" /> &nbsp;'
+          '<img src="'+state.auth.avatar+'" style="float: left; margin: 11px; height: 36px; border-radius: 50%; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)" /> &nbsp;'
       } else {
         html += 
           '<span class="fa fa-user"></span> &nbsp;'

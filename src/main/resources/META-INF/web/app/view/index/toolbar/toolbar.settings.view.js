@@ -15,7 +15,7 @@ var ToolbarSettings = {
 
   display: function() {
     var state = Store.getState();
-    $('#settings').html(
+    $('#settingsDiv').html(
       '<div id="settingsModal" class="modal modal-fixed-footer">' +
         '<div class="modal-content">' +
           '<h4>Project Settings</h4>' +

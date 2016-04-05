@@ -57,9 +57,15 @@ public class TelosysSaasServer {
 		UsersManager.getInstance();
 		
 		Server server = new Server( configuration.getHttpPortAsInt() );
-        
+
 		// context rest
 		ServletContextHandler contextBack = new ServletContextHandler(ServletContextHandler.SESSIONS);
+		
+		// Telosys Monitoring
+		FilterHolder requestMonitorFilter = new FilterHolder(new org.telosys.webtools.monitoring.RequestsMonitor());
+		requestMonitorFilter.setInitParameter("reporting", "/monitor");
+		contextBack.addFilter(requestMonitorFilter, "/*", EnumSet.of(DispatcherType.REQUEST));
+		
 		contextBack.setContextPath("/api");
 		server.setHandler(contextBack);
 		
@@ -76,6 +82,7 @@ public class TelosysSaasServer {
 		ResourceHandler resource_handler = new ResourceHandler();
         // Configure the ResourceHandler. Setting the resource base indicates where the files should be served out of.
         // In this example it is the current directory but it can be configured to anything that the jvm has access to.
+		resource_handler.setMinMemoryMappedContentLength(Integer.MAX_VALUE);
         resource_handler.setDirectoriesListed(true);
         resource_handler.setWelcomeFiles(new String[]{ "index.html" });
         File web = new File("src/main/resources/META-INF/web");

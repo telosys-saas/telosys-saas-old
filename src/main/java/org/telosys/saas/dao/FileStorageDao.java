@@ -34,7 +34,10 @@ public class FileStorageDao implements StorageDao {
 //	}
 
 	private String getUserPath(UserProfile user) {
-		return FileUtil.join(getRootPath(), user.getId());
+		String userPath = FileUtil.join(getRootPath(), user.getId());
+		java.io.File dir = new java.io.File(userPath);
+		dir.mkdirs();
+		return userPath;
 	}
 
 	private java.io.File getUserDir(UserProfile user) {

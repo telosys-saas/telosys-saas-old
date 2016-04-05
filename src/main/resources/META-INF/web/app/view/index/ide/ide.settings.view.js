@@ -29,7 +29,7 @@ var IDESettings = {
             '<li>' +
               '<div class="collapsible-header">' +
                 '<i class="mdi mdi-border-all"></i>' +
-                Packages +
+                'Packages' +
               '</div>' +
               '<div class="collapsible-body">' +
                 this.displayPackages(state.projectConfiguration.variables) + 
@@ -38,7 +38,7 @@ var IDESettings = {
             '<li>' +
               '<div class="collapsible-header">' +
                 '<i class="mdi mdi-folder-multiple"></i>' +
-                Folders +
+                'Folders' +
               '</div>' +
               '<div class="collapsible-body">' +
                 this.displayDirectories(state.projectConfiguration.variables) + 

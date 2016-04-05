@@ -17,12 +17,19 @@ var ProjectsList = {
                 '<a href="#">OPEN THIS PROJECT</a>' +
               '</div>' +
             '</div>' +
-          '</div>'
+          '</div>';
       }
+      html +=
+        '<div class="col s12 m3">' +
+          '<a href="#" class="waves-effect waves-green btn" onclick="ToolbarProjectnew.openModal()">' +
+            'ADD NEW PROJECT' +
+          '</a>' +
+        '</div>';
       $('#projects').html(html);
       $('#projects').collapsible({
         accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
       });
+
     });
   }
 

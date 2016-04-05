@@ -3,6 +3,17 @@ var ToolbarBundles = {
   init: function() {
   },
 
+  openModal: function() {
+    var html = 
+      '<div id="bundlesModal" class="modal modal-fixed-footer"></div>'
+    $('#bundlesDiv').html(html);
+    $('#bundlesModal').openModal();
+   
+    this.loadData(function() {
+      this.displayModal();
+    }.bind(this));
+  },
+
   loadData: function(callback) {
     var state = Store.getState();
 
@@ -19,17 +30,6 @@ var ToolbarBundles = {
         }
 
       }.bind(this));
-    }.bind(this));
-  },
-
-  openModal: function() {
-    var html = 
-      '<div id="bundlesModal" class="modal modal-fixed-footer"></div>'
-    $('#bundles').html(html);
-    $('#bundlesModal').openModal();
-
-    this.loadData(function() {
-      this.displayModal();
     }.bind(this));
   },
 
@@ -50,11 +50,11 @@ var ToolbarBundles = {
               '<li>' +
                 '<div class="collapsible-header">' +
                   '<i class="mdi mdi-package"></i>' +
-                  ' + bundle.name + '
+                    bundle.name + 
                   '<button class="btn red right" onclick="event.stopPropagation();ToolbarBundles.removeBundle(\''+bundle.name+'\')" style="margin-top:2px">Remove</button>' +
                 '</div>' +
                 '<div class="collapsible-body"><p>' +
-                  ' + bundle.name + '
+                  bundle.name + 
                 '</p></div>' +
               '</li>'
     }
@@ -79,11 +79,11 @@ var ToolbarBundles = {
               '<li>' +
                 '<div class="collapsible-header">' +
                   '<i class="mdi mdi-package"></i>' +
-                  ' + bundle.name + '
+                    bundle.name + 
                   '<button class="btn green right" onclick="event.stopPropagation();ToolbarBundles.addBundle(\''+bundle.name+'\')" style="margin-top:2px">Add</button>' +
                   '</div>' +
                 '<div class="collapsible-body"><p>' +
-                  ' + bundle.description + '
+                  bundle.description + 
                 '</p>' +
                 '</div>' +
               '</li>'

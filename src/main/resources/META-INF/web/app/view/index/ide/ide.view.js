@@ -11,7 +11,7 @@ var IDE = {
 
   display: function() {
     var state = Store.getState();
-
+/*
     var mainDiv = {
       type: 'H',
       divs: {
@@ -39,9 +39,30 @@ var IDE = {
       }
     };
     state.mainDiv = mainDiv;
-
-    initSlide('main', mainDiv);
-
+*/
+    
+    var html = 
+      '<div style="width: 100%; height: 100%; position: relative">' +
+        '<div id="left" class="content" style="position: absolute; left: 0; width: calc(25% - 10px); top: 0; bottom: 0"></div>' + 
+        '<div id="ide" class="content" style="position: absolute; right: 0; width: 75%; height: 75%"; top: 0; right: 0></div>' +
+        '<div id="console" class="content" style="position: absolute; right: 0; width: 75%; height: calc(25% - 10px); bottom: 0; right: 0"></div>' +
+      '</div>';
+    
+    $('#main').html(html);
+/*    
+    $(function () {    
+        var pstyle = 'border: 1px solid #e0e0e0; box-shadow: 0 1px 3px #d4d4d4; background-color: #fff;';
+        $('#main').w2layout({
+            name: 'main',
+            padding: 10,
+            panels: [
+                { type: 'left', size: '25%', resizable: true, style: pstyle, content: '<div id="left" style="height: 100%; width: 100%"></div>' },
+                { type: 'main', style: pstyle + 'border-top: 0px;', content: '<div id="ide" style="height: 100%; width: 100%"></div>'},
+                { type: 'preview', size: '25%', style: pstyle + 'border-top: 0px;', resizable: true, content: '<div id="console" style="height: 100%; width: 100%"></div>'}
+            ]
+        });
+    });
+*/
     var leftHtml =
       '<ul id="main-left" class="collapsible" data-collapsible="expandable" style="margin: 0; box-shadow: none; border: none;">' +
         '<li>' +
@@ -108,6 +129,8 @@ var IDE = {
 
   addEditor: function() {
     var state = Store.getState();
+    
+    /*
     addDiv(
       'idemain',
       state.mainDiv.divs.right.divs.idemain,
@@ -115,6 +138,7 @@ var IDE = {
       {class: 'content'}
     );
     initSlide('idemain', state.mainDiv.divs.right.divs.idemain);
+    */
   }
 
 };

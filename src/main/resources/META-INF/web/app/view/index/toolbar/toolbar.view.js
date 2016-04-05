@@ -23,7 +23,7 @@ var Toolbar = {
 
     if(state.auth.userId != null) {
       html += 
-        '<li>' +
+        '<li id="toolbarProjects">' +
           '<a class="dropdown-button" href="#" data-activates="toolbarProjectsList">' +
             'Project <span id="toolbarProjectsName"></span><i class="mdi mdi-menu-down right"></i>' +
           '</a>' +
@@ -32,7 +32,7 @@ var Toolbar = {
 
     if(state.projectId) {
       html +=
-        '<li><a href="#" onclick="IDESettings.open()">Settings</a></li>' +
+        '<li><a href="#" onclick="ToolbarSettings.openModal()">Settings</a></li>' +
         '<li><a href="#" onclick="ToolbarBundles.openModal()">Templates</a></li>' +
         '<li><a href="#" onclick="ToolbarGeneration.openModal()">Generation</a></li>' +
         '<li><a href="#" onclick="ToolbarDownload.download()">Download</a></li>';
