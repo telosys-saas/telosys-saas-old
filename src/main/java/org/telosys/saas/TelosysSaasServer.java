@@ -28,28 +28,31 @@ import org.telosys.tools.commons.FileUtil;
 import org.telosys.tools.commons.StrUtil;
 import org.telosys.tools.users.UsersFileName;
 import org.telosys.tools.users.UsersManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class TelosysSaasServer {
 	
+	static final Logger LOG = LoggerFactory.getLogger(TelosysSaasServer.class);
+	
 	public static void main(String[] args) throws Exception {
-    	System.out.println("TelosysTools-SaaS starting...");
+    	LOG.info("TelosysTools-SaaS starting...");
     	TelosysSaasServer server = new TelosysSaasServer();
 		
     	Configuration configuration = ConfigurationHolder.getConfiguration();
-    	System.out.println("TelosysTools-SaaS configuration :");
-    	System.out.println(" . data root path = '" + configuration.getDataRootPath() + "'");
-    	System.out.println(" . http port      = '" + configuration.getHttpPort() + "'  ("+ configuration.getHttpPortAsInt() + ")");
+    	LOG.info("TelosysTools-SaaS configuration :");
+    	LOG.info(" . data root path = '" + configuration.getDataRootPath() + "'");
+    	LOG.info(" . http port      = '" + configuration.getHttpPort() + "'  ("+ configuration.getHttpPortAsInt() + ")");
 
     	String usersFileName = FileUtil.buildFilePath(configuration.getDataRootPath(), "users.data");
     	UsersFileName.setSpecificFileName(usersFileName);
-    	System.out.println(" . users file     = '" + usersFileName + "'");
-    	System.out.println(" . users count    = " + UsersManager.getInstance().getUsersCount() );
+    	LOG.info(" . users file     = '" + usersFileName + "'");
+    	LOG.info(" . users count    = " + UsersManager.getInstance().getUsersCount() );
     	
     	server.start(configuration);
     }
 	
 	public void start(Configuration configuration) throws Exception {
-
 		
 		ScanFiles scanFiles = new ScanFiles("fs", new ScanEventHandler());
 		scanFiles.start();
