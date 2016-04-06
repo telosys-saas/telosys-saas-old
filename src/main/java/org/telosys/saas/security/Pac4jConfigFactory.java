@@ -1,30 +1,37 @@
 package org.telosys.saas.security;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.pac4j.core.client.Client;
 import org.pac4j.core.client.Clients;
 import org.pac4j.core.config.Config;
 import org.pac4j.core.config.ConfigFactory;
 import org.pac4j.http.client.indirect.FormClient;
 import org.pac4j.http.credentials.authenticator.test.SimpleTestUsernamePasswordAuthenticator;
 import org.pac4j.oauth.client.GitHubClient;
+import org.telosys.saas.config.Configuration;
+import org.telosys.saas.config.ConfigurationHolder;
 
 public class Pac4jConfigFactory implements ConfigFactory {
     @Override
     public Config build() {        
-
-        // GitHubClient gitHubClient = new GitHubClient("1eb1481f8f91399ab1cb", "7f5fa49c20844702c082d3a10d9d2dcac27fe4cb");
-    	GitHubClient gitHubClient = new GitHubClient("cbbe70a7fa16533ca892", "2fcbd7d3f417582f042bb33baa1875b46454f70e");
-        gitHubClient.setScope("user:email");
+    	Configuration configuration = ConfigurationHolder.getConfiguration();
+    	
+    	List<Client> clients = new ArrayList<>();
+    	
+    	// Github
+    	if(configuration.getGithubOauthKey() != null && configuration.getGthubOauthPassword() != null) {
+    		GitHubClient gitHubClient = new GitHubClient(
+    				configuration.getGithubOauthKey(), configuration.getGthubOauthPassword());
+    		gitHubClient.setScope("user:email");
+    		clients.add(gitHubClient);
+    	}
         
-        //FormClient formClient = new FormClient("http://localhost:8080/login.html", new SimpleTestUsernamePasswordAuthenticator());
+    	// User / Password form
         FormClient formClient = new FormClient("/", new FormAuthenticator());
+        clients.add(formClient);
         
-        Clients clients =
-                //new Clients("http://192.99.10.228:10080/api/callback",
-        		new Clients("http://localhost:9090/api/callback",
-                	formClient,
-                    gitHubClient
-                );
-        final Config config = new Config(clients);
-        return config;
+        return new Config(new Clients(configuration.getAuthRedirectUrl(), clients.toArray(new Client[] {})));
     }
 }
