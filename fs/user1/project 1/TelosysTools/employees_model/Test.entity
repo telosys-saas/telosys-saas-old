@@ -1,5 +1,0 @@
-// Entity Test
-
-Test {
-  myfield : string ; // field example 
-}

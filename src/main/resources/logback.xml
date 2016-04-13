@@ -7,9 +7,9 @@
     </layout>
   </appender>
    
-  <logger name="org.telosys.saas" level="TRACE"/>
+  <logger name="org.telosys.saas" level="DEBUG"/>
   
-  <root level="info">
+  <root level="debug">
     <appender-ref ref="STDOUT" />
   </root>
 </configuration>

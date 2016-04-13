@@ -1,4 +1,0 @@
-Author {
-  name: string {@Id};
-  hello: integer {@NotNull};
-}

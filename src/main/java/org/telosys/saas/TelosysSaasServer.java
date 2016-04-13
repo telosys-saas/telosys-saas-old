@@ -44,9 +44,9 @@ public class TelosysSaasServer {
     	LOG.info(" . data root path = '" + configuration.getDataRootPath() + "'");
     	LOG.info(" . http port      = '" + configuration.getHttpPort() + "'  ("+ configuration.getHttpPortAsInt() + ")");
 
-    	String usersFileName = FileUtil.buildFilePath(configuration.getDataRootPath(), "users.data");
+    	String usersFileName = FileUtil.buildFilePath(configuration.getDataRootPath(), "users.csv");
     	UsersFileName.setSpecificFileName(usersFileName);
-    	LOG.info(" . users file     = '" + usersFileName + "'");
+    	LOG.info(" . users file     = '" + UsersFileName.getFileName() + "'");
     	LOG.info(" . users count    = " + UsersManager.getInstance().getUsersCount() );
     	
     	server.start(configuration);

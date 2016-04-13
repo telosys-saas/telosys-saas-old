@@ -1,5 +1,0 @@
-// Entity Book
-
-Book {
-  myfield : string ; // field example 
-}
