@@ -8,10 +8,18 @@
 	<version>0.1</version>
 
 	<packaging>jar</packaging>
+	
+<repositories>
+	<repository>
+		<id>sonatype</id>
+		<name>Sonatype snapshots and releases</name>
+		<url>https://oss.sonatype.org/content/groups/public</url>
+	</repository>
+</repositories>
 
 	<properties>
-		<dropwizard.version>0.9.1</dropwizard.version>
-		<telosys.version>3.0.0</telosys.version>
+		<!-- <dropwizard.version>0.9.1</dropwizard.version> -->
+		<telosys.version>3.0.0-SNAPSHOT</telosys.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 		<jetty.version>9.3.6.v20151106</jetty.version>
@@ -20,12 +28,12 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
+<!-- 		<dependency>
 			<groupId>org.telosys.webtools</groupId>
 			<artifactId>telosys-monitoring</artifactId>
 			<version>1.10</version>
 		</dependency>
-	
+ -->	
 		<dependency>
 			<groupId>org.pac4j</groupId>
 			<artifactId>j2e-pac4j</artifactId>
@@ -128,7 +136,7 @@
 			<version>1.5.2</version>
 		</dependency>
 		<dependency>
-			<groupId>org.telosys.tools</groupId>
+			<groupId>org.telosys</groupId>
 			<artifactId>telosys-tools-api</artifactId>
 			<version>${telosys.version}</version>
 		</dependency>

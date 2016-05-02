@@ -64,10 +64,10 @@ public class TelosysSaasServer {
 		// context rest
 		ServletContextHandler contextBack = new ServletContextHandler(ServletContextHandler.SESSIONS);
 		
-		// Telosys Monitoring
-		FilterHolder requestMonitorFilter = new FilterHolder(new org.telosys.webtools.monitoring.RequestsMonitor());
-		requestMonitorFilter.setInitParameter("reporting", "/monitor");
-		contextBack.addFilter(requestMonitorFilter, "/*", EnumSet.of(DispatcherType.REQUEST));
+//		// Telosys Monitoring
+//		FilterHolder requestMonitorFilter = new FilterHolder(new org.telosys.webtools.monitoring.RequestsMonitor());
+//		requestMonitorFilter.setInitParameter("reporting", "/monitor");
+//		contextBack.addFilter(requestMonitorFilter, "/*", EnumSet.of(DispatcherType.REQUEST));
 		
 		contextBack.setContextPath("/api");
 		server.setHandler(contextBack);
