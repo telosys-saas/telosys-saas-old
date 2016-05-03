@@ -17,6 +17,8 @@ import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.telosys.saas.config.Configuration;
 import org.telosys.saas.config.ConfigurationHolder;
 import org.telosys.saas.security.AuthResource;
@@ -25,11 +27,7 @@ import org.telosys.saas.websocket.TelosysWebSocketHandler;
 import org.telosys.saas.websocket.scan.ScanEventHandler;
 import org.telosys.saas.websocket.scan.ScanFiles;
 import org.telosys.tools.commons.FileUtil;
-import org.telosys.tools.commons.StrUtil;
-import org.telosys.tools.users.UsersFileName;
 import org.telosys.tools.users.UsersManager;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class TelosysSaasServer {
 	
@@ -45,8 +43,8 @@ public class TelosysSaasServer {
     	LOG.info(" . http port      = '" + configuration.getHttpPort() + "'  ("+ configuration.getHttpPortAsInt() + ")");
 
     	String usersFileName = FileUtil.buildFilePath(configuration.getDataRootPath(), "users.csv");
-    	UsersFileName.setSpecificFileName(usersFileName);
-    	LOG.info(" . users file     = '" + UsersFileName.getFileName() + "'");
+    	UsersManager.setUsersFileName(usersFileName);
+    	LOG.info(" . users file     = '" + UsersManager.getUsersFileName() + "'");
     	LOG.info(" . users count    = " + UsersManager.getInstance().getUsersCount() );
     	
     	server.start(configuration);
@@ -54,10 +52,10 @@ public class TelosysSaasServer {
 	
 	public void start(Configuration configuration) throws Exception {
 		
-		ScanFiles scanFiles = new ScanFiles("fs", new ScanEventHandler());
+//		ScanFiles scanFiles = new ScanFiles("fs", new ScanEventHandler());
+    	LOG.info("TelosysTools-SaaS starting files scanner : path = " + configuration.getDataRootPath() );
+		ScanFiles scanFiles = new ScanFiles(configuration.getDataRootPath(), new ScanEventHandler());
 		scanFiles.start();
-		
-		UsersManager.getInstance();
 		
 		Server server = new Server( configuration.getHttpPortAsInt() );
 
