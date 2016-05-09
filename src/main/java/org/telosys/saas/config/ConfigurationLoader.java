@@ -4,7 +4,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.Properties;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.telosys.saas.security.FormAuthenticator;
 
 
 /**
@@ -13,8 +18,10 @@ import java.util.Properties;
  * @author Laurent Guerin
  */
 class ConfigurationLoader {
-		
-	private final static String PROPERTIES_FILE_NAME = "telosys-saas.properties" ;
+	
+	protected static final Logger logger = LoggerFactory.getLogger(FormAuthenticator.class);
+	
+	private final static String PROPERTIES_FILE_NAME = "telosys-saas.properties";
 	
 	/**
 	 * Constructor
@@ -30,7 +37,7 @@ class ConfigurationLoader {
 	 * @return
 	 */
 	public Configuration loadConfiguration() {
-		Properties properties = loadProperties() ;
+		Properties properties = loadProperties();
 		if ( properties != null ) {
 			return new Configuration(properties);
 		}
@@ -45,35 +52,15 @@ class ConfigurationLoader {
 	 * @return
 	 */
 	protected Properties loadProperties() {
-		String currentDirectory = System.getProperty("user.dir");
-		if ( currentDirectory != null ) {
-			String fileName = ( currentDirectory.endsWith("/") ? currentDirectory : currentDirectory + "/" ) + PROPERTIES_FILE_NAME ;
-			File file = new File(fileName) ;
-			if ( file.exists() ) {
-				return loadProperties(fileName) ;			
-			}
-		}
-		return null ;
-	}
-	
-	/**
-	 * Loads the properties from the file '/META-INF/nanoj.properties'
-	 * @return
-	 */
-	protected Properties loadProperties(String fileName) {
-		File file = new File(fileName);
-		if ( ! file.exists() ) {
-			throw new RuntimeException("File not found '" + fileName + "'" );
-		}
+		InputStream in = this.getClass().getClassLoader().getResourceAsStream(PROPERTIES_FILE_NAME);
 		final Properties properties = new Properties();
 		try {
-			try ( InputStream stream =  new FileInputStream(file); ) {
-				properties.load(stream);
-			}
+			properties.load(in);
 		} catch (IOException e) {
-			throw new RuntimeException("Cannot load properties from file '" + fileName + "'" );
+			logger.error("Error during properties loading",e);
+			throw new RuntimeException(e);
 		}
 		return properties;
 	}
-
+	
 }

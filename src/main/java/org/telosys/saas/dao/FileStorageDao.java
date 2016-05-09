@@ -24,6 +24,10 @@ public class FileStorageDao implements StorageDao {
 	protected FileStorageDao() {
 		configuration = ConfigurationHolder.getConfiguration();
 	}
+
+	FileStorageDao(Configuration configuration) {
+		this.configuration = configuration;
+	}
 	
 	private String getRootPath() {
 		return configuration.getDataRootPath();

@@ -1,8 +1,0 @@
-{
-  "build": {
-    "goal": "package -DskipTests"
-  },
-  "deploy": {
-    "goal": "exec:java"
-  }
-}

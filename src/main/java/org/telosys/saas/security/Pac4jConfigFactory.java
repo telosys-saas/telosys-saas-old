@@ -12,7 +12,6 @@ import org.pac4j.http.credentials.authenticator.test.SimpleTestUsernamePasswordA
 import org.pac4j.oauth.client.GitHubClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.telosys.saas.TelosysSaasServer;
 import org.telosys.saas.config.Configuration;
 import org.telosys.saas.config.ConfigurationHolder;
 

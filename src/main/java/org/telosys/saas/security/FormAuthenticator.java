@@ -20,7 +20,7 @@ public class FormAuthenticator implements UsernamePasswordAuthenticator {
     @Override
     public void validate(final UsernamePasswordCredentials credentials) {
     	if (credentials == null) {
-            throwsException("No credential");
+            throwsException("No credentials");
         }
     	
     	logger.info("Authentication - validate credentials : "+credentials.getUsername());
@@ -37,7 +37,7 @@ public class FormAuthenticator implements UsernamePasswordAuthenticator {
         //--- Check user existence
         User user = usersManager.getUserByLogin(username);
         if (user == null) {
-            throwsException("User does not exists");
+            throwsException("User does not exist");
         }
         //--- Check user's password 
         if ( ! usersManager.checkPassword(user, password) ) {

@@ -37,7 +37,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class ProjectService {
 	
 //	private FileStorageDao storageDao = new FileStorageDao();
-	private StorageDao storageDao = StorageDaoProvider.getStorageDao();
+	private final StorageDao storageDao;
+
+	public ProjectService() {
+		this.storageDao = StorageDaoProvider.getStorageDao();
+	}
+	
+	ProjectService(StorageDao storageDao) {
+		this.storageDao = storageDao;
+	}
 	
 	public TelosysProject getTelosysProject(UserProfile user, Project project) {
 		String projectFolderAbsolutePath = storageDao.getProjectPath(user, project);
