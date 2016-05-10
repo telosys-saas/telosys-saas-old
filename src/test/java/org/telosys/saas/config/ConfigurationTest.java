@@ -11,20 +11,24 @@ public class ConfigurationTest {
 	@Test
 	public void test1() {
 		ConfigurationLoader configurationLoader = new ConfigurationLoader();
-		Properties properties = configurationLoader.loadProperties("src/test/resources/cfg.properties");
+//		Properties properties = configurationLoader.loadProperties("src/test/resources/cfg.properties");
+		Properties properties = configurationLoader.loadProperties();
 		assertEquals("foo", properties.getProperty("dataRootPath"));
 	}
 	
-	@Test(expected=RuntimeException.class)
+//	@Test(expected=RuntimeException.class)
+	@Test
 	public void test2() {
 		ConfigurationLoader configurationLoader = new ConfigurationLoader();
-		configurationLoader.loadProperties("src/test/resources/inex.properties");
+//		configurationLoader.loadProperties("src/test/resources/inex.properties");
+		configurationLoader.loadProperties();
 	}
 	
 	@Test
 	public void test3() {
 		ConfigurationLoader configurationLoader = new ConfigurationLoader();
-		Properties properties = configurationLoader.loadProperties("src/test/resources/cfg.properties");
+//		Properties properties = configurationLoader.loadProperties("src/test/resources/cfg.properties");
+		Properties properties = configurationLoader.loadProperties();
 		assertEquals("foo", properties.getProperty("dataRootPath"));
 	}
 
