@@ -44,7 +44,9 @@ public class FormAuthenticator implements UsernamePasswordAuthenticator {
             throwsException("Username : '" + username + "' invalid password");        	
         }
         
-        final HttpProfile profile = new HttpProfile();
+    	logger.info("Authentication - user "+credentials.getUsername() + " : OK");
+
+    	final HttpProfile profile = new HttpProfile();
         profile.setId(username);
         profile.addAttribute(CommonProfile.USERNAME, username);
         profile.addAttribute("USER", user);

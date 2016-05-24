@@ -32,19 +32,19 @@ public class ConfigurationTest {
 		assertEquals("foo", properties.getProperty("dataRootPath"));
 	}
 
-	// @Test
-	public void test4() {
-		ConfigurationLoader configurationLoader = new ConfigurationLoader();
-		Configuration configuration = configurationLoader.loadConfiguration();
-		assertEquals("foo",  configuration.getDataRootPath() );
-		assertEquals("8282", configuration.getHttpPort() );
-	}
-
-	// @Test
-	public void test5() {
-		Configuration configuration = ConfigurationHolder.getConfiguration();
-		assertEquals("foo",  configuration.getDataRootPath() );
-		assertEquals("8282", configuration.getHttpPort() );
-	}
+//	// @Test
+//	public void test4() {
+//		ConfigurationLoader configurationLoader = new ConfigurationLoader();
+//		Configuration configuration = configurationLoader.loadConfiguration();
+//		assertEquals("foo",  configuration.getDataRootPath() );
+//		assertEquals("8282", configuration.getHttpPort() );
+//	}
+//
+//	// @Test
+//	public void test5() {
+//		Configuration configuration = ConfigurationHolder.getConfiguration();
+//		assertEquals("foo",  configuration.getDataRootPath() );
+//		assertEquals("8282", configuration.getHttpPort() );
+//	}
 	
 }

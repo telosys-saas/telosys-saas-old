@@ -23,12 +23,22 @@ public class InitServletContextListener implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent servletContextEvent) {
 		logger.info("Initialization");
-		logger.info("Load configuration");
+		logger.info("Loading configuration...");
 		Configuration configuration = ConfigurationHolder.getConfiguration();
-		String dataRootPath = configuration.getDataRootPath();
-		String usersFilePath = dataRootPath + "/users.csv";
-		logger.info("Users file : "+usersFilePath);
-		UsersManager.setUsersFileName(usersFilePath);
+		if ( configuration != null ) {
+			logger.info("Configuration loaded");
+			logger.info(" . data root path  = " + configuration.getDataRootPath() );
+			logger.info(" . users file path = " + configuration.getUsersFilePath() );
+			UsersManager.setUsersFileName(configuration.getUsersFilePath());
+			logger.info("UsersManager initialized.");
+		}
+		else {
+			
+		}
+//		String dataRootPath = configuration.getDataRootPath();
+//		String usersFilePath = dataRootPath + "/users.csv";
+//		logger.info("Users file : "+usersFilePath);
+//		UsersManager.setUsersFileName(usersFilePath);
 	}
 
 	@Override
