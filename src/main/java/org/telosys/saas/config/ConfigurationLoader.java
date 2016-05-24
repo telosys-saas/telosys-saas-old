@@ -9,7 +9,6 @@ import java.util.Properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.telosys.saas.security.FormAuthenticator;
 import org.telosys.tools.commons.ExternalConfiguration;
 import org.telosys.tools.commons.FileUtil;
 
@@ -21,7 +20,7 @@ import org.telosys.tools.commons.FileUtil;
  */
 class ConfigurationLoader {
 	
-	protected static final Logger logger = LoggerFactory.getLogger(FormAuthenticator.class);
+	protected static final Logger logger = LoggerFactory.getLogger(ConfigurationLoader.class);
 	
 	private final static String TELOSYS_ROOT = "TELOSYS_ROOT";
 	private final static String PROPERTIES_FILE_NAME  = "telosys-saas.properties";
