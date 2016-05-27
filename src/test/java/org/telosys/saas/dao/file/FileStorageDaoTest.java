@@ -1,5 +1,7 @@
 package org.telosys.saas.dao.file;
 
+
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.pac4j.core.profile.UserProfile;
 import org.telosys.saas.dao.StorageDao;
@@ -8,7 +10,14 @@ import org.telosys.saas.domain.File;
 import org.telosys.saas.domain.Folder;
 import org.telosys.saas.domain.Project;
 
+import junit.tests.env.TestsEnv;
+
 public class FileStorageDaoTest {
+	
+	@BeforeClass
+	public static void init() {
+		TestsEnv.initExternalConfiguration();
+	}
 	
 	@Test
 	public void createSaveDelete() {
