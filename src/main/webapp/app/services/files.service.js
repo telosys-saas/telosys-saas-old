@@ -1,10 +1,12 @@
 
 function encodeFileId(fileId) {
-  return fileId.replace(/\//g,'%2F').replace(/\\/g,'%5C');
+  //return fileId.replace(/\//g,'%2F').replace(/\\/g,'%5C');
+  return encodeURIComponent(fileId);
 }
 
 function encodeFolderId(fileId) {
-  return fileId.replace(/\//g,'%2F').replace(/\\/g,'%5C');
+  //return fileId.replace(/\//g,'%2F').replace(/\\/g,'%5C');
+  return encodeURIComponent(fileId);
 }
 
 var FilesService = {
@@ -28,7 +30,7 @@ var FilesService = {
 
   getFileForProject: function(userId, projectId, fileId, callback) {
     $.ajax({
-      url: host + "api/v1/users/"+userId+"/projects/"+projectId+"/files/"+encodeFileId(fileId),
+      url: host + "api/v1/users/"+userId+"/projects/"+projectId+"/files?fileId="+encodeFileId(fileId),
       dataType: 'json'
     })
       .done(function (msg) {
@@ -48,7 +50,7 @@ var FilesService = {
   createFolderForProject: function(userId, projectId, folder, callback) {
     $.ajax({
       method: "PUT",
-      url: host + "api/v1/users/"+userId+"/projects/"+projectId+"/folders/"+encodeFolderId(folder.id),
+      url: host + "api/v1/users/"+userId+"/projects/"+projectId+"/folders?folderId="+encodeFolderId(folder.id),
       dataType: 'json',
       contentType: 'application/json',
       data: JSON.stringify(folder)
@@ -68,9 +70,10 @@ var FilesService = {
   },
 
   createFileForProject: function(userId, projectId, file, callback) {
+	var url = host + "api/v1/users/"+userId+"/projects/"+projectId+"/files?fileId="+encodeFolderId(file.id);
     $.ajax({
       method: "PUT",
-      url: host + "api/v1/users/"+userId+"/projects/"+projectId+"/files/"+encodeFolderId(file.id),
+      url: url,
       dataType: 'json',
       contentType: 'application/json',
       data: JSON.stringify(file)
@@ -92,7 +95,7 @@ var FilesService = {
   saveFileForProject: function(userId, projectId, file, callback) {
     $.ajax({
       method: "PUT",
-      url: host + "api/v1/users/"+userId+"/projects/"+projectId+"/files/"+encodeFileId(file.id),
+      url: host + "api/v1/users/"+userId+"/projects/"+projectId+"/files?fileId="+encodeFileId(file.id),
       dataType: 'json',
       contentType: 'application/json',
       data: JSON.stringify(file)
@@ -114,7 +117,7 @@ var FilesService = {
   deleteFileForProject: function(userId, projectId, fileId, callback) {
     $.ajax({
       method: "DELETE",
-      url: host + "api/v1/users/"+userId+"/projects/"+projectId+"/files/"+encodeFileId(fileId),
+      url: host + "api/v1/users/"+userId+"/projects/"+projectId+"/files?fileId="+encodeFileId(fileId),
       dataType: 'json'
     })
       .done(function (msg) {
@@ -134,7 +137,7 @@ var FilesService = {
   deleteFolderForProject: function(userId, projectId, folderId, callback) {
   $.ajax({
     method: "DELETE",
-    url: host + "api/v1/users/"+userId+"/projects/"+projectId+"/folders/"+encodeFolderId(folderId),
+    url: host + "api/v1/users/"+userId+"/projects/"+projectId+"/folders?folderId="+encodeFolderId(folderId),
     dataType: 'json'
   })
     .done(function (msg) {

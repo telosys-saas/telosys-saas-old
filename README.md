@@ -4,6 +4,11 @@
 
 * Define root directory as command line argument
 
+## Configuration
+
+Définir le répertoire qui va contenir la liste des utilisateurs et les fichiers des workspaces :
+ * 
+
 
 ## Install & Run
 

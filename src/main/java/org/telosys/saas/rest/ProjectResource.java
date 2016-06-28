@@ -12,6 +12,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -168,11 +169,11 @@ public class ProjectResource {
     	return telosysFolderService.getTelosysFolder(user, project);
     }
 
-    @Path("/folders/{folderId}")
+    @Path("/folders")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Folder saveFolder(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("folderId") String folderId, Folder folderToSave) {
+    public Folder saveFolder(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @QueryParam("folderId") String folderId, Folder folderToSave) {
     	UserProfile user = getUser(); 
     	Project project = storage.getProjectForUser(user, projectId);
     	List<String> filters = new ArrayList<>();
@@ -187,9 +188,9 @@ public class ProjectResource {
     	return folderToSave;
     }
 
-    @Path("/folders/{folderId}")
+    @Path("/folders")
     @DELETE
-    public void deleteFolder(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("folderId") String folderId) {
+    public void deleteFolder(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @QueryParam("folderId") String folderId) {
     	UserProfile user = getUser();
     	Project project = storage.getProjectForUser(user, projectId);
     	List<String> filters = new ArrayList<>();
@@ -200,20 +201,20 @@ public class ProjectResource {
     	storage.deleteFolderForProjectAndUser(user, project, folder);
     }
 	
-    @Path("/files/{fileId}")
+    @Path("/files")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public File getFile(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("folderId") String folderId, @PathParam("fileId") String fileId) {
+    public File getFile(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @QueryParam("fileId") String fileId) {
     	UserProfile user = getUser(); 
     	Project project = storage.getProjectForUser(user, projectId);
     	return storage.getFileForProjectAndUser(user, project, fileId);
     }
 
-    @Path("/files/{fileId}")
+    @Path("/files")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void saveFile(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("fileId") String fileId, File fileToSave) {
+    public void saveFile(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @QueryParam("fileId") String fileId, File fileToSave) {
     	UserProfile user = getUser();
     	Project project = storage.getProjectForUser(user, projectId);
     	File file = storage.getFileForProjectAndUser(user, project, fileId);
@@ -226,9 +227,9 @@ public class ProjectResource {
     	}
     }
 
-    @Path("/files/{fileId}")
+    @Path("/files")
     @DELETE
-    public void deleteFile(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @PathParam("fileId") String fileId) {
+    public void deleteFile(@PathParam("userId") String userId, @PathParam("projectId") String projectId, @QueryParam("fileId") String fileId) {
     	UserProfile user = getUser();
     	Project project = storage.getProjectForUser(user, projectId);
     	File file = storage.getFileForProjectAndUser(user, project, fileId);

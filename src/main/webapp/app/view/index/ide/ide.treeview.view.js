@@ -7,14 +7,14 @@ var IDETreeview = {
     FilesService
       .getFilesForProject(state.auth.userId, state.projectId)
       .then(function(rootFolder) {
-        var root = this.convertFolderToJson(rootFolder, null);
+        var root = this.convertFolderToJson(rootFolder, null, 'root');
         state.tree.root = root;
 
         return TelosysService
           .getTelosysFolderForProject(state.auth.userId, state.projectId)
       }.bind(this))
       .then(function(telosysFolder) {
-        var telosys = this.convertFolderToJson(telosysFolder, null);
+        var telosys = this.convertFolderToJson(telosysFolder, null, 'telosys');
         state.tree.telosys = telosys;
 
         $('#jstree').html('<div id="jstreecontent" class="treeview"></div>');
@@ -69,7 +69,7 @@ var IDETreeview = {
                */
               console.log(node);
               var items = {};
-              if(node.type == 'folder' || node.type == 'bundle') {
+              if(node.id == '@@_root_@@' || node.type == 'folder' || node.type == 'bundle') {
                 items.CreateFile = {
                   label: "Create file",
                   action: this.onCreateFile(node, tree)
@@ -120,7 +120,7 @@ var IDETreeview = {
                 "action": this.onRename(node, tree)
               };
               */
-              if(node.type != 'telosys' && node.type != 'bundles' && node.type != 'bundle') {
+              if(node.id != '@@_root_@@' && node.type != 'telosys' && node.type != 'bundles' && node.type != 'bundle') {
                 items.Remove = {
                   "separator_before": false,
                   "separator_after": false,
@@ -431,7 +431,7 @@ var IDETreeview = {
     }
     else if(type == 'telosys') {
       var currentNode = {
-        id: '@@_root_@@',
+        id: '@@_telosys_@@',
         text: folder.name,
         type: 'telosys',
         children: []
